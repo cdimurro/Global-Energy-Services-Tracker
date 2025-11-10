@@ -23,19 +23,34 @@
 
 @layer components {
   .metric-card {
-    @apply bg-white rounded-lg shadow-md p-4 border border-gray-100;
+    @apply bg-white rounded-lg shadow-md p-3 sm:p-4 md:p-6 border border-gray-100;
   }
 
   .nav-link {
-    @apply text-base font-medium hover:text-blue-600 transition-colors cursor-pointer;
+    @apply text-sm sm:text-base font-medium hover:text-blue-600 transition-colors cursor-pointer;
   }
 
   .btn-primary {
-    @apply px-4 py-2 text-sm font-semibold rounded-lg transition-all hover:scale-105 active:scale-95;
+    @apply px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all hover:scale-105 active:scale-95;
   }
 
   .energy-source-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-white font-medium text-sm;
+    @apply inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 rounded-full text-white font-medium text-xs sm:text-sm;
+  }
+}
+
+/* Mobile responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
   }
 }
 
