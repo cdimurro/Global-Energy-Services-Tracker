@@ -30,7 +30,8 @@
 @layer components {
   .metric-card {
     @apply bg-white rounded-lg shadow-md p-3 sm:p-4 md:p-6 border border-gray-100;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
 
   .nav-link {
@@ -64,16 +65,17 @@
     @apply text-base;
   }
 
-  /* Reduce chart heights on mobile but leave room for legends */
+  /* Set chart heights on mobile but allow flexibility for legends */
   .recharts-responsive-container {
-    min-height: 250px !important;
-    max-height: 300px !important;
+    min-height: 280px !important;
+    height: auto !important;
   }
 
-  /* Ensure charts don't overflow their containers */
+  /* Ensure charts don't overflow their containers horizontally */
   .recharts-wrapper {
     max-width: 100% !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
   }
 
   /* Reduce font size in chart labels */
@@ -134,23 +136,24 @@
   /* Position legends below charts, not overlapping */
   .recharts-legend-wrapper {
     position: relative !important;
-    margin-top: 8px !important;
+    margin-top: 12px !important;
     padding-top: 8px !important;
+    padding-bottom: 12px !important;
   }
 
-  /* Ensure stacked area charts have space for legends */
-  .recharts-wrapper .recharts-legend-wrapper {
-    bottom: -40px !important;
-  }
-
-  /* Add bottom margin to chart containers to prevent overlap with next section */
+  /* Add bottom padding to chart containers to create space */
   .recharts-responsive-container {
-    margin-bottom: 50px !important;
+    padding-bottom: 60px !important;
   }
 
-  /* Reduce spacing in metric cards on mobile */
+  /* Ensure proper spacing between sections */
   .metric-card {
-    margin-bottom: 16px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Ensure chart surface doesn't clip legends */
+  .recharts-wrapper {
+    padding-bottom: 20px !important;
   }
 }
 
