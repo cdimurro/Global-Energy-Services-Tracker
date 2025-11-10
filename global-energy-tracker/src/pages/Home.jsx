@@ -361,83 +361,41 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           Understanding Energy Services
         </h2>
-
-        <div className="space-y-6 text-gray-700">
-          {/* What Are Energy Services */}
-          <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">What Are Energy Services?</h3>
-            <p className="mb-2">
-              Energy services are the <strong>useful work</strong> delivered by energy systems: heat in your home, motion in your car, light in your office, or computation in your phone.
-              Unlike primary energy (coal, oil, gas at the source), energy services represent the actual benefit we derive from energy.
-            </p>
-            <p>
-              For example: A gas furnace burns 100 units of natural gas but delivers only 80 units of heat to your home.
-              An electric heat pump uses 30 units of electricity to deliver the same 80 units of heat. Both deliver identical energy services, but with vastly different primary energy consumption.
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              What Are Energy Services?
+            </h3>
+            <p className="text-gray-700">
+              Energy services are the useful work delivered by energy systems: heat, motion, light, and computation.
+              Unlike primary energy (coal, oil, gas), energy services represent the actual benefit we derive from energy consumption.
             </p>
           </div>
-
-          {/* Why Measure Energy Services */}
-          <div className="bg-green-50 p-5 rounded-lg border-l-4 border-green-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Why Measure Energy Services Instead of Primary Energy?</h3>
-            <p className="mb-2">
-              Traditional energy statistics track <strong>primary energy</strong> (what we extract from nature), which creates a misleading picture of the energy transition.
-              Because fossil fuels are 35-40% efficient while clean electricity is 85-95% efficient, switching to clean energy dramatically reduces total primary energy needs.
-            </p>
-            <p className="mb-2">
-              <strong>The efficiency multiplier effect:</strong> Every 1 EJ of fossil fuel energy services requires ~2.7 EJ of primary energy.
-              The same 1 EJ of electric energy services requires only ~1.1 EJ of primary energy. This means clean energy displaces fossil fuels at a 3:1 ratio.
-            </p>
-            <p>
-              By measuring energy services, we see the real story: how much useful energy humanity consumes, which sources provide it, and how efficiency improvements accelerate the transition.
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Why Measure Services?
+            </h3>
+            <p className="text-gray-700">
+              Traditional energy statistics track primary energy, creating a misleading picture. Fossil fuels are 35-40% efficient
+              while clean electricity is 85-95% efficient, meaning clean energy displaces fossil fuels at a 3:1 ratio.
             </p>
           </div>
-
-          {/* Key Platform Features */}
-          <div className="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-3">How This Platform Works</h3>
-            <div className="space-y-3">
-              <div>
-                <strong className="text-blue-800">Displacement Tracking:</strong>
-                <span className="ml-2">We calculate how much fossil fuel consumption clean energy displaces each year. When displacement ≥ fossil fuel growth, we've reached peak fossil fuels.</span>
-              </div>
-              <div>
-                <strong className="text-green-800">Sectoral Breakdown:</strong>
-                <span className="ml-2">Energy demand varies by sector. Transport (oil-dominated) differs from electricity (rapidly decarbonizing) and industrial heat (coal/gas-intensive).</span>
-              </div>
-              <div>
-                <strong className="text-purple-800">Regional Analysis:</strong>
-                <span className="ml-2">The energy transition looks different everywhere. Europe achieves 50%+ efficiency with 30% clean share. Asia operates at 35% efficiency with 15% clean share.</span>
-              </div>
-              <div>
-                <strong className="text-orange-600">Forecast Scenarios:</strong>
-                <span className="ml-2">We project three IEA scenarios (STEPS, APS, NZE) with different rates of clean deployment, efficiency improvements, and policy implementation.</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Importance of Electrification */}
-          <div className="bg-amber-50 p-5 rounded-lg border-l-4 border-amber-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Importance of Electrification</h3>
-            <p className="mb-2">
-              Electrification is the cornerstone of the energy transition. Electric technologies (heat pumps, EVs, induction furnaces) are 2-3x more efficient than their fossil fuel counterparts.
-              This efficiency multiplier means electrifying end uses dramatically reduces total energy demand while enabling clean power sources.
-            </p>
-            <p>
-              Example: A gas furnace delivering 100 units of heat requires ~125 units of natural gas. An electric heat pump delivering the same 100 units requires only ~35 units of electricity.
-              When that electricity comes from renewables, emissions drop to zero while using 70% less primary energy.
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Electrification Advantage
+            </h3>
+            <p className="text-gray-700">
+              Electric technologies (heat pumps, EVs, induction furnaces) are 2-3x more efficient than fossil fuel alternatives.
+              This efficiency multiplier dramatically reduces total energy demand while enabling clean power sources.
             </p>
           </div>
-
-          {/* Importance of Efficiency */}
-          <div className="bg-emerald-50 p-5 rounded-lg border-l-4 border-emerald-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Importance of Efficiency</h3>
-            <p className="mb-2">
-              Efficiency improvements reduce energy service demand without sacrificing quality of life. Better insulation, LED lighting, efficient motors, and optimized industrial processes cut energy consumption by 30-50%.
-              This reduces the amount of clean energy we need to deploy and accelerates fossil fuel displacement.
-            </p>
-            <p>
-              Since 1990, global GDP has tripled while energy services grew only 80% due to efficiency gains. Without these improvements, we would need 40% more energy infrastructure today.
-              Efficiency is the fastest, cheapest way to reduce emissions and ease the transition.
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Efficiency Gains
+            </h3>
+            <p className="text-gray-700">
+              Since 1990, global GDP tripled while energy services grew only 80% due to efficiency improvements.
+              Better insulation, LED lighting, and efficient motors cut consumption by 30-50% without sacrificing quality of life.
             </p>
           </div>
         </div>

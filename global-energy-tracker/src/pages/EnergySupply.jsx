@@ -556,16 +556,6 @@ export default function EnergySupply() {
               of all energy due to inefficient conversion technologies.
             </p>
           </div>
-
-          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-yellow-600 md:col-span-2">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Thermal Accounting Method</h3>
-            <p className="text-gray-700">
-              A standardized method for comparing all energy sources fairly. For thermal sources (coal, gas, nuclear),
-              we count the heat content. For direct sources (wind, solar), we use the "substitution method"—calculating
-              how much thermal fuel would be needed to generate the same electricity. This prevents accounting tricks
-              where renewables appear smaller than they actually are.
-            </p>
-          </div>
         </div>
       </div>
 

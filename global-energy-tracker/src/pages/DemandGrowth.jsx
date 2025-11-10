@@ -218,91 +218,41 @@ export default function DemandGrowth() {
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           Understanding Demand Growth
         </h2>
-
-        <div className="space-y-6 text-gray-700">
-          {/* Historical Evolution */}
-          <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Historical Evolution (1965-2024)</h3>
-            <p className="mb-2">
-              Global energy service demand grew from ~80 EJ in 1965 to ~230 EJ in 2024, driven primarily by fossil fuels.
-              Industrial sectors (iron & steel, chemicals, cement) dominated early growth, while transport and residential sectors accelerated post-1990.
-            </p>
-            <p>
-              Clean energy's share remained under 20% until 2020, when solar and wind deployment accelerated significantly.
-              Fossil fuels still power ~80% of global energy services in 2024.
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Historical Evolution
+            </h3>
+            <p className="text-gray-700">
+              Global energy demand grew from ~80 EJ in 1965 to ~230 EJ in 2024, driven primarily by fossil fuels.
+              Clean energy remained under 20% until 2020, when solar and wind deployment accelerated significantly.
             </p>
           </div>
-
-          {/* Which Sources Meet Demand */}
-          <div className="bg-green-50 p-5 rounded-lg border-l-4 border-green-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Which Sources Are Meeting Demand?</h3>
-            <p className="mb-2">
-              <strong>Fossil fuels</strong> (coal, oil, gas) continue to meet ~80% of new demand growth, particularly in transport and heavy industry.
-              Oil dominates road transport and aviation, while coal powers industrial heat in Asia.
-            </p>
-            <p>
-              <strong>Clean energy</strong> (nuclear, hydro, wind, solar) is growing 3x faster than fossil fuels but from a smaller base.
-              Solar and wind are rapidly displacing fossil electricity, while EVs are beginning to displace oil in transport.
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Growth Drivers
+            </h3>
+            <p className="text-gray-700">
+              Fossil fuels meet ~80% of demand growth, particularly in transport and heavy industry.
+              Clean energy grows 3x faster but from a smaller base, with solar and wind rapidly displacing fossil electricity.
             </p>
           </div>
-
-          {/* Fastest and Slowest Growing Sectors */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-emerald-50 p-5 rounded-lg border-l-4 border-emerald-600">
-              <h3 className="font-bold text-lg text-gray-800 mb-2">Fastest Growing Sectors</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li><strong>Residential Cooling:</strong> Rising temperatures and middle-class growth drive AC demand in Asia and Africa</li>
-                <li><strong>Aviation:</strong> Air travel recovering and expanding in emerging markets</li>
-                <li><strong>Residential Appliances:</strong> Electrification and rising living standards</li>
-              </ul>
-              <p className="mt-2 text-sm italic">These sectors offer opportunities for clean electrification.</p>
-            </div>
-
-            <div className="bg-red-50 p-5 rounded-lg border-l-4 border-red-600">
-              <h3 className="font-bold text-lg text-gray-800 mb-2">Slowest Growing / Declining Sectors</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li><strong>Pulp & Paper:</strong> Declining due to digitalization</li>
-                <li><strong>Iron & Steel:</strong> Slow growth as infrastructure matures in developed economies</li>
-                <li><strong>Cement:</strong> Slowing as urbanization peaks in China</li>
-              </ul>
-              <p className="mt-2 text-sm italic">Fossil-intensive sectors offering limited growth pressure.</p>
-            </div>
-          </div>
-
-          {/* IEA Forecast Scenarios */}
-          <div className="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-3">IEA Energy Demand Forecasts (2025-2050)</h3>
-            <div className="space-y-3">
-              <div>
-                <strong className="text-blue-800">Baseline (STEPS):</strong>
-                <span className="ml-2">Current policies scenario. Fossil fuels peak ~2035 at 150 EJ, then slowly decline as clean energy grows 3 EJ/year. Total demand grows ~1%/year due to efficiency gains.</span>
-              </div>
-              <div>
-                <strong className="text-green-800">Accelerated (APS):</strong>
-                <span className="ml-2">All announced pledges implemented. Fossil fuels peak by 2030. Clean energy grows 5 EJ/year. Enhanced efficiency (1.2%/year) moderates total demand growth.</span>
-              </div>
-              <div>
-                <strong className="text-purple-800">Net-Zero (NZE):</strong>
-                <span className="ml-2">Paris Agreement targets met. Fossil fuels peak by 2028 and decline rapidly. Aggressive clean deployment (8 EJ/year) plus efficiency gains (1.8%/year) enable net-zero by 2050.</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Uncertainty Note */}
-          <div className="bg-amber-50 p-5 rounded-lg border-l-4 border-amber-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Forecasting Uncertainty</h3>
-            <p className="mb-2">
-              Energy demand projections carry significant uncertainty. Key variables include:
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Forecast Scenarios
+            </h3>
+            <p className="text-gray-700">
+              IEA projects three pathways: STEPS (fossil peak ~2035), APS (fossil peak 2030), and NZE (fossil peak 2028).
+              Clean energy growth rates range from 3-8 EJ/year depending on policy implementation and efficiency gains.
             </p>
-            <ul className="list-disc list-inside space-y-1">
-              <li><strong>Economic growth rates:</strong> Especially in China, India, and Africa</li>
-              <li><strong>Technology deployment:</strong> Speed of EV, heat pump, and renewable adoption</li>
-              <li><strong>Policy implementation:</strong> Whether climate pledges translate to action</li>
-              <li><strong>Efficiency improvements:</strong> Actual vs. projected energy intensity reductions</li>
-            </ul>
-            <p className="mt-2 text-sm italic">
-              Historical forecasts have consistently underestimated clean energy growth while overestimating fossil demand.
-              The actual trajectory will depend heavily on near-term policy and investment decisions.
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">
+              Forecast Uncertainty
+            </h3>
+            <p className="text-gray-700">
+              Projections depend on economic growth, technology deployment speed, and policy implementation.
+              Historical forecasts consistently underestimated clean energy growth while overestimating fossil demand.
             </p>
           </div>
         </div>
