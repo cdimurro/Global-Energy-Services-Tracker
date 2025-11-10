@@ -10,14 +10,14 @@ const FOSSIL_SOURCES = ['coal', 'oil', 'gas'];
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
 
 const AVAILABLE_REGIONS = [
+  // Global
+  'Global',
   // Continental regions
   'Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania',
   // Major countries
   'China', 'India', 'United States', 'Japan', 'Germany', 'United Kingdom',
   'France', 'Brazil', 'Canada', 'South Korea', 'Russia', 'Indonesia',
-  'Mexico', 'Saudi Arabia', 'Australia', 'Spain', 'South Africa',
-  // Economic groupings
-  'European Union'
+  'Mexico', 'Saudi Arabia', 'Australia', 'South Africa'
 ];
 
 export default function Regions() {
@@ -33,6 +33,7 @@ export default function Regions() {
   const [viewMode, setViewMode] = useState('regions'); // 'regions' or 'sources'
   const [quickFilterRegions, setQuickFilterRegions] = useState('all'); // 'all', 'fossil', 'clean' for regions mode
   const [quickFilterSources, setQuickFilterSources] = useState('all'); // 'all', 'fossil', 'clean' for sources mode - when active, selectedSources is ignored
+  const [showRelativeChart3, setShowRelativeChart3] = useState(false); // Show relative values for Chart 3
 
   // Force scroll to top on mount
   useEffect(() => {
@@ -49,16 +50,51 @@ export default function Regions() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Load regional data
+  // Load regional and global data
   useEffect(() => {
-    fetch('/data/regional_energy_timeseries.json')
-      .then(res => res.json())
-      .then(data => {
-        setRegionalData(data);
+    Promise.all([
+      fetch('/data/regional_energy_timeseries.json').then(res => res.json()),
+      fetch('/data/useful_energy_timeseries.json').then(res => res.json())
+    ])
+      .then(([regionalData, globalData]) => {
+        // Transform global data to match regional data structure
+        const globalRegionData = {
+          data: globalData.data.map(yearData => ({
+            year: yearData.year,
+            total_useful_ej: yearData.total_useful_ej,
+            fossil_useful_ej: yearData.fossil_useful_ej,
+            clean_useful_ej: yearData.clean_useful_ej,
+            sources_useful_ej: {
+              coal: yearData.sources_useful_ej.coal || 0,
+              oil: yearData.sources_useful_ej.oil || 0,
+              gas: yearData.sources_useful_ej.gas || 0,
+              nuclear: yearData.sources_useful_ej.nuclear || 0,
+              hydro: yearData.sources_useful_ej.hydro || 0,
+              wind: yearData.sources_useful_ej.wind || 0,
+              solar: yearData.sources_useful_ej.solar || 0,
+              biofuels: yearData.sources_useful_ej.biomass || 0,
+              other_renewables: (yearData.sources_useful_ej.geothermal || 0) + (yearData.sources_useful_ej.other || 0)
+            },
+            fossil_share_percent: yearData.fossil_share_percent,
+            clean_share_percent: yearData.clean_share_percent,
+            efficiency_percent: yearData.overall_efficiency || 0
+          }))
+        };
+
+        // Add Global to regional data
+        const mergedData = {
+          ...regionalData,
+          regions: {
+            Global: globalRegionData,
+            ...regionalData.regions
+          }
+        };
+
+        setRegionalData(mergedData);
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error loading regional data:', err);
+        console.error('Error loading data:', err);
         setLoading(false);
       });
   }, []);
@@ -168,12 +204,20 @@ export default function Regions() {
       .filter(yearData => yearData.year >= 1965) // Only show 1965-2024
       .map(yearData => {
         const row = { year: yearData.year };
+        const total = yearData.total_useful_ej;
+
         ENERGY_SOURCES.forEach(source => {
-          row[source] = yearData.sources_useful_ej[source] || 0;
+          const absoluteValue = yearData.sources_useful_ej[source] || 0;
+          // If showing relative values, convert to percentage
+          if (showRelativeChart3) {
+            row[source] = total > 0 ? (absoluteValue / total * 100) : 0;
+          } else {
+            row[source] = absoluteValue;
+          }
         });
         return row;
       });
-  }, [filteredByTime, selectedRegionForMix]);
+  }, [filteredByTime, selectedRegionForMix, showRelativeChart3]);
 
   // Toggle region selection
   const toggleRegion = (region) => {
@@ -530,30 +574,54 @@ export default function Regions() {
                 }
               }
 
+              // Split payload into columns for better display
+              const itemsPerColumn = Math.ceil(payload.length / 2);
+              const column1 = payload.slice(0, itemsPerColumn);
+              const column2 = payload.slice(itemsPerColumn);
+
               return (
-                <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+                <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200 max-w-2xl">
                   <div className="font-bold text-lg mb-2">{label}</div>
                   <div className="text-xs text-gray-500 mb-2 italic">{sourcesLabel}</div>
-                  <div className="space-y-1 text-sm">
-                    {payload.map((entry, index) => {
-                      // Get the actual total energy for this region/year from the data
-                      const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
-                      const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                      const totalForRegion = yearData?.total_useful_ej || 0;
+                  <div className="grid grid-cols-2 gap-x-6 text-sm">
+                    {/* Column 1 */}
+                    <div className="space-y-1">
+                      {column1.map((entry, index) => {
+                        const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
+                        const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
-                      // Calculate percentage based on region's total, not chart total
-                      const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
-
-                      return (
-                        <div key={index} className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
-                            <span>{entry.name}:</span>
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1 min-w-0">
+                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                              <span className="truncate text-xs">{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
                           </div>
-                          <span className="font-semibold">{entry.value.toFixed(2)} PJ ({percentage.toFixed(1)}%)</span>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
+                    {/* Column 2 */}
+                    <div className="space-y-1">
+                      {column2.map((entry, index) => {
+                        const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
+                        const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
+
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1 min-w-0">
+                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                              <span className="truncate text-xs">{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               );
@@ -682,19 +750,38 @@ export default function Regions() {
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-semibold mb-2 text-gray-700">
-            Select Region:
-          </label>
-          <select
-            value={selectedRegionForMix}
-            onChange={(e) => setSelectedRegionForMix(e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-2 text-base"
-          >
-            {AVAILABLE_REGIONS.map(region => (
-              <option key={region} value={region}>{region}</option>
-            ))}
-          </select>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <label className="block text-sm font-semibold mb-2 text-gray-700">
+              Select Region:
+            </label>
+            <select
+              value={selectedRegionForMix}
+              onChange={(e) => setSelectedRegionForMix(e.target.value)}
+              className="border border-gray-300 rounded-lg px-4 py-2 text-base"
+            >
+              {AVAILABLE_REGIONS.map(region => (
+                <option key={region} value={region}>{region}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Show Relative Values Toggle */}
+          <div className="flex items-center gap-3">
+            <label className="text-sm font-semibold text-gray-700">Show Relative Values</label>
+            <button
+              onClick={() => setShowRelativeChart3(!showRelativeChart3)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                showRelativeChart3 ? 'bg-blue-600' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  showRelativeChart3 ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
         <ResponsiveContainer width="100%" height={500}>
@@ -704,7 +791,15 @@ export default function Regions() {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
-            <YAxis label={{ value: 'Energy Services (PJ)', angle: -90, position: 'insideLeft' }} />
+            <YAxis
+              label={{
+                value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Energy Services (PJ)',
+                angle: -90,
+                position: 'insideLeft'
+              }}
+              domain={showRelativeChart3 ? [0, 100] : [0, 'auto']}
+              ticks={showRelativeChart3 ? [0, 25, 50, 75, 100] : undefined}
+            />
             <Tooltip content={({ active, payload, label }) => {
               if (!active || !payload || payload.length === 0) return null;
               const total = payload.reduce((sum, entry) => sum + (entry.value || 0), 0);
@@ -713,21 +808,43 @@ export default function Regions() {
                   <div className="font-bold text-lg mb-2">{label}</div>
                   <div className="space-y-1 text-sm">
                     {payload.reverse().map((entry, index) => {
-                      const percentage = total > 0 ? (entry.value / total * 100) : 0;
-                      return (
-                        <div key={index} className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
-                            <span>{entry.name}:</span>
+                      if (showRelativeChart3) {
+                        // In relative mode, values are already percentages
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
+                              <span>{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold">{entry.value.toFixed(2)}%</span>
                           </div>
-                          <span className="font-semibold">{entry.value.toFixed(2)} PJ ({percentage.toFixed(1)}%)</span>
-                        </div>
-                      );
+                        );
+                      } else {
+                        // In absolute mode, calculate percentages
+                        const percentage = total > 0 ? (entry.value / total * 100) : 0;
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
+                              <span>{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold">{entry.value.toFixed(2)} PJ ({percentage.toFixed(2)}%)</span>
+                          </div>
+                        );
+                      }
                     })}
-                    <div className="flex justify-between gap-4 pt-2 border-t border-gray-200 font-bold">
-                      <span>Total:</span>
-                      <span>{total.toFixed(2)} EJ (100%)</span>
-                    </div>
+                    {!showRelativeChart3 && (
+                      <div className="flex justify-between gap-4 pt-2 border-t border-gray-200 font-bold">
+                        <span>Total:</span>
+                        <span>{total.toFixed(2)} PJ (100%)</span>
+                      </div>
+                    )}
+                    {showRelativeChart3 && (
+                      <div className="flex justify-between gap-4 pt-2 border-t border-gray-200 font-bold">
+                        <span>Total:</span>
+                        <span>100%</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
