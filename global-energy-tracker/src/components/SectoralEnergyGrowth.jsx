@@ -616,53 +616,6 @@ export default function SectoralEnergyGrowth() {
         </div>
       </div>
 
-      {/* Summary Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
-          <div className="text-blue-700 text-sm font-semibold uppercase tracking-wide mb-2">
-            2024 Total
-          </div>
-          <div className="text-4xl font-bold text-gray-900">
-            {chartData.find(d => d.year === 2024)?.total.toFixed(1)}
-            <span className="text-xl ml-2 text-gray-500">EJ</span>
-          </div>
-          <div className="text-sm text-gray-600 mt-2">
-            Current energy services by sector
-          </div>
-        </div>
-
-        <div className="p-6 bg-green-50 rounded-lg border-l-4 border-green-600">
-          <div className="text-green-700 text-sm font-semibold uppercase tracking-wide mb-2">
-            2050 Projection
-          </div>
-          <div className="text-4xl font-bold text-gray-900">
-            {chartData.find(d => d.year === 2050)?.total.toFixed(1)}
-            <span className="text-xl ml-2 text-gray-500">EJ</span>
-          </div>
-          <div className="text-sm text-gray-600 mt-2">
-            Baseline scenario projection
-          </div>
-        </div>
-
-        <div className="p-6 bg-purple-50 rounded-lg border-l-4 border-purple-600">
-          <div className="text-purple-700 text-sm font-semibold uppercase tracking-wide mb-2">
-            Growth 2024-2050
-          </div>
-          <div className="text-4xl font-bold text-gray-900">
-            {(() => {
-              const val2024 = chartData.find(d => d.year === 2024)?.total || 0;
-              const val2050 = chartData.find(d => d.year === 2050)?.total || 0;
-              const growth = val2024 > 0 ? ((val2050 - val2024) / val2024 * 100) : 0;
-              return (growth > 0 ? '+' : '') + growth.toFixed(1);
-            })()}
-            <span className="text-xl ml-2 text-gray-500">%</span>
-          </div>
-          <div className="text-sm text-gray-600 mt-2">
-            Total sectoral growth
-          </div>
-        </div>
-      </div>
-
       {/* Sector Growth Analysis */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Fastest Growing Sectors */}
