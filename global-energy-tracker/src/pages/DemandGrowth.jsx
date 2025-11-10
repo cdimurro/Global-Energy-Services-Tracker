@@ -103,7 +103,7 @@ export default function DemandGrowth() {
     <PageLayout>
       {/* Page Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3">
           Energy Services Demand Growth Forecast
         </h1>
         <p className="text-sm text-gray-600">
@@ -126,7 +126,7 @@ export default function DemandGrowth() {
           />
         </div>
         <div id="total-demand-chart">
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300} className="md:h-[400px]">
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="year" />
@@ -184,7 +184,7 @@ export default function DemandGrowth() {
           </select>
         </div>
         <div id="energy-mix-chart">
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300} className="md:h-[400px]">
             <AreaChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="year" />

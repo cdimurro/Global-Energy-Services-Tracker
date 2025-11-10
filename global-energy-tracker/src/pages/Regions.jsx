@@ -272,7 +272,7 @@ export default function Regions() {
     <PageLayout>
       {/* Page Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3">
           Regional Energy Transition Analysis
         </h1>
         <p className="text-sm text-gray-600">

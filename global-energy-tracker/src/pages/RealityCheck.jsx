@@ -14,7 +14,7 @@ export default function RealityCheck() {
     <PageLayout>
       {/* Page Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3">
           The Truth of the Energy Transition
         </h1>
       </div>

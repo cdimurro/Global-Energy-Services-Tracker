@@ -200,7 +200,7 @@ export default function EnergySupply() {
     <PageLayout>
       {/* Page Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3">
           Energy Supply Analysis
         </h1>
         <p className="text-sm text-gray-600">
@@ -217,7 +217,7 @@ export default function EnergySupply() {
           <div className="flex flex-wrap gap-2 mb-3">
             <button
               onClick={selectAllSources}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm md:text-base ${
                 selectedSources.length === ENERGY_SOURCES.length
                   ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -227,13 +227,13 @@ export default function EnergySupply() {
             </button>
             <button
               onClick={selectFossilOnly}
-              className="px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300"
+              className="px-4 py-2.5 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm md:text-base"
             >
               Fossil Only
             </button>
             <button
               onClick={selectCleanOnly}
-              className="px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300"
+              className="px-4 py-2.5 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm md:text-base"
             >
               Clean Only
             </button>
@@ -244,7 +244,7 @@ export default function EnergySupply() {
               <button
                 key={source}
                 onClick={() => toggleSource(source)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm ${
                   selectedSources.includes(source)
                     ? 'text-white ring-2 ring-offset-2'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -301,7 +301,7 @@ export default function EnergySupply() {
             />
           </div>
 
-          <ResponsiveContainer width="100%" height={500}>
+          <ResponsiveContainer width="100%" height={350} className="md:h-[500px]">
             <AreaChart
               data={processedData}
               margin={{ top: 20, right: 30, left: 20, bottom: 20 }}

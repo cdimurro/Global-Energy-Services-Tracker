@@ -459,7 +459,7 @@ export default function InteractiveChart() {
 
       {/* Chart Display */}
       <div id="interactive-chart-container">
-        <ResponsiveContainer width="100%" height={700}>
+        <ResponsiveContainer width="100%" height={window.innerWidth < 768 ? 350 : 700} className="transition-all">
           {renderChart()}
         </ResponsiveContainer>
 

@@ -155,7 +155,7 @@ export default function Home() {
 
         {/* Pie Chart */}
         <div className="mb-3 sm:mb-6" ref={globalEnergyChartRef}>
-          <ResponsiveContainer width="100%" height={350}>
+          <ResponsiveContainer width="100%" height={300} className="sm:h-[350px]">
               <PieChart>
                 <Pie
                   data={pieData}
@@ -226,7 +226,7 @@ export default function Home() {
           </div>
 
           <div className="mb-6" ref={fossilBreakdownChartRef}>
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" height={300} className="sm:h-[350px]">
               <PieChart>
                 <Pie
                   data={fossilSources.map(([source, ej]) => ({
@@ -298,7 +298,7 @@ export default function Home() {
           </div>
 
           <div className="mb-6" ref={cleanBreakdownChartRef}>
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" height={300} className="sm:h-[350px]">
               <PieChart>
                 <Pie
                   data={cleanSources.map(([source, ej]) => ({
@@ -368,7 +368,7 @@ export default function Home() {
             </h3>
             <p className="text-gray-700">
               Energy services are the useful work delivered by energy systems: heat, motion, light, and computation.
-              Unlike primary energy (coal, oil, gas), energy services represent the actual benefit we derive from energy consumption.
+              Unlike primary energy (coal, oil, gas), energy services represent the actual benefits that society receives from energy consumption.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-600">
@@ -376,8 +376,8 @@ export default function Home() {
               Why Measure Services?
             </h3>
             <p className="text-gray-700">
-              Traditional energy statistics track primary energy, creating a misleading picture. Fossil fuels are 35-40% efficient
-              while clean electricity is 85-95% efficient, meaning clean energy displaces fossil fuels at a 3:1 ratio.
+              Traditional energy statistics track primary energy consumption, which creates a misleading picture. 
+              The problem with measuring primary energy is that 60-65% of it gets wasted as heat during generation and conversion, and none of that wasted energy provides any value to society.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-600">
@@ -394,7 +394,7 @@ export default function Home() {
               Efficiency Gains
             </h3>
             <p className="text-gray-700">
-              Since 1990, global GDP tripled while energy services grew only 80% due to efficiency improvements.
+              Since 1990, global GDP tripled while energy services grew only by 80% due to efficiency improvements.
               Better insulation, LED lighting, and efficient motors cut consumption by 30-50% without sacrificing quality of life.
             </p>
           </div>
