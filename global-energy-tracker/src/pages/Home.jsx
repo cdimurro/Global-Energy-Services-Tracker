@@ -356,6 +356,96 @@ export default function Home() {
           </div>
         </div>
 
+      {/* Understanding Energy Services */}
+      <div className="metric-card bg-white mb-8 border-2 border-blue-200">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          Understanding Energy Services
+        </h2>
+
+        <div className="space-y-6 text-gray-700">
+          {/* What Are Energy Services */}
+          <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">What Are Energy Services?</h3>
+            <p className="mb-2">
+              Energy services are the <strong>useful work</strong> delivered by energy systems: heat in your home, motion in your car, light in your office, or computation in your phone.
+              Unlike primary energy (coal, oil, gas at the source), energy services represent the actual benefit we derive from energy.
+            </p>
+            <p>
+              For example: A gas furnace burns 100 units of natural gas but delivers only 80 units of heat to your home.
+              An electric heat pump uses 30 units of electricity to deliver the same 80 units of heat. Both deliver identical energy services, but with vastly different primary energy consumption.
+            </p>
+          </div>
+
+          {/* Why Measure Energy Services */}
+          <div className="bg-green-50 p-5 rounded-lg border-l-4 border-green-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Why Measure Energy Services Instead of Primary Energy?</h3>
+            <p className="mb-2">
+              Traditional energy statistics track <strong>primary energy</strong> (what we extract from nature), which creates a misleading picture of the energy transition.
+              Because fossil fuels are 35-40% efficient while clean electricity is 85-95% efficient, switching to clean energy dramatically reduces total primary energy needs.
+            </p>
+            <p className="mb-2">
+              <strong>The efficiency multiplier effect:</strong> Every 1 EJ of fossil fuel energy services requires ~2.7 EJ of primary energy.
+              The same 1 EJ of electric energy services requires only ~1.1 EJ of primary energy. This means clean energy displaces fossil fuels at a 3:1 ratio.
+            </p>
+            <p>
+              By measuring energy services, we see the real story: how much useful energy humanity consumes, which sources provide it, and how efficiency improvements accelerate the transition.
+            </p>
+          </div>
+
+          {/* Key Platform Features */}
+          <div className="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-3">How This Platform Works</h3>
+            <div className="space-y-3">
+              <div>
+                <strong className="text-blue-800">Displacement Tracking:</strong>
+                <span className="ml-2">We calculate how much fossil fuel consumption clean energy displaces each year. The displacement rate (D) shows whether fossil fuels are rising or declining. When D ≥ fossil fuel growth, we've reached peak fossil fuels.</span>
+              </div>
+              <div>
+                <strong className="text-green-800">Sectoral Breakdown:</strong>
+                <span className="ml-2">Energy demand varies dramatically by sector. Transport (oil-dominated) differs fundamentally from electricity (rapidly decarbonizing) and industrial heat (coal/gas-intensive). Understanding sectoral patterns reveals where displacement is happening and where it's needed most.</span>
+              </div>
+              <div>
+                <strong className="text-purple-800">Regional Analysis:</strong>
+                <span className="ml-2">The energy transition looks different everywhere. Europe achieves 50%+ efficiency with 30% clean share. Asia operates at 35% efficiency with 15% clean share. These differences determine regional transition pathways and timelines.</span>
+              </div>
+              <div>
+                <strong className="text-orange-600">Forecast Scenarios:</strong>
+                <span className="ml-2">We project three paths forward based on IEA scenarios (STEPS, APS, NZE). Each scenario assumes different rates of clean energy deployment, efficiency improvements, and policy implementation. The spread shows the range of possible futures.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Example Calculations */}
+          <div className="bg-amber-50 p-5 rounded-lg border-l-4 border-amber-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Example: The 3:1 Displacement Ratio</h3>
+            <p className="mb-3">
+              Consider replacing 1 million gas cars (30% efficient) with 1 million EVs (85% efficient):
+            </p>
+            <ul className="list-disc list-inside space-y-2 mb-3">
+              <li><strong>Gas cars:</strong> Require 100 TWh of gasoline primary energy to deliver 30 TWh of motion (energy service)</li>
+              <li><strong>EVs:</strong> Require 35 TWh of electricity primary energy to deliver the same 30 TWh of motion</li>
+              <li><strong>Result:</strong> Switching saves 65 TWh of primary energy while delivering identical transportation service</li>
+            </ul>
+            <p className="text-sm italic">
+              This efficiency advantage means clean energy doesn't need to grow 1:1 with fossil fuel decline. Every EJ of clean growth can displace ~3 EJ of fossil primary energy.
+              This is why tracking energy services reveals the true pace of the transition that primary energy statistics obscure.
+            </p>
+          </div>
+
+          {/* Data Sources Note */}
+          <div className="bg-gray-50 p-5 rounded-lg border-l-4 border-gray-400">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Data Sources & Methodology</h3>
+            <p className="mb-2">
+              This platform combines data from Our World in Data, BP Statistical Review, IEA World Energy Outlook, and IEA Energy Efficiency Indicators.
+              We apply efficiency factors from RMI's Inefficiency Trap analysis to convert primary energy to useful energy services.
+            </p>
+            <p className="text-sm">
+              All calculations, assumptions, and data transformations are documented in the Methodology page. Source code and raw data are available on GitHub for full transparency and reproducibility.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* AI Chatbot */}
       <div className="mb-8">
         <AIChatbot />
