@@ -10,14 +10,14 @@ const FOSSIL_SOURCES = ['coal', 'oil', 'gas'];
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
 
 const AVAILABLE_REGIONS = [
-  // Global
+  // Global first
   'Global',
-  // Continental regions
-  'Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania',
-  // Major countries
-  'China', 'India', 'United States', 'Japan', 'Germany', 'United Kingdom',
-  'France', 'Brazil', 'Canada', 'South Korea', 'Russia', 'Indonesia',
-  'Mexico', 'Saudi Arabia', 'Australia', 'South Africa'
+  // Continental regions (alphabetical)
+  'Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America',
+  // Major countries (alphabetical)
+  'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany',
+  'India', 'Indonesia', 'Japan', 'Mexico', 'Russia', 'Saudi Arabia',
+  'South Africa', 'South Korea', 'United Kingdom', 'United States'
 ];
 
 export default function Regions() {
@@ -574,10 +574,19 @@ export default function Regions() {
                 }
               }
 
-              // Split payload into columns for better display
-              const itemsPerColumn = Math.ceil(payload.length / 2);
-              const column1 = payload.slice(0, itemsPerColumn);
-              const column2 = payload.slice(itemsPerColumn);
+              // Sort payload based on selection order (left to right)
+              const sortedPayload = viewMode === 'regions'
+                ? [...payload].sort((a, b) => {
+                    const indexA = selectedRegions.indexOf(a.name);
+                    const indexB = selectedRegions.indexOf(b.name);
+                    return indexA - indexB;
+                  })
+                : payload;
+
+              // Split sorted payload into columns for better display
+              const itemsPerColumn = Math.ceil(sortedPayload.length / 2);
+              const column1 = sortedPayload.slice(0, itemsPerColumn);
+              const column2 = sortedPayload.slice(itemsPerColumn);
 
               return (
                 <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200 max-w-2xl">
