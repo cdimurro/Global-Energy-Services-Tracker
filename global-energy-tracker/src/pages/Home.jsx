@@ -10,6 +10,11 @@ export default function Home() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Refs for charts - must be before conditional return
+  const globalEnergyChartRef = useRef(null);
+  const fossilBreakdownChartRef = useRef(null);
+  const cleanBreakdownChartRef = useRef(null);
+
   useEffect(() => {
     fetch('/data/useful_energy_timeseries.json')
       .then(res => res.json())
@@ -65,11 +70,6 @@ export default function Home() {
   const renderCustomLabel = (entry) => {
     return `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)`;
   };
-
-  // Refs for charts
-  const globalEnergyChartRef = useRef(null);
-  const fossilBreakdownChartRef = useRef(null);
-  const cleanBreakdownChartRef = useRef(null);
 
   // Download functions for Global Energy Services chart
   const downloadGlobalEnergyPNG = () => {
