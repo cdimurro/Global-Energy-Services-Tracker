@@ -398,49 +398,46 @@ export default function Home() {
             <div className="space-y-3">
               <div>
                 <strong className="text-blue-800">Displacement Tracking:</strong>
-                <span className="ml-2">We calculate how much fossil fuel consumption clean energy displaces each year. The displacement rate (D) shows whether fossil fuels are rising or declining. When D ≥ fossil fuel growth, we've reached peak fossil fuels.</span>
+                <span className="ml-2">We calculate how much fossil fuel consumption clean energy displaces each year. When displacement ≥ fossil fuel growth, we've reached peak fossil fuels.</span>
               </div>
               <div>
                 <strong className="text-green-800">Sectoral Breakdown:</strong>
-                <span className="ml-2">Energy demand varies dramatically by sector. Transport (oil-dominated) differs fundamentally from electricity (rapidly decarbonizing) and industrial heat (coal/gas-intensive). Understanding sectoral patterns reveals where displacement is happening and where it's needed most.</span>
+                <span className="ml-2">Energy demand varies by sector. Transport (oil-dominated) differs from electricity (rapidly decarbonizing) and industrial heat (coal/gas-intensive).</span>
               </div>
               <div>
                 <strong className="text-purple-800">Regional Analysis:</strong>
-                <span className="ml-2">The energy transition looks different everywhere. Europe achieves 50%+ efficiency with 30% clean share. Asia operates at 35% efficiency with 15% clean share. These differences determine regional transition pathways and timelines.</span>
+                <span className="ml-2">The energy transition looks different everywhere. Europe achieves 50%+ efficiency with 30% clean share. Asia operates at 35% efficiency with 15% clean share.</span>
               </div>
               <div>
                 <strong className="text-orange-600">Forecast Scenarios:</strong>
-                <span className="ml-2">We project three paths forward based on IEA scenarios (STEPS, APS, NZE). Each scenario assumes different rates of clean energy deployment, efficiency improvements, and policy implementation. The spread shows the range of possible futures.</span>
+                <span className="ml-2">We project three IEA scenarios (STEPS, APS, NZE) with different rates of clean deployment, efficiency improvements, and policy implementation.</span>
               </div>
             </div>
           </div>
 
-          {/* Example Calculations */}
+          {/* Importance of Electrification */}
           <div className="bg-amber-50 p-5 rounded-lg border-l-4 border-amber-600">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Example: The 3:1 Displacement Ratio</h3>
-            <p className="mb-3">
-              Consider replacing 1 million gas cars (30% efficient) with 1 million EVs (85% efficient):
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Importance of Electrification</h3>
+            <p className="mb-2">
+              Electrification is the cornerstone of the energy transition. Electric technologies (heat pumps, EVs, induction furnaces) are 2-3x more efficient than their fossil fuel counterparts.
+              This efficiency multiplier means electrifying end uses dramatically reduces total energy demand while enabling clean power sources.
             </p>
-            <ul className="list-disc list-inside space-y-2 mb-3">
-              <li><strong>Gas cars:</strong> Require 100 TWh of gasoline primary energy to deliver 30 TWh of motion (energy service)</li>
-              <li><strong>EVs:</strong> Require 35 TWh of electricity primary energy to deliver the same 30 TWh of motion</li>
-              <li><strong>Result:</strong> Switching saves 65 TWh of primary energy while delivering identical transportation service</li>
-            </ul>
-            <p className="text-sm italic">
-              This efficiency advantage means clean energy doesn't need to grow 1:1 with fossil fuel decline. Every EJ of clean growth can displace ~3 EJ of fossil primary energy.
-              This is why tracking energy services reveals the true pace of the transition that primary energy statistics obscure.
+            <p>
+              Example: A gas furnace delivering 100 units of heat requires ~125 units of natural gas. An electric heat pump delivering the same 100 units requires only ~35 units of electricity.
+              When that electricity comes from renewables, emissions drop to zero while using 70% less primary energy.
             </p>
           </div>
 
-          {/* Data Sources Note */}
-          <div className="bg-gray-50 p-5 rounded-lg border-l-4 border-gray-400">
-            <h3 className="font-bold text-lg text-gray-800 mb-2">Data Sources & Methodology</h3>
+          {/* Importance of Efficiency */}
+          <div className="bg-emerald-50 p-5 rounded-lg border-l-4 border-emerald-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Importance of Efficiency</h3>
             <p className="mb-2">
-              This platform combines data from Our World in Data, BP Statistical Review, IEA World Energy Outlook, and IEA Energy Efficiency Indicators.
-              We apply efficiency factors from RMI's Inefficiency Trap analysis to convert primary energy to useful energy services.
+              Efficiency improvements reduce energy service demand without sacrificing quality of life. Better insulation, LED lighting, efficient motors, and optimized industrial processes cut energy consumption by 30-50%.
+              This reduces the amount of clean energy we need to deploy and accelerates fossil fuel displacement.
             </p>
-            <p className="text-sm">
-              All calculations, assumptions, and data transformations are documented in the Methodology page. Source code and raw data are available on GitHub for full transparency and reproducibility.
+            <p>
+              Since 1990, global GDP has tripled while energy services grew only 80% due to efficiency gains. Without these improvements, we would need 40% more energy infrastructure today.
+              Efficiency is the fastest, cheapest way to reduce emissions and ease the transition.
             </p>
           </div>
         </div>
