@@ -68,6 +68,38 @@
     min-height: 250px !important;
     max-height: 300px !important;
   }
+
+  /* Reduce font size in chart labels */
+  .recharts-text {
+    font-size: 10px !important;
+  }
+
+  /* Reduce font size in chart axis labels */
+  .recharts-label {
+    font-size: 9px !important;
+  }
+
+  /* Limit tooltip width on mobile */
+  .recharts-tooltip-wrapper {
+    max-width: 280px !important;
+  }
+
+  .recharts-default-tooltip {
+    max-width: 100% !important;
+    font-size: 11px !important;
+  }
+}
+
+/* Extra small screens - additional constraints */
+@media (max-width: 414px) {
+  /* Make chart legends smaller */
+  .recharts-legend-wrapper {
+    font-size: 10px !important;
+  }
+
+  .recharts-legend-item-text {
+    font-size: 10px !important;
+  }
 }
 
 /* Smooth scroll behavior */

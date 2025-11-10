@@ -161,9 +161,9 @@ export default function Home() {
                   data={pieData}
                   cx="50%"
                   cy="50%"
-                  labelLine={true}
-                  label={(entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)`}
-                  outerRadius={120}
+                  labelLine={window.innerWidth >= 640}
+                  label={window.innerWidth >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={window.innerWidth >= 640 ? 120 : 80}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}
@@ -186,11 +186,11 @@ export default function Home() {
               <div className="text-red-600 text-xs sm:text-base mb-1 sm:mb-3 uppercase tracking-wide font-semibold">
                 Fossil Fuels
               </div>
-              <div className="text-xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
+              <div className="text-lg sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
                 {fossil_useful_ej.toFixed(1)}
-                <span className="text-sm sm:text-xl md:text-2xl ml-1 text-gray-500">EJ</span>
+                <span className="text-xs sm:text-lg md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
-              <div className="text-xl sm:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
+              <div className="text-base sm:text-2xl md:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
                 {fossil_share_percent.toFixed(1)}%
               </div>
               <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
@@ -201,11 +201,11 @@ export default function Home() {
               <div className="text-green-600 text-xs sm:text-base mb-1 sm:mb-3 uppercase tracking-wide font-semibold">
                 Clean Energy
               </div>
-              <div className="text-xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
+              <div className="text-lg sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
                 {clean_useful_ej.toFixed(1)}
-                <span className="text-sm sm:text-xl md:text-2xl ml-1 text-gray-500">EJ</span>
+                <span className="text-xs sm:text-lg md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
-              <div className="text-xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
+              <div className="text-base sm:text-2xl md:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
                 {clean_share_percent.toFixed(1)}%
               </div>
               <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
@@ -236,9 +236,9 @@ export default function Home() {
                   }))}
                   cx="50%"
                   cy="50%"
-                  labelLine={true}
-                  label={(entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)`}
-                  outerRadius={120}
+                  labelLine={window.innerWidth >= 640}
+                  label={window.innerWidth >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={window.innerWidth >= 640 ? 120 : 80}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}
@@ -308,9 +308,9 @@ export default function Home() {
                   }))}
                   cx="50%"
                   cy="50%"
-                  labelLine={true}
-                  label={(entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)`}
-                  outerRadius={120}
+                  labelLine={window.innerWidth >= 640}
+                  label={window.innerWidth >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={window.innerWidth >= 640 ? 120 : 80}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}

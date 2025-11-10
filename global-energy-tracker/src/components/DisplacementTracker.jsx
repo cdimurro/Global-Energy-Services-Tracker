@@ -307,35 +307,35 @@ export default function DisplacementTracker() {
         {/* Right: Metrics and Status */}
         <div className="flex flex-col justify-center space-y-6">
           {/* Total Energy Service Growth */}
-          <div className="p-6 bg-green-50 rounded-lg border-l-4 border-green-600">
-            <div className="text-green-700 text-sm font-semibold uppercase tracking-wide mb-2">
+          <div className="p-4 sm:p-6 bg-green-50 rounded-lg border-l-4 border-green-600">
+            <div className="text-green-700 text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">
               Total Energy Service Growth
             </div>
-            <div className="text-5xl font-bold text-gray-900">
+            <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">
               {totalEnergyGrowth > 0 ? '+' : ''}{totalEnergyGrowth.toFixed(2)}
-              <span className="text-2xl ml-2 text-gray-500">EJ</span>
+              <span className="text-base sm:text-xl md:text-2xl ml-1 sm:ml-2 text-gray-500">EJ</span>
             </div>
-            <div className="text-lg font-semibold text-green-600 mt-2">
+            <div className="text-base sm:text-lg font-semibold text-green-600 mt-2">
               {totalEnergyGrowthPercent > 0 ? '+' : ''}{totalEnergyGrowthPercent.toFixed(2)}%
             </div>
-            <div className="text-sm text-gray-600 mt-1">
+            <div className="text-xs sm:text-sm text-gray-600 mt-1">
               New demand for energy services in 2024
             </div>
           </div>
 
           {/* Net Change in Fossil Fuel Consumption */}
-          <div className="p-6 bg-red-50 rounded-lg border-l-4 border-red-600">
-            <div className="text-red-700 text-sm font-semibold uppercase tracking-wide mb-2">
+          <div className="p-4 sm:p-6 bg-red-50 rounded-lg border-l-4 border-red-600">
+            <div className="text-red-700 text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">
               Net Change in Fossil Fuel Consumption
             </div>
-            <div className="text-5xl font-bold text-gray-900">
+            <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">
               {netChange > 0 ? '+' : ''}{netChange.toFixed(2)}
-              <span className="text-2xl ml-2 text-gray-500">EJ</span>
+              <span className="text-base sm:text-xl md:text-2xl ml-1 sm:ml-2 text-gray-500">EJ</span>
             </div>
-            <div className="text-lg font-semibold text-red-600 mt-2">
+            <div className="text-base sm:text-lg font-semibold text-red-600 mt-2">
               {netChangePercent > 0 ? '+' : ''}{netChangePercent.toFixed(2)}%
             </div>
-            <div className="text-sm text-gray-600 mt-1">
+            <div className="text-xs sm:text-sm text-gray-600 mt-1">
               Change in fossil fuel consumption for 2024
             </div>
           </div>
