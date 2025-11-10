@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Area, ComposedChart } from 'recharts';
+import { downloadChartAsPNG, ChartExportButtons } from '../utils/chartExport';
 
 export default function NetChangeTimeline() {
   const [timelineData, setTimelineData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const chartRef = useRef(null);
 
   useEffect(() => {
     fetch('/data/useful_energy_timeseries.json')
@@ -132,6 +134,10 @@ export default function NetChangeTimeline() {
     );
   };
 
+  const downloadPNG = () => {
+    downloadChartAsPNG(chartRef, 'displacement_timeline');
+  };
+
   const downloadCSV = () => {
     const csvData = [];
 
@@ -190,15 +196,14 @@ export default function NetChangeTimeline() {
         <h2 className="text-3xl font-bold text-gray-800">
           Historical Displacement & Net Change Timeline
         </h2>
-        <button
-          onClick={downloadCSV}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          Download CSV
-        </button>
+        <ChartExportButtons
+          onDownloadPNG={downloadPNG}
+          onDownloadCSV={downloadCSV}
+        />
       </div>
 
-      <ResponsiveContainer width="100%" height={500}>
+      <div ref={chartRef}>
+        <ResponsiveContainer width="100%" height={500}>
         <ComposedChart
           data={timelineData}
           margin={{ top: 20, right: 30, left: 30, bottom: 30 }}
@@ -279,6 +284,7 @@ export default function NetChangeTimeline() {
 
         </ComposedChart>
       </ResponsiveContainer>
+      </div>
 
       {/* Explanation */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">

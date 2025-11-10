@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Label } from 'recharts';
+import { useState, useEffect, useRef } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { downloadChartAsPNG, ChartExportButtons } from '../utils/chartExport';
 
 export default function DisplacementTracker() {
   const [energyData, setEnergyData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const chartRef = useRef(null);
   const [displacementRate, setDisplacementRate] = useState(0);
   const [fossilGrowth, setFossilGrowth] = useState(0);
   const [netChange, setNetChange] = useState(0);
@@ -92,22 +94,45 @@ export default function DisplacementTracker() {
     return <div className="text-center py-8">Loading displacement data...</div>;
   }
 
-  // Gauge chart data - only show the actual values without empty space
-  const total = Math.max(0, displacementRate) + Math.max(0, fossilGrowth);
-  const gaugeData = [
-    { name: 'Clean Energy Displacement', value: Math.max(0, displacementRate), color: '#16A34A' },
-    { name: 'Fossil Fuel Growth', value: Math.max(0, fossilGrowth), color: '#DC2626' }
+  // Bar chart data
+  const barChartData = [
+    {
+      name: 'Clean Displacement',
+      value: Math.max(0, displacementRate),
+      percent: cleanRelativeChange,
+      color: '#16A34A',
+      label: 'Clean Displacement (D)'
+    },
+    {
+      name: 'Fossil Fuel Growth',
+      value: Math.max(0, fossilGrowth),
+      percent: fossilRelativeChange,
+      color: '#DC2626',
+      label: 'Fossil Fuel Growth'
+    },
+    {
+      name: 'Net Change',
+      value: netChange,
+      percent: netChangePercent,
+      color: '#9333EA',
+      label: 'Net Change'
+    }
   ];
 
-  // Calculate percentages
-  const displacementPercent = total > 0 ? (Math.max(0, displacementRate) / total * 100) : 0;
-  const fossilPercent = total > 0 ? (Math.max(0, fossilGrowth) / total * 100) : 0;
-
-  // Custom label renderer for pie chart
-  const renderCustomLabel = (entry) => {
-    const value = entry.value;
-    const percent = (entry.value / total * 100);
-    return `${entry.name}: ${value.toFixed(2)} EJ (${percent.toFixed(1)}%)`;
+  // Custom tooltip for bar chart
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+          <p className="font-bold text-gray-800 mb-2">{data.label}</p>
+          <p className="text-sm text-gray-700">
+            Annual Change: {data.value > 0 ? '+' : ''}{data.value.toFixed(2)} EJ ({data.percent > 0 ? '+' : ''}{data.percent.toFixed(2)}%)
+          </p>
+        </div>
+      );
+    }
+    return null;
   };
 
   const getStatusColor = () => {
@@ -143,6 +168,10 @@ export default function DisplacementTracker() {
       default:
         return '';
     }
+  };
+
+  const downloadPNG = () => {
+    downloadChartAsPNG(chartRef, 'displacement_tracker_2024');
   };
 
   const downloadCSV = () => {
@@ -210,89 +239,67 @@ export default function DisplacementTracker() {
         <h2 className="text-3xl font-bold text-gray-800">
           Fossil Fuel Displacement Tracker (2024)
         </h2>
-        <button
-          onClick={downloadCSV}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          Download CSV
-        </button>
+        <ChartExportButtons
+          onDownloadPNG={downloadPNG}
+          onDownloadCSV={downloadCSV}
+        />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left: Gauge Visualization */}
-        <div className="flex flex-col items-center justify-center overflow-visible">
-          <div className="relative w-full max-w-md overflow-visible">
-            <ResponsiveContainer width="100%" height={280}>
-              <PieChart>
-                <Pie
-                  data={gaugeData}
-                  cx="50%"
-                  cy="50%"
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius="60%"
-                  outerRadius="90%"
-                  paddingAngle={0}
-                  dataKey="value"
-                >
-                  {gaugeData.map((entry, index) => (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8" ref={chartRef}>
+        {/* Left: Bar Chart Visualization */}
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-full">
+            <ResponsiveContainer width="100%" height={350}>
+              <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis
+                  dataKey="name"
+                  angle={-45}
+                  textAnchor="end"
+                  height={80}
+                  interval={0}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  label={{ value: 'Energy (EJ)', angle: -90, position: 'insideLeft' }}
+                  tick={{ fontSize: 12 }}
+                />
+                <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0, 0, 0, 0.05)' }} />
+                <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                  {barChartData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
-                </Pie>
-              </PieChart>
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
+          </div>
 
-            {/* Status indicator in center */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-2 text-center w-full px-4">
-              <div
-                className="text-2xl font-bold mb-1 whitespace-pre-line"
-                style={{ color: getStatusColor() }}
-              >
-                {getStatusText()}
-              </div>
-              <div className="text-base text-gray-600 font-semibold">
-                Net Change: {netChange > 0 ? '+' : ''}{netChange.toFixed(2)} EJ
-              </div>
+          {/* Status indicator below chart */}
+          <div className="mt-4 text-center w-full">
+            <div
+              className="text-xl font-bold mb-1"
+              style={{ color: getStatusColor() }}
+            >
+              {getStatusText()}
+            </div>
+            <div className="text-sm text-gray-600">
+              Net Change: {netChange > 0 ? '+' : ''}{netChange.toFixed(2)} EJ
             </div>
           </div>
 
-          {/* Legend with percentages and values */}
-          <div className="flex flex-col gap-3 mt-6 w-full max-w-md overflow-visible">
-            <div className="relative overflow-visible group">
-              <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border-l-4 border-green-600 cursor-help">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-green-600"></div>
-                  <span className="text-sm font-semibold text-gray-800">Clean Displacement (D)</span>
-                </div>
-                <div className="text-right">
-                  <div className="text-lg font-bold text-green-600">+{displacementRate.toFixed(2)} EJ</div>
-                  <div className="text-sm text-gray-600">Relative Change: {cleanRelativeChange > 0 ? '+' : ''}{cleanRelativeChange.toFixed(1)}%</div>
-                </div>
-              </div>
-              {/* Tooltip */}
-              <div className="absolute left-1/2 bottom-full -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[9999]">
-                <div>Share of New Energy Services: {displacementPercent.toFixed(1)}%</div>
-                <div>Absolute Change: +{displacementRate.toFixed(2)} EJ</div>
-                <div className="absolute left-1/2 top-full -translate-x-1/2 w-0 h-0 border-l-[4px] border-r-[4px] border-t-[4px] border-transparent border-t-gray-800"></div>
-              </div>
+          {/* Color-coded legend */}
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#16A34A' }}></div>
+              <span className="text-sm font-medium text-gray-700">Clean Displacement</span>
             </div>
-            <div className="relative overflow-visible group">
-              <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border-l-4 border-red-600 cursor-help">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-red-600"></div>
-                  <span className="text-sm font-semibold text-gray-800">Fossil Fuel Growth</span>
-                </div>
-                <div className="text-right">
-                  <div className="text-lg font-bold text-red-600">{fossilGrowth > 0 ? '+' : ''}{fossilGrowth.toFixed(2)} EJ</div>
-                  <div className="text-sm text-gray-600">Relative Change: {fossilRelativeChange > 0 ? '+' : ''}{fossilRelativeChange.toFixed(1)}%</div>
-                </div>
-              </div>
-              {/* Tooltip */}
-              <div className="absolute left-1/2 bottom-full -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[9999]">
-                <div>Share of New Energy Services: {fossilPercent.toFixed(1)}%</div>
-                <div>Absolute Change: {fossilGrowth > 0 ? '+' : ''}{fossilGrowth.toFixed(2)} EJ</div>
-                <div className="absolute left-1/2 top-full -translate-x-1/2 w-0 h-0 border-l-[4px] border-r-[4px] border-t-[4px] border-transparent border-t-gray-800"></div>
-              </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#DC2626' }}></div>
+              <span className="text-sm font-medium text-gray-700">Fossil Fuel Growth</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#9333EA' }}></div>
+              <span className="text-sm font-medium text-gray-700">Net Change</span>
             </div>
           </div>
         </div>

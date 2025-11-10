@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Cell } from 'recharts';
 import { ENERGY_COLORS, getSourceName } from '../utils/colors';
+import { downloadChartAsPNG, ChartExportButtons } from '../utils/chartExport';
 
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'geothermal', 'biomass'];
 
@@ -9,6 +10,7 @@ export default function DisplacementBySource() {
   const [loading, setLoading] = useState(true);
   const [sourceData, setSourceData] = useState([]);
   const [selectedPeriod, setSelectedPeriod] = useState('current'); // 'current', '5year', '10year'
+  const chartRef = useRef(null);
 
   useEffect(() => {
     fetch('/data/useful_energy_timeseries.json')
@@ -88,6 +90,10 @@ export default function DisplacementBySource() {
 
   const currentData = sourceData[selectedPeriod];
 
+  const downloadPNG = () => {
+    downloadChartAsPNG(chartRef, `displacement_by_source_${selectedPeriod}`);
+  };
+
   const downloadCSV = () => {
     const csvData = [];
 
@@ -164,12 +170,10 @@ export default function DisplacementBySource() {
         <h2 className="text-3xl font-bold text-gray-800">
           Displacement by Clean Energy Source
         </h2>
-        <button
-          onClick={downloadCSV}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          Download CSV
-        </button>
+        <ChartExportButtons
+          onDownloadPNG={downloadPNG}
+          onDownloadCSV={downloadCSV}
+        />
       </div>
 
       {/* Period Selector */}
@@ -224,7 +228,7 @@ export default function DisplacementBySource() {
       </div>
 
       {/* Bar Chart */}
-      <div className="mb-8">
+      <div className="mb-8" ref={chartRef}>
         <h3 className="text-xl font-bold text-gray-800 mb-4">Annual Growth by Source</h3>
         <ResponsiveContainer width="100%" height={500}>
           <BarChart
