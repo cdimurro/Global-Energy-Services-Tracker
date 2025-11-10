@@ -75,11 +75,11 @@ export default function Home() {
   return (
     <PageLayout>
       {/* Page Header */}
-      <div className="text-center mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-3 px-2">
+      <div className="text-center mb-4 sm:mb-8">
+        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-800 mb-1 sm:mb-3 px-2">
           Global Energy Services Tracker
         </h1>
-        <p className="text-xs sm:text-sm text-gray-600 px-4">
+        <p className="text-[10px] sm:text-sm text-gray-600 px-4 leading-tight">
           Get a complete view of the energy system and gain valuable insights by measuring energy services instead of primary energy.
         </p>
       </div>
@@ -96,19 +96,19 @@ export default function Home() {
         </h2>
 
         {/* Total Display */}
-        <div className="text-center mb-4 sm:mb-6">
-          <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 text-gray-900">
+        <div className="text-center mb-3 sm:mb-6">
+          <div className="text-2xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-3 text-gray-900">
             {total_useful_ej.toFixed(1)}
-            <span className="text-xl sm:text-2xl md:text-3xl ml-2 text-gray-500">EJ</span>
+            <span className="text-base sm:text-2xl md:text-3xl ml-1 sm:ml-2 text-gray-500">EJ</span>
           </div>
-          <div className="text-xs sm:text-sm md:text-base text-gray-500 px-2">
+          <div className="text-[10px] sm:text-sm md:text-base text-gray-500 px-2">
             Exajoules of useful energy delivered globally
           </div>
         </div>
 
         {/* Pie Chart */}
-        <div className="mb-4 sm:mb-6">
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="mb-3 sm:mb-6">
+          <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={pieData}
@@ -116,7 +116,7 @@ export default function Home() {
                   cy="50%"
                   labelLine={false}
                   label={false}
-                  outerRadius={90}
+                  outerRadius={75}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}
@@ -130,35 +130,35 @@ export default function Home() {
           </div>
 
           {/* Fossil vs Clean Split */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
             {/* Fossil Card */}
-            <div className="p-4 sm:p-5 bg-red-50 rounded-lg border-l-4 border-red-600">
-              <div className="text-red-600 text-sm sm:text-base mb-2 sm:mb-3 uppercase tracking-wide font-semibold">
+            <div className="p-3 sm:p-5 bg-red-50 rounded-lg border-l-4 border-red-600">
+              <div className="text-red-600 text-xs sm:text-base mb-1 sm:mb-3 uppercase tracking-wide font-semibold">
                 Fossil Fuels
               </div>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-gray-900">
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
                 {fossil_useful_ej.toFixed(1)}
-                <span className="text-lg sm:text-xl md:text-2xl ml-1 text-gray-500">EJ</span>
+                <span className="text-sm sm:text-xl md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
-              <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-2">
+              <div className="text-xl sm:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
                 {fossil_share_percent.toFixed(1)}%
               </div>
-              <div className="text-xs sm:text-sm text-gray-500">of total energy services</div>
+              <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
 
             {/* Clean Card */}
-            <div className="p-4 sm:p-5 bg-green-50 rounded-lg border-l-4 border-green-600">
-              <div className="text-green-600 text-sm sm:text-base mb-2 sm:mb-3 uppercase tracking-wide font-semibold">
+            <div className="p-3 sm:p-5 bg-green-50 rounded-lg border-l-4 border-green-600">
+              <div className="text-green-600 text-xs sm:text-base mb-1 sm:mb-3 uppercase tracking-wide font-semibold">
                 Clean Energy
               </div>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-gray-900">
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
                 {clean_useful_ej.toFixed(1)}
-                <span className="text-lg sm:text-xl md:text-2xl ml-1 text-gray-500">EJ</span>
+                <span className="text-sm sm:text-xl md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
-              <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-2">
+              <div className="text-xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
                 {clean_share_percent.toFixed(1)}%
               </div>
-              <div className="text-xs sm:text-sm text-gray-500">of total energy services</div>
+              <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
           </div>
         </div>
