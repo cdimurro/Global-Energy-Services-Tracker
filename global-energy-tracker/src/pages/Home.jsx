@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { ENERGY_COLORS, getSourceName } from '../utils/colors';
 import InteractiveChart from '../components/InteractiveChart';
@@ -7,6 +8,7 @@ import AIChatbot from '../components/AIChatbot';
 import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons } from '../utils/chartExport';
 
 export default function Home() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -155,15 +157,15 @@ export default function Home() {
 
         {/* Pie Chart */}
         <div className="mb-3 sm:mb-6" ref={globalEnergyChartRef}>
-          <ResponsiveContainer width="100%" height={300} className="sm:h-[350px]">
+          <ResponsiveContainer width="100%" height={width < 640 ? 280 : 350}>
               <PieChart>
                 <Pie
                   data={pieData}
                   cx="50%"
                   cy="50%"
-                  labelLine={window.innerWidth >= 640}
-                  label={window.innerWidth >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
-                  outerRadius={window.innerWidth >= 640 ? 120 : 80}
+                  labelLine={width >= 640}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}
@@ -226,7 +228,7 @@ export default function Home() {
           </div>
 
           <div className="mb-6" ref={fossilBreakdownChartRef}>
-            <ResponsiveContainer width="100%" height={300} className="sm:h-[350px]">
+            <ResponsiveContainer width="100%" height={width < 640 ? 280 : 350}>
               <PieChart>
                 <Pie
                   data={fossilSources.map(([source, ej]) => ({
@@ -236,9 +238,9 @@ export default function Home() {
                   }))}
                   cx="50%"
                   cy="50%"
-                  labelLine={window.innerWidth >= 640}
-                  label={window.innerWidth >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
-                  outerRadius={window.innerWidth >= 640 ? 120 : 80}
+                  labelLine={width >= 640}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}
@@ -298,7 +300,7 @@ export default function Home() {
           </div>
 
           <div className="mb-6" ref={cleanBreakdownChartRef}>
-            <ResponsiveContainer width="100%" height={300} className="sm:h-[350px]">
+            <ResponsiveContainer width="100%" height={width < 640 ? 280 : 350}>
               <PieChart>
                 <Pie
                   data={cleanSources.map(([source, ej]) => ({
@@ -308,9 +310,9 @@ export default function Home() {
                   }))}
                   cx="50%"
                   cy="50%"
-                  labelLine={window.innerWidth >= 640}
-                  label={window.innerWidth >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
-                  outerRadius={window.innerWidth >= 640 ? 120 : 80}
+                  labelLine={width >= 640}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
                   fill="#8884d8"
                   dataKey="value"
                   isAnimationActive={false}

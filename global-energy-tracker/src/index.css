@@ -47,148 +47,99 @@
   }
 }
 
-/* Mobile responsive typography - Make everything smaller */
+/* Recharts Global Fixes - Let library handle sizing naturally */
+.recharts-responsive-container {
+  width: 100% !important;  /* Use 100%, not 99% - avoids calc errors */
+  min-height: 200px;       /* Recharts needs ~200px min for SVG render */
+  height: auto;            /* Let content drive height */
+}
+
+.recharts-wrapper {
+  overflow: visible;       /* Allow labels/legends to flow */
+  margin-bottom: 1rem;     /* Space between charts */
+}
+
+/* Mobile responsive typography and layout */
 @media (max-width: 640px) {
   body {
     @apply text-xs;
   }
 
   h1 {
-    @apply text-xl;
-  }
-
-  h2 {
-    @apply text-lg;
-  }
-
-  h3 {
     @apply text-base;
   }
 
-  /* Set chart heights on mobile but allow flexibility for legends */
-  .recharts-responsive-container {
-    min-height: 280px !important;
-    height: auto !important;
+  h2 {
+    @apply text-sm;
   }
 
-  /* Ensure charts don't overflow their containers horizontally */
-  .recharts-wrapper {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
+  h3 {
+    @apply text-sm;
   }
 
-  /* Reduce font size in chart labels */
-  .recharts-text {
-    font-size: 8px !important;
+  /* Recharts mobile optimizations - minimal, not aggressive */
+  .recharts-legend-wrapper {
+    font-size: 0.75rem;    /* Scale text to avoid overlap */
   }
 
-  /* Reduce font size in chart axis labels */
-  .recharts-label {
-    font-size: 8px !important;
-  }
-
-  /* Reduce font size in chart cartesian axis tick */
-  .recharts-cartesian-axis-tick-value {
-    font-size: 8px !important;
-  }
-
-  /* Limit tooltip width on mobile */
   .recharts-tooltip-wrapper {
-    max-width: 280px !important;
+    max-width: 90vw;        /* Prevent tooltip overflow */
   }
 
-  .recharts-default-tooltip {
-    max-width: 100% !important;
-    font-size: 10px !important;
-    padding: 8px !important;
+  .recharts-text {
+    font-size: 0.65rem;
   }
 
-  /* Make chart legends wrap and be smaller */
-  .recharts-legend-wrapper {
-    font-size: 8px !important;
-    max-width: 100% !important;
-    line-height: 1.2 !important;
+  .recharts-cartesian-axis-tick-value {
+    font-size: 0.65rem;
   }
 
-  .recharts-legend-item {
-    margin-right: 4px !important;
-    margin-bottom: 2px !important;
-  }
-
-  .recharts-legend-item-text {
-    font-size: 8px !important;
-  }
-
-  /* Reduce chart margins on mobile */
-  .recharts-surface {
-    overflow: visible !important;
-  }
-
-  /* Force legends to wrap */
-  .recharts-default-legend {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 4px !important;
-    max-width: 100% !important;
-  }
-
-  /* Position legends below charts, not overlapping */
-  .recharts-legend-wrapper {
-    position: relative !important;
-    margin-top: 12px !important;
-    padding-top: 8px !important;
-    padding-bottom: 12px !important;
-  }
-
-  /* Add bottom padding to chart containers to create space */
-  .recharts-responsive-container {
-    padding-bottom: 60px !important;
-  }
-
-  /* Ensure proper spacing between sections */
+  /* Reduce padding for mobile */
   .metric-card {
-    margin-bottom: 24px !important;
+    @apply p-2;
+    margin-bottom: 1rem;
   }
 
-  /* Ensure chart surface doesn't clip legends */
-  .recharts-wrapper {
-    padding-bottom: 20px !important;
+  /* Make buttons smaller */
+  button {
+    @apply text-xs px-2 py-1;
+  }
+
+  /* Compact export buttons */
+  .flex.gap-2, .flex.gap-3 {
+    gap: 0.25rem;
   }
 }
 
-/* Extra small screens - additional constraints */
+/* Extra small screens - slightly smaller text */
 @media (max-width: 414px) {
-  /* Make everything even smaller */
-  .recharts-text {
-    font-size: 7px !important;
+  h1 {
+    @apply text-sm;
   }
 
-  .recharts-label {
-    font-size: 7px !important;
+  h2 {
+    @apply text-xs;
+  }
+
+  h3 {
+    @apply text-xs;
+  }
+
+  .recharts-text {
+    font-size: 0.6rem;
   }
 
   .recharts-legend-wrapper {
-    font-size: 7px !important;
-  }
-
-  .recharts-legend-item-text {
-    font-size: 7px !important;
+    font-size: 0.7rem;
   }
 
   .recharts-cartesian-axis-tick-value {
-    font-size: 7px !important;
+    font-size: 0.6rem;
   }
 
-  /* Reduce spacing between legend items */
-  .recharts-legend-item {
-    margin-right: 3px !important;
-    margin-bottom: 2px !important;
-  }
-
-  /* Make legend markers smaller */
-  .recharts-surface .recharts-symbols {
-    transform: scale(0.7);
+  /* Ultra-compact padding */
+  .metric-card {
+    @apply p-1;
   }
 }
 

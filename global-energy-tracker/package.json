@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "view-feedback": "node view-feedback.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
-    "d3": "^7.9.0",
+    "@react-hook/window-size": "^3.1.1",
     "html2canvas": "^1.4.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

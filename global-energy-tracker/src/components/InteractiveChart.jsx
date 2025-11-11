@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { ENERGY_COLORS, getSourceName } from '../utils/colors';
 import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons, ChartSources } from '../utils/chartExport';
@@ -6,6 +7,7 @@ import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons, ChartSources
 const ENERGY_SOURCES = ['coal', 'oil', 'gas', 'nuclear', 'hydro', 'wind', 'solar', 'biomass', 'geothermal', 'other'];
 
 export default function InteractiveChart() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [energyData, setEnergyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [chartType, setChartType] = useState('absolute'); // 'absolute' or 'change'
@@ -37,10 +39,14 @@ export default function InteractiveChart() {
 
     // Calculate values based on showRelative toggle
     if (showRelative) {
-      baseData.fossil = (yearData.fossil_useful_ej / yearData.total_useful_ej) * 100;
-      baseData.clean = (yearData.clean_useful_ej / yearData.total_useful_ej) * 100;
+      // In relative mode, calculate percentages based on total global energy
+      const totalEnergy = yearData.total_useful_ej;
+
+      baseData.fossil = totalEnergy > 0 ? (yearData.fossil_useful_ej / totalEnergy) * 100 : 0;
+      baseData.clean = totalEnergy > 0 ? (yearData.clean_useful_ej / totalEnergy) * 100 : 0;
+
       ENERGY_SOURCES.forEach(source => {
-        baseData[source] = ((yearData.sources_useful_ej[source] || 0) / yearData.total_useful_ej) * 100;
+        baseData[source] = totalEnergy > 0 ? ((yearData.sources_useful_ej[source] || 0) / totalEnergy) * 100 : 0;
       });
     } else {
       baseData.fossil = yearData.fossil_useful_ej;
@@ -84,28 +90,34 @@ export default function InteractiveChart() {
     // If clicking an individual energy source (not fossil/clean), switch to individual mode
     if (sourceKey !== 'fossil' && sourceKey !== 'clean') {
       setViewMode('individual');
+      // When switching to individual mode, replace the selection with just this source
+      setSelectedSources(prev =>
+        prev.includes(sourceKey) && viewMode === 'individual'
+          ? prev.filter(s => s !== sourceKey)
+          : [sourceKey]
+      );
+    } else {
+      setSelectedSources(prev =>
+        prev.includes(sourceKey)
+          ? prev.filter(s => s !== sourceKey)
+          : [...prev, sourceKey]
+      );
     }
-
-    setSelectedSources(prev =>
-      prev.includes(sourceKey)
-        ? prev.filter(s => s !== sourceKey)
-        : [...prev, sourceKey]
-    );
   };
 
   // Select all fossil or clean sources
   const selectAllFossil = () => {
-    setViewMode('individual');
+    setViewMode('allFossil');
     setSelectedSources(['coal', 'oil', 'gas']);
   };
 
   const selectAllClean = () => {
-    setViewMode('individual');
-    setSelectedSources(['nuclear', 'hydro', 'wind', 'solar', 'biomass', 'geothermal']);
+    setViewMode('allClean');
+    setSelectedSources(['nuclear', 'hydro', 'wind', 'solar', 'biomass', 'geothermal', 'other']);
   };
 
   const selectAllSources = () => {
-    setViewMode('individual');
+    setViewMode('allSources');
     setSelectedSources(ENERGY_SOURCES);
   };
 
@@ -122,10 +134,14 @@ export default function InteractiveChart() {
     const yearData = energyData.data.find(d => d.year === label);
     const actualTotal = yearData ? yearData.total_useful_ej : 0;
 
+    // Calculate the total of displayed sources
+    const displayedTotal = payload.reduce((sum, entry) => sum + entry.value, 0);
+    const displayedPercentage = actualTotal > 0 ? ((displayedTotal / actualTotal) * 100).toFixed(1) : '0.0';
+
     return (
       <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
         <div className="font-bold text-2xl mb-3">{label}</div>
-        {!showRelative && <div className="text-lg font-semibold mb-3">Total: {actualTotal.toFixed(1)} EJ</div>}
+        {!showRelative && <div className="text-lg font-semibold mb-3">Total: {displayedTotal.toFixed(1)} EJ ({displayedPercentage}%)</div>}
         {showRelative && <div className="text-lg font-semibold mb-3">Total: 100%</div>}
         <div className="space-y-2">
           {payload
@@ -220,12 +236,22 @@ export default function InteractiveChart() {
       return (
         <AreaChart data={chartData} margin={{ top: 10, right: 40, left: 20, bottom: 20 }}>
           <defs>
-            {(viewMode === 'individual' ? ENERGY_SOURCES : ['fossil', 'clean']).map(source => (
+            {/* Always define gradients for all sources */}
+            {ENERGY_SOURCES.map(source => (
               <linearGradient key={source} id={`color-${source}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={ENERGY_COLORS[source] || (source === 'fossil' ? '#DC2626' : '#16A34A')} stopOpacity={0.8} />
-                <stop offset="95%" stopColor={ENERGY_COLORS[source] || (source === 'fossil' ? '#DC2626' : '#16A34A')} stopOpacity={0.3} />
+                <stop offset="5%" stopColor={ENERGY_COLORS[source]} stopOpacity={0.8} />
+                <stop offset="95%" stopColor={ENERGY_COLORS[source]} stopOpacity={0.3} />
               </linearGradient>
             ))}
+            {/* Define gradients for fossil and clean */}
+            <linearGradient key="fossil" id="color-fossil" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#DC2626" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#DC2626" stopOpacity={0.3} />
+            </linearGradient>
+            <linearGradient key="clean" id="color-clean" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#16A34A" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#16A34A" stopOpacity={0.3} />
+            </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="year" tick={{ fontSize: 15 }} interval="preserveStartEnd" height={60} />
@@ -349,29 +375,10 @@ export default function InteractiveChart() {
       </div>
 
       {/* Controls */}
-      <div className="mb-8 bg-gray-50 p-6 rounded-lg">
-        {/* Header with Show Relative toggle */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="text-lg font-semibold text-gray-700">Chart Controls</div>
-          <div className="flex items-center gap-4">
-            <label className="text-lg font-semibold text-gray-700">Show Relative Values</label>
-            <button
-              onClick={() => setShowRelative(!showRelative)}
-              className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
-                showRelative ? 'bg-blue-600' : 'bg-gray-300'
-              }`}
-            >
-              <span
-                className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
-                  showRelative ? 'translate-x-7' : 'translate-x-1'
-                }`}
-              />
-            </button>
-          </div>
-        </div>
-
-        {/* Chart Type Selection */}
-        <div className="mb-6">
+      <div className="mb-6 bg-gray-50 p-4 rounded-lg">
+        {/* Chart Type Selection and Show Relative toggle on same row */}
+        <div className="flex items-start justify-between mb-4">
+          <div>
             <label className="block text-lg font-semibold mb-3 text-gray-700">Chart Type</label>
             <div className="flex gap-3">
               <button
@@ -397,69 +404,98 @@ export default function InteractiveChart() {
             </div>
           </div>
 
-          {/* View Mode */}
-          <div className="mb-6">
-            <label className="block text-lg font-semibold mb-3 text-gray-700">View Mode</label>
-            <div className="flex flex-wrap gap-3">
+          {/* Show Relative toggle */}
+          <div className="flex items-center gap-4 mt-8">
+            <label className="text-lg font-semibold text-gray-700">Show Relative Values</label>
+            <button
+              onClick={() => setShowRelative(!showRelative)}
+              className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
+                showRelative ? 'bg-blue-600' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
+                  showRelative ? 'translate-x-7' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+
+        {/* Source Selection */}
+        <div>
+          <label className="block text-lg font-semibold mb-3 text-gray-700">Select Energy Sources</label>
+
+          {/* Category buttons - styled like individual source buttons */}
+          <div className="flex flex-wrap gap-2 mb-2">
+              <button
+                onClick={selectAllSources}
+                className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                  viewMode === 'allSources'
+                    ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                All Sources
+              </button>
               <button
                 onClick={selectGrouped}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                   viewMode === 'grouped'
                     ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
                 Fossil vs Clean
               </button>
               <button
                 onClick={selectAllFossil}
-                className="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
+                className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                  viewMode === 'allFossil'
+                    ? 'bg-red-600 text-white ring-2 ring-red-600 ring-offset-2'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
               >
                 All Fossil Sources
               </button>
               <button
                 onClick={selectAllClean}
-                className="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
+                className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                  viewMode === 'allClean'
+                    ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
               >
                 All Clean Sources
               </button>
-              <button
-                onClick={selectAllSources}
-                className="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
-              >
-                All Sources
-              </button>
-            </div>
           </div>
 
-          {/* Individual Source Selection */}
-          <div>
-            <label className="block text-lg font-semibold mb-3 text-gray-700">Select Energy Sources</label>
-            <div className="flex flex-wrap gap-2">
+          {/* Individual source buttons */}
+          <div className="flex flex-wrap gap-2">
               {ENERGY_SOURCES.map(source => (
                 <button
                   key={source}
                   onClick={() => toggleSource(source)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
-                    selectedSources.includes(source)
+                    selectedSources.includes(source) && viewMode === 'individual'
                       ? 'text-white ring-2 ring-offset-2'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                   }`}
                   style={{
-                    backgroundColor: selectedSources.includes(source) ? ENERGY_COLORS[source] : undefined,
+                    backgroundColor: (selectedSources.includes(source) && viewMode === 'individual') ? ENERGY_COLORS[source] : undefined,
                     ringColor: ENERGY_COLORS[source]
                   }}
                 >
                   {getSourceName(source)}
                 </button>
               ))}
-            </div>
           </div>
+        </div>
       </div>
 
       {/* Chart Display */}
-      <div id="interactive-chart-container">
-        <ResponsiveContainer width="100%" height={window.innerWidth < 768 ? 350 : 700} className="transition-all">
+      <div id="interactive-chart-container" className="w-full">
+        <ResponsiveContainer width="100%" height={width < 640 ? 300 : width < 768 ? 450 : 600}>
           {renderChart()}
         </ResponsiveContainer>
 

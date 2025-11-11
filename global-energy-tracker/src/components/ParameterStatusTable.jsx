@@ -195,7 +195,7 @@ export default function ParameterStatusTable() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             {/* Displacement */}
-            <div className="p-4 bg-white rounded-lg border border-green-200">
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
               <div className="text-sm font-semibold text-green-700 mb-1">
                 Displacement (D)
               </div>
@@ -205,7 +205,7 @@ export default function ParameterStatusTable() {
             </div>
 
             {/* Fossil Growth */}
-            <div className="p-4 bg-white rounded-lg border border-red-200">
+            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
               <div className="text-sm font-semibold text-red-700 mb-1">
                 Fossil Fuel Growth
               </div>
@@ -216,10 +216,7 @@ export default function ParameterStatusTable() {
             </div>
 
             {/* Net Change */}
-            <div className="p-4 bg-white rounded-lg border border-purple-200">
-              <div className="text-sm font-semibold text-purple-700 mb-1">
-                Net Change
-              </div>
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
               <div className={`text-3xl font-bold ${
                 parseFloat(selectedYearData.netChange) > 0 ? 'text-red-600' : 'text-green-600'
               }`}>

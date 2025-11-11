@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PageLayout from '../components/PageLayout';
 import AIChatbot from '../components/AIChatbot';
@@ -6,6 +7,7 @@ import SectoralEnergyGrowth from '../components/SectoralEnergyGrowth';
 import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons, ChartSources } from '../utils/chartExport';
 
 export default function DemandGrowth() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedScenario, setSelectedScenario] = useState('Baseline (STEPS)');
@@ -126,7 +128,7 @@ export default function DemandGrowth() {
           />
         </div>
         <div id="total-demand-chart">
-          <ResponsiveContainer width="100%" height={300} className="md:h-[400px]">
+          <ResponsiveContainer width="100%" height={width < 640 ? 280 : width < 768 ? 350 : 400}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="year" />
@@ -184,7 +186,7 @@ export default function DemandGrowth() {
           </select>
         </div>
         <div id="energy-mix-chart">
-          <ResponsiveContainer width="100%" height={300} className="md:h-[400px]">
+          <ResponsiveContainer width="100%" height={width < 640 ? 280 : width < 768 ? 350 : 400}>
             <AreaChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="year" />

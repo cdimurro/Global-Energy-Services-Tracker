@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import PageLayout from '../components/PageLayout';
 import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import { ENERGY_COLORS, getSourceName } from '../utils/colors';
-import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons } from '../utils/chartExport';
+import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons, ChartSources } from '../utils/chartExport';
 import AIChatbot from '../components/AIChatbot';
 
 const ENERGY_SOURCES = ['coal', 'oil', 'gas', 'nuclear', 'hydro', 'wind', 'solar', 'biomass', 'geothermal'];
@@ -10,6 +11,7 @@ const FOSSIL_SOURCES = ['coal', 'oil', 'gas'];
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'biomass', 'geothermal'];
 
 export default function EnergySupply() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [historicalData, setHistoricalData] = useState(null);
   const [projectionsData, setProjectionsData] = useState(null);
   const [efficiencyFactors, setEfficiencyFactors] = useState(null);
@@ -18,6 +20,7 @@ export default function EnergySupply() {
   // Filter states
   const [selectedSources, setSelectedSources] = useState(ENERGY_SOURCES);
   const [selectedScenario, setSelectedScenario] = useState('Baseline (STEPS)');
+  const [viewMode, setViewMode] = useState('allSources'); // 'allSources', 'grouped', 'allFossil', 'allClean', 'individual'
 
   // Force scroll to top on mount
   useEffect(() => {
@@ -54,7 +57,9 @@ export default function EnergySupply() {
       const processed = {
         year: yearData.year,
         sources: {},
-        totals: { primary: 0, useful: 0, waste: 0 }
+        totals: { primary: 0, useful: 0, waste: 0 },
+        fossil: { waste: 0 },
+        clean: { waste: 0 }
       };
 
       Object.entries(yearData.sources_useful_ej).forEach(([source, useful]) => {
@@ -72,6 +77,13 @@ export default function EnergySupply() {
         processed.totals.primary += primary;
         processed.totals.useful += useful;
         processed.totals.waste += waste;
+
+        // Add to fossil or clean totals
+        if (FOSSIL_SOURCES.includes(source)) {
+          processed.fossil.waste += waste;
+        } else if (CLEAN_SOURCES.includes(source)) {
+          processed.clean.waste += waste;
+        }
       });
 
       return processed;
@@ -86,7 +98,9 @@ export default function EnergySupply() {
           const processed = {
             year: yearData.year,
             sources: {},
-            totals: { primary: 0, useful: 0, waste: 0 }
+            totals: { primary: 0, useful: 0, waste: 0 },
+            fossil: { waste: 0 },
+            clean: { waste: 0 }
           };
 
           Object.entries(yearData.sources_useful_ej).forEach(([source, useful]) => {
@@ -115,6 +129,13 @@ export default function EnergySupply() {
             processed.totals.primary += primary;
             processed.totals.useful += useful;
             processed.totals.waste += waste;
+
+            // Add to fossil or clean totals
+            if (FOSSIL_SOURCES.includes(source)) {
+              processed.fossil.waste += waste;
+            } else if (CLEAN_SOURCES.includes(source)) {
+              processed.clean.waste += waste;
+            }
           });
 
           return processed;
@@ -156,6 +177,11 @@ export default function EnergySupply() {
 
   // Filter toggle functions
   const toggleSource = (source) => {
+    // If clicking an individual energy source (not fossil/clean), switch to individual mode
+    if (source !== 'fossil' && source !== 'clean') {
+      setViewMode('individual');
+    }
+
     setSelectedSources(prev =>
       prev.includes(source)
         ? prev.filter(s => s !== source)
@@ -163,9 +189,25 @@ export default function EnergySupply() {
     );
   };
 
-  const selectAllSources = () => setSelectedSources(ENERGY_SOURCES);
-  const selectFossilOnly = () => setSelectedSources(FOSSIL_SOURCES);
-  const selectCleanOnly = () => setSelectedSources(CLEAN_SOURCES);
+  const selectAllSources = () => {
+    setViewMode('allSources');
+    setSelectedSources(ENERGY_SOURCES);
+  };
+
+  const selectAllFossil = () => {
+    setViewMode('allFossil');
+    setSelectedSources(FOSSIL_SOURCES);
+  };
+
+  const selectAllClean = () => {
+    setViewMode('allClean');
+    setSelectedSources(CLEAN_SOURCES);
+  };
+
+  const selectGrouped = () => {
+    setViewMode('grouped');
+    setSelectedSources(['fossil', 'clean']);
+  };
 
   // Export handlers
   const handleDownloadPNG = (chartId, filename) => {
@@ -208,84 +250,18 @@ export default function EnergySupply() {
         </p>
       </div>
 
-      {/* Shared Filter Controls */}
-      <div className="metric-card bg-gray-50 mb-8">
-        <div className="mb-4">
-          <label className="block text-lg font-semibold mb-3 text-gray-700">
-            Filter by Energy Source
-          </label>
-          <div className="flex flex-wrap gap-2 mb-3">
-            <button
-              onClick={selectAllSources}
-              className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm md:text-base ${
-                selectedSources.length === ENERGY_SOURCES.length
-                  ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              All Sources
-            </button>
-            <button
-              onClick={selectFossilOnly}
-              className="px-4 py-2.5 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm md:text-base"
-            >
-              Fossil Only
-            </button>
-            <button
-              onClick={selectCleanOnly}
-              className="px-4 py-2.5 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm md:text-base"
-            >
-              Clean Only
-            </button>
+      {/* Chart 1: Wasted Energy Over Time by Source */}
+      <div className="metric-card bg-white mb-8" id="chart-waste-time">
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">
+              Wasted Energy Over Time by Source
+            </h2>
+            <p className="text-sm text-gray-600">
+              Energy lost during conversion from primary to useful services
+            </p>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            {ENERGY_SOURCES.map(source => (
-              <button
-                key={source}
-                onClick={() => toggleSource(source)}
-                className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm ${
-                  selectedSources.includes(source)
-                    ? 'text-white ring-2 ring-offset-2'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-                style={{
-                  backgroundColor: selectedSources.includes(source) ? ENERGY_COLORS[source] : undefined,
-                  ringColor: ENERGY_COLORS[source]
-                }}
-              >
-                {getSourceName(source)}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-lg font-semibold mb-3 text-gray-700">
-            Projection Scenario (2025-2050)
-          </label>
-          <select
-            value={selectedScenario}
-            onChange={(e) => setSelectedScenario(e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-2 text-base"
-          >
-            <option value="Baseline (STEPS)">Baseline (STEPS)</option>
-            <option value="Accelerated (APS)">Accelerated (APS)</option>
-            <option value="Net-Zero (NZE)">Net-Zero (NZE)</option>
-          </select>
-        </div>
-        {/* Chart 3: Wasted Energy Over Time by Source */}
-        <div className="mt-8" id="chart-waste-time">
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-1">
-                Wasted Energy Over Time by Source
-              </h2>
-              <p className="text-sm text-gray-600">
-                Energy lost during conversion from primary to useful services
-              </p>
-            </div>
-            <ChartExportButtons
+          <ChartExportButtons
               onDownloadPNG={() => handleDownloadPNG('chart-waste-time', 'waste_over_time.png')}
               onDownloadCSV={() => {
                 const csvData = processedData.map(yearData => {
@@ -301,7 +277,95 @@ export default function EnergySupply() {
             />
           </div>
 
-          <ResponsiveContainer width="100%" height={350} className="md:h-[500px]">
+        {/* Source Selection Buttons */}
+        <div className="mb-6">
+          <label className="block text-lg font-semibold mb-3 text-gray-700">
+            Select Energy Sources
+          </label>
+          <div className="flex flex-wrap gap-2 mb-3">
+            <button
+              onClick={selectAllSources}
+              className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm md:text-base ${
+                viewMode === 'allSources'
+                  ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+              }`}
+            >
+              All Sources
+            </button>
+            <button
+              onClick={selectGrouped}
+              className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm md:text-base ${
+                viewMode === 'grouped'
+                  ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+              }`}
+            >
+              Fossil vs Clean
+            </button>
+            <button
+              onClick={selectAllFossil}
+              className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm md:text-base ${
+                viewMode === 'allFossil'
+                  ? 'bg-red-600 text-white ring-2 ring-red-600 ring-offset-2'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+              }`}
+            >
+              All Fossil Sources
+            </button>
+            <button
+              onClick={selectAllClean}
+              className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm md:text-base ${
+                viewMode === 'allClean'
+                  ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+              }`}
+            >
+              All Clean Sources
+            </button>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {ENERGY_SOURCES.map(source => (
+              <button
+                key={source}
+                onClick={() => toggleSource(source)}
+                className={`px-4 py-2.5 rounded-lg font-medium transition-all text-sm ${
+                  selectedSources.includes(source) && viewMode === 'individual'
+                    ? 'text-white ring-2 ring-offset-2'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+                style={{
+                  backgroundColor: (selectedSources.includes(source) && viewMode === 'individual') ? ENERGY_COLORS[source] : undefined,
+                  ringColor: ENERGY_COLORS[source]
+                }}
+              >
+                {getSourceName(source)}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Projection Scenario Dropdown */}
+        <div className="mb-6">
+          <label className="block text-lg font-semibold mb-1 text-gray-700">
+            Projection Scenario (2025-2050)
+          </label>
+          <p className="text-sm text-gray-600 mb-3">
+            Based on International Energy Agency scenarios
+          </p>
+          <select
+            value={selectedScenario}
+            onChange={(e) => setSelectedScenario(e.target.value)}
+            className="border border-gray-300 rounded-lg px-4 py-2 text-base"
+          >
+            <option value="Baseline (STEPS)">Baseline (STEPS)</option>
+            <option value="Accelerated (APS)">Accelerated (APS)</option>
+            <option value="Net-Zero (NZE)">Net-Zero (NZE)</option>
+          </select>
+        </div>
+
+        <ResponsiveContainer width="100%" height={width < 640 ? 300 : width < 768 ? 400 : 500}>
             <AreaChart
               data={processedData}
               margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
@@ -337,20 +401,47 @@ export default function EnergySupply() {
                 );
               }} />
               <Legend />
-              {selectedSources.map(source => (
-                <Area
-                  key={source}
-                  type="monotone"
-                  dataKey={`sources.${source}.waste`}
-                  name={getSourceName(source)}
-                  stackId="1"
-                  stroke={ENERGY_COLORS[source]}
-                  fill={ENERGY_COLORS[source]}
-                />
-              ))}
+              {viewMode === 'grouped' ? (
+                <>
+                  {selectedSources.includes('fossil') && (
+                    <Area
+                      type="monotone"
+                      dataKey="fossil.waste"
+                      name="Fossil Fuels"
+                      stackId="1"
+                      stroke="#DC2626"
+                      fill="#DC2626"
+                    />
+                  )}
+                  {selectedSources.includes('clean') && (
+                    <Area
+                      type="monotone"
+                      dataKey="clean.waste"
+                      name="Clean Energy"
+                      stackId="1"
+                      stroke="#000000"
+                      fill="#000000"
+                    />
+                  )}
+                </>
+              ) : (
+                selectedSources.map(source => (
+                  <Area
+                    key={source}
+                    type="monotone"
+                    dataKey={`sources.${source}.waste`}
+                    name={getSourceName(source)}
+                    stackId="1"
+                    stroke={ENERGY_COLORS[source]}
+                    fill={ENERGY_COLORS[source]}
+                  />
+                ))
+              )}
             </AreaChart>
-          </ResponsiveContainer>
-        </div>
+        </ResponsiveContainer>
+
+        {/* Data Sources */}
+        <ChartSources sources={['Energy Institute Statistical Review 2024', 'RMI Inefficiency Trap 2023', 'IEA World Energy Outlook 2024']} />
       </div>
 
       {/* Chart 2: Global Energy System Efficiency Over Time */}
@@ -376,7 +467,7 @@ export default function EnergySupply() {
           />
         </div>
 
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={width < 640 ? 300 : width < 768 ? 400 : 500}>
           <LineChart
             data={processedData.map(yearData => ({
               year: yearData.year,
@@ -421,6 +512,9 @@ export default function EnergySupply() {
             />
           </LineChart>
         </ResponsiveContainer>
+
+        {/* Data Sources */}
+        <ChartSources sources={['Energy Institute Statistical Review 2024', 'RMI Inefficiency Trap 2023']} />
       </div>
 
       {/* Chart 1: Primary vs. Useful Bar Chart (2024 Snapshot) */}
@@ -450,7 +544,7 @@ export default function EnergySupply() {
           />
         </div>
 
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={width < 640 ? 300 : width < 768 ? 400 : 500}>
           <BarChart
             data={ENERGY_SOURCES.map(source => ({
               source: getSourceName(source),
@@ -499,24 +593,22 @@ export default function EnergySupply() {
                 </div>
               );
             }} />
-            <Legend
-              payload={[
-                { value: 'Useful Energy', type: 'rect', color: '#3b82f6' },
-                { value: 'Waste Energy', type: 'rect', color: '#dc2626' }
-              ]}
-            />
-            <Bar dataKey="useful" name="Useful Energy" stackId="a">
+            <Legend />
+            <Bar dataKey="useful" name="Useful Energy" stackId="a" fill="#000000">
               {ENERGY_SOURCES.map(source => (
                 <Cell key={source} fill={ENERGY_COLORS[source]} />
               ))}
             </Bar>
-            <Bar dataKey="waste" name="Waste Energy" stackId="a">
+            <Bar dataKey="waste" name="Waste Energy" stackId="a" fill="#dc2626">
               {ENERGY_SOURCES.map(source => (
                 <Cell key={source} fill="#dc2626" />
               ))}
             </Bar>
           </BarChart>
         </ResponsiveContainer>
+
+        {/* Data Sources */}
+        <ChartSources sources={['Energy Institute Statistical Review 2024', 'RMI Inefficiency Trap 2023']} />
       </div>
 
       {/* Understanding Energy Supply Section */}

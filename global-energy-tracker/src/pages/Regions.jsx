@@ -583,6 +583,17 @@ export default function Regions() {
                   })
                 : payload;
 
+              // Calculate total of all selected sources
+              const totalEJ = sortedPayload.reduce((sum, entry) => sum + entry.value, 0);
+
+              // Get total for region to calculate percentage
+              const regionName = viewMode === 'regions'
+                ? (sortedPayload[0]?.name || selectedRegion)
+                : selectedRegion;
+              const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+              const totalForRegion = yearData?.total_useful_ej || 0;
+              const totalPercentage = totalForRegion > 0 ? (totalEJ / totalForRegion * 100) : 0;
+
               // Split sorted payload into columns for better display
               const itemsPerColumn = Math.ceil(sortedPayload.length / 2);
               const column1 = sortedPayload.slice(0, itemsPerColumn);
@@ -592,6 +603,17 @@ export default function Regions() {
                 <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200 max-w-2xl">
                   <div className="font-bold text-lg mb-2">{label}</div>
                   <div className="text-xs text-gray-500 mb-2 italic">{sourcesLabel}</div>
+
+                  {/* Total (only shown in sources mode when multiple sources selected) */}
+                  {viewMode === 'sources' && sortedPayload.length > 1 && (
+                    <div className="mb-3 pb-2 border-b-2 border-gray-300">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-sm">Total:</span>
+                        <span className="font-bold text-sm">{totalEJ.toFixed(0)} PJ ({totalPercentage.toFixed(2)}%)</span>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-2 gap-x-6 text-sm">
                     {/* Column 1 */}
                     <div className="space-y-1">

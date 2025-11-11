@@ -103,8 +103,6 @@ export default function SectoralEnergyGrowth() {
       normalizedShares[sector] = rawShares[sector] / totalShares;
     });
 
-    console.log(`[SectoralChart] Normalized shares from ${(totalShares*100).toFixed(1)}% to 100.0%`);
-
     // Generate time series data for sectors (using baseline scenario only)
     const generatedData = [];
     const startYear = 2015;
@@ -410,9 +408,14 @@ export default function SectoralEnergyGrowth() {
   return (
     <div className="metric-card bg-white mb-16">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">
-          Energy Services Growth by Sector
-        </h2>
+        <div>
+          <h2 className="text-3xl font-bold text-gray-800 mb-1">
+            Energy Services Growth by Sector
+          </h2>
+          <p className="text-sm text-gray-600">
+            2015-2024 historical data • 2025-2050 projections
+          </p>
+        </div>
         <ChartExportButtons
           onDownloadPNG={handleDownloadPNG}
           onDownloadCSV={handleDownloadCSV}
@@ -420,10 +423,9 @@ export default function SectoralEnergyGrowth() {
       </div>
 
       {/* Controls */}
-      <div className="mb-8 bg-gray-50 p-6 rounded-lg">
-        {/* Header with Show Relative toggle */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="text-lg font-semibold text-gray-700">Chart Controls</div>
+      <div className="mb-8">
+        {/* Show Relative Toggle */}
+        <div className="flex items-center justify-end mb-6">
           <div className="flex items-center gap-4">
             <label className="text-lg font-semibold text-gray-700">Show Relative Values</label>
             <button
@@ -441,38 +443,38 @@ export default function SectoralEnergyGrowth() {
           </div>
         </div>
 
-        {/* Source Filter - Main Groups */}
+        {/* Source Filter */}
         <div className="mb-6">
           <label className="block text-lg font-semibold mb-3 text-gray-700">
-            Energy Source Filter:
+            Energy Source Filter
           </label>
-          <div className="flex gap-3 mb-4">
+          <div className="flex flex-wrap gap-2 mb-3">
             <button
               onClick={() => setSourceFilter('all')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
+              className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                 sourceFilter === 'all'
                   ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               All Sources
             </button>
             <button
               onClick={() => setSourceFilter('fossil')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
+              className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                 sourceFilter === 'fossil'
                   ? 'bg-red-600 text-white ring-2 ring-red-600 ring-offset-2'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Fossil Sources
             </button>
             <button
               onClick={() => setSourceFilter('clean')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
+              className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                 sourceFilter === 'clean'
                   ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Clean Sources
@@ -480,9 +482,6 @@ export default function SectoralEnergyGrowth() {
           </div>
 
           {/* Individual Energy Sources */}
-          <label className="block text-sm font-semibold mb-2 text-gray-600">
-            Select Individual Energy Source:
-          </label>
           <div className="flex flex-wrap gap-2">
             {ENERGY_SOURCES.map(source => (
               <button
@@ -504,30 +503,27 @@ export default function SectoralEnergyGrowth() {
           </div>
         </div>
 
-        {/* Sector Presets */}
-        <div className="mb-6">
-          <label className="block text-lg font-semibold mb-3 text-gray-700">
-            Sector Presets:
-          </label>
-          <div className="flex gap-3">
+        {/* Sector Selection */}
+        <div>
+          <label className="block text-lg font-semibold mb-3 text-gray-700">Select Sectors</label>
+
+          {/* Sector Presets */}
+          <div className="flex flex-wrap gap-2 mb-3">
             <button
               onClick={selectAllSectors}
-              className="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300 transition-colors"
+              className="px-4 py-2 rounded-lg font-medium transition-all text-sm bg-gray-200 text-gray-700 hover:bg-gray-300"
             >
               Select All
             </button>
             <button
               onClick={clearAllSectors}
-              className="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300 transition-colors"
+              className="px-4 py-2 rounded-lg font-medium transition-all text-sm bg-gray-200 text-gray-700 hover:bg-gray-300"
             >
               Clear All
             </button>
           </div>
-        </div>
 
-        {/* Individual Sector Selection */}
-        <div>
-          <label className="block text-lg font-semibold mb-3 text-gray-700">Select Sectors:</label>
+          {/* Individual Sector Buttons */}
           <div className="flex flex-wrap gap-2">
             {ALL_SECTORS.map(sector => (
               <button

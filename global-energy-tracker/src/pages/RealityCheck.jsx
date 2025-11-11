@@ -89,15 +89,6 @@ export default function RealityCheck() {
                 <li>• Energy efficiency reduces the total amount of energy demand to meet.</li>
               </ul>
             </div>
-            <div className="bg-gray-100 border border-gray-300 p-4 text-center my-6">
-              <p className="text-gray-700">
-                The energy transition isn't failing. It's just getting started.<br/>
-                Clean energy is growing 3x faster than fossil fuels.<br/>
-                Every electrified home, factory, and vehicle displaces 3x its weight in fossil fuels.<br/>
-                This dashboard shows the proof and the way forward.<br/>
-                <strong>Electrify. Optimize. Displace. Repeat.</strong>
-              </p>
-            </div>
           </section>
 
           {/* The Unsung Heroes */}
