@@ -196,7 +196,7 @@ export default function NetChangeTimeline() {
   // Render chart content (used in both normal and fullscreen modes)
   const renderChartContent = () => (
     <>
-      <ResponsiveContainer width="100%" height={isFullscreen ? 700 : 500}>
+      <ResponsiveContainer width="100%" height={isFullscreen ? 1000 : 500}>
         <ComposedChart
           data={timelineData}
           margin={{ top: 20, right: 30, left: 30, bottom: 30 }}
@@ -333,13 +333,13 @@ export default function NetChangeTimeline() {
         onClose={() => setIsFullscreen(false)}
         title="Historical Displacement & Net Change Timeline"
         description="Annual changes in energy services delivery"
-      >
-        <div className="flex justify-end mb-4">
+        exportButtons={
           <ChartExportButtons
             onDownloadPNG={downloadPNG}
             onDownloadCSV={downloadCSV}
           />
-        </div>
+        }
+      >
         {renderChartContent()}
       </ChartFullscreenModal>
     </>
