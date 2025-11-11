@@ -1,16 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Cell } from 'recharts';
 import { ENERGY_COLORS, getSourceName } from '../utils/colors';
 import { downloadChartAsPNG, ChartExportButtons } from '../utils/chartExport';
+import ChartFullscreenModal from './ChartFullscreenModal';
+import FullscreenButton from './FullscreenButton';
 
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'geothermal', 'biomass'];
 
 export default function DisplacementBySource() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [energyData, setEnergyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sourceData, setSourceData] = useState([]);
   const [selectedPeriod, setSelectedPeriod] = useState('current'); // 'current', '5year', '10year'
   const chartRef = useRef(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     fetch('/data/useful_energy_timeseries.json')
@@ -164,18 +169,17 @@ export default function DisplacementBySource() {
     );
   };
 
-  return (
-    <div className="metric-card bg-white mb-16">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">
-          Displacement by Clean Energy Source
-        </h2>
-        <ChartExportButtons
-          onDownloadPNG={downloadPNG}
-          onDownloadCSV={downloadCSV}
-        />
-      </div>
+  // Responsive chart heights: 500px (mobile), 700px (tablet), 1000px (desktop)
+  const getChartHeight = () => {
+    if (isFullscreen) {
+      return width < 640 ? 500 : width < 1024 ? 700 : 1000;
+    }
+    return 500;
+  };
 
+  // Render chart content (used in both normal and fullscreen modes)
+  const renderChartContent = () => (
+    <>
       {/* Period Selector */}
       <div className="mb-8">
         <label className="block text-lg font-semibold mb-3 text-gray-700">
@@ -228,9 +232,9 @@ export default function DisplacementBySource() {
       </div>
 
       {/* Bar Chart */}
-      <div className="mb-8" ref={chartRef}>
+      <div className="mb-8">
         <h3 className="text-xl font-bold text-gray-800 mb-4">Annual Growth by Source</h3>
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={getChartHeight()}>
           <BarChart
             data={currentData.sources}
             margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
@@ -344,6 +348,46 @@ export default function DisplacementBySource() {
       <div className="text-xs text-gray-500 text-center mt-4">
         Data sources: Our World in Data, BP Statistical Review
       </div>
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Normal View */}
+      <div className="metric-card bg-white mb-16">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-800">
+            Displacement by Clean Energy Source
+          </h2>
+          <div className="flex gap-2">
+            <ChartExportButtons
+              onDownloadPNG={downloadPNG}
+              onDownloadCSV={downloadCSV}
+            />
+            <FullscreenButton onClick={() => setIsFullscreen(true)} />
+          </div>
+        </div>
+
+        <div ref={chartRef}>
+          {renderChartContent()}
+        </div>
+      </div>
+
+      {/* Fullscreen View */}
+      <ChartFullscreenModal
+        isOpen={isFullscreen}
+        onClose={() => setIsFullscreen(false)}
+        title="Displacement by Clean Energy Source"
+        description="Analysis of clean energy growth and its contribution to fossil displacement"
+        exportButtons={
+          <ChartExportButtons
+            onDownloadPNG={downloadPNG}
+            onDownloadCSV={downloadCSV}
+          />
+        }
+      >
+        {renderChartContent()}
+      </ChartFullscreenModal>
+    </>
   );
 }

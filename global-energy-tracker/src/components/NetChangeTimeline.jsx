@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Area, ComposedChart } from 'recharts';
 import { downloadChartAsPNG, ChartExportButtons } from '../utils/chartExport';
 import ChartFullscreenModal from './ChartFullscreenModal';
 import FullscreenButton from './FullscreenButton';
 
 export default function NetChangeTimeline() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [timelineData, setTimelineData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -194,9 +196,15 @@ export default function NetChangeTimeline() {
   };
 
   // Render chart content (used in both normal and fullscreen modes)
-  const renderChartContent = () => (
+  const renderChartContent = () => {
+    // Responsive heights: 500px (mobile), 700px (tablet), 1000px (desktop)
+    const chartHeight = isFullscreen
+      ? (width < 640 ? 500 : width < 1024 ? 700 : 1000)
+      : 500;
+
+    return (
     <>
-      <ResponsiveContainer width="100%" height={isFullscreen ? 1000 : 500}>
+      <ResponsiveContainer width="100%" height={chartHeight}>
         <ComposedChart
           data={timelineData}
           margin={{ top: 20, right: 30, left: 30, bottom: 30 }}
@@ -303,7 +311,8 @@ export default function NetChangeTimeline() {
         Data sources: Our World in Data, BP Statistical Review
       </div>
     </>
-  );
+    );
+  };
 
   return (
     <>

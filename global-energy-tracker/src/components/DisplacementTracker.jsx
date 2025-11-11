@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { useWindowSize } from '@react-hook/window-size';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { downloadChartAsPNG, ChartExportButtons } from '../utils/chartExport';
+import ChartFullscreenModal from './ChartFullscreenModal';
+import FullscreenButton from './FullscreenButton';
 
 export default function DisplacementTracker() {
+  const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [energyData, setEnergyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const chartRef = useRef(null);
@@ -15,6 +19,7 @@ export default function DisplacementTracker() {
   const [cleanRelativeChange, setCleanRelativeChange] = useState(0);
   const [fossilRelativeChange, setFossilRelativeChange] = useState(0);
   const [status, setStatus] = useState('rising');
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     fetch('/data/useful_energy_timeseries.json')
@@ -233,23 +238,22 @@ export default function DisplacementTracker() {
     document.body.removeChild(link);
   };
 
-  return (
-    <div className="metric-card bg-white mb-16">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">
-          Fossil Fuel Displacement Tracker (2024)
-        </h2>
-        <ChartExportButtons
-          onDownloadPNG={downloadPNG}
-          onDownloadCSV={downloadCSV}
-        />
-      </div>
+  // Responsive chart heights: 500px (mobile), 700px (tablet), 1000px (desktop)
+  const getChartHeight = () => {
+    if (isFullscreen) {
+      return width < 640 ? 500 : width < 1024 ? 700 : 1000;
+    }
+    return 350;
+  };
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8" ref={chartRef}>
+  // Render chart content (used in both normal and fullscreen modes)
+  const renderChartContent = () => (
+    <>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left: Bar Chart Visualization */}
         <div className="flex flex-col items-center justify-center">
           <div className="w-full">
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" height={getChartHeight()}>
               <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
@@ -379,6 +383,46 @@ export default function DisplacementTracker() {
           Data sources: Our World in Data, BP Statistical Review
         </div>
       </div>
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Normal View */}
+      <div className="metric-card bg-white mb-16">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-800">
+            Fossil Fuel Displacement Tracker (2024)
+          </h2>
+          <div className="flex gap-2">
+            <ChartExportButtons
+              onDownloadPNG={downloadPNG}
+              onDownloadCSV={downloadCSV}
+            />
+            <FullscreenButton onClick={() => setIsFullscreen(true)} />
+          </div>
+        </div>
+
+        <div ref={chartRef}>
+          {renderChartContent()}
+        </div>
+      </div>
+
+      {/* Fullscreen View */}
+      <ChartFullscreenModal
+        isOpen={isFullscreen}
+        onClose={() => setIsFullscreen(false)}
+        title="Fossil Fuel Displacement Tracker (2024)"
+        description="Real-time tracking of clean energy displacement vs fossil fuel growth"
+        exportButtons={
+          <ChartExportButtons
+            onDownloadPNG={downloadPNG}
+            onDownloadCSV={downloadCSV}
+          />
+        }
+      >
+        {renderChartContent()}
+      </ChartFullscreenModal>
+    </>
   );
 }

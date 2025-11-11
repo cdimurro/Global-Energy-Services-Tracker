@@ -383,22 +383,17 @@ export default function InteractiveChart() {
 
   const sources = ['Energy Institute Statistical Review 2024', 'RMI Inefficiency Trap 2023'];
 
-  return (
-    <div className="metric-card bg-white">
-      {/* Header with Download Buttons */}
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">
-          Interactive Energy Services Explorer
-        </h2>
-        <div className="flex gap-2">
-          <FullscreenButton onClick={() => setIsFullscreen(true)} />
-          <ChartExportButtons
-            onDownloadPNG={handleDownloadPNG}
-            onDownloadCSV={handleDownloadCSV}
-          />
-        </div>
-      </div>
+  // Responsive chart heights: 500px (mobile), 700px (tablet), 1000px (desktop)
+  const getChartHeight = () => {
+    if (isFullscreen) {
+      return width < 640 ? 500 : width < 1024 ? 700 : 1000;
+    }
+    return width < 640 ? 300 : width < 768 ? 450 : 600;
+  };
 
+  // Render chart content (used in both normal and fullscreen modes)
+  const renderChartContent = () => (
+    <>
       {/* Controls */}
       <div className="mb-6 bg-gray-50 p-4 rounded-lg">
         {/* Chart Type Selection and Show Relative toggle on same row */}
@@ -520,7 +515,7 @@ export default function InteractiveChart() {
 
       {/* Chart Display */}
       <div id="interactive-chart-container" className="w-full pb-8">
-        <ResponsiveContainer width="100%" height={width < 640 ? 300 : width < 768 ? 450 : 600}>
+        <ResponsiveContainer width="100%" height={getChartHeight()}>
           {renderChart()}
         </ResponsiveContainer>
 
@@ -558,6 +553,45 @@ export default function InteractiveChart() {
           )}
         </div>
       </div>
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Normal View */}
+      <div className="metric-card bg-white">
+        {/* Header with Download Buttons */}
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-800">
+            Interactive Energy Services Explorer
+          </h2>
+          <div className="flex gap-2">
+            <ChartExportButtons
+              onDownloadPNG={handleDownloadPNG}
+              onDownloadCSV={handleDownloadCSV}
+            />
+            <FullscreenButton onClick={() => setIsFullscreen(true)} />
+          </div>
+        </div>
+
+        {renderChartContent()}
+      </div>
+
+      {/* Fullscreen View */}
+      <ChartFullscreenModal
+        isOpen={isFullscreen}
+        onClose={() => setIsFullscreen(false)}
+        title="Interactive Energy Services Explorer"
+        description="Explore historical energy trends by source and view type"
+        exportButtons={
+          <ChartExportButtons
+            onDownloadPNG={handleDownloadPNG}
+            onDownloadCSV={handleDownloadCSV}
+          />
+        }
+      >
+        {renderChartContent()}
+      </ChartFullscreenModal>
+    </>
   );
 }
