@@ -244,15 +244,15 @@ export default function Regions() {
   const getChart1Height = () => {
     if (isFullscreenChart1) {
       // Chart 1 has many controls (region selection, source filter, view mode toggle)
-      return width < 640 ? 250 : width < 1024 ? 350 : 450;
+      return width < 640 ? 400 : width < 1024 ? 600 : 750;
     }
     return 500;
   };
 
   const getChart2Height = () => {
     if (isFullscreenChart2) {
-      // Chart 2 is simpler (no controls)
-      return width < 640 ? 350 : width < 1024 ? 500 : 650;
+      // Chart 2 is simpler (no controls), maximize screen usage
+      return width < 640 ? 500 : width < 1024 ? 700 : 850;
     }
     return 500;
   };
@@ -260,7 +260,7 @@ export default function Regions() {
   const getChart3Height = () => {
     if (isFullscreenChart3) {
       // Chart 3 has controls (region selection, source selection, relative toggle)
-      return width < 640 ? 250 : width < 1024 ? 350 : 450;
+      return width < 640 ? 400 : width < 1024 ? 600 : 750;
     }
     return 500;
   };

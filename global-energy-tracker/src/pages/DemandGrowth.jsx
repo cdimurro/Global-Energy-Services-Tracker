@@ -110,16 +110,16 @@ export default function DemandGrowth() {
   // Chart height functions
   const getChart1Height = () => {
     if (isFullscreenChart1) {
-      // Chart 1 has scenario dropdown control
-      return width < 640 ? 300 : width < 1024 ? 450 : 600;
+      // Chart 1 is simple line chart - maximize screen usage
+      return width < 640 ? 500 : width < 1024 ? 700 : 850;
     }
     return width < 640 ? 280 : width < 768 ? 350 : 400;
   };
 
   const getChart2Height = () => {
     if (isFullscreenChart2) {
-      // Chart 2 has scenario dropdown control
-      return width < 640 ? 300 : width < 1024 ? 450 : 600;
+      // Chart 2 has scenario dropdown control - leave room for dropdown
+      return width < 640 ? 450 : width < 1024 ? 650 : 800;
     }
     return width < 640 ? 280 : width < 768 ? 350 : 400;
   };

@@ -238,11 +238,11 @@ export default function DisplacementTracker() {
     document.body.removeChild(link);
   };
 
-  // Responsive chart heights: adjusted for fullscreen to fit without scrolling
-  // In fullscreen, the 2-column layout with metrics cards means chart shouldn't be too tall
+  // Responsive chart heights: maximized for fullscreen with room for metrics cards
+  // In fullscreen, the 2-column layout with metrics cards is displayed alongside chart
   const getChartHeight = () => {
     if (isFullscreen) {
-      return width < 640 ? 300 : width < 1024 ? 400 : 500;
+      return width < 640 ? 500 : width < 1024 ? 700 : 850;
     }
     return 350;
   };

@@ -410,11 +410,11 @@ export default function SectoralEnergyGrowth() {
     'IEA World Energy Outlook 2024'
   ];
 
-  // Responsive chart heights: reduced for fullscreen to fit all content without scrolling
+  // Responsive chart heights: maximized for fullscreen while leaving room for controls
   // This chart has many controls, legend, and analysis cards
   const getChartHeight = () => {
     if (isFullscreen) {
-      return width < 640 ? 250 : width < 1024 ? 350 : 450;
+      return width < 640 ? 400 : width < 1024 ? 600 : 750;
     }
     return 700;
   };
