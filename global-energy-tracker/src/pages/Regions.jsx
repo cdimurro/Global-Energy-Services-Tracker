@@ -948,6 +948,613 @@ export default function Regions() {
         </div>
       </div>
 
+      {/* Chart 1 Fullscreen Modal */}
+      <ChartFullscreenModal
+        isOpen={isFullscreenChart1}
+        onClose={() => setIsFullscreenChart1(false)}
+        title="Regional Energy Services Over Time"
+        description="Compare energy service demand evolution across selected regions"
+      >
+        {/* Filter Controls */}
+        <div className="bg-gray-50 p-6 rounded-lg mb-6 border border-gray-200">
+          {/* View Mode Selection */}
+          <div className="mb-6">
+            <label className="block text-lg font-semibold mb-3 text-gray-700">
+              View Mode
+            </label>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setViewMode('regions')}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  viewMode === 'regions'
+                    ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                Compare Regions
+              </button>
+              <button
+                onClick={() => setViewMode('sources')}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  viewMode === 'sources'
+                    ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                Compare Energy Sources
+              </button>
+            </div>
+          </div>
+
+          {viewMode === 'regions' ? (
+            <>
+              {/* Multiple Regions Selection */}
+              <div className="mb-6">
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Regions
+                </label>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <button
+                    onClick={selectAllRegions}
+                    className="px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all"
+                  >
+                    Select All
+                  </button>
+                  <button
+                    onClick={clearRegions}
+                    className="px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all"
+                  >
+                    Clear All
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {AVAILABLE_REGIONS.map(region => (
+                    <button
+                      key={region}
+                      onClick={() => toggleRegion(region)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                        selectedRegions.includes(region)
+                          ? 'text-white ring-2 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: selectedRegions.includes(region) ? getRegionColor(region) : undefined,
+                        ringColor: getRegionColor(region)
+                      }}
+                    >
+                      {region}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Single Energy Source Selection */}
+              <div>
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Energy Source
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedSource('all')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSource === 'all'
+                        ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    All Sources
+                  </button>
+                  <button
+                    onClick={() => setSelectedSource('fossil')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSource === 'fossil'
+                        ? 'bg-red-600 text-white ring-2 ring-red-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Fossil Fuels
+                  </button>
+                  <button
+                    onClick={() => setSelectedSource('clean')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSource === 'clean'
+                        ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Clean Energy
+                  </button>
+                  {ENERGY_SOURCES.map(source => (
+                    <button
+                      key={source}
+                      onClick={() => setSelectedSource(source)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                        selectedSource === source
+                          ? 'text-white ring-2 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: selectedSource === source ? ENERGY_COLORS[source] : undefined,
+                        ringColor: ENERGY_COLORS[source]
+                      }}
+                    >
+                      {getSourceName(source)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Single Region Selection */}
+              <div className="mb-6">
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Region
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {AVAILABLE_REGIONS.map(region => (
+                    <button
+                      key={region}
+                      onClick={() => setSelectedRegion(region)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                        selectedRegion === region
+                          ? 'text-white ring-2 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: selectedRegion === region ? getRegionColor(region) : undefined,
+                        ringColor: getRegionColor(region)
+                      }}
+                    >
+                      {region}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Multiple Energy Sources Selection */}
+              <div>
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Energy Sources
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => {
+                      // Just set the category filter - the chart data logic will handle which sources to show
+                      setQuickFilterSources('all');
+                    }}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      quickFilterSources === 'all'
+                        ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    All Sources
+                  </button>
+                  <button
+                    onClick={() => {
+                      // Just set the category filter - the chart data logic will handle which sources to show
+                      setQuickFilterSources('fossil');
+                    }}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      quickFilterSources === 'fossil'
+                        ? 'bg-red-600 text-white ring-2 ring-red-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Fossil Fuels
+                  </button>
+                  <button
+                    onClick={() => {
+                      // Just set the category filter - the chart data logic will handle which sources to show
+                      setQuickFilterSources('clean');
+                    }}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      quickFilterSources === 'clean'
+                        ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Clean Energy
+                  </button>
+                  {ENERGY_SOURCES.map(source => (
+                    <button
+                      key={source}
+                      onClick={() => {
+                        // When clicking individual source:
+                        // 1. Clear category filter to switch to individual selection mode
+                        // 2. Toggle the source (add if not present, remove if present)
+                        setQuickFilterSources(null);
+                        setSelectedSources(prev => {
+                          if (prev.includes(source)) {
+                            // Source is already selected, remove it
+                            return prev.filter(s => s !== source);
+                          } else {
+                            // Source is not selected, add it
+                            return [...prev, source];
+                          }
+                        });
+                      }}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                        quickFilterSources === null && selectedSources.includes(source)
+                          ? 'text-white ring-2 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: (quickFilterSources === null && selectedSources.includes(source)) ? ENERGY_COLORS[source] : undefined,
+                        ringColor: ENERGY_COLORS[source]
+                      }}
+                    >
+                      {getSourceName(source)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        <ResponsiveContainer width="100%" height={getChart1Height()}>
+          <LineChart
+            data={chart1Data}
+            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis label={{ value: getYAxisLabel(), angle: -90, position: 'insideLeft' }} />
+            <Tooltip content={({ active, payload, label }) => {
+              if (!active || !payload || payload.length === 0) return null;
+
+              // Determine what sources are being shown
+              let sourcesLabel = '';
+              if (viewMode === 'regions') {
+                if (selectedSource === 'all') {
+                  sourcesLabel = 'All Sources';
+                } else if (selectedSource === 'fossil') {
+                  sourcesLabel = 'Fossil Fuels (Coal, Oil, Gas)';
+                } else if (selectedSource === 'clean') {
+                  sourcesLabel = 'Clean Energy (Nuclear, Hydro, Wind, Solar, Biofuels, Other Renewables)';
+                } else {
+                  sourcesLabel = getSourceName(selectedSource);
+                }
+              } else {
+                // In sources mode, show which sources are selected
+                if (quickFilterSources === 'all') {
+                  sourcesLabel = 'All Sources';
+                } else if (quickFilterSources === 'fossil') {
+                  sourcesLabel = 'Fossil Fuels (Coal, Oil, Gas)';
+                } else if (quickFilterSources === 'clean') {
+                  sourcesLabel = 'Clean Energy (Nuclear, Hydro, Wind, Solar, Biofuels, Other Renewables)';
+                } else {
+                  sourcesLabel = selectedSources.map(s => getSourceName(s)).join(', ');
+                }
+              }
+
+              // Sort payload based on selection order (left to right)
+              const sortedPayload = viewMode === 'regions'
+                ? [...payload].sort((a, b) => {
+                    const indexA = selectedRegions.indexOf(a.name);
+                    const indexB = selectedRegions.indexOf(b.name);
+                    return indexA - indexB;
+                  })
+                : payload;
+
+              // Calculate total of all selected sources
+              const totalEJ = sortedPayload.reduce((sum, entry) => sum + entry.value, 0);
+
+              // Get total for region to calculate percentage
+              const regionName = viewMode === 'regions'
+                ? (sortedPayload[0]?.name || selectedRegion)
+                : selectedRegion;
+              const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+              const totalForRegion = yearData?.total_useful_ej || 0;
+              const totalPercentage = totalForRegion > 0 ? (totalEJ / totalForRegion * 100) : 0;
+
+              // Split sorted payload into columns for better display
+              const itemsPerColumn = Math.ceil(sortedPayload.length / 2);
+              const column1 = sortedPayload.slice(0, itemsPerColumn);
+              const column2 = sortedPayload.slice(itemsPerColumn);
+
+              return (
+                <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200 max-w-2xl">
+                  <div className="font-bold text-lg mb-2">{label}</div>
+                  <div className="text-xs text-gray-500 mb-2 italic">{sourcesLabel}</div>
+
+                  {/* Total (only shown in sources mode when multiple sources selected) */}
+                  {viewMode === 'sources' && sortedPayload.length > 1 && (
+                    <div className="mb-3 pb-2 border-b-2 border-gray-300">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-sm">Total:</span>
+                        <span className="font-bold text-sm">{totalEJ.toFixed(0)} PJ ({totalPercentage.toFixed(2)}%)</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-2 gap-x-6 text-sm">
+                    {/* Column 1 */}
+                    <div className="space-y-1">
+                      {column1.map((entry, index) => {
+                        const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
+                        const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
+
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1 min-w-0">
+                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                              <span className="truncate text-xs">{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    {/* Column 2 */}
+                    <div className="space-y-1">
+                      {column2.map((entry, index) => {
+                        const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
+                        const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
+
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1 min-w-0">
+                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                              <span className="truncate text-xs">{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            }} />
+            <Legend />
+            {viewMode === 'regions' ? (
+              selectedRegions.map(region => (
+                <Line
+                  key={region}
+                  type="monotone"
+                  dataKey={region}
+                  name={region}
+                  stroke={getRegionColor(region)}
+                  strokeWidth={2}
+                  dot={false}
+                />
+              ))
+            ) : (
+              // Determine which sources to render based on category filter or individual selections
+              (() => {
+                let sourcesToRender = [];
+                if (quickFilterSources === 'all') {
+                  sourcesToRender = ENERGY_SOURCES;
+                } else if (quickFilterSources === 'fossil') {
+                  sourcesToRender = FOSSIL_SOURCES;
+                } else if (quickFilterSources === 'clean') {
+                  sourcesToRender = CLEAN_SOURCES;
+                } else {
+                  sourcesToRender = selectedSources;
+                }
+                return sourcesToRender.map(source => (
+                  <Line
+                    key={source}
+                    type="monotone"
+                    dataKey={source}
+                    name={getSourceName(source)}
+                    stroke={ENERGY_COLORS[source]}
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                ));
+              })()
+            )}
+          </LineChart>
+        </ResponsiveContainer>
+        <div className="text-xs text-gray-500 text-center mt-4">
+          Data sources: Our World in Data, BP Statistical Review
+        </div>
+        <ChartExportButtons
+          onDownloadPNG={() => downloadChartAsPNG('#chart-regional-timeseries', 'regional_energy_timeseries.png')}
+          onDownloadCSV={() => {
+            downloadDataAsCSV(chart1Data, 'regional_energy_timeseries.csv');
+          }}
+        />
+      </ChartFullscreenModal>
+
+      {/* Chart 2 Fullscreen Modal */}
+      <ChartFullscreenModal
+        isOpen={isFullscreenChart2}
+        onClose={() => setIsFullscreenChart2(false)}
+        title="Regional Clean Energy & Efficiency Comparison (2024)"
+        description="Clean energy share and overall efficiency across all regions"
+      >
+        <ResponsiveContainer width="100%" height={getChart2Height()}>
+          <BarChart
+            data={chart2Data}
+            margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+              dataKey="region"
+              angle={-45}
+              textAnchor="end"
+              height={120}
+            />
+            <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+            <Tooltip content={({ active, payload }) => {
+              if (!active || !payload || payload.length === 0) return null;
+              const data = payload[0].payload;
+              return (
+                <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+                  <div className="font-bold text-lg mb-2">{data.region}</div>
+                  <div className="space-y-1 text-sm">
+                    <div className="flex justify-between gap-4">
+                      <span className="text-gray-600">Clean Energy Share:</span>
+                      <span className="font-semibold text-green-600">{data.cleanShare.toFixed(1)}%</span>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <span className="text-gray-600">Overall Efficiency:</span>
+                      <span className="font-semibold text-blue-600">{data.efficiency.toFixed(1)}%</span>
+                    </div>
+                    <div className="flex justify-between gap-4 pt-2 border-t border-gray-200">
+                      <span className="text-gray-600">Total Energy:</span>
+                      <span className="font-semibold">{data.totalEnergy.toFixed(1)} PJ</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            }} />
+            <Legend />
+            <Bar dataKey="cleanShare" name="Clean Energy Share (%)" fill="#27AE60" />
+            <Bar dataKey="efficiency" name="Overall Efficiency (%)" fill="#3498DB" />
+          </BarChart>
+        </ResponsiveContainer>
+        <div className="text-xs text-gray-500 text-center mt-4">
+          Data sources: Our World in Data, BP Statistical Review
+        </div>
+        <ChartExportButtons
+          onDownloadPNG={() => downloadChartAsPNG('#chart-regional-comparison', 'regional_comparison_2024.png')}
+          onDownloadCSV={() => {
+            downloadDataAsCSV(chart2Data, 'regional_comparison_2024.csv');
+          }}
+        />
+      </ChartFullscreenModal>
+
+      {/* Chart 3 Fullscreen Modal */}
+      <ChartFullscreenModal
+        isOpen={isFullscreenChart3}
+        onClose={() => setIsFullscreenChart3(false)}
+        title="Regional Energy Mix Evolution"
+        description="Detailed energy source breakdown over time for selected region"
+      >
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <label className="block text-sm font-semibold mb-2 text-gray-700">
+              Select Region:
+            </label>
+            <select
+              value={selectedRegionForMix}
+              onChange={(e) => setSelectedRegionForMix(e.target.value)}
+              className="border border-gray-300 rounded-lg px-4 py-2 text-base"
+            >
+              {AVAILABLE_REGIONS.map(region => (
+                <option key={region} value={region}>{region}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Show Relative Values Toggle */}
+          <div className="flex items-center gap-3">
+            <label className="text-sm font-semibold text-gray-700">Show Relative Values</label>
+            <button
+              onClick={() => setShowRelativeChart3(!showRelativeChart3)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                showRelativeChart3 ? 'bg-blue-600' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  showRelativeChart3 ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+
+        <ResponsiveContainer width="100%" height={getChart3Height()}>
+          <AreaChart
+            data={chart3Data}
+            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis
+              label={{
+                value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Energy Services (PJ)',
+                angle: -90,
+                position: 'insideLeft'
+              }}
+              domain={showRelativeChart3 ? [0, 100] : [0, 'auto']}
+              ticks={showRelativeChart3 ? [0, 25, 50, 75, 100] : undefined}
+            />
+            <Tooltip content={({ active, payload, label }) => {
+              if (!active || !payload || payload.length === 0) return null;
+              const total = payload.reduce((sum, entry) => sum + (entry.value || 0), 0);
+              return (
+                <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+                  <div className="font-bold text-lg mb-2">{label}</div>
+                  <div className="space-y-1 text-sm">
+                    {payload.reverse().map((entry, index) => {
+                      if (showRelativeChart3) {
+                        // In relative mode, values are already percentages
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
+                              <span>{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold">{entry.value.toFixed(2)}%</span>
+                          </div>
+                        );
+                      } else {
+                        // In absolute mode, calculate percentages
+                        const percentage = total > 0 ? (entry.value / total * 100) : 0;
+                        return (
+                          <div key={index} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
+                              <span>{entry.name}:</span>
+                            </div>
+                            <span className="font-semibold">{entry.value.toFixed(2)} PJ ({percentage.toFixed(2)}%)</span>
+                          </div>
+                        );
+                      }
+                    })}
+                    {!showRelativeChart3 && (
+                      <div className="flex justify-between gap-4 pt-2 border-t border-gray-200 font-bold">
+                        <span>Total:</span>
+                        <span>{total.toFixed(2)} PJ (100%)</span>
+                      </div>
+                    )}
+                    {showRelativeChart3 && (
+                      <div className="flex justify-between gap-4 pt-2 border-t border-gray-200 font-bold">
+                        <span>Total:</span>
+                        <span>100%</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            }} />
+            <Legend />
+            {ENERGY_SOURCES.map(source => (
+              <Area
+                key={source}
+                type="monotone"
+                dataKey={source}
+                name={getSourceName(source)}
+                stackId="1"
+                stroke={ENERGY_COLORS[source]}
+                fill={ENERGY_COLORS[source]}
+              />
+            ))}
+          </AreaChart>
+        </ResponsiveContainer>
+        <div className="text-xs text-gray-500 text-center mt-4">
+          Data sources: Our World in Data, BP Statistical Review
+        </div>
+        <ChartExportButtons
+          onDownloadPNG={() => downloadChartAsPNG('#chart-energy-mix', `${selectedRegionForMix}_energy_mix.png`)}
+          onDownloadCSV={() => {
+            downloadDataAsCSV(chart3Data, `${selectedRegionForMix}_energy_mix.csv`);
+          }}
+        />
+      </ChartFullscreenModal>
+
       {/* Understanding Regional Energy Transitions */}
       <div className="metric-card bg-white mb-8 border-2 border-blue-200">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Understanding Regional Energy Transitions</h2>
