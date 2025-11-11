@@ -90,13 +90,20 @@ export default function InteractiveChart() {
     // If clicking an individual energy source (not fossil/clean), switch to individual mode
     if (sourceKey !== 'fossil' && sourceKey !== 'clean') {
       setViewMode('individual');
-      // When switching to individual mode, replace the selection with just this source
-      setSelectedSources(prev =>
-        prev.includes(sourceKey) && viewMode === 'individual'
-          ? prev.filter(s => s !== sourceKey)
-          : [sourceKey]
-      );
+
+      // Toggle the source in selectedSources (allow multiple selections)
+      setSelectedSources(prev => {
+        if (prev.includes(sourceKey)) {
+          // If removing and it's the last one, keep at least one source
+          const newSources = prev.filter(s => s !== sourceKey);
+          return newSources.length > 0 ? newSources : [sourceKey];
+        } else {
+          // Add the source to existing selections
+          return [...prev, sourceKey];
+        }
+      });
     } else {
+      // For grouped fossil/clean mode
       setSelectedSources(prev =>
         prev.includes(sourceKey)
           ? prev.filter(s => s !== sourceKey)

@@ -180,13 +180,26 @@ export default function EnergySupply() {
     // If clicking an individual energy source (not fossil/clean), switch to individual mode
     if (source !== 'fossil' && source !== 'clean') {
       setViewMode('individual');
-    }
 
-    setSelectedSources(prev =>
-      prev.includes(source)
-        ? prev.filter(s => s !== source)
-        : [...prev, source]
-    );
+      // Toggle the source in selectedSources
+      setSelectedSources(prev => {
+        if (prev.includes(source)) {
+          // If removing and it's the last one, keep at least one source
+          const newSources = prev.filter(s => s !== source);
+          return newSources.length > 0 ? newSources : [source];
+        } else {
+          // Add the source
+          return [...prev, source];
+        }
+      });
+    } else {
+      // For grouped fossil/clean mode
+      setSelectedSources(prev =>
+        prev.includes(source)
+          ? prev.filter(s => s !== source)
+          : [...prev, source]
+      );
+    }
   };
 
   const selectAllSources = () => {
