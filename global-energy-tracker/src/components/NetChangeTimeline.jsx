@@ -196,7 +196,7 @@ export default function NetChangeTimeline() {
   // Render chart content (used in both normal and fullscreen modes)
   const renderChartContent = () => (
     <>
-      <ResponsiveContainer width="100%" height={isFullscreen ? 600 : 500}>
+      <ResponsiveContainer width="100%" height={isFullscreen ? 700 : 500}>
         <ComposedChart
           data={timelineData}
           margin={{ top: 20, right: 30, left: 30, bottom: 30 }}
@@ -314,11 +314,11 @@ export default function NetChangeTimeline() {
             Historical Displacement & Net Change Timeline
           </h2>
           <div className="flex gap-2">
-            <FullscreenButton onClick={() => setIsFullscreen(true)} />
             <ChartExportButtons
               onDownloadPNG={downloadPNG}
               onDownloadCSV={downloadCSV}
             />
+            <FullscreenButton onClick={() => setIsFullscreen(true)} />
           </div>
         </div>
 

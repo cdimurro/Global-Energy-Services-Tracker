@@ -29,11 +29,11 @@ const ChartFullscreenModal = ({ isOpen, onClose, title, description, children })
 
   return (
     <div
-      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-2 sm:p-4"
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-lg shadow-2xl w-full h-full max-w-[98vw] max-h-[98vh] overflow-y-auto"
+        className="relative bg-white rounded-lg shadow-2xl w-full h-full overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -57,10 +57,10 @@ const ChartFullscreenModal = ({ isOpen, onClose, title, description, children })
         </button>
 
         {/* Content */}
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-6">
           {/* Title and Description */}
           {(title || description) && (
-            <div className="mb-6">
+            <div className="mb-4">
               {title && (
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
                   {title}
