@@ -20,9 +20,10 @@ Most energy analysis focuses on **primary energy** (total energy extracted from 
 
 When we measure **useful energy services** (the actual work/heat/light delivered after accounting for conversion losses), the energy transition looks dramatically different. 
 
-**Understanding the Primary Energy Fallacy**: Primary energy accounting overstates fossil fuel input because it counts all the energy that gets wasted as heat. When measuring useful energy services delivered, clean energy's efficiency advantage becomes clear - a unit of clean electricity delivers far more useful work than a unit of fossil fuel. However, this doesn't mean fossils are less dominant in absolute terms; it means they require more primary input to deliver the same services.
+### Understanding the Primary Energy Fallacy:
+Primary energy consumption overstates the contribution from fossil fuels because it includes all the energy that gets wasted as heat. When measuring useful energy services delivered, clean energy's efficiency advantage becomes clear - a unit of clean electricity delivers far more useful work than a unit of fossil fuel. However, this doesn't mean fossils are less dominant in absolute terms; it means they require more primary input to deliver the same services.
 
-This platform provides the first comprehensive, public-facing visualization of this reality.
+This platform was created to provide the first comprehensive, publicly accessible visualization of this reality.
 
 ---
 
@@ -85,7 +86,7 @@ Useful Energy = Primary Energy × Efficiency Factor
 - **Charts**: Recharts 3.3
 - **Data Pipeline**: Python + Pandas
 - **Data Sources**: Our World in Data (OWID) Energy Dataset
-- **Deployment**: Vercel (https://energy-services.vercel.app/)
+- **Deployment**: Vercel https://energy-services.vercel.app/
 
 ---
 
@@ -122,40 +123,6 @@ global-energy-tracker/
 ├── PROJECT_OVERVIEW.md     # Comprehensive methodology documentation
 ├── DATA_AND_ASSUMPTIONS.md # Technical reference with all calculations
 └── README.md               # This file
-```
-
----
-
-## Installation & Setup
-
-### Prerequisites
-- Node.js 18+ and npm
-- Python 3.8+ (for data pipeline)
-
-### Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/cdimurro/Global-Energy-Services-Tracker.git
-cd Global-Energy-Services-Tracker
-
-# Navigate to the tracker directory
-cd global-energy-tracker
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-The app will be available at `http://localhost:5173`
-
-### Build for Production
-
-```bash
-npm run build
-npm run preview  # Preview production build locally
 ```
 
 ---
