@@ -1,15 +1,8 @@
 /**
- * AI Chat Service - Claude API Integration
+ * AI Chat Service - Claude API Integration (Secure Proxy)
  * Provides context-aware responses using the fossil displacement dataset
+ * Uses backend proxy to keep API key secure
  */
-
-import Anthropic from '@anthropic-ai/sdk';
-
-// Initialize Claude client (API key from environment variable)
-const anthropic = new Anthropic({
-  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
-  dangerouslyAllowBrowser: true // Only for demo - use backend proxy in production
-});
 
 /**
  * Load all project data for AI context
@@ -172,7 +165,7 @@ Now respond to user questions using this format. Answer directly, then provide c
 }
 
 /**
- * Send message to Claude with full project context
+ * Send message to Claude via secure backend proxy
  */
 export async function sendMessage(userMessage, conversationHistory = []) {
   try {
@@ -194,36 +187,57 @@ export async function sendMessage(userMessage, conversationHistory = []) {
       }
     ];
 
-    // Call Claude API
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
-      system: systemPrompt,
-      messages: messages
+    // Call backend proxy endpoint
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: messages,
+        systemPrompt: systemPrompt,
+        model: 'claude-sonnet-4-20250514',
+        maxTokens: 2048
+      })
     });
 
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `API request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+
     return {
-      content: response.content[0].text,
+      content: data.content[0].text,
       role: 'assistant',
-      modelUsed: response.model,
+      modelUsed: data.model,
       tokensUsed: {
-        input: response.usage.input_tokens,
-        output: response.usage.output_tokens
+        input: data.usage.input_tokens,
+        output: data.usage.output_tokens
       }
     };
   } catch (error) {
     console.error('Claude API error:', error);
 
     // Provide helpful error messages
-    if (error.status === 401) {
+    if (error.message.includes('429')) {
       return {
-        content: 'API key not configured. Please add your Anthropic API key to the .env file as VITE_ANTHROPIC_API_KEY.',
+        content: 'Too many requests. Please wait a moment and try again.',
         role: 'assistant',
         error: true
       };
     }
 
-    if (error.status === 529) {
+    if (error.message.includes('401') || error.message.includes('authentication')) {
+      return {
+        content: 'API authentication failed. Please contact the site administrator.',
+        role: 'assistant',
+        error: true
+      };
+    }
+
+    if (error.message.includes('529')) {
       return {
         content: 'The AI service is currently experiencing high demand. Please wait a moment and try again.',
         role: 'assistant',
@@ -232,7 +246,7 @@ export async function sendMessage(userMessage, conversationHistory = []) {
     }
 
     return {
-      content: `Error: ${error.message}. Please try again or check your API configuration.`,
+      content: `Error: ${error.message}. Please try again or contact support if the issue persists.`,
       role: 'assistant',
       error: true
     };
