@@ -324,7 +324,7 @@ export default function DisplacementTracker() {
         <div className="flex flex-col items-center justify-center">
           <div className="w-full">
             <ResponsiveContainer width="100%" height={getChartHeight()}>
-              <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+              <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 60, bottom: 80 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
                   dataKey="name"
@@ -335,7 +335,7 @@ export default function DisplacementTracker() {
                   tick={{ fontSize: 12 }}
                 />
                 <YAxis
-                  label={{ value: 'Energy (EJ)', angle: -90, position: 'insideLeft' }}
+                  label={{ value: 'Energy (EJ)', angle: -90, position: 'insideLeft', offset: 10 }}
                   tick={{ fontSize: 12 }}
                 />
                 <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0, 0, 0, 0.05)' }} />
