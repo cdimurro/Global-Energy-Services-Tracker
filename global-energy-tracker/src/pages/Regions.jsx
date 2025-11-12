@@ -81,24 +81,25 @@ export default function Regions() {
     ])
       .then(([regionalData, globalData]) => {
         // Transform global data to match regional data structure
+        // Convert from EJ to PJ by multiplying by 1000
         const globalRegionData = {
           data: globalData.data.map(yearData => {
             const sources = yearData.sources_services_ej || {};
             return {
               year: yearData.year,
-              total_useful_ej: yearData.total_services_ej || 0,
-              fossil_useful_ej: yearData.fossil_services_ej || 0,
-              clean_useful_ej: yearData.clean_services_ej || 0,
+              total_useful_ej: (yearData.total_services_ej || 0) * 1000,
+              fossil_useful_ej: (yearData.fossil_services_ej || 0) * 1000,
+              clean_useful_ej: (yearData.clean_services_ej || 0) * 1000,
               sources_useful_ej: {
-                coal: sources.coal || 0,
-                oil: sources.oil || 0,
-                gas: sources.gas || 0,
-                nuclear: sources.nuclear || 0,
-                hydro: sources.hydro || 0,
-                wind: sources.wind || 0,
-                solar: sources.solar || 0,
-                biofuels: sources.biomass || 0,
-                other_renewables: (sources.geothermal || 0) + (sources.other || 0)
+                coal: (sources.coal || 0) * 1000,
+                oil: (sources.oil || 0) * 1000,
+                gas: (sources.gas || 0) * 1000,
+                nuclear: (sources.nuclear || 0) * 1000,
+                hydro: (sources.hydro || 0) * 1000,
+                wind: (sources.wind || 0) * 1000,
+                solar: (sources.solar || 0) * 1000,
+                biofuels: (sources.biomass || 0) * 1000,
+                other_renewables: ((sources.geothermal || 0) + (sources.other || 0)) * 1000
               },
               fossil_share_percent: yearData.fossil_share_percent || 0,
               clean_share_percent: yearData.clean_share_percent || 0,
@@ -312,15 +313,15 @@ export default function Regions() {
     if (viewMode === 'regions') {
       // Handle virtual source labels
       if (selectedSource === 'all') {
-        return 'All Sources Energy Services (EJ)';
+        return 'All Sources Energy Services (PJ)';
       } else if (selectedSource === 'fossil') {
-        return 'Fossil Fuels Energy Services (EJ)';
+        return 'Fossil Fuels Energy Services (PJ)';
       } else if (selectedSource === 'clean') {
-        return 'Clean Energy Services (EJ)';
+        return 'Clean Energy Services (PJ)';
       }
-      return `${getSourceName(selectedSource)} Energy Services (EJ)`;
+      return `${getSourceName(selectedSource)} Energy Services (PJ)`;
     } else {
-      return 'Energy Services (EJ)';
+      return 'Energy Services (PJ)';
     }
   };
 
