@@ -230,18 +230,11 @@ export default function NetChangeTimeline() {
           margin={{ top: 20, right: 30, left: 30, bottom: 30 }}
         >
           <defs>
+            {/* Conditional fill for Net Change based on positive/negative */}
             <linearGradient id="netChangeGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#DC2626" stopOpacity={0.6} />
-              <stop offset="50%" stopColor="#94a3b8" stopOpacity={0.1} />
-              <stop offset="100%" stopColor="#16A34A" stopOpacity={0.6} />
-            </linearGradient>
-            <linearGradient id="displacementGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#16A34A" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#16A34A" stopOpacity={0.1} />
-            </linearGradient>
-            <linearGradient id="efficiencyGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#2563EB" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#2563EB" stopOpacity={0.1} />
+              <stop offset="0%" stopColor="#DC2626" stopOpacity={1} />
+              <stop offset="50%" stopColor="#94a3b8" stopOpacity={0.2} />
+              <stop offset="100%" stopColor="#16A34A" stopOpacity={1} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -291,7 +284,7 @@ export default function NetChangeTimeline() {
             stroke="#16A34A"
             strokeWidth={2}
             strokeDasharray="5 5"
-            fill="url(#displacementGradient)"
+            fill="none"
             name="Clean Displacement"
           />
           <Area
@@ -301,7 +294,7 @@ export default function NetChangeTimeline() {
             stroke="#2563EB"
             strokeWidth={2}
             strokeDasharray="5 5"
-            fill="url(#efficiencyGradient)"
+            fill="none"
             name="Efficiency Savings"
           />
 
@@ -313,7 +306,7 @@ export default function NetChangeTimeline() {
             strokeWidth={3}
             fill="url(#netChangeGradient)"
             name="Net Change"
-            fillOpacity={0.7}
+            fillOpacity={1}
           />
 
         </ComposedChart>
