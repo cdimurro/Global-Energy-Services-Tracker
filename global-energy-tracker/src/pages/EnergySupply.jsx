@@ -39,7 +39,7 @@ export default function EnergySupply() {
   // Load data
   useEffect(() => {
     Promise.all([
-      fetch('/data/energy_services_timeseries.json').then(r => r.json()),
+      fetch('/data/useful_energy_timeseries.json').then(r => r.json()),
       fetch('/data/demand_growth_projections.json').then(r => r.json()),
       fetch('/data/efficiency_factors_corrected.json').then(r => r.json())
     ]).then(([useful, projections, efficiency]) => {
@@ -69,7 +69,7 @@ export default function EnergySupply() {
         clean: { waste: 0 }
       };
 
-      Object.entries(yearData.sources_services_ej).forEach(([source, useful]) => {
+      Object.entries(yearData.sources_useful_ej).forEach(([source, useful]) => {
         const efficiency = eff[source] || 0.5;
         const primary = useful / efficiency;
         const waste = primary - useful;
@@ -110,7 +110,7 @@ export default function EnergySupply() {
             clean: { waste: 0 }
           };
 
-          Object.entries(yearData.sources_services_ej).forEach(([source, useful]) => {
+          Object.entries(yearData.sources_useful_ej).forEach(([source, useful]) => {
             let efficiency = eff[source] || 0.5;
 
             // Apply efficiency improvements for clean sources based on scenario

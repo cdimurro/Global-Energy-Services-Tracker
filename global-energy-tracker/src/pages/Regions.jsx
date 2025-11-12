@@ -77,29 +77,29 @@ export default function Regions() {
   useEffect(() => {
     Promise.all([
       fetch('/data/regional_energy_timeseries.json').then(res => res.json()),
-      fetch('/data/energy_services_timeseries.json').then(res => res.json())
+      fetch('/data/useful_energy_timeseries.json').then(res => res.json())
     ])
       .then(([regionalData, globalData]) => {
         // Transform global data to match regional data structure
         const globalRegionData = {
           data: globalData.data.map(yearData => ({
             year: yearData.year,
-            total_services_ej: yearData.total_services_ej,
-            fossil_services_ej: yearData.fossil_services_ej,
-            clean_services_ej: yearData.clean_services_ej,
-            sources_services_ej: {
-              coal: yearData.sources_services_ej.coal || 0,
-              oil: yearData.sources_services_ej.oil || 0,
-              gas: yearData.sources_services_ej.gas || 0,
-              nuclear: yearData.sources_services_ej.nuclear || 0,
-              hydro: yearData.sources_services_ej.hydro || 0,
-              wind: yearData.sources_services_ej.wind || 0,
-              solar: yearData.sources_services_ej.solar || 0,
-              biofuels: yearData.sources_services_ej.biomass || 0,
-              other_renewables: (yearData.sources_services_ej.geothermal || 0) + (yearData.sources_services_ej.other || 0)
+            total_useful_ej: yearData.total_useful_ej,
+            fossil_useful_ej: yearData.fossil_useful_ej,
+            clean_useful_ej: yearData.clean_useful_ej,
+            sources_useful_ej: {
+              coal: yearData.sources_useful_ej.coal || 0,
+              oil: yearData.sources_useful_ej.oil || 0,
+              gas: yearData.sources_useful_ej.gas || 0,
+              nuclear: yearData.sources_useful_ej.nuclear || 0,
+              hydro: yearData.sources_useful_ej.hydro || 0,
+              wind: yearData.sources_useful_ej.wind || 0,
+              solar: yearData.sources_useful_ej.solar || 0,
+              biofuels: yearData.sources_useful_ej.biomass || 0,
+              other_renewables: (yearData.sources_useful_ej.geothermal || 0) + (yearData.sources_useful_ej.other || 0)
             },
-            fossil_services_share_percent: yearData.fossil_services_share_percent,
-            clean_services_share_percent: yearData.clean_services_share_percent,
+            fossil_share_percent: yearData.fossil_share_percent,
+            clean_share_percent: yearData.clean_share_percent,
             efficiency_percent: yearData.overall_efficiency || 0
           }))
         };
