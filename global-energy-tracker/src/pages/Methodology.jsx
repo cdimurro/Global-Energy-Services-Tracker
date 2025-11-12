@@ -124,7 +124,7 @@ export default function Methodology() {
                 <strong>Clean Energy Displacement (D):</strong> The amount of fossil fuel consumption replaced by clean energy growth in a given year.
               </div>
               <div className="border-l-4 border-blue-600 pl-4">
-                <strong>Efficiency Savings:</strong> The reduction in fossil fuel consumption achieved through improvements in energy efficiency, measured by changes in global exergy efficiency over time.
+                <strong>Efficiency Savings:</strong> The reduction in energy consumption achieved through improvements in energy efficiency, measured by changes in global exergy efficiency over time.
               </div>
               <div className="border-l-4 border-purple-600 pl-4">
                 <strong>Net Change:</strong> The difference in the amount of fossil fuel consumption after accounting for displacement and efficiency savings in a given year.

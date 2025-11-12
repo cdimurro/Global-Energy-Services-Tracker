@@ -100,9 +100,25 @@ export default function EnergySupply() {
 
     // Process projection data (2025-2050) based on selected scenario
     let projections = [];
-    if (projectionsData) {
+    if (projectionsData && historical.length > 0) {
       const scenario = projectionsData.scenarios.find(s => s.name === selectedScenario);
-      if (scenario) {
+      if (scenario && scenario.data.length > 0) {
+        // Get 2024 baseline from historical data
+        const baseline2024 = historical[historical.length - 1];
+
+        // Get 2025 projection to calculate growth rates
+        const projection2025 = scenario.data[0];
+
+        // Calculate source-by-source growth rates from projection
+        const growthRates = {};
+        if (projection2025.sources_services_ej && baseline2024.sources) {
+          Object.keys(projection2025.sources_services_ej).forEach(source => {
+            const proj2025 = projection2025.sources_services_ej[source] || 0;
+            const hist2024 = baseline2024.sources[source]?.useful || 0;
+            growthRates[source] = hist2024 > 0 ? (proj2025 - hist2024) / hist2024 : 0;
+          });
+        }
+
         projections = scenario.data.map((yearData, index) => {
           const processed = {
             year: yearData.year,
@@ -112,14 +128,21 @@ export default function EnergySupply() {
             clean: { waste: 0 }
           };
 
-          if (!yearData.sources_useful_ej) return processed;
+          if (!yearData.sources_services_ej) return processed;
 
-          Object.entries(yearData.sources_useful_ej).forEach(([source, useful]) => {
+          Object.entries(yearData.sources_services_ej).forEach(([source, projValue]) => {
+            // Calculate calibrated value starting from actual 2024
+            const yearsSince2024 = yearData.year - 2024;
+            const hist2024Value = baseline2024.sources[source]?.useful || 0;
+            const growthRate = growthRates[source] || 0;
+
+            // Apply growth rate from 2024 baseline
+            const useful = hist2024Value * Math.pow(1 + growthRate, yearsSince2024);
+
             let efficiency = eff[source] || 0.5;
 
             // Apply efficiency improvements for clean sources based on scenario
             if (CLEAN_SOURCES.includes(source)) {
-              const yearsSince2024 = yearData.year - 2024;
               if (selectedScenario.includes('Accelerated')) {
                 efficiency = Math.min(0.95, efficiency + (yearsSince2024 * 0.01)); // +1%/year, max 95%
               } else if (selectedScenario.includes('Net-Zero')) {
