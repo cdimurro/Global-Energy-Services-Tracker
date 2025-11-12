@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(exit 0)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(find:*)",
+      "Bash(for file in components/DisplacementBySource.jsx components/DisplacementTracker.jsx components/InteractiveChart.jsx components/NetChangeTimeline.jsx components/ParameterStatusTable.jsx components/SectoralEnergyGrowth.jsx pages/EnergySupply.jsx pages/Regions.jsx services/aiChatService.js)",
+      "Bash(do sed -i 's|/data/useful_energy_timeseries\\.json|/data/energy_services_timeseries.json|g' \"$file\")",
+      "Bash(done)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

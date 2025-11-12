@@ -22,7 +22,7 @@ export default function DisplacementTracker() {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
-    fetch('/data/useful_energy_timeseries.json')
+    fetch('/data/energy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         setEnergyData(data);
@@ -44,34 +44,34 @@ export default function DisplacementTracker() {
     const previousYear = timeseries[timeseries.length - 2];
 
     // Calculate fossil fuel growth
-    const fossilGrowthValue = currentYear.fossil_useful_ej - previousYear.fossil_useful_ej;
+    const fossilGrowthValue = currentYear.fossil_services_ej - previousYear.fossil_services_ej;
 
     // Calculate clean growth
-    const cleanGrowth = currentYear.clean_useful_ej - previousYear.clean_useful_ej;
+    const cleanGrowth = currentYear.clean_services_ej - previousYear.clean_services_ej;
 
     // Displacement (D) = clean energy growth (positive only)
     // This represents clean services added, which offset fossil growth
     const displacementValue = Math.max(0, cleanGrowth);
 
     // Total Energy Service Growth = Total energy change year-over-year
-    const totalEnergyGrowthValue = currentYear.total_useful_ej - previousYear.total_useful_ej;
-    const totalEnergyGrowthPercentValue = previousYear.total_useful_ej > 0
-      ? (totalEnergyGrowthValue / previousYear.total_useful_ej) * 100
+    const totalEnergyGrowthValue = currentYear.total_services_ej - previousYear.total_services_ej;
+    const totalEnergyGrowthPercentValue = previousYear.total_services_ej > 0
+      ? (totalEnergyGrowthValue / previousYear.total_services_ej) * 100
       : 0;
 
     // Net Change = Fossil Growth - Clean Displacement
     // This is what we're trying to track - is fossil going up or down?
     const netChangeValue = fossilGrowthValue - displacementValue;
-    const netChangePercentValue = previousYear.fossil_useful_ej > 0
-      ? (netChangeValue / previousYear.fossil_useful_ej) * 100
+    const netChangePercentValue = previousYear.fossil_services_ej > 0
+      ? (netChangeValue / previousYear.fossil_services_ej) * 100
       : 0;
 
     // Relative changes for clean and fossil
-    const cleanRelativeChangeValue = previousYear.clean_useful_ej > 0
-      ? (cleanGrowth / previousYear.clean_useful_ej) * 100
+    const cleanRelativeChangeValue = previousYear.clean_services_ej > 0
+      ? (cleanGrowth / previousYear.clean_services_ej) * 100
       : 0;
-    const fossilRelativeChangeValue = previousYear.fossil_useful_ej > 0
-      ? (fossilGrowthValue / previousYear.fossil_useful_ej) * 100
+    const fossilRelativeChangeValue = previousYear.fossil_services_ej > 0
+      ? (fossilGrowthValue / previousYear.fossil_services_ej) * 100
       : 0;
 
     setDisplacementRate(displacementValue);
@@ -193,8 +193,8 @@ export default function DisplacementTracker() {
       const prev = timeseries[i - 1];
       const curr = timeseries[i];
 
-      const fossilGrowthValue = curr.fossil_useful_ej - prev.fossil_useful_ej;
-      const cleanGrowthValue = curr.clean_useful_ej - prev.clean_useful_ej;
+      const fossilGrowthValue = curr.fossil_services_ej - prev.fossil_services_ej;
+      const cleanGrowthValue = curr.clean_services_ej - prev.clean_services_ej;
 
       // Displacement is clean growth (if positive)
       const displacementValue = Math.max(0, cleanGrowthValue);
@@ -218,8 +218,8 @@ export default function DisplacementTracker() {
         cleanGrowthValue.toFixed(4),
         netChangeValue.toFixed(4),
         status,
-        curr.fossil_useful_ej.toFixed(4),
-        curr.clean_useful_ej.toFixed(4)
+        curr.fossil_services_ej.toFixed(4),
+        curr.clean_services_ej.toFixed(4)
       ]);
     }
 

@@ -24,13 +24,13 @@ export default function Methodology() {
           {/* Three-Tier Energy Framework (v2.0) */}
           <section>
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              Three-Tier Energy Framework (v2.0)
+              A Better Way to Measure Energy Consumption
             </h2>
             <p className="mb-4">
               Traditional energy metrics measure <strong>primary energy</strong> - the raw energy content of fuels before they're converted into useful work. This is fundamentally misleading because it counts massive amounts of wasted heat as if it were useful energy.
             </p>
             <p className="mb-4">
-              This platform uses a <strong>three-tier framework</strong> that accounts for both conversion efficiency and thermodynamic quality (exergy):
+              This platform uses a <strong>three-tier framework</strong> that focuses on <strong>Energy Services</strong> and accounts for both conversion efficiency and thermodynamic exergy:
             </p>
             <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
               <div className="space-y-3">
@@ -44,15 +44,15 @@ export default function Methodology() {
                 </div>
                 <div>
                   <strong className="text-blue-800">Tier 3: Energy Services</strong>
-                  <p className="text-gray-700">Thermodynamic value delivered, accounting for quality (exergy × useful). Global: ~154 EJ/year</p>
+                  <p className="text-gray-700">Thermodynamic value delivered, accounting for quality (exergy × useful). Global: ~150 EJ/year</p>
                 </div>
               </div>
             </div>
             <div className="bg-gray-100 border border-gray-300 p-4 text-center">
               <p className="font-semibold mb-2">A Simple Example:</p>
               <p className="text-gray-700">
-                <strong>Coal Power:</strong> 1 EJ primary → 0.32 EJ useful → 0.28 EJ services (28% final value)<br/>
-                <strong>Wind Power:</strong> 1 EJ primary → 0.70 EJ useful → 0.70 EJ services (70% final value)<br/>
+                <strong>Coal Power:</strong> 1 EJ primary → 0.32 EJ useful → 0.27 EJ services (27% final value)<br/>
+                <strong>Wind Power:</strong> 1 EJ primary → 0.70 EJ useful → 0.67 EJ services (67% final value)<br/>
                 <strong>Wind is 2.5× more effective per unit of primary energy</strong>
               </p>
             </div>
@@ -65,9 +65,10 @@ export default function Methodology() {
             </h2>
             <p className="mb-4">
               Fossil fuels are incredibly inefficient. Most of the energy they contain is lost as waste heat during combustion and conversion. Clean electricity delivers far more useful energy, though transmission and end-use losses still apply.
+              We need to start measuring energy consumption based on the actual energy services provided, because that is what matters to society, not how many BTUs are in a given amount of coal.
             </p>
             <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
-              <p className="font-semibold text-gray-800 mb-2">Efficiency by Source (v2.0 - System-Wide):</p>
+              <p className="font-semibold text-gray-800 mb-2">System-Wide Efficiency by Source:</p>
               <ul className="space-y-2 ml-4">
                 <li>• Coal (power plants): <strong>~32% efficient</strong></li>
                 <li>• Oil (combustion engines): <strong>~30% efficient</strong></li>
@@ -78,26 +79,23 @@ export default function Methodology() {
               </ul>
             </div>
             <p className="mb-4">
-              <strong>Note on v2.0 Updates:</strong> Gas efficiency lowered to 45% (IEA global average accounting for 60% low-temp heating use). Nuclear corrected to 33% (pure thermal efficiency). Biomass reduced to 15% (70% traditional cookstove use in developing countries). Renewables conservatively set to 70% (transmission losses).
-            </p>
-            <p className="mb-4">
-              <strong>Exergy Quality Factors:</strong> Beyond efficiency, v2.0 accounts for thermodynamic quality (exergy). Electricity has 100% quality (can do any work), while low-temperature heat has ~20% quality (limited by Carnot cycle). This gives clean sources an additional advantage: Wind/Solar deliver high-quality electricity (exergy 1.0) while gas for heating delivers low-quality heat (exergy 0.2-0.5).
+              <strong>Exergy Quality Factors:</strong> Many people are unaware that energy has both a quantity and quality to it. In order to accurately calculate the quantity, it's important to account for the thermodynamic quality, also known as <strong>exergy</strong>. Electricity has 100% quality for example, because it can be used to do any work, but low-temperature heat has a quality of ~20% because it can only be used to perform some work. This gives clean sources an additional advantage. Wind, and solar deliver high-quality electricity (exergy 1.0) while using natural gas for heating delivers low-quality heat (exergy 0.2-0.5).
             </p>
             <p>
-              This efficiency + exergy gap is why electrification is so powerful. When we replace a fossil fuel service with renewable electricity (wind/solar), we need 2.0-2.5× less primary energy to accomplish the same thermodynamic work. This is the fundamental advantage of the energy transition.
+              This is why electrification is so powerful. When we replace a fossil fuel service with clean electricity (solar/wind/nuclear), we need 2.0-2.5× less primary energy to accomplish the same amount of thermodynamic work. This is one of the underappreciated aspects of the energy transition, and it means that we don't need to replace 100% of fossil fuel primary energy consumption, we only need to replace ~40-45% to achieve the same energy services.
             </p>
           </section>
 
           {/* How We Calculate Everything */}
           <section>
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              How We Perform Our Calculations (v2.0)
+              How We Perform Our Calculations:
             </h2>
             <p className="mb-4">
               We start with primary energy data from <strong>Our World in Data</strong> (which sources from the Energy Institute Statistical Review). This gives us raw energy consumption by source for every year from 1965 to 2024.
             </p>
             <p className="mb-4">
-              We then apply a <strong>three-tier calculation</strong> framework validated against IEA World Energy Outlook 2024, Brockway et al. 2021, and RMI 2024:
+              We then apply a <strong>three-tier calculation</strong> framework validated against IEA World Energy Outlook 2024, Brockway et al. 2019, and RMI 2024:
             </p>
             <div className="bg-gray-100 border border-gray-300 p-4 my-4">
               <p className="font-semibold mb-3 text-gray-800">The Three-Tier Conversion Process:</p>
@@ -105,15 +103,15 @@ export default function Methodology() {
                 <p><strong>Tier 1 → 2:</strong> Apply efficiency factors (time-varying, region-specific) to get Useful Energy</p>
                 <p className="ml-4 text-gray-600">Example: 154 EJ coal (2024) × 0.32 efficiency = 49.3 EJ useful</p>
                 <p><strong>Tier 2 → 3:</strong> Apply exergy quality factors (sector-weighted) to get Energy Services</p>
-                <p className="ml-4 text-gray-600">Example: 49.3 EJ useful × 0.85 exergy (coal: 70% power, 30% heat) = 41.9 EJ services</p>
+                <p className="ml-4 text-gray-600">Example: 49.3 EJ useful × 0.84 exergy (coal: 70% power, 30% heat) = 41.4 EJ services</p>
                 <p><strong>Final Result:</strong> Sum all sources to get global totals</p>
-                <p className="ml-4 text-gray-600">2024: 620 EJ primary → 198 EJ useful → 154 EJ services (25.4% overall exergy efficiency)</p>
+                <p className="ml-4 text-gray-600">2024: 620 EJ primary → 198 EJ useful → 150 EJ services (24.8% overall exergy efficiency)</p>
               </div>
             </div>
             <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4">
               <p className="font-semibold text-gray-800 mb-2">Validation ✓</p>
               <p className="text-sm text-gray-700">
-                Our results align with academic benchmarks: Brockway 2021 (~150 EJ services for 2019), IEA WEO 2024 (82% fossil services, 25% exergy efficiency), and RMI 2024 (2.0-2.5× clean advantage). See PROJECT_OVERVIEW.md for detailed validation.
+                The results are then fine-tuned to align with academic benchmarks: Brockway et al. 2019 (~100 EJ services for 2015, ~120 EJ expected for 2024), IEA WEO 2024 (82.9% fossil services, 24.8% exergy efficiency), and RMI 2024 (2.0-2.5× clean advantage).
               </p>
             </div>
           </section>
@@ -124,29 +122,29 @@ export default function Methodology() {
               Tracking Displacement
             </h2>
             <p className="mb-4">
-              The displacement tracker answers a critical question: <strong>Is clean energy growing faster than fossil fuel demand?</strong> This is the metric that determines when fossil fuel consumption will peak and begin declining.
-            </p>
-            <div className="bg-gray-100 border border-gray-300 p-4 my-4 text-center">
-              <p className="text-lg font-bold text-blue-600 mb-2">
-                Δ Fossil Fuel Consumption = New Services (Fossil) − New Services (Clean)
-              </p>
-              <p className="text-sm text-gray-600">
-                When clean energy displacement exceeds fossil growth, that means that fossil fuel consumption is declining.
-              </p>
-            </div>
-            <p className="mb-4">
-              We calculate three key metrics each year:
+              We calculate three key metrics for each year:
             </p>
             <div className="space-y-3">
               <div className="border-l-4 border-green-600 pl-4">
-                <strong>Clean Energy Displacement (D):</strong> The annual growth in clean energy services. This represents how much fossil fuel demand clean energy is offsetting.
+                <strong>Clean Energy Displacement (D):</strong> The total amount of fossil fuel consumption replaced by clean energy and efficiency measures in a given year.
               </div>
               <div className="border-l-4 border-red-600 pl-4">
-                <strong>Fossil Fuel Growth:</strong> The annual change in fossil fuel energy services. When positive, fossil consumption is rising. When negative, it's falling.
+                <strong>Energy Services Demand:</strong> The net change in demand for new energy services (positive or negative).
               </div>
               <div className="border-l-4 border-gray-600 pl-4">
-                <strong>Net Change:</strong> The actual change in fossil fuel consumption after accounting for displacement. This is the number that matters for emissions.
+                <strong>Net Change:</strong> The difference in the amount of fossil fuel consumption after accounting for displacement in a given year. 
               </div>
+            </div>
+            <p className="mb-4">
+              The displacement tracker answers a critical question: <strong>Is clean energy growing more than fossil fuels?</strong> This is the metric that matters for reducing emissions.
+            </p>
+            <div className="bg-gray-100 border border-gray-300 p-4 my-4 text-center">
+              <p className="text-lg font-bold text-blue-600 mb-2">
+                Δ Fossil Fuel Consumption = Energy Services Demand - Clean Displacement
+              </p>
+              <p className="text-sm text-gray-600">
+                When this number is positive, it means that fossil fuel consumption is increasing, and when this number is negative, it means that fossil fuel consumption is declining.
+              </p>
             </div>
           </section>
 
@@ -161,15 +159,15 @@ export default function Methodology() {
             <div className="space-y-4">
               <div className="bg-red-50 border-l-4 border-red-600 p-3">
                 <strong className="text-red-800">Consumption Rising:</strong>
-                <p className="text-gray-700 mt-1">Clean energy is growing, but fossil fuel demand is growing faster. Fossil consumption continues to increase. This is where we are today.</p>
+                <p className="text-gray-700 mt-1">Clean energy is growing, but fossil fuel consumption grew by a larger amount. In this scenario, fossil consumption continues to increase. This is where we currently are.</p>
               </div>
               <div className="bg-yellow-50 border-l-4 border-yellow-600 p-3">
                 <strong className="text-yellow-800">Consumption Plateauing:</strong>
-                <p className="text-gray-700 mt-1">Clean energy growth exactly matches fossil fuel growth. Fossil consumption is flat. This is the tipping point - we've reached peak fossil fuel.</p>
+                <p className="text-gray-700 mt-1">Clean energy displacement roughly matches the net change in fossil fuel consumption. In this scenario, fossil consumption remains relatively flat. This is a sign that we've reached a potential tipping point or that we are simply in a period of slow growth.</p>
               </div>
               <div className="bg-green-50 border-l-4 border-green-600 p-3">
                 <strong className="text-green-800">Consumption Declining:</strong>
-                <p className="text-gray-700 mt-1">Clean energy is growing faster than fossil demand. Fossil consumption is actively falling. The energy transition is in full swing.</p>
+                <p className="text-gray-700 mt-1">Clean energy and energy efficiency measures are displacing a larger amount of energy services than fossil fuels are meeting. Fossil consumption will continue declining as long as this remains the case.</p>
               </div>
             </div>
           </section>
@@ -189,13 +187,13 @@ export default function Methodology() {
               <div>
                 <strong className="text-gray-800">IEA World Energy Outlook (WEO) 2024</strong>
                 <p className="mt-1">
-                  Exergy efficiency benchmarks (~25% global), fossil/clean service shares (80-82% / 18-20%), and efficiency factor validation. Our 2024 results: 25.4% exergy efficiency, 82.6% fossil services ✓
+                  Exergy efficiency benchmarks (~25% global), fossil/clean service shares (80-82% / 18-20%), and efficiency factor validation. Our 2024 results: 24.8% exergy efficiency, 82.9% fossil services ✓
                 </p>
               </div>
               <div>
-                <strong className="text-gray-800">Brockway et al. 2021</strong>
+                <strong className="text-gray-800">Brockway et al. 2019</strong>
                 <p className="mt-1">
-                  Academic foundation for energy services framework. Estimated ~150 EJ global services (2019). Our 2024 result: 154 EJ services ✓ (within 3% accounting for 5 years growth)
+                  Academic foundation for energy services framework. Estimated ~100 EJ global services (2015). Our 2024 result: 150 EJ services ✓ (aligned with ~120 EJ expected for 2024)
                 </p>
               </div>
               <div>

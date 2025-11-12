@@ -18,7 +18,7 @@ export async function loadProjectContext() {
       sectoralResponse,
       ffGrowthResponse
     ] = await Promise.all([
-      fetch('/data/useful_energy_timeseries.json'),
+      fetch('/data/energy_services_timeseries.json'),
       fetch('/data/demand_growth_projections.json'),
       fetch('/data/efficiency_factors_corrected.json'),
       fetch('/data/regional_energy_timeseries.json'),
@@ -59,15 +59,15 @@ function buildSystemPrompt(projectData) {
   const metadata = projections.metadata;
 
   // Calculate year-over-year changes
-  const fossilChange = latest.fossil_useful_ej - previous.fossil_useful_ej;
-  const cleanChange = latest.clean_useful_ej - previous.clean_useful_ej;
-  const totalChange = latest.total_useful_ej - previous.total_useful_ej;
+  const fossilChange = latest.fossil_services_ej - previous.fossil_services_ej;
+  const cleanChange = latest.clean_services_ej - previous.clean_services_ej;
+  const totalChange = latest.total_services_ej - previous.total_services_ej;
   const displacement = Math.max(0, cleanChange);
 
   // Calculate source-specific changes
-  const sourceChanges = Object.keys(latest.sources_useful_ej).map(source => {
-    const curr = latest.sources_useful_ej[source] || 0;
-    const prev = previous.sources_useful_ej[source] || 0;
+  const sourceChanges = Object.keys(latest.sources_services_ej).map(source => {
+    const curr = latest.sources_services_ej[source] || 0;
+    const prev = previous.sources_services_ej[source] || 0;
     const change = curr - prev;
     return `${source}: ${curr.toFixed(2)} EJ (${change > 0 ? '+' : ''}${change.toFixed(2)} EJ change from ${previous.year})`;
   }).join('\n');
@@ -77,9 +77,9 @@ function buildSystemPrompt(projectData) {
 # YOUR PRIMARY DATA SOURCE (ALWAYS PRIORITIZE THIS)
 
 ## Current Status (${latest.year})
-Total Useful Energy: ${latest.total_useful_ej.toFixed(1)} EJ (${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)} EJ from ${previous.year})
-Fossil Useful Energy: ${latest.fossil_useful_ej.toFixed(1)} EJ (${fossilChange > 0 ? '+' : ''}${fossilChange.toFixed(2)} EJ from ${previous.year})
-Clean Useful Energy: ${latest.clean_useful_ej.toFixed(1)} EJ (${cleanChange > 0 ? '+' : ''}${cleanChange.toFixed(2)} EJ from ${previous.year})
+Total Energy Services: ${latest.total_services_ej.toFixed(1)} EJ (${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)} EJ from ${previous.year})
+Fossil Energy Services: ${latest.fossil_services_ej.toFixed(1)} EJ (${fossilChange > 0 ? '+' : ''}${fossilChange.toFixed(2)} EJ from ${previous.year})
+Clean Energy Services: ${latest.clean_services_ej.toFixed(1)} EJ (${cleanChange > 0 ? '+' : ''}${cleanChange.toFixed(2)} EJ from ${previous.year})
 
 ## Year-over-Year Changes (${previous.year} to ${latest.year})
 Fossil Fuel Growth: ${fossilChange > 0 ? '+' : ''}${fossilChange.toFixed(2)} EJ
@@ -109,7 +109,7 @@ ${metadata.rmi_baseline_note}
 ${projections.scenarios
   .find(s => s.name === 'Baseline (STEPS)')
   ?.data.filter(d => [2030, 2040, 2050].includes(d.year))
-  .map(d => `- ${d.year}: ${d.total_useful_ej.toFixed(1)} EJ total (${d.fossil_useful_ej.toFixed(1)} fossil, ${d.clean_useful_ej.toFixed(1)} clean)`)
+  .map(d => `- ${d.year}: ${d.total_services_ej.toFixed(1)} EJ total (${d.fossil_services_ej.toFixed(1)} fossil, ${d.clean_services_ej.toFixed(1)} clean)`)
   .join('\n')}
 
 ## Historical Trends Available:
@@ -121,7 +121,7 @@ ${projections.scenarios
 You have access to detailed regional breakdowns for ${regional ? Object.keys(regional.regions || {}).length : 0} regions covering 1965-${latest.year}:
 ${regional && regional.regions ?
   `- Regions tracked: ${Object.keys(regional.regions).slice(0, 10).join(', ')}${Object.keys(regional.regions).length > 10 ? ', and more' : ''}
-- Each region includes: total useful energy, fossil/clean split, source breakdown, efficiency percentage
+- Each region includes: total energy services, fossil/clean split, source breakdown, efficiency percentage
 - Can answer questions like "What is China's clean energy share?" or "How has Europe's energy mix changed since 1990?"`
   : '- Regional data loading...'}
 
@@ -156,7 +156,7 @@ You have access to detailed fossil fuel growth patterns and displacement dynamic
 - Can answer questions about ANY year from 1965 to ${latest.year}
 - When asked about historical years (e.g., "What was the energy mix in 1980?"), reference the historical data array
 - Can calculate trends between any two years in this range
-- Example: "In 1965, total useful energy was ${historical.data[0].total_useful_ej.toFixed(1)} EJ with ${historical.data[0].clean_share_percent.toFixed(1)}% clean"
+- Example: "In 1965, total energy services was ${historical.data[0].total_services_ej.toFixed(1)} EJ with ${historical.data[0].clean_services_share_percent.toFixed(1)}% clean"
 
 ## When Dataset Cannot Answer:
 If a question is about:
@@ -208,14 +208,14 @@ You have access to:
 # EXAMPLE RESPONSES
 
 User: "When will fossil fuels peak?"
-You: "According to the Baseline scenario (aligned with BP and IEA STEPS), fossil fuel consumption is projected to peak in 2030 at approximately 191 EJ of useful energy services.
+You: "According to the Baseline scenario (aligned with BP and IEA STEPS), fossil fuel consumption is projected to peak in 2030 at approximately 191 EJ of energy services services.
 
 This timing represents the point where clean energy displacement exceeds fossil fuel growth. Clean energy is growing at about 3 EJ per year while fossil fuel growth is slowing to around 0.4% annually.
 
 After the 2030 peak, fossil consumption declines to 150 EJ by 2040 and 105 EJ by 2050 in the Baseline scenario. The Accelerated and Net-Zero scenarios show earlier peaks with steeper declines."
 
 User: "What was the absolute increase in fossil fuel energy services in 2024?"
-You: "Fossil fuel energy services increased by ${fossilChange.toFixed(2)} EJ in ${latest.year}, rising from ${previous.fossil_useful_ej.toFixed(1)} EJ in ${previous.year} to ${latest.fossil_useful_ej.toFixed(1)} EJ in ${latest.year}.
+You: "Fossil fuel energy services increased by ${fossilChange.toFixed(2)} EJ in ${latest.year}, rising from ${previous.fossil_services_ej.toFixed(1)} EJ in ${previous.year} to ${latest.fossil_services_ej.toFixed(1)} EJ in ${latest.year}.
 
 This growth occurred despite clean energy growing by ${cleanChange.toFixed(2)} EJ during the same period. The displacement of ${displacement.toFixed(2)} EJ was not enough to offset the ${fossilChange.toFixed(2)} EJ increase in fossil demand, resulting in a net increase of ${(fossilChange - displacement).toFixed(2)} EJ in fossil consumption.
 
@@ -327,7 +327,7 @@ export function getSuggestedQuestions(projectData) {
     `What is the displacement rate and what does it mean?`,
     `Compare the three scenarios: Baseline, Accelerated, and Net-Zero`,
     `Explain the efficiency factors - why is nuclear only 25%?`,
-    `What is "useful energy" and why does it matter?`,
+    `What is "energy services" and why does it matter?`,
     `How much has renewable energy grown in the last decade?`,
     `What would it take to reach Net-Zero by 2050?`,
     `Show me the year-over-year change in fossil consumption`
@@ -358,8 +358,8 @@ export async function queryDataPoint(query) {
     const endData = historical.data.find(d => d.year === query.endYear);
 
     if (startData && endData) {
-      const startValue = startData.sources_useful_ej?.[query.source] || 0;
-      const endValue = endData.sources_useful_ej?.[query.source] || 0;
+      const startValue = startData.sources_services_ej?.[query.source] || 0;
+      const endValue = endData.sources_services_ej?.[query.source] || 0;
       const years = query.endYear - query.startYear;
       const cagr = ((endValue / startValue) ** (1 / years) - 1) * 100;
 

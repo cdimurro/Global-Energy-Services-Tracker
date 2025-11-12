@@ -13,7 +13,7 @@ export default function NetChangeTimeline() {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    fetch('/data/useful_energy_timeseries.json')
+    fetch('/data/energy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         calculateTimeline(data);
@@ -34,10 +34,10 @@ export default function NetChangeTimeline() {
       const curr = timeseries[i];
 
       // Calculate fossil growth
-      const fossilGrowth = curr.fossil_useful_ej - prev.fossil_useful_ej;
+      const fossilGrowth = curr.fossil_services_ej - prev.fossil_services_ej;
 
       // Calculate clean growth
-      const cleanGrowth = curr.clean_useful_ej - prev.clean_useful_ej;
+      const cleanGrowth = curr.clean_services_ej - prev.clean_services_ej;
 
       // Calculate displacement (clean growth if positive, 0 otherwise)
       const displacement = Math.max(0, cleanGrowth);
@@ -47,10 +47,10 @@ export default function NetChangeTimeline() {
       const netChange = fossilGrowth - displacement;
 
       // Calculate relative changes (%)
-      const fossilGrowthPercent = (fossilGrowth / prev.fossil_useful_ej) * 100;
-      const cleanGrowthPercent = (cleanGrowth / prev.clean_useful_ej) * 100;
-      const displacementPercent = (displacement / prev.fossil_useful_ej) * 100;
-      const netChangePercent = (netChange / prev.fossil_useful_ej) * 100;
+      const fossilGrowthPercent = (fossilGrowth / prev.fossil_services_ej) * 100;
+      const cleanGrowthPercent = (cleanGrowth / prev.clean_services_ej) * 100;
+      const displacementPercent = (displacement / prev.fossil_services_ej) * 100;
+      const netChangePercent = (netChange / prev.fossil_services_ej) * 100;
 
       calculatedData.push({
         year: curr.year,
@@ -58,8 +58,8 @@ export default function NetChangeTimeline() {
         fossilGrowth,
         netChange,
         cleanGrowth,
-        totalFossil: curr.fossil_useful_ej,
-        totalClean: curr.clean_useful_ej,
+        totalFossil: curr.fossil_services_ej,
+        totalClean: curr.clean_services_ej,
         isPeak: displacement >= fossilGrowth,
         // Percentage changes
         fossilGrowthPercent,

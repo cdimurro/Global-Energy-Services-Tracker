@@ -63,29 +63,29 @@ export default function Regions() {
   useEffect(() => {
     Promise.all([
       fetch('/data/regional_energy_timeseries.json').then(res => res.json()),
-      fetch('/data/useful_energy_timeseries.json').then(res => res.json())
+      fetch('/data/energy_services_timeseries.json').then(res => res.json())
     ])
       .then(([regionalData, globalData]) => {
         // Transform global data to match regional data structure
         const globalRegionData = {
           data: globalData.data.map(yearData => ({
             year: yearData.year,
-            total_useful_ej: yearData.total_useful_ej,
-            fossil_useful_ej: yearData.fossil_useful_ej,
-            clean_useful_ej: yearData.clean_useful_ej,
-            sources_useful_ej: {
-              coal: yearData.sources_useful_ej.coal || 0,
-              oil: yearData.sources_useful_ej.oil || 0,
-              gas: yearData.sources_useful_ej.gas || 0,
-              nuclear: yearData.sources_useful_ej.nuclear || 0,
-              hydro: yearData.sources_useful_ej.hydro || 0,
-              wind: yearData.sources_useful_ej.wind || 0,
-              solar: yearData.sources_useful_ej.solar || 0,
-              biofuels: yearData.sources_useful_ej.biomass || 0,
-              other_renewables: (yearData.sources_useful_ej.geothermal || 0) + (yearData.sources_useful_ej.other || 0)
+            total_services_ej: yearData.total_services_ej,
+            fossil_services_ej: yearData.fossil_services_ej,
+            clean_services_ej: yearData.clean_services_ej,
+            sources_services_ej: {
+              coal: yearData.sources_services_ej.coal || 0,
+              oil: yearData.sources_services_ej.oil || 0,
+              gas: yearData.sources_services_ej.gas || 0,
+              nuclear: yearData.sources_services_ej.nuclear || 0,
+              hydro: yearData.sources_services_ej.hydro || 0,
+              wind: yearData.sources_services_ej.wind || 0,
+              solar: yearData.sources_services_ej.solar || 0,
+              biofuels: yearData.sources_services_ej.biomass || 0,
+              other_renewables: (yearData.sources_services_ej.geothermal || 0) + (yearData.sources_services_ej.other || 0)
             },
-            fossil_share_percent: yearData.fossil_share_percent,
-            clean_share_percent: yearData.clean_share_percent,
+            fossil_services_share_percent: yearData.fossil_services_share_percent,
+            clean_services_share_percent: yearData.clean_services_share_percent,
             efficiency_percent: yearData.overall_efficiency || 0
           }))
         };
@@ -138,20 +138,20 @@ export default function Regions() {
             // Handle virtual source aggregations
             if (selectedSource === 'all') {
               // Sum all energy sources
-              row[region] = regionYearData.total_useful_ej || 0;
+              row[region] = regionYearData.total_services_ej || 0;
             } else if (selectedSource === 'fossil') {
               // Sum fossil fuel sources
               const fossilSources = ['coal', 'oil', 'gas'];
               row[region] = fossilSources.reduce((sum, source) =>
-                sum + (regionYearData.sources_useful_ej[source] || 0), 0);
+                sum + (regionYearData.sources_services_ej[source] || 0), 0);
             } else if (selectedSource === 'clean') {
               // Sum clean energy sources
               const cleanSources = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
               row[region] = cleanSources.reduce((sum, source) =>
-                sum + (regionYearData.sources_useful_ej[source] || 0), 0);
+                sum + (regionYearData.sources_services_ej[source] || 0), 0);
             } else {
               // Show the selected individual energy source for this region
-              row[region] = regionYearData.sources_useful_ej[selectedSource] || 0;
+              row[region] = regionYearData.sources_services_ej[selectedSource] || 0;
             }
           });
         } else if (viewMode === 'sources') {
@@ -173,7 +173,7 @@ export default function Regions() {
           }
 
           sourcesToShow.forEach(source => {
-            row[source] = regionYearData.sources_useful_ej[source] || 0;
+            row[source] = regionYearData.sources_services_ej[source] || 0;
           });
         }
 
@@ -193,9 +193,9 @@ export default function Regions() {
         const latest = regionInfo.data[regionInfo.data.length - 1];
         return {
           region,
-          cleanShare: latest.clean_share_percent,
+          cleanShare: latest.clean_services_share_percent,
           efficiency: latest.efficiency_percent,
-          totalEnergy: latest.total_useful_ej
+          totalEnergy: latest.total_services_ej
         };
       })
       .filter(d => d !== null)
@@ -213,10 +213,10 @@ export default function Regions() {
       .filter(yearData => yearData.year >= 1965) // Only show 1965-2024
       .map(yearData => {
         const row = { year: yearData.year };
-        const total = yearData.total_useful_ej;
+        const total = yearData.total_services_ej;
 
         ENERGY_SOURCES.forEach(source => {
-          const absoluteValue = yearData.sources_useful_ej[source] || 0;
+          const absoluteValue = yearData.sources_services_ej[source] || 0;
           // If showing relative values, convert to percentage
           if (showRelativeChart3) {
             row[source] = total > 0 ? (absoluteValue / total * 100) : 0;
@@ -628,7 +628,7 @@ export default function Regions() {
                 ? (sortedPayload[0]?.name || selectedRegion)
                 : selectedRegion;
               const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-              const totalForRegion = yearData?.total_useful_ej || 0;
+              const totalForRegion = yearData?.total_services_ej || 0;
               const totalPercentage = totalForRegion > 0 ? (totalEJ / totalForRegion * 100) : 0;
 
               // Split sorted payload into columns for better display
@@ -657,7 +657,7 @@ export default function Regions() {
                       {column1.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const totalForRegion = yearData?.total_services_ej || 0;
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -676,7 +676,7 @@ export default function Regions() {
                       {column2.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const totalForRegion = yearData?.total_services_ej || 0;
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -1247,7 +1247,7 @@ export default function Regions() {
                 ? (sortedPayload[0]?.name || selectedRegion)
                 : selectedRegion;
               const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-              const totalForRegion = yearData?.total_useful_ej || 0;
+              const totalForRegion = yearData?.total_services_ej || 0;
               const totalPercentage = totalForRegion > 0 ? (totalEJ / totalForRegion * 100) : 0;
 
               // Split sorted payload into columns for better display
@@ -1276,7 +1276,7 @@ export default function Regions() {
                       {column1.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const totalForRegion = yearData?.total_services_ej || 0;
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -1295,7 +1295,7 @@ export default function Regions() {
                       {column2.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_useful_ej || 0;
+                        const totalForRegion = yearData?.total_services_ej || 0;
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -1583,7 +1583,7 @@ export default function Regions() {
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
             <h3 className="font-bold text-lg text-gray-800 mb-2">Regional Disparities</h3>
             <p className="text-gray-700">
-              Energy access remains deeply unequal across regions. Some regions consume significantly more useful energy services per capita than others. Closing this gap equitably while decarbonizing is the central challenge of the 21st century.
+              Energy access remains deeply unequal across regions. Some regions consume significantly more energy services services per capita than others. Closing this gap equitably while decarbonizing is the central challenge of the 21st century.
             </p>
           </div>
 

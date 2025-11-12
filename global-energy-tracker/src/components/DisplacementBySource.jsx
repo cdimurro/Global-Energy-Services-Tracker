@@ -18,7 +18,7 @@ export default function DisplacementBySource() {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
-    fetch('/data/useful_energy_timeseries.json')
+    fetch('/data/energy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         setEnergyData(data);
@@ -53,8 +53,8 @@ export default function DisplacementBySource() {
 
       // Calculate displacement for each clean source
       const sources = CLEAN_SOURCES.map(source => {
-        const startValue = startYear.sources_useful_ej[source] || 0;
-        const endValue = endYear.sources_useful_ej[source] || 0;
+        const startValue = startYear.sources_services_ej[source] || 0;
+        const endValue = endYear.sources_services_ej[source] || 0;
         const growth = endValue - startValue;
         const annualGrowth = growth / period.years;
         const growthRate = startValue > 0 ? ((endValue / startValue) - 1) * 100 / period.years : 0;

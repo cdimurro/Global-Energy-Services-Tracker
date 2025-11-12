@@ -6,7 +6,7 @@ export default function ParameterStatusTable() {
   const [selectedYear, setSelectedYear] = useState(null);
 
   useEffect(() => {
-    fetch('/data/useful_energy_timeseries.json')
+    fetch('/data/energy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         calculateTableData(data);
@@ -26,8 +26,8 @@ export default function ParameterStatusTable() {
       const prev = timeseries[i - 1];
       const curr = timeseries[i];
 
-      const fossilGrowth = curr.fossil_useful_ej - prev.fossil_useful_ej;
-      const cleanGrowth = curr.clean_useful_ej - prev.clean_useful_ej;
+      const fossilGrowth = curr.fossil_services_ej - prev.fossil_services_ej;
+      const cleanGrowth = curr.clean_services_ej - prev.clean_services_ej;
 
       // Displacement is clean growth (if positive)
       const displacement = Math.max(0, cleanGrowth);

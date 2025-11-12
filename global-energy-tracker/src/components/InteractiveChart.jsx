@@ -19,7 +19,7 @@ export default function InteractiveChart() {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
-    fetch('/data/useful_energy_timeseries.json')
+    fetch('/data/energy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         setEnergyData(data);
@@ -37,25 +37,25 @@ export default function InteractiveChart() {
   const absoluteData = energyData.data.map(yearData => {
     const baseData = {
       year: yearData.year,
-      total: yearData.total_useful_ej
+      total: yearData.total_services_ej
     };
 
     // Calculate values based on showRelative toggle
     if (showRelative) {
       // In relative mode, calculate percentages based on total global energy
-      const totalEnergy = yearData.total_useful_ej;
+      const totalEnergy = yearData.total_services_ej;
 
-      baseData.fossil = totalEnergy > 0 ? (yearData.fossil_useful_ej / totalEnergy) * 100 : 0;
-      baseData.clean = totalEnergy > 0 ? (yearData.clean_useful_ej / totalEnergy) * 100 : 0;
+      baseData.fossil = totalEnergy > 0 ? (yearData.fossil_services_ej / totalEnergy) * 100 : 0;
+      baseData.clean = totalEnergy > 0 ? (yearData.clean_services_ej / totalEnergy) * 100 : 0;
 
       ENERGY_SOURCES.forEach(source => {
-        baseData[source] = totalEnergy > 0 ? ((yearData.sources_useful_ej[source] || 0) / totalEnergy) * 100 : 0;
+        baseData[source] = totalEnergy > 0 ? ((yearData.sources_services_ej[source] || 0) / totalEnergy) * 100 : 0;
       });
     } else {
-      baseData.fossil = yearData.fossil_useful_ej;
-      baseData.clean = yearData.clean_useful_ej;
+      baseData.fossil = yearData.fossil_services_ej;
+      baseData.clean = yearData.clean_services_ej;
       ENERGY_SOURCES.forEach(source => {
-        baseData[source] = yearData.sources_useful_ej[source] || 0;
+        baseData[source] = yearData.sources_services_ej[source] || 0;
       });
     }
 
@@ -70,15 +70,15 @@ export default function InteractiveChart() {
 
     const yearChange = {
       year: curr.year,
-      fossil: curr.fossil_useful_ej - prev.fossil_useful_ej,
-      clean: curr.clean_useful_ej - prev.clean_useful_ej,
-      fossil_pct: prev.fossil_useful_ej > 0 ? ((curr.fossil_useful_ej - prev.fossil_useful_ej) / prev.fossil_useful_ej) * 100 : 0,
-      clean_pct: prev.clean_useful_ej > 0 ? ((curr.clean_useful_ej - prev.clean_useful_ej) / prev.clean_useful_ej) * 100 : 0,
+      fossil: curr.fossil_services_ej - prev.fossil_services_ej,
+      clean: curr.clean_services_ej - prev.clean_services_ej,
+      fossil_pct: prev.fossil_services_ej > 0 ? ((curr.fossil_services_ej - prev.fossil_services_ej) / prev.fossil_services_ej) * 100 : 0,
+      clean_pct: prev.clean_services_ej > 0 ? ((curr.clean_services_ej - prev.clean_services_ej) / prev.clean_services_ej) * 100 : 0,
     };
 
     ENERGY_SOURCES.forEach(source => {
-      const prevValue = prev.sources_useful_ej[source] || 0;
-      const currValue = curr.sources_useful_ej[source] || 0;
+      const prevValue = prev.sources_services_ej[source] || 0;
+      const currValue = curr.sources_services_ej[source] || 0;
       yearChange[source] = currValue - prevValue;
       yearChange[`${source}_pct`] = prevValue > 0 ? ((currValue - prevValue) / prevValue) * 100 : 0;
     });
@@ -144,7 +144,7 @@ export default function InteractiveChart() {
 
     // Get the actual total for this year from the original data
     const yearData = energyData.data.find(d => d.year === label);
-    const actualTotal = yearData ? yearData.total_useful_ej : 0;
+    const actualTotal = yearData ? yearData.total_services_ej : 0;
 
     // Calculate the total of displayed sources
     const displayedTotal = payload.reduce((sum, entry) => sum + entry.value, 0);
@@ -275,7 +275,7 @@ export default function InteractiveChart() {
             domain={showRelative ? [0, 100] : [0, 'auto']}
             ticks={showRelative ? [0, 25, 50, 75, 100] : undefined}
             label={{
-              value: showRelative ? 'Share of Total Energy (%)' : 'Global Useful Energy (EJ)',
+              value: showRelative ? 'Share of Total Energy (%)' : 'Global Energy Services (EJ)',
               angle: -90,
               position: 'insideLeft',
               style: { fontSize: 17, fontWeight: 600 }

@@ -18,7 +18,7 @@ export default function Home() {
   const cleanBreakdownChartRef = useRef(null);
 
   useEffect(() => {
-    fetch('/data/useful_energy_timeseries.json')
+    fetch('/data/energy_services_timeseries.json')
       .then(res => res.json())
       .then(jsonData => {
         const latestYear = jsonData.data[jsonData.data.length - 1];
@@ -37,16 +37,16 @@ export default function Home() {
 
   const {
     year,
-    total_useful_ej,
-    fossil_useful_ej,
-    clean_useful_ej,
-    fossil_share_percent,
-    clean_share_percent,
-    sources_useful_ej
+    total_services_ej,
+    fossil_services_ej,
+    clean_services_ej,
+    fossil_services_share_percent,
+    clean_services_share_percent,
+    sources_services_ej
   } = data;
 
   // Sort sources by energy amount
-  const sortedSources = Object.entries(sources_useful_ej)
+  const sortedSources = Object.entries(sources_services_ej)
     .filter(([_, value]) => value > 0)
     .sort(([, a], [, b]) => b - a);
 
@@ -60,8 +60,8 @@ export default function Home() {
 
   // Pie chart data
   const pieData = [
-    { name: 'Fossil Fuels', value: fossil_useful_ej, percentage: fossil_share_percent },
-    { name: 'Clean Energy', value: clean_useful_ej, percentage: clean_share_percent }
+    { name: 'Fossil Fuels', value: fossil_services_ej, percentage: fossil_services_share_percent },
+    { name: 'Clean Energy', value: clean_services_ej, percentage: clean_services_share_percent }
   ];
 
   const COLORS = {
@@ -96,7 +96,7 @@ export default function Home() {
     const csvData = fossilSources.map(([source, ej]) => ({
       'Source': getSourceName(source),
       'Energy Services (EJ)': ej.toFixed(2),
-      'Share of Fossil (%)': ((ej / fossil_useful_ej) * 100).toFixed(2)
+      'Share of Fossil (%)': ((ej / fossil_services_ej) * 100).toFixed(2)
     }));
     downloadDataAsCSV(csvData, `fossil_fuel_breakdown_${year}`);
   };
@@ -110,7 +110,7 @@ export default function Home() {
     const csvData = cleanSources.map(([source, ej]) => ({
       'Source': getSourceName(source),
       'Energy Services (EJ)': ej.toFixed(2),
-      'Share of Clean (%)': ((ej / clean_useful_ej) * 100).toFixed(2)
+      'Share of Clean (%)': ((ej / clean_services_ej) * 100).toFixed(2)
     }));
     downloadDataAsCSV(csvData, `clean_energy_breakdown_${year}`);
   };
@@ -147,11 +147,11 @@ export default function Home() {
         {/* Total Display */}
         <div className="text-center mb-3 sm:mb-6">
           <div className="text-2xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-3 text-gray-900">
-            {total_useful_ej.toFixed(1)}
+            {total_services_ej.toFixed(1)}
             <span className="text-base sm:text-2xl md:text-3xl ml-1 sm:ml-2 text-gray-500">EJ</span>
           </div>
           <div className="text-[10px] sm:text-sm md:text-base text-gray-500 px-2">
-            Exajoules of useful energy delivered globally
+            Exajoules of energy services delivered globally
           </div>
         </div>
 
@@ -189,11 +189,11 @@ export default function Home() {
                 Fossil Fuels
               </div>
               <div className="text-lg sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
-                {fossil_useful_ej.toFixed(1)}
+                {fossil_services_ej.toFixed(1)}
                 <span className="text-xs sm:text-lg md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
               <div className="text-base sm:text-2xl md:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
-                {fossil_share_percent.toFixed(1)}%
+                {fossil_services_share_percent.toFixed(1)}%
               </div>
               <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
@@ -204,11 +204,11 @@ export default function Home() {
                 Clean Energy
               </div>
               <div className="text-lg sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
-                {clean_useful_ej.toFixed(1)}
+                {clean_services_ej.toFixed(1)}
                 <span className="text-xs sm:text-lg md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
               <div className="text-base sm:text-2xl md:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
-                {clean_share_percent.toFixed(1)}%
+                {clean_services_share_percent.toFixed(1)}%
               </div>
               <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
@@ -234,7 +234,7 @@ export default function Home() {
                   data={fossilSources.map(([source, ej]) => ({
                     name: getSourceName(source),
                     value: ej,
-                    percentage: (ej / fossil_useful_ej) * 100
+                    percentage: (ej / fossil_services_ej) * 100
                   }))}
                   cx="50%"
                   cy="50%"
@@ -258,7 +258,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {fossilSources.map(([source, ej]) => {
-              const share = (ej / fossil_useful_ej) * 100;
+              const share = (ej / fossil_services_ej) * 100;
               const color = ENERGY_COLORS[source];
 
               return (
@@ -306,7 +306,7 @@ export default function Home() {
                   data={cleanSources.map(([source, ej]) => ({
                     name: getSourceName(source),
                     value: ej,
-                    percentage: (ej / clean_useful_ej) * 100
+                    percentage: (ej / clean_services_ej) * 100
                   }))}
                   cx="50%"
                   cy="50%"
@@ -330,7 +330,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {cleanSources.map(([source, ej]) => {
-              const share = (ej / clean_useful_ej) * 100;
+              const share = (ej / clean_services_ej) * 100;
               const color = ENERGY_COLORS[source];
 
               return (
@@ -369,7 +369,7 @@ export default function Home() {
               What Are Energy Services?
             </h3>
             <p className="text-gray-700">
-              Energy services are the useful work delivered by energy systems: heat, motion, light, and computation.
+              Energy services are the work delivered by energy systems: heat, motion, light, and computation.
               Unlike primary energy (coal, oil, gas), energy services represent the actual benefits that society receives from energy consumption.
             </p>
           </div>

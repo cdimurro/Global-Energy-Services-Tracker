@@ -81,7 +81,7 @@ export default function SectoralEnergyGrowth() {
   useEffect(() => {
     Promise.all([
       fetch('/data/sectoral_energy_breakdown.json').then(res => res.json()),
-      fetch('/data/useful_energy_timeseries.json').then(res => res.json()),
+      fetch('/data/energy_services_timeseries.json').then(res => res.json()),
       fetch('/data/demand_growth_projections.json').then(res => res.json())
     ])
       .then(([sectoral, historical, projections]) => {
@@ -113,11 +113,11 @@ export default function SectoralEnergyGrowth() {
     const startYear = 2015;
     const endYear = 2050;
 
-    // Get baseline useful energy for 2024
+    // Get baseline energy services for 2024
     const baseline2024 = historicalData.data.find(d => d.year === 2024);
     if (!baseline2024) return;
 
-    const totalUseful2024 = baseline2024.total_useful_ej;
+    const totalUseful2024 = baseline2024.total_services_ej;
 
     // Use baseline scenario for all projections
     const baselineScenario = projectionsData.scenarios.find(s => s.name === 'Baseline (STEPS)');
@@ -125,7 +125,7 @@ export default function SectoralEnergyGrowth() {
     for (let year = startYear; year <= endYear; year++) {
       const yearData = { year };
 
-      // Get total useful energy for this year and energy source distribution
+      // Get total energy services for this year and energy source distribution
       let totalUseful;
       let historicalYear;
       let projYear;
@@ -134,11 +134,11 @@ export default function SectoralEnergyGrowth() {
 
       if (year <= 2024) {
         historicalYear = historicalData.data.find(d => d.year === year);
-        totalUseful = historicalYear ? historicalYear.total_useful_ej : totalUseful2024;
+        totalUseful = historicalYear ? historicalYear.total_services_ej : totalUseful2024;
 
         if (historicalYear) {
-          globalFossilShare = historicalYear.fossil_useful_ej / historicalYear.total_useful_ej;
-          globalCleanShare = historicalYear.clean_useful_ej / historicalYear.total_useful_ej;
+          globalFossilShare = historicalYear.fossil_services_ej / historicalYear.total_services_ej;
+          globalCleanShare = historicalYear.clean_services_ej / historicalYear.total_services_ej;
         }
       } else {
         // For future years, find exact match or interpolate
@@ -146,28 +146,28 @@ export default function SectoralEnergyGrowth() {
 
         if (projYear) {
           // Exact match found
-          totalUseful = projYear.total_useful_ej;
-          globalFossilShare = projYear.fossil_useful_ej / projYear.total_useful_ej;
-          globalCleanShare = projYear.clean_useful_ej / projYear.total_useful_ej;
+          totalUseful = projYear.total_services_ej;
+          globalFossilShare = projYear.fossil_services_ej / projYear.total_services_ej;
+          globalCleanShare = projYear.clean_services_ej / projYear.total_services_ej;
         } else {
           // Interpolate between surrounding years
           const beforeYear = baselineScenario?.data.filter(d => d.year < year).sort((a, b) => b.year - a.year)[0];
           const afterYear = baselineScenario?.data.filter(d => d.year > year).sort((a, b) => a.year - b.year)[0];
 
           if (beforeYear && afterYear) {
-            totalUseful = interpolate(year, beforeYear, afterYear, beforeYear.total_useful_ej, afterYear.total_useful_ej);
-            const fossilUseful = interpolate(year, beforeYear, afterYear, beforeYear.fossil_useful_ej, afterYear.fossil_useful_ej);
-            const cleanUseful = interpolate(year, beforeYear, afterYear, beforeYear.clean_useful_ej, afterYear.clean_useful_ej);
+            totalUseful = interpolate(year, beforeYear, afterYear, beforeYear.total_services_ej, afterYear.total_services_ej);
+            const fossilUseful = interpolate(year, beforeYear, afterYear, beforeYear.fossil_services_ej, afterYear.fossil_services_ej);
+            const cleanUseful = interpolate(year, beforeYear, afterYear, beforeYear.clean_services_ej, afterYear.clean_services_ej);
             globalFossilShare = fossilUseful / totalUseful;
             globalCleanShare = cleanUseful / totalUseful;
           } else if (beforeYear) {
-            totalUseful = beforeYear.total_useful_ej;
-            globalFossilShare = beforeYear.fossil_useful_ej / beforeYear.total_useful_ej;
-            globalCleanShare = beforeYear.clean_useful_ej / beforeYear.total_useful_ej;
+            totalUseful = beforeYear.total_services_ej;
+            globalFossilShare = beforeYear.fossil_services_ej / beforeYear.total_services_ej;
+            globalCleanShare = beforeYear.clean_services_ej / beforeYear.total_services_ej;
           } else {
             totalUseful = totalUseful2024;
-            globalFossilShare = baseline2024.fossil_useful_ej / baseline2024.total_useful_ej;
-            globalCleanShare = baseline2024.clean_useful_ej / baseline2024.total_useful_ej;
+            globalFossilShare = baseline2024.fossil_services_ej / baseline2024.total_services_ej;
+            globalCleanShare = baseline2024.clean_services_ej / baseline2024.total_services_ej;
           }
         }
       }
@@ -215,8 +215,8 @@ export default function SectoralEnergyGrowth() {
 
         // Get aggregate target from data
         const aggregateTarget = sourceFilter === 'fossil'
-          ? (year <= 2024 && historicalYear ? historicalYear.fossil_useful_ej : projYear?.fossil_useful_ej || 0)
-          : (year <= 2024 && historicalYear ? historicalYear.clean_useful_ej : projYear?.clean_useful_ej || 0);
+          ? (year <= 2024 && historicalYear ? historicalYear.fossil_services_ej : projYear?.fossil_services_ej || 0)
+          : (year <= 2024 && historicalYear ? historicalYear.clean_services_ej : projYear?.clean_services_ej || 0);
 
         // Scale all sectors proportionally to match aggregate exactly
         const scalingFactor = unconstrainedSum > 0 ? aggregateTarget / unconstrainedSum : 1;
@@ -230,23 +230,23 @@ export default function SectoralEnergyGrowth() {
         let sourceShare = 0;
 
         if (year <= 2024 && historicalYear) {
-          sourceShare = (historicalYear.sources_useful_ej[sourceFilter] || 0) / historicalYear.total_useful_ej;
+          sourceShare = (historicalYear.sources_services_ej[sourceFilter] || 0) / historicalYear.total_services_ej;
         } else if (projYear) {
-          sourceShare = (projYear.sources_useful_ej[sourceFilter] || 0) / projYear.total_useful_ej;
+          sourceShare = (projYear.sources_services_ej[sourceFilter] || 0) / projYear.total_services_ej;
         } else {
           // Interpolate individual source share for missing years
           const beforeYear = baselineScenario?.data.filter(d => d.year < year).sort((a, b) => b.year - a.year)[0];
           const afterYear = baselineScenario?.data.filter(d => d.year > year).sort((a, b) => a.year - b.year)[0];
 
           if (beforeYear && afterYear) {
-            const beforeShare = (beforeYear.sources_useful_ej[sourceFilter] || 0) / beforeYear.total_useful_ej;
-            const afterShare = (afterYear.sources_useful_ej[sourceFilter] || 0) / afterYear.total_useful_ej;
+            const beforeShare = (beforeYear.sources_services_ej[sourceFilter] || 0) / beforeYear.total_services_ej;
+            const afterShare = (afterYear.sources_services_ej[sourceFilter] || 0) / afterYear.total_services_ej;
             const t = (year - beforeYear.year) / (afterYear.year - beforeYear.year);
             sourceShare = beforeShare + t * (afterShare - beforeShare);
           } else if (beforeYear) {
-            sourceShare = (beforeYear.sources_useful_ej[sourceFilter] || 0) / beforeYear.total_useful_ej;
+            sourceShare = (beforeYear.sources_services_ej[sourceFilter] || 0) / beforeYear.total_services_ej;
           } else {
-            sourceShare = (baseline2024.sources_useful_ej[sourceFilter] || 0) / baseline2024.total_useful_ej;
+            sourceShare = (baseline2024.sources_services_ej[sourceFilter] || 0) / baseline2024.total_services_ej;
           }
         }
 
@@ -578,7 +578,7 @@ export default function SectoralEnergyGrowth() {
               domain={showRelative ? [0, 100] : [0, 'auto']}
               ticks={showRelative ? [0, 25, 50, 75, 100] : undefined}
               label={{
-                value: showRelative ? 'Share of Total Energy (%)' : 'Useful Energy (EJ)',
+                value: showRelative ? 'Share of Total Energy (%)' : 'Energy Services (EJ)',
                 angle: -90,
                 position: 'insideLeft',
                 style: { fontSize: 17, fontWeight: 600 }
