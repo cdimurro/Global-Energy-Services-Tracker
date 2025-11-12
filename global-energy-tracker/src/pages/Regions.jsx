@@ -77,18 +77,18 @@ export default function Regions() {
   useEffect(() => {
     Promise.all([
       fetch('/data/regional_energy_timeseries.json').then(res => res.json()),
-      fetch('/data/useful_energy_timeseries.json').then(res => res.json())
+      fetch('/data/energy_services_timeseries.json').then(res => res.json())
     ])
       .then(([regionalData, globalData]) => {
         // Transform global data to match regional data structure
         const globalRegionData = {
           data: globalData.data.map(yearData => {
-            const sources = yearData.sources_useful_ej || {};
+            const sources = yearData.sources_services_ej || {};
             return {
               year: yearData.year,
-              total_useful_ej: yearData.total_useful_ej || 0,
-              fossil_useful_ej: yearData.fossil_useful_ej || 0,
-              clean_useful_ej: yearData.clean_useful_ej || 0,
+              total_useful_ej: yearData.total_services_ej || 0,
+              fossil_useful_ej: yearData.fossil_services_ej || 0,
+              clean_useful_ej: yearData.clean_services_ej || 0,
               sources_useful_ej: {
                 coal: sources.coal || 0,
                 oil: sources.oil || 0,
