@@ -70,12 +70,15 @@ export default function Methodology() {
             <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
               <p className="font-semibold text-gray-800 mb-2">System-Wide Efficiency Measurements by Source:</p>
               <ul className="space-y-2 ml-4">
-                <li>• Coal (power plants): <strong>~32% efficient</strong></li>
-                <li>• Oil (combustion engines): <strong>~30% efficient</strong></li>
-                <li>• Natural Gas (heating, power): <strong>~45% efficient</strong> (IEA global avg)</li>
-                <li>• Nuclear (thermal plants): <strong>~33% efficient</strong> (thermal cycle limit)</li>
-                <li>• Biomass (traditional use dominant): <strong>~15% efficient</strong></li>
-                <li>• Hydro/Wind/Solar (direct electricity): <strong>~70% efficient</strong></li>
+                <li>• Coal (power plants): <strong>32% efficient</strong></li>
+                <li>• Oil (combustion engines): <strong>30% efficient</strong></li>
+                <li>• Natural Gas (heating, power): <strong>50% efficient</strong></li>
+                <li>• Nuclear (full chain): <strong>25% efficient</strong> (33% thermal × 90% T&D × 85% end-use)</li>
+                <li>• Biomass (traditional/modern mix): <strong>28% efficient</strong></li>
+                <li>• Hydro: <strong>85% efficient</strong></li>
+                <li>• Wind: <strong>75% efficient</strong></li>
+                <li>• Solar: <strong>75% efficient</strong></li>
+                <li>• Geothermal: <strong>75% efficient</strong></li>
               </ul>
             </div>
             <p className="mb-4">
