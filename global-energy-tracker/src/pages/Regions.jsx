@@ -642,7 +642,7 @@ export default function Regions() {
         <ResponsiveContainer width="100%" height={getChart1Height()}>
           <LineChart
             data={chart1Data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+            margin={{ top: 20, right: 30, left: 80, bottom: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
@@ -715,7 +715,7 @@ export default function Regions() {
                     </div>
                   )}
 
-                  <div className={showAnnualChange ? "space-y-3" : "grid grid-cols-2 gap-x-6 text-sm"}>
+                  <div className="grid grid-cols-2 gap-x-6 text-sm">
                     {/* Column 1 */}
                     <div className="space-y-1">
                       {column1.map((entry, index) => {
@@ -754,19 +754,14 @@ export default function Regions() {
                           }
 
                           const relativeChange = prevValue > 0 ? (entry.value / prevValue) * 100 : 0;
-                          const sharePercent = totalForRegion > 0 ? ((prevValue + entry.value) / totalForRegion * 100) : 0;
 
                           return (
-                            <div key={index} className="border-b border-gray-200 pb-2 mb-2 last:border-0">
-                              <div className="flex items-center gap-1 mb-1">
+                            <div key={index} className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-1 min-w-0">
                                 <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
-                                <span className="text-sm font-semibold">{entry.name}</span>
+                                <span className="truncate text-xs">{entry.name}:</span>
                               </div>
-                              <div className="ml-4 text-xs space-y-0.5">
-                                <div><span className="text-gray-600">Absolute Change: </span><span className="font-semibold">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ</span></div>
-                                <div><span className="text-gray-600">Relative Change: </span><span className="font-semibold">{relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%</span></div>
-                                <div><span className="text-gray-600">Share: </span><span className="font-semibold">{sharePercent.toFixed(1)}%</span></div>
-                              </div>
+                              <span className="font-semibold text-xs whitespace-nowrap">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ ({relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%)</span>
                             </div>
                           );
                         } else {
@@ -926,7 +921,7 @@ export default function Regions() {
         <ResponsiveContainer width="100%" height={getChart2Height()}>
           <BarChart
             data={chart2Data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+            margin={{ top: 20, right: 30, left: 60, bottom: 80 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
@@ -1376,7 +1371,7 @@ export default function Regions() {
         <ResponsiveContainer width="100%" height={getChart1Height()}>
           <LineChart
             data={chart1Data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+            margin={{ top: 20, right: 30, left: 80, bottom: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
@@ -1449,7 +1444,7 @@ export default function Regions() {
                     </div>
                   )}
 
-                  <div className={showAnnualChange ? "space-y-3" : "grid grid-cols-2 gap-x-6 text-sm"}>
+                  <div className="grid grid-cols-2 gap-x-6 text-sm">
                     {/* Column 1 */}
                     <div className="space-y-1">
                       {column1.map((entry, index) => {
@@ -1488,19 +1483,14 @@ export default function Regions() {
                           }
 
                           const relativeChange = prevValue > 0 ? (entry.value / prevValue) * 100 : 0;
-                          const sharePercent = totalForRegion > 0 ? ((prevValue + entry.value) / totalForRegion * 100) : 0;
 
                           return (
-                            <div key={index} className="border-b border-gray-200 pb-2 mb-2 last:border-0">
-                              <div className="flex items-center gap-1 mb-1">
+                            <div key={index} className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-1 min-w-0">
                                 <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
-                                <span className="text-sm font-semibold">{entry.name}</span>
+                                <span className="truncate text-xs">{entry.name}:</span>
                               </div>
-                              <div className="ml-4 text-xs space-y-0.5">
-                                <div><span className="text-gray-600">Absolute Change: </span><span className="font-semibold">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ</span></div>
-                                <div><span className="text-gray-600">Relative Change: </span><span className="font-semibold">{relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%</span></div>
-                                <div><span className="text-gray-600">Share: </span><span className="font-semibold">{sharePercent.toFixed(1)}%</span></div>
-                              </div>
+                              <span className="font-semibold text-xs whitespace-nowrap">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ ({relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%)</span>
                             </div>
                           );
                         } else {
@@ -1651,7 +1641,7 @@ export default function Regions() {
         <ResponsiveContainer width="100%" height={getChart2Height()}>
           <BarChart
             data={chart2Data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+            margin={{ top: 20, right: 30, left: 60, bottom: 80 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
