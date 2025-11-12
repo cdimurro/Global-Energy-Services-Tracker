@@ -292,25 +292,14 @@ export default function NetChangeTimeline() {
             name="Efficiency Savings"
           />
 
-          {/* Net Change as Area with custom fill function and Line overlay */}
-          <Area
-            type="monotone"
-            dataKey="netChange"
-            stroke="none"
-            fill={(entry) => entry.netChange >= 0 ? '#DC2626' : '#16A34A'}
-            fillOpacity={0.6}
-            baseLine={0}
-            name="Net Change"
-          />
-
-          {/* Net Change line (continuous purple stroke overlay) */}
+          {/* Net Change line (purple, no fill) */}
           <Line
             type="monotone"
             dataKey="netChange"
             stroke="#9333EA"
             strokeWidth={3}
             dot={false}
-            legendType="none"
+            name="Net Change"
           />
 
         </ComposedChart>
