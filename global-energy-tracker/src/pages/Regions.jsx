@@ -12,6 +12,20 @@ const ENERGY_SOURCES = ['coal', 'oil', 'gas', 'nuclear', 'hydro', 'wind', 'solar
 const FOSSIL_SOURCES = ['coal', 'oil', 'gas'];
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
 
+// Helper function to handle both _services_ej and _useful_ej field names for backward compatibility
+const getEnergyValue = (data, field) => {
+  if (!data) return 0;
+  // Try services field first (new format), fall back to useful field (old format)
+  const servicesField = field.replace('_useful_', '_services_');
+  return data[servicesField] || data[field] || 0;
+};
+
+const getSourcesObject = (data) => {
+  if (!data) return {};
+  // Try services field first (new format), fall back to useful field (old format)
+  return data.sources_services_ej || data.sources_useful_ej || {};
+};
+
 const AVAILABLE_REGIONS = [
   // Global first
   'Global',
@@ -138,20 +152,23 @@ export default function Regions() {
             // Handle virtual source aggregations
             if (selectedSource === 'all') {
               // Sum all energy sources
-              row[region] = regionYearData.total_services_ej || 0;
+              row[region] = getEnergyValue(regionYearData, 'total_useful_ej');
             } else if (selectedSource === 'fossil') {
               // Sum fossil fuel sources
               const fossilSources = ['coal', 'oil', 'gas'];
+              const sourcesObj = getSourcesObject(regionYearData);
               row[region] = fossilSources.reduce((sum, source) =>
-                sum + (regionYearData.sources_services_ej[source] || 0), 0);
+                sum + (sourcesObj[source] || 0), 0);
             } else if (selectedSource === 'clean') {
               // Sum clean energy sources
               const cleanSources = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
+              const sourcesObj = getSourcesObject(regionYearData);
               row[region] = cleanSources.reduce((sum, source) =>
-                sum + (regionYearData.sources_services_ej[source] || 0), 0);
+                sum + (sourcesObj[source] || 0), 0);
             } else {
               // Show the selected individual energy source for this region
-              row[region] = regionYearData.sources_services_ej[selectedSource] || 0;
+              const sourcesObj = getSourcesObject(regionYearData);
+              row[region] = sourcesObj[selectedSource] || 0;
             }
           });
         } else if (viewMode === 'sources') {
@@ -173,7 +190,8 @@ export default function Regions() {
           }
 
           sourcesToShow.forEach(source => {
-            row[source] = regionYearData.sources_services_ej[source] || 0;
+            const sourcesObj = getSourcesObject(regionYearData);
+            row[source] = sourcesObj[source] || 0;
           });
         }
 
@@ -193,9 +211,9 @@ export default function Regions() {
         const latest = regionInfo.data[regionInfo.data.length - 1];
         return {
           region,
-          cleanShare: latest.clean_services_share_percent,
-          efficiency: latest.efficiency_percent,
-          totalEnergy: latest.total_services_ej
+          cleanShare: latest.clean_services_share_percent || latest.clean_share_percent || 0,
+          efficiency: latest.efficiency_percent || 0,
+          totalEnergy: getEnergyValue(latest, 'total_useful_ej')
         };
       })
       .filter(d => d !== null)
@@ -213,10 +231,11 @@ export default function Regions() {
       .filter(yearData => yearData.year >= 1965) // Only show 1965-2024
       .map(yearData => {
         const row = { year: yearData.year };
-        const total = yearData.total_services_ej;
+        const total = getEnergyValue(yearData, 'total_useful_ej');
+        const sourcesObj = getSourcesObject(yearData);
 
         ENERGY_SOURCES.forEach(source => {
-          const absoluteValue = yearData.sources_services_ej[source] || 0;
+          const absoluteValue = sourcesObj[source] || 0;
           // If showing relative values, convert to percentage
           if (showRelativeChart3) {
             row[source] = total > 0 ? (absoluteValue / total * 100) : 0;
@@ -628,7 +647,7 @@ export default function Regions() {
                 ? (sortedPayload[0]?.name || selectedRegion)
                 : selectedRegion;
               const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-              const totalForRegion = yearData?.total_services_ej || 0;
+              const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
               const totalPercentage = totalForRegion > 0 ? (totalEJ / totalForRegion * 100) : 0;
 
               // Split sorted payload into columns for better display
@@ -657,7 +676,7 @@ export default function Regions() {
                       {column1.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_services_ej || 0;
+                        const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -676,7 +695,7 @@ export default function Regions() {
                       {column2.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_services_ej || 0;
+                        const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -1247,7 +1266,7 @@ export default function Regions() {
                 ? (sortedPayload[0]?.name || selectedRegion)
                 : selectedRegion;
               const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-              const totalForRegion = yearData?.total_services_ej || 0;
+              const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
               const totalPercentage = totalForRegion > 0 ? (totalEJ / totalForRegion * 100) : 0;
 
               // Split sorted payload into columns for better display
@@ -1276,7 +1295,7 @@ export default function Regions() {
                       {column1.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_services_ej || 0;
+                        const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
@@ -1295,7 +1314,7 @@ export default function Regions() {
                       {column2.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
-                        const totalForRegion = yearData?.total_services_ej || 0;
+                        const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
                         const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
                         return (
