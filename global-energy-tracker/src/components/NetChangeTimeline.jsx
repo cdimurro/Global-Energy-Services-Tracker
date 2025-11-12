@@ -232,9 +232,10 @@ export default function NetChangeTimeline() {
           <defs>
             {/* Conditional fill for Net Change based on positive/negative */}
             <linearGradient id="netChangeGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#DC2626" stopOpacity={1} />
-              <stop offset="50%" stopColor="#ffffff" stopOpacity={0.5} />
-              <stop offset="100%" stopColor="#16A34A" stopOpacity={1} />
+              <stop offset="0%" stopColor="#DC2626" stopOpacity={0.6} />
+              <stop offset="50%" stopColor="#DC2626" stopOpacity={0.6} />
+              <stop offset="50%" stopColor="#16A34A" stopOpacity={0.6} />
+              <stop offset="100%" stopColor="#16A34A" stopOpacity={0.6} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
