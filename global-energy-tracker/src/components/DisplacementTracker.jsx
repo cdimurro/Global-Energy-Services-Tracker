@@ -131,24 +131,24 @@ export default function DisplacementTracker() {
   // Bar chart data
   const barChartData = [
     {
+      name: 'Energy Services Demand',
+      value: currentData.totalEnergyGrowth,
+      percent: currentData.totalEnergyGrowthPercent,
+      color: '#16A34A',
+      label: 'Energy Services Demand'
+    },
+    {
       name: 'Clean Displacement',
       value: Math.max(0, currentData.displacementRate),
       percent: currentData.cleanRelativeChange,
-      color: '#16A34A',
-      label: 'Clean Displacement (D)'
-    },
-    {
-      name: 'Fossil Fuel Growth',
-      value: Math.max(0, currentData.fossilGrowth),
-      percent: currentData.fossilRelativeChange,
       color: '#DC2626',
-      label: 'Fossil Fuel Growth'
+      label: 'Clean Displacement (D)'
     },
     {
       name: 'Efficiency Savings',
       value: Math.max(0, currentData.efficiencySavings),
-      percent: currentData.efficiencySavings / (currentData.fossilGrowth || 1) * 100,
-      color: '#10B981',
+      percent: currentData.efficiencySavings / (currentData.totalEnergyGrowth || 1) * 100,
+      color: '#2563EB',
       label: 'Efficiency Savings'
     },
     {
@@ -365,14 +365,14 @@ export default function DisplacementTracker() {
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded" style={{ backgroundColor: '#16A34A' }}></div>
-              <span className="text-sm font-medium text-gray-700">Clean Displacement</span>
+              <span className="text-sm font-medium text-gray-700">Energy Services Demand</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded" style={{ backgroundColor: '#DC2626' }}></div>
-              <span className="text-sm font-medium text-gray-700">Fossil Fuel Growth</span>
+              <span className="text-sm font-medium text-gray-700">Clean Displacement</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#10B981' }}></div>
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#2563EB' }}></div>
               <span className="text-sm font-medium text-gray-700">Efficiency Savings</span>
             </div>
             <div className="flex items-center gap-2">
@@ -444,12 +444,12 @@ export default function DisplacementTracker() {
         <h3 className="text-xl font-bold mb-4 text-gray-800">Key Definitions</h3>
         <div className="space-y-3 mb-6">
           <div className="border-l-4 border-green-600 pl-4">
-            <strong>Clean Energy Displacement (D):</strong> The total amount of fossil fuel consumption replaced by clean energy and efficiency measures in a given year.
-          </div>
-          <div className="border-l-4 border-red-600 pl-4">
             <strong>Energy Services Demand:</strong> The net change in demand for new energy services (positive or negative).
           </div>
-          <div className="border-l-4 border-green-600 pl-4">
+          <div className="border-l-4 border-red-600 pl-4">
+            <strong>Clean Energy Displacement (D):</strong> The total amount of fossil fuel consumption replaced by clean energy and efficiency measures in a given year.
+          </div>
+          <div className="border-l-4 border-blue-600 pl-4">
             <strong>Efficiency Savings:</strong> The reduction in fossil fuel consumption achieved through improvements in energy efficiency, measured by changes in global exergy efficiency over time.
           </div>
           <div className="border-l-4 border-purple-600 pl-4">
