@@ -82,26 +82,29 @@ export default function Regions() {
       .then(([regionalData, globalData]) => {
         // Transform global data to match regional data structure
         const globalRegionData = {
-          data: globalData.data.map(yearData => ({
-            year: yearData.year,
-            total_useful_ej: yearData.total_useful_ej,
-            fossil_useful_ej: yearData.fossil_useful_ej,
-            clean_useful_ej: yearData.clean_useful_ej,
-            sources_useful_ej: {
-              coal: yearData.sources_useful_ej.coal || 0,
-              oil: yearData.sources_useful_ej.oil || 0,
-              gas: yearData.sources_useful_ej.gas || 0,
-              nuclear: yearData.sources_useful_ej.nuclear || 0,
-              hydro: yearData.sources_useful_ej.hydro || 0,
-              wind: yearData.sources_useful_ej.wind || 0,
-              solar: yearData.sources_useful_ej.solar || 0,
-              biofuels: yearData.sources_useful_ej.biomass || 0,
-              other_renewables: (yearData.sources_useful_ej.geothermal || 0) + (yearData.sources_useful_ej.other || 0)
-            },
-            fossil_share_percent: yearData.fossil_share_percent,
-            clean_share_percent: yearData.clean_share_percent,
-            efficiency_percent: yearData.overall_efficiency || 0
-          }))
+          data: globalData.data.map(yearData => {
+            const sources = yearData.sources_useful_ej || {};
+            return {
+              year: yearData.year,
+              total_useful_ej: yearData.total_useful_ej || 0,
+              fossil_useful_ej: yearData.fossil_useful_ej || 0,
+              clean_useful_ej: yearData.clean_useful_ej || 0,
+              sources_useful_ej: {
+                coal: sources.coal || 0,
+                oil: sources.oil || 0,
+                gas: sources.gas || 0,
+                nuclear: sources.nuclear || 0,
+                hydro: sources.hydro || 0,
+                wind: sources.wind || 0,
+                solar: sources.solar || 0,
+                biofuels: sources.biomass || 0,
+                other_renewables: (sources.geothermal || 0) + (sources.other || 0)
+              },
+              fossil_share_percent: yearData.fossil_share_percent || 0,
+              clean_share_percent: yearData.clean_share_percent || 0,
+              efficiency_percent: yearData.overall_efficiency || 0
+            };
+          })
         };
 
         // Add Global to regional data
