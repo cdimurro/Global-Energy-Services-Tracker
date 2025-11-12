@@ -447,7 +447,7 @@ export default function DisplacementTracker() {
             <strong>Energy Services Demand:</strong> The net change in demand for new energy services (positive or negative).
           </div>
           <div className="border-l-4 border-green-600 pl-4">
-            <strong>Clean Energy Displacement (D):</strong> The total amount of fossil fuel consumption replaced by clean energy and efficiency measures in a given year.
+            <strong>Clean Energy Displacement (D):</strong> The amount of fossil fuel consumption replaced by clean energy growth in a given year.
           </div>
           <div className="border-l-4 border-blue-600 pl-4">
             <strong>Efficiency Savings:</strong> The reduction in fossil fuel consumption achieved through improvements in energy efficiency, measured by changes in global exergy efficiency over time.
