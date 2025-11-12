@@ -65,10 +65,10 @@ export default function DisplacementTracker() {
         ? (totalEnergyGrowthValue / startYear.total_services_ej) * 100
         : 0;
 
-      // Net Change = Clean Displacement - Fossil Fuel Growth
-      // Positive value means displacement exceeds growth (fossil declining)
-      // Negative value means growth exceeds displacement (fossil rising)
-      const netChangeValue = displacementValue - fossilGrowthValue;
+      // Net Change = Fossil Fuel Growth - Clean Displacement
+      // Positive value means growth exceeds displacement (fossil rising)
+      // Negative value means displacement exceeds growth (fossil declining)
+      const netChangeValue = fossilGrowthValue - displacementValue;
       const netChangePercentValue = startYear.fossil_services_ej > 0
         ? (netChangeValue / startYear.fossil_services_ej) * 100
         : 0;
@@ -221,8 +221,8 @@ export default function DisplacementTracker() {
       // Displacement is clean growth (if positive)
       const displacementValue = Math.max(0, cleanGrowthValue);
 
-      // Net Change = Clean Displacement - Fossil Fuel Growth
-      const netChangeValue = displacementValue - fossilGrowthValue;
+      // Net Change = Fossil Fuel Growth - Clean Displacement
+      const netChangeValue = fossilGrowthValue - displacementValue;
 
       let status;
       if (displacementValue < fossilGrowthValue) {
