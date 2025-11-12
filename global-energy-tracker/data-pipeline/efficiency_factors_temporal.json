@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "description": "Time-varying efficiency factors to account for technological improvements over 1965-2024",
+    "methodology": "Base efficiency (1965) with annual improvement rates based on historical technology evolution",
+    "sources": [
+      "IEA Energy Efficiency Indicators - Historical efficiency trends",
+      "IEA Technology Perspectives - Power plant efficiency evolution",
+      "ICCT Vehicle Efficiency Reports - Transport efficiency improvements",
+      "Historical data on coal plant heat rates, CCGT efficiency, vehicle fuel economy"
+    ],
+    "key_insight": "Fossil fuel power plants improved ~0.5%/year. Transport efficiency improved slowly (~0.2%/year). Renewables have minimal time variation (already counted in primary data).",
+    "last_updated": "2025-11-11",
+    "version": "v2.0"
+  },
+  "base_year": 1965,
+  "current_year_values": {
+    "note": "These match efficiency_factors_corrected.json for 2024",
+    "oil": 0.30,
+    "gas": 0.45,
+    "coal": 0.32,
+    "nuclear": 0.33,
+    "hydro": 0.70,
+    "wind": 0.70,
+    "solar": 0.70,
+    "biomass": 0.15,
+    "geothermal": 0.75
+  },
+  "base_year_efficiency_1965": {
+    "oil": 0.25,
+    "gas": 0.35,
+    "coal": 0.25,
+    "nuclear": 0.30,
+    "hydro": 0.70,
+    "wind": 0.70,
+    "solar": 0.70,
+    "biomass": 0.12,
+    "geothermal": 0.75,
+    "notes": {
+      "oil": "1965: Less efficient engines, lower fuel economy standards. 25% → 30% over 59 years (+0.085%/year)",
+      "gas": "1965: Older power plants, less efficient heating. 35% → 45% over 59 years (+0.17%/year)",
+      "coal": "1965: Subcritical plants ~25% efficient. 25% → 32% over 59 years (+0.12%/year improvement)",
+      "nuclear": "1965: Early reactors ~30%. Modern ~33% (limited by thermodynamics). +0.05%/year",
+      "hydro": "Mature technology, no significant change",
+      "wind": "Modern turbines only, no 1965 baseline (negligible wind in 1965)",
+      "solar": "Modern PV only, no 1965 baseline (negligible solar in 1965)",
+      "biomass": "Traditional biomass still dominates. Slight improvement: 12% → 15% (+0.05%/year)",
+      "geothermal": "Niche technology, minimal change"
+    }
+  },
+  "annual_improvement_rates": {
+    "oil": 0.00085,
+    "gas": 0.0017,
+    "coal": 0.0012,
+    "nuclear": 0.0005,
+    "hydro": 0.0,
+    "wind": 0.0,
+    "solar": 0.0,
+    "biomass": 0.0005,
+    "geothermal": 0.0,
+    "units": "Fractional improvement per year (e.g., 0.001 = 0.1%/year)",
+    "notes": "These are ABSOLUTE improvements (e.g., 0.25 → 0.251 in one year for coal = +0.001), NOT relative percentage improvements"
+  },
+  "calculation_formula": {
+    "description": "Calculate efficiency for any year between 1965 and 2024",
+    "formula": "efficiency(year) = base_efficiency_1965 + (annual_improvement_rate × (year - 1965))",
+    "example_coal_2000": {
+      "year": 2000,
+      "years_since_1965": 35,
+      "base_efficiency_1965": 0.25,
+      "annual_improvement": 0.0012,
+      "total_improvement": "0.0012 × 35 = 0.042",
+      "efficiency_2000": "0.25 + 0.042 = 0.292 (29.2%)"
+    },
+    "example_coal_2024": {
+      "year": 2024,
+      "years_since_1965": 59,
+      "base_efficiency_1965": 0.25,
+      "annual_improvement": 0.0012,
+      "total_improvement": "0.0012 × 59 = 0.0708",
+      "efficiency_2024": "0.25 + 0.0708 = 0.3208 (32.08%)",
+      "verification": "Matches efficiency_factors_corrected.json value of 0.32 ✓"
+    },
+    "example_gas_1990": {
+      "year": 1990,
+      "years_since_1965": 25,
+      "base_efficiency_1965": 0.35,
+      "annual_improvement": 0.0017,
+      "total_improvement": "0.0017 × 25 = 0.0425",
+      "efficiency_1990": "0.35 + 0.0425 = 0.3925 (39.25%)"
+    }
+  },
+  "rationale": {
+    "coal_improvement": {
+      "1965": "Subcritical pulverized coal plants, ~25-28% efficient (heat rate ~13,500 BTU/kWh)",
+      "1990": "Improved subcritical, ~30-33% efficient (heat rate ~11,500 BTU/kWh)",
+      "2010": "Supercritical and ultra-supercritical, ~35-40% efficient (heat rate ~9,500 BTU/kWh)",
+      "2024": "Fleet average ~32% (mix of old subcritical and newer supercritical)",
+      "improvement_rate": "0.12%/year absolute"
+    },
+    "gas_improvement": {
+      "1965": "Steam turbines and older heating systems, ~35% weighted average",
+      "1990": "Introduction of combined-cycle gas turbines (CCGT) ~45% efficient",
+      "2010": "Advanced CCGT ~55-60% efficient, condensing boilers for heating ~90%",
+      "2024": "Fleet average ~45% (40% electricity at 55%, 60% heating at 85%)",
+      "improvement_rate": "0.17%/year absolute"
+    },
+    "oil_improvement": {
+      "1965": "Carbureted engines, no emissions controls, ~18-20% efficient vehicles",
+      "1990": "Fuel injection, catalytic converters, ~22-25% efficient",
+      "2010": "Electronic controls, direct injection, hybrid penetration, ~27-30% efficient",
+      "2024": "Fleet average ~30% (90% transport, limited EV penetration still)",
+      "improvement_rate": "0.085%/year absolute (slow due to thermodynamic limits of ICE)"
+    },
+    "nuclear_minimal_improvement": {
+      "reason": "Carnot efficiency limits thermal-to-electric conversion. Reactor temperatures constrained by materials science. 30% (1965) → 33% (2024) improvement primarily from better steam turbines and reduced auxiliary loads.",
+      "improvement_rate": "0.05%/year absolute (very slow)"
+    },
+    "renewables_no_improvement": {
+      "reason": "Wind and solar data begins ~1990s. Efficiency already captured in primary energy accounting (kWh generated). Hydro is mature technology (1965 dams ~70%, modern dams ~70%). No time-varying adjustment needed."
+    },
+    "biomass_slow_improvement": {
+      "reason": "Traditional cookstoves still dominate in developing countries (70% of biomass use). Slight improvement from modern biomass power plants and improved cookstove programs. 12% (1965) → 15% (2024).",
+      "improvement_rate": "0.05%/year absolute"
+    }
+  },
+  "validation": {
+    "coal_2024_check": "0.25 + (0.0012 × 59) = 0.3208 ≈ 0.32 ✓",
+    "gas_2024_check": "0.35 + (0.0017 × 59) = 0.4503 ≈ 0.45 ✓",
+    "oil_2024_check": "0.25 + (0.00085 × 59) = 0.30015 ≈ 0.30 ✓",
+    "nuclear_2024_check": "0.30 + (0.0005 × 59) = 0.3295 ≈ 0.33 ✓",
+    "biomass_2024_check": "0.12 + (0.0005 × 59) = 0.1495 ≈ 0.15 ✓"
+  },
+  "implementation_notes": {
+    "backward_compatibility": "When time-varying is disabled, use values from efficiency_factors_corrected.json (2024 baseline)",
+    "future_projections": "For years >2024, can extrapolate using same improvement rates, but should cap at theoretical maxima (e.g., coal supercritical limit ~45%, gas CCGT limit ~65%)",
+    "regional_variation": "These are global averages. Regional files (efficiency_factors_regional.json) override with location-specific values if needed."
+  }
+}

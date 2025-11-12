@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "description": "Energy efficiency rebound effect configuration (Jevons Paradox)",
+    "methodology": "Based on IEA Energy Efficiency reports and academic literature on rebound effects",
+    "sources": [
+      "IEA Energy Efficiency 2024 - Rebound effect estimates",
+      "Sorrell et al. 2009 - Empirical estimates of direct rebound effects",
+      "Greening et al. 2000 - Energy efficiency and consumption",
+      "Brockway et al. 2017 - Energy efficiency and economic growth"
+    ],
+    "key_insight": "Efficiency improvements lead to 5-10% increased consumption (Jevons Paradox). We model this conservatively at 7%.",
+    "last_updated": "2025-11-11",
+    "version": "v2.0"
+  },
+  "global_rebound_rate": 0.07,
+  "description_of_global_rate": "7% of efficiency savings are consumed through increased demand (IEA estimate, conservative mid-range)",
+  "rebound_by_sector": {
+    "transport": 0.10,
+    "residential_heating": 0.20,
+    "residential_cooling": 0.15,
+    "residential_appliances": 0.05,
+    "industrial": 0.05,
+    "commercial": 0.08,
+    "notes": {
+      "transport": "10% - More efficient vehicles lead to more driving (lower cost per mile)",
+      "residential_heating": "20% - More efficient heating allows higher thermostat settings (comfort effect)",
+      "residential_cooling": "15% - Similar to heating, efficiency enables more AC use",
+      "residential_appliances": "5% - Lower rebound for discrete appliances (TV, fridge, etc.)",
+      "industrial": "5% - Limited rebound in industrial sector (production driven by demand, not energy cost)",
+      "commercial": "8% - Moderate rebound in commercial buildings (similar to residential)"
+    }
+  },
+  "rationale": {
+    "jevons_paradox": "William Stanley Jevons (1865) observed that improved coal efficiency in steam engines led to increased coal consumption, not decreased. The same effect applies to modern energy systems.",
+    "direct_rebound": "Lower energy cost per unit service → increased consumption of that service (e.g., more driving with efficient car)",
+    "indirect_rebound": "Energy savings → more disposable income → increased consumption of other goods/services (which require energy)",
+    "economy_wide_rebound": "Efficiency improvements → economic growth → overall energy demand increase",
+    "net_effect": "IEA estimates 5-10% direct rebound for most efficiency gains. Including indirect effects, total rebound could be 10-30%. We use 7% (conservative, direct + partial indirect)."
+  },
+  "application_in_model": {
+    "method": "Reduce calculated useful energy by rebound_rate",
+    "formula": "Useful_Energy_Net = Useful_Energy_Gross × (1 - rebound_rate)",
+    "example": "If theoretical efficiency gives 100 EJ useful, with 7% rebound: 100 × (1 - 0.07) = 93 EJ net useful energy",
+    "interpretation": "7% of efficiency savings are 'taken back' through increased consumption"
+  },
+  "validation": {
+    "iea_estimate": "IEA reports 5-10% direct rebound for typical efficiency improvements",
+    "academic_consensus": "Sorrell et al. (2009) meta-analysis: direct rebound 10-30% for transport, 0-50% for heating (wide range)",
+    "our_choice": "7% is conservative mid-range, accounts for direct + partial indirect rebound",
+    "alternative_scenarios": {
+      "no_rebound": 0.0,
+      "conservative": 0.05,
+      "moderate": 0.07,
+      "aggressive": 0.10,
+      "maximum": 0.20
+    }
+  },
+  "historical_context": {
+    "global_efficiency_improvement": "Global energy system efficiency improved from ~30% (1965) to ~37% (2024)",
+    "expected_energy_reduction": "If no rebound, this should reduce energy demand by ~19%",
+    "actual_energy_growth": "Global energy consumption increased 3.5x from 1965 to 2024",
+    "explanation": "Economic growth + rebound effect >> efficiency gains. Our model captures efficiency accurately by including 7% rebound in the useful energy calculation."
+  },
+  "disable_rebound": false,
+  "note_on_disable": "Set 'disable_rebound' to true or set global_rebound_rate to 0.0 to calculate theoretical useful energy without rebound effects (for sensitivity analysis)"
+}

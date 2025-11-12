@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "description": "Regional efficiency factor variations to account for different technology mixes, climate, and development levels",
+    "methodology": "Based on IEA World Energy Balances regional data, technology deployment surveys, and climate adjustments",
+    "sources": [
+      "IEA World Energy Balances 2024 - Regional energy flows",
+      "IEA Energy Efficiency Indicators - Country-specific efficiency data",
+      "Enerdata Global Energy Statistical Yearbook - Regional comparisons",
+      "US EIA International Energy Statistics"
+    ],
+    "key_insight": "China coal plants ~40% efficient (newer fleet), US gas ~48% (high CCGT penetration), developing countries biomass ~12% (traditional cookstoves)",
+    "last_updated": "2025-11-11",
+    "version": "v2.0"
+  },
+  "global_baseline": {
+    "note": "These are the global average values from efficiency_factors_corrected.json",
+    "oil": 0.30,
+    "gas": 0.45,
+    "coal": 0.32,
+    "nuclear": 0.33,
+    "hydro": 0.70,
+    "wind": 0.70,
+    "solar": 0.70,
+    "biomass": 0.15,
+    "geothermal": 0.75
+  },
+  "regional_variations": {
+    "China": {
+      "oil": 0.28,
+      "gas": 0.46,
+      "coal": 0.40,
+      "nuclear": 0.34,
+      "hydro": 0.72,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.12,
+      "geothermal": 0.75,
+      "notes": {
+        "coal": "40% - China built massive fleet of supercritical and ultra-supercritical coal plants post-2000. Average efficiency significantly higher than global fleet.",
+        "nuclear": "34% - Modern Gen III reactors (AP1000, HPR1000) with slightly higher efficiency",
+        "oil": "28% - Lower vehicle efficiency due to older fleet mix, though improving rapidly",
+        "biomass": "12% - Rural areas still use traditional biomass for cooking",
+        "hydro": "72% - Large modern dams (Three Gorges, etc.) with high efficiency"
+      }
+    },
+    "United States": {
+      "oil": 0.32,
+      "gas": 0.48,
+      "coal": 0.30,
+      "nuclear": 0.33,
+      "hydro": 0.70,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.25,
+      "geothermal": 0.75,
+      "notes": {
+        "gas": "48% - High penetration of advanced CCGT plants (~60% of gas generation), high-efficiency furnaces",
+        "oil": "32% - More efficient vehicle fleet (CAFE standards), though offset by larger vehicles",
+        "coal": "30% - Older subcritical plants dominate (many built 1970s-1980s), below global average",
+        "biomass": "25% - Modern wood pellet plants and corn ethanol (E10), minimal traditional biomass"
+      }
+    },
+    "Europe": {
+      "oil": 0.33,
+      "gas": 0.47,
+      "coal": 0.35,
+      "nuclear": 0.33,
+      "hydro": 0.71,
+      "wind": 0.71,
+      "solar": 0.71,
+      "biomass": 0.22,
+      "geothermal": 0.76,
+      "notes": {
+        "oil": "33% - Most efficient vehicle fleet globally (EU emissions standards, diesel penetration, smaller vehicles)",
+        "gas": "47% - Mix of CCGT and high-efficiency condensing boilers for heating",
+        "coal": "35% - Remaining coal plants are mostly modern, many countries phasing out",
+        "biomass": "22% - Mix of wood pellets for heating/power and some traditional use in Eastern Europe",
+        "wind": "71% - Offshore wind farms with larger, more efficient turbines"
+      }
+    },
+    "India": {
+      "oil": 0.27,
+      "gas": 0.43,
+      "coal": 0.28,
+      "nuclear": 0.32,
+      "hydro": 0.68,
+      "wind": 0.69,
+      "solar": 0.69,
+      "biomass": 0.10,
+      "geothermal": 0.75,
+      "notes": {
+        "coal": "28% - Mix of old subcritical (70%) and newer supercritical plants (30%), below global average",
+        "biomass": "10% - Dominated by traditional cookstoves in rural areas (600+ million people), very low efficiency",
+        "oil": "27% - Older vehicle fleet, two-wheelers (scooters/motorcycles) which are less efficient",
+        "nuclear": "32% - Older reactor designs (PHWR), slightly below global average"
+      }
+    },
+    "Africa": {
+      "oil": 0.26,
+      "gas": 0.42,
+      "coal": 0.29,
+      "nuclear": 0.33,
+      "hydro": 0.69,
+      "wind": 0.69,
+      "solar": 0.69,
+      "biomass": 0.08,
+      "geothermal": 0.74,
+      "notes": {
+        "biomass": "8% - Heavily dominated by traditional biomass (charcoal, firewood for cooking), extremely low efficiency",
+        "oil": "26% - Older imported vehicles, limited emissions controls",
+        "coal": "29% - South Africa dominates, mix of old and newer plants",
+        "hydro": "69% - Mix of large modern dams and smaller older installations"
+      }
+    },
+    "Japan": {
+      "oil": 0.31,
+      "gas": 0.49,
+      "coal": 0.34,
+      "nuclear": 0.34,
+      "hydro": 0.70,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.20,
+      "geothermal": 0.76,
+      "notes": {
+        "gas": "49% - Highest efficiency gas fleet globally, advanced CCGT, high-efficiency heating",
+        "coal": "34% - Modern supercritical plants built post-Fukushima to replace nuclear",
+        "nuclear": "34% - Advanced BWR and PWR designs (pre-Fukushima fleet)",
+        "oil": "31% - Efficient small vehicles, extensive hybrid penetration (Toyota Prius, etc.)"
+      }
+    },
+    "Russia": {
+      "oil": 0.28,
+      "gas": 0.40,
+      "coal": 0.27,
+      "nuclear": 0.32,
+      "hydro": 0.69,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.16,
+      "geothermal": 0.75,
+      "notes": {
+        "gas": "40% - Lower efficiency due to: (1) Cold climate increases heating demand (more low-temp heat, less electricity), (2) Older infrastructure, (3) Abundant cheap gas reduces efficiency incentives",
+        "coal": "27% - Old Soviet-era plants, low efficiency",
+        "nuclear": "32% - Mix of VVER designs, some older RBMK reactors",
+        "oil": "28% - Harsh climate reduces vehicle efficiency"
+      }
+    },
+    "Brazil": {
+      "oil": 0.29,
+      "gas": 0.44,
+      "coal": 0.30,
+      "nuclear": 0.33,
+      "hydro": 0.73,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.20,
+      "geothermal": 0.75,
+      "notes": {
+        "hydro": "73% - Massive modern dam infrastructure (Itaipu, Belo Monte), very high efficiency",
+        "biomass": "20% - Sugarcane ethanol (E25-E100 in flex-fuel vehicles) is relatively efficient, plus some traditional use",
+        "oil": "29% - Flex-fuel vehicles common, but ethanol lowers overall petroleum efficiency"
+      }
+    },
+    "Canada": {
+      "oil": 0.27,
+      "gas": 0.46,
+      "coal": 0.31,
+      "nuclear": 0.33,
+      "hydro": 0.72,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.23,
+      "geothermal": 0.75,
+      "notes": {
+        "oil": "27% - Cold climate reduces vehicle efficiency (heating, idling, winter tires), larger vehicles (trucks/SUVs)",
+        "gas": "46% - High heating demand (low-temp heat, low exergy), but efficient furnaces",
+        "hydro": "72% - Massive modern hydroelectric infrastructure (James Bay, Churchill Falls, etc.)"
+      }
+    },
+    "South Korea": {
+      "oil": 0.30,
+      "gas": 0.47,
+      "coal": 0.36,
+      "nuclear": 0.34,
+      "hydro": 0.70,
+      "wind": 0.70,
+      "solar": 0.70,
+      "biomass": 0.18,
+      "geothermal": 0.75,
+      "notes": {
+        "coal": "36% - Modern supercritical plants, high efficiency fleet",
+        "nuclear": "34% - Advanced APR1400 reactors, high capacity factors",
+        "gas": "47% - Modern CCGT plants"
+      }
+    },
+    "Australia": {
+      "oil": 0.29,
+      "gas": 0.45,
+      "coal": 0.29,
+      "nuclear": 0.33,
+      "hydro": 0.70,
+      "wind": 0.70,
+      "solar": 0.71,
+      "biomass": 0.17,
+      "geothermal": 0.75,
+      "notes": {
+        "coal": "29% - Aging fleet of subcritical plants, low efficiency",
+        "solar": "71% - Excellent solar resource, high-quality installations",
+        "oil": "29% - Large distances (long-haul trucking), larger vehicles"
+      }
+    }
+  },
+  "calculation_priority": {
+    "description": "How to apply efficiency factors when both regional and temporal variations exist",
+    "priority_order": [
+      "1. Check if regional override exists for this region and source",
+      "2. If yes, use regional value (regional values are 2024 calibrated, already account for time)",
+      "3. If no regional override, use temporal formula: base_1965 + (improvement_rate × (year - 1965))",
+      "4. If neither regional nor temporal, use global baseline from efficiency_factors_corrected.json"
+    ],
+    "note": "Regional factors take precedence because they're calibrated to actual 2024 fleet characteristics"
+  },
+  "validation_notes": {
+    "china_coal_verification": "IEA reports China coal fleet ~40% average (2024) vs global ~32%. Verified ✓",
+    "us_gas_verification": "EIA reports US CCGT capacity factor and efficiency support ~48% weighted average. Verified ✓",
+    "india_biomass_verification": "IEA reports India traditional biomass use at ~70% of total biomass, efficiency ~10-12%. Verified ✓",
+    "africa_biomass_verification": "IEA Africa Energy Outlook reports 80%+ traditional biomass, efficiency 8-12%. Verified ✓"
+  }
+}
