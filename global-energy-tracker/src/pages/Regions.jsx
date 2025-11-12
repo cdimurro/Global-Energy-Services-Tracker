@@ -397,6 +397,25 @@ export default function Regions() {
                   Select Regions
                 </label>
                 <div className="flex flex-wrap gap-2 mb-3">
+                  {AVAILABLE_REGIONS.map(region => (
+                    <button
+                      key={region}
+                      onClick={() => toggleRegion(region)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                        selectedRegions.includes(region)
+                          ? 'text-white ring-2 ring-2-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: selectedRegions.includes(region) ? getRegionColor(region) : undefined,
+                        ringColor: getRegionColor(region)
+                      }}
+                    >
+                      {region}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2" style={{ minHeight: '44px' }}>
                   <button
                     onClick={selectAllRegions}
                     className="px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all"
@@ -409,25 +428,6 @@ export default function Regions() {
                   >
                     Clear All
                   </button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {AVAILABLE_REGIONS.map(region => (
-                    <button
-                      key={region}
-                      onClick={() => toggleRegion(region)}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
-                        selectedRegions.includes(region)
-                          ? 'text-white ring-2 ring-offset-2'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                      }`}
-                      style={{
-                        backgroundColor: selectedRegions.includes(region) ? getRegionColor(region) : undefined,
-                        ringColor: getRegionColor(region)
-                      }}
-                    >
-                      {region}
-                    </button>
-                  ))}
                 </div>
               </div>
 
@@ -1016,6 +1016,25 @@ export default function Regions() {
                   Select Regions
                 </label>
                 <div className="flex flex-wrap gap-2 mb-3">
+                  {AVAILABLE_REGIONS.map(region => (
+                    <button
+                      key={region}
+                      onClick={() => toggleRegion(region)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                        selectedRegions.includes(region)
+                          ? 'text-white ring-2 ring-2-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: selectedRegions.includes(region) ? getRegionColor(region) : undefined,
+                        ringColor: getRegionColor(region)
+                      }}
+                    >
+                      {region}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2" style={{ minHeight: '44px' }}>
                   <button
                     onClick={selectAllRegions}
                     className="px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all"
@@ -1028,25 +1047,6 @@ export default function Regions() {
                   >
                     Clear All
                   </button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {AVAILABLE_REGIONS.map(region => (
-                    <button
-                      key={region}
-                      onClick={() => toggleRegion(region)}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
-                        selectedRegions.includes(region)
-                          ? 'text-white ring-2 ring-offset-2'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                      }`}
-                      style={{
-                        backgroundColor: selectedRegions.includes(region) ? getRegionColor(region) : undefined,
-                        ringColor: getRegionColor(region)
-                      }}
-                    >
-                      {region}
-                    </button>
-                  ))}
                 </div>
               </div>
 
