@@ -42,7 +42,7 @@ export default function DemandGrowth() {
     return <div className="text-center py-8">Loading projections...</div>;
   }
 
-  // Prepare data for charts
+  // Prepare data for charts (using Energy Services)
   const prepareChartData = () => {
     const allYears = data.scenarios[0].data.map(d => d.year);
 
@@ -53,9 +53,10 @@ export default function DemandGrowth() {
         const scenarioData = scenario.data.find(d => d.year === year);
         if (scenarioData) {
           const scenarioKey = scenario.name;
-          yearData[`${scenarioKey}_fossil`] = scenarioData.fossil_useful_ej;
-          yearData[`${scenarioKey}_clean`] = scenarioData.clean_useful_ej;
-          yearData[`${scenarioKey}_total`] = scenarioData.total_useful_ej;
+          // Use services data (Tier 3: useful × exergy)
+          yearData[`${scenarioKey}_fossil`] = scenarioData.fossil_services_ej;
+          yearData[`${scenarioKey}_clean`] = scenarioData.clean_services_ej;
+          yearData[`${scenarioKey}_total`] = scenarioData.total_services_ej;
         }
       });
 
@@ -132,7 +133,7 @@ export default function DemandGrowth() {
           Energy Services Demand Growth Forecast
         </h1>
         <p className="text-sm text-gray-600">
-          Comprehensive projections of global useful energy demand (2025-2050) based on IEA, BP, and RMI analysis
+          Comprehensive projections of global energy services demand (2025-2050) based on IEA, BP, and RMI analysis
         </p>
       </div>
 
@@ -143,7 +144,7 @@ export default function DemandGrowth() {
       <div className="metric-card bg-white mb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-800">
-            Total Useful Energy Demand Projections
+            Total Energy Services Demand Projections
           </h2>
           <div className="flex gap-2">
             <ChartExportButtons
@@ -192,8 +193,8 @@ export default function DemandGrowth() {
       <ChartFullscreenModal
         isOpen={isFullscreenChart1}
         onClose={() => setIsFullscreenChart1(false)}
-        title="Total Useful Energy Demand Projections"
-        description="Projected global useful energy demand by scenario (2025-2050)"
+        title="Total Energy Services Demand Projections"
+        description="Projected global energy services demand by scenario (2025-2050)"
         exportButtons={
           <ChartExportButtons
             onDownloadPNG={handleDownloadTotalPNG}
@@ -355,7 +356,7 @@ export default function DemandGrowth() {
               Historical Evolution
             </h3>
             <p className="text-gray-700">
-              Global energy demand grew from ~80 EJ in 1965 to ~230 EJ in 2024, driven primarily by fossil fuels.
+              Global energy services grew from ~60 EJ in 1965 to ~140 EJ in 2024, driven primarily by fossil fuels.
               Clean energy remained under 20% until 2020, when solar and wind deployment accelerated significantly.
             </p>
           </div>

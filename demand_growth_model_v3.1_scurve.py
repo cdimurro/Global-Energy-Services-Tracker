@@ -34,10 +34,17 @@ class ImprovedCagrModel:
         self.clean_cagr = cagrs['clean']  # +3.706%/year
         self.source_cagrs = cagrs['sources']
 
-        # Load 2024 baseline
+        # Load 2024 baseline (useful energy)
         with open('global-energy-tracker/public/data/useful_energy_timeseries.json', 'r') as f:
             historical = json.load(f)
             self.baseline_2024 = next(d for d in historical['data'] if d['year'] == 2024)
+
+        # Load exergy factors for services calculation
+        with open('global-energy-tracker/data-pipeline/source_sector_allocation.json', 'r') as f:
+            allocation_data = json.load(f)
+            self.exergy_factors = {}
+            for source, data in allocation_data['source_to_sector_allocation'].items():
+                self.exergy_factors[source] = data['weighted_exergy_factor']
 
         print("Improved CAGR Model v3.1 Initialized")
         print("=" * 80)
@@ -197,7 +204,7 @@ class ImprovedCagrModel:
             sources_useful['biomass'] = sources_2024['biomass'] * ((1 + biomass_growth) ** years_from_base)
             sources_useful['geothermal'] = sources_2024['geothermal'] * ((1 + geothermal_growth) ** years_from_base)
 
-            # AGGREGATE TOTALS
+            # AGGREGATE TOTALS (USEFUL ENERGY)
             fossil_sources = ['coal', 'oil', 'gas']
             clean_sources = ['nuclear', 'hydro', 'wind', 'solar', 'geothermal', 'biomass']
 
@@ -205,7 +212,17 @@ class ImprovedCagrModel:
             clean_useful = sum(sources_useful[s] for s in clean_sources)
             total_useful = fossil_useful + clean_useful
 
-            # Store projection
+            # CALCULATE ENERGY SERVICES (USEFUL × EXERGY FACTORS)
+            sources_services = {}
+            for source, useful_ej in sources_useful.items():
+                exergy_factor = self.exergy_factors.get(source, 1.0)
+                sources_services[source] = useful_ej * exergy_factor
+
+            fossil_services = sum(sources_services[s] for s in fossil_sources)
+            clean_services = sum(sources_services[s] for s in clean_sources)
+            total_services = fossil_services + clean_services
+
+            # Store projection (both useful and services)
             projections.append({
                 'year': year,
                 'scenario': scenario_name,
@@ -214,17 +231,31 @@ class ImprovedCagrModel:
                 'clean_useful_ej': clean_useful,
                 'fossil_share_percent': (fossil_useful / total_useful) * 100,
                 'clean_share_percent': (clean_useful / total_useful) * 100,
-                'sources_useful_ej': sources_useful
+                'sources_useful_ej': sources_useful,
+                'total_services_ej': total_services,
+                'fossil_services_ej': fossil_services,
+                'clean_services_ej': clean_services,
+                'fossil_services_share_percent': (fossil_services / total_services) * 100,
+                'clean_services_share_percent': (clean_services / total_services) * 100,
+                'sources_services_ej': sources_services
             })
 
         # Print summary
         print()
-        print(f"{scenario_name} Scenario Summary:")
+        print(f"{scenario_name} Scenario Summary (USEFUL ENERGY):")
         for year in [2030, 2040, 2050]:
             proj = next(p for p in projections if p['year'] == year)
             print(f"  {year}: {proj['total_useful_ej']:.1f} EJ " +
                   f"({proj['fossil_useful_ej']:.1f} fossil, {proj['clean_useful_ej']:.1f} clean) " +
                   f"- {proj['fossil_share_percent']:.1f}% fossil")
+
+        print()
+        print(f"{scenario_name} Scenario Summary (ENERGY SERVICES):")
+        for year in [2030, 2040, 2050]:
+            proj = next(p for p in projections if p['year'] == year)
+            print(f"  {year}: {proj['total_services_ej']:.1f} EJ " +
+                  f"({proj['fossil_services_ej']:.1f} fossil, {proj['clean_services_ej']:.1f} clean) " +
+                  f"- {proj['fossil_services_share_percent']:.1f}% fossil")
 
         # Find fossil peak
         peak_proj = max(projections, key=lambda p: p['fossil_useful_ej'])
