@@ -10,15 +10,8 @@ export default function DisplacementTracker() {
   const [energyData, setEnergyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const chartRef = useRef(null);
-  const [displacementRate, setDisplacementRate] = useState(0);
-  const [fossilGrowth, setFossilGrowth] = useState(0);
-  const [netChange, setNetChange] = useState(0);
-  const [totalEnergyGrowth, setTotalEnergyGrowth] = useState(0);
-  const [totalEnergyGrowthPercent, setTotalEnergyGrowthPercent] = useState(0);
-  const [netChangePercent, setNetChangePercent] = useState(0);
-  const [cleanRelativeChange, setCleanRelativeChange] = useState(0);
-  const [fossilRelativeChange, setFossilRelativeChange] = useState(0);
-  const [status, setStatus] = useState('rising');
+  const [selectedPeriod, setSelectedPeriod] = useState('current');
+  const [periodData, setPeriodData] = useState({});
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
@@ -39,86 +32,108 @@ export default function DisplacementTracker() {
     const timeseries = data.data;
     if (timeseries.length < 2) return;
 
-    // Get the last two years to calculate current rates
-    const currentYear = timeseries[timeseries.length - 1];
-    const previousYear = timeseries[timeseries.length - 2];
+    // Define periods
+    const periods = {
+      current: { years: 1, label: '2024' },
+      '5year': { years: 5, label: 'Last 5 Years (2019-2024)' },
+      '10year': { years: 10, label: 'Last 10 Years (2014-2024)' },
+      'all': { years: timeseries.length - 1, label: 'All Years (1965-2024)' }
+    };
 
-    // Calculate fossil fuel growth
-    const fossilGrowthValue = currentYear.fossil_services_ej - previousYear.fossil_services_ej;
+    const calculations = {};
 
-    // Calculate clean growth
-    const cleanGrowth = currentYear.clean_services_ej - previousYear.clean_services_ej;
+    Object.keys(periods).forEach(periodKey => {
+      const period = periods[periodKey];
+      const startIdx = Math.max(0, timeseries.length - 1 - period.years);
+      const endIdx = timeseries.length - 1;
 
-    // Displacement (D) = clean energy growth (positive only)
-    // This represents clean services added, which offset fossil growth
-    const displacementValue = Math.max(0, cleanGrowth);
+      const startYear = timeseries[startIdx];
+      const endYear = timeseries[endIdx];
 
-    // Total Energy Service Growth = Total energy change year-over-year
-    const totalEnergyGrowthValue = currentYear.total_services_ej - previousYear.total_services_ej;
-    const totalEnergyGrowthPercentValue = previousYear.total_services_ej > 0
-      ? (totalEnergyGrowthValue / previousYear.total_services_ej) * 100
-      : 0;
+      // Calculate fossil fuel growth
+      const fossilGrowthValue = endYear.fossil_services_ej - startYear.fossil_services_ej;
 
-    // Net Change = Fossil Growth - Clean Displacement
-    // This is what we're trying to track - is fossil going up or down?
-    const netChangeValue = fossilGrowthValue - displacementValue;
-    const netChangePercentValue = previousYear.fossil_services_ej > 0
-      ? (netChangeValue / previousYear.fossil_services_ej) * 100
-      : 0;
+      // Calculate clean growth
+      const cleanGrowth = endYear.clean_services_ej - startYear.clean_services_ej;
 
-    // Relative changes for clean and fossil
-    const cleanRelativeChangeValue = previousYear.clean_services_ej > 0
-      ? (cleanGrowth / previousYear.clean_services_ej) * 100
-      : 0;
-    const fossilRelativeChangeValue = previousYear.fossil_services_ej > 0
-      ? (fossilGrowthValue / previousYear.fossil_services_ej) * 100
-      : 0;
+      // Displacement (D) = clean energy growth (positive only)
+      const displacementValue = Math.max(0, cleanGrowth);
 
-    setDisplacementRate(displacementValue);
-    setFossilGrowth(fossilGrowthValue);
-    setNetChange(netChangeValue);
-    setTotalEnergyGrowth(totalEnergyGrowthValue);
-    setTotalEnergyGrowthPercent(totalEnergyGrowthPercentValue);
-    setNetChangePercent(netChangePercentValue);
-    setCleanRelativeChange(cleanRelativeChangeValue);
-    setFossilRelativeChange(fossilRelativeChangeValue);
+      // Total Energy Service Growth
+      const totalEnergyGrowthValue = endYear.total_services_ej - startYear.total_services_ej;
+      const totalEnergyGrowthPercentValue = startYear.total_services_ej > 0
+        ? (totalEnergyGrowthValue / startYear.total_services_ej) * 100
+        : 0;
 
-    // Determine status
-    if (cleanGrowth < 0) {
-      setStatus('recarbonization');
-    } else if (displacementValue < fossilGrowthValue) {
-      setStatus('rising');
-    } else if (Math.abs(displacementValue - fossilGrowthValue) < 0.01) {
-      setStatus('peak');
-    } else {
-      setStatus('declining');
-    }
+      // Net Change = Fossil Growth
+      const netChangeValue = fossilGrowthValue;
+      const netChangePercentValue = startYear.fossil_services_ej > 0
+        ? (netChangeValue / startYear.fossil_services_ej) * 100
+        : 0;
+
+      // Relative changes for clean and fossil
+      const cleanRelativeChangeValue = startYear.clean_services_ej > 0
+        ? (cleanGrowth / startYear.clean_services_ej) * 100
+        : 0;
+      const fossilRelativeChangeValue = startYear.fossil_services_ej > 0
+        ? (fossilGrowthValue / startYear.fossil_services_ej) * 100
+        : 0;
+
+      // Determine status
+      let status;
+      if (cleanGrowth < 0) {
+        status = 'recarbonization';
+      } else if (displacementValue < fossilGrowthValue) {
+        status = 'rising';
+      } else if (Math.abs(displacementValue - fossilGrowthValue) < 0.01) {
+        status = 'peak';
+      } else {
+        status = 'declining';
+      }
+
+      calculations[periodKey] = {
+        displacementRate: displacementValue,
+        fossilGrowth: fossilGrowthValue,
+        netChange: netChangeValue,
+        totalEnergyGrowth: totalEnergyGrowthValue,
+        totalEnergyGrowthPercent: totalEnergyGrowthPercentValue,
+        netChangePercent: netChangePercentValue,
+        cleanRelativeChange: cleanRelativeChangeValue,
+        fossilRelativeChange: fossilRelativeChangeValue,
+        status,
+        period: period.label
+      };
+    });
+
+    setPeriodData(calculations);
   };
 
-  if (loading || !energyData) {
+  if (loading || !energyData || !periodData.current) {
     return <div className="text-center py-8">Loading displacement data...</div>;
   }
+
+  const currentData = periodData[selectedPeriod];
 
   // Bar chart data
   const barChartData = [
     {
       name: 'Clean Displacement',
-      value: Math.max(0, displacementRate),
-      percent: cleanRelativeChange,
+      value: Math.max(0, currentData.displacementRate),
+      percent: currentData.cleanRelativeChange,
       color: '#16A34A',
       label: 'Clean Displacement (D)'
     },
     {
       name: 'Fossil Fuel Growth',
-      value: Math.max(0, fossilGrowth),
-      percent: fossilRelativeChange,
+      value: Math.max(0, currentData.fossilGrowth),
+      percent: currentData.fossilRelativeChange,
       color: '#DC2626',
       label: 'Fossil Fuel Growth'
     },
     {
       name: 'Net Change',
-      value: netChange,
-      percent: netChangePercent,
+      value: currentData.netChange,
+      percent: currentData.netChangePercent,
       color: '#9333EA',
       label: 'Net Change'
     }
@@ -140,7 +155,7 @@ export default function DisplacementTracker() {
     return null;
   };
 
-  const getStatusColor = () => {
+  const getStatusColor = (status) => {
     switch (status) {
       case 'recarbonization': return '#7C2D12'; // dark red/brown
       case 'rising': return '#DC2626'; // red
@@ -150,26 +165,28 @@ export default function DisplacementTracker() {
     }
   };
 
-  const getStatusText = () => {
+  const getStatusText = (status, periodLabel) => {
+    const periodText = periodLabel === '2024' ? 'in 2024' : `(${periodLabel})`;
     switch (status) {
       case 'recarbonization': return 'Recarbonization';
-      case 'rising': return 'Fossil Fuel Consumption\nIncreased in 2024';
+      case 'rising': return `Fossil Fuel Consumption\nIncreased ${periodText}`;
       case 'peak': return 'Peak Reached';
-      case 'declining': return 'Consumption Declining';
+      case 'declining': return `Consumption Declining ${periodText}`;
       default: return 'Unknown';
     }
   };
 
-  const getStatusDescription = () => {
+  const getStatusDescription = (status, periodLabel) => {
+    const periodText = periodLabel === '2024' ? 'in 2024' : `over ${periodLabel.toLowerCase()}`;
     switch (status) {
       case 'recarbonization':
-        return 'Clean energy services shrank in 2024. Fossil fuels expanded to meet all energy demand.';
+        return `Clean energy services shrank ${periodText}. Fossil fuels expanded to meet all energy demand.`;
       case 'rising':
-        return 'Clean energy grew in 2024, but fossil fuel demand grew by more.';
+        return `Clean energy grew ${periodText}, but fossil fuel demand grew by more.`;
       case 'peak':
-        return 'Clean growth perfectly balanced fossil demand changes in 2024. Fossil consumption was flat.';
+        return `Clean growth perfectly balanced fossil demand changes ${periodText}. Fossil consumption was flat.`;
       case 'declining':
-        return 'Clean energy growth exceeded fossil demand growth in 2024. Fossil consumption declined.';
+        return `Clean energy growth exceeded fossil demand growth ${periodText}. Fossil consumption declined.`;
       default:
         return '';
     }
@@ -250,6 +267,28 @@ export default function DisplacementTracker() {
   // Render chart content (used in both normal and fullscreen modes)
   const renderChartContent = () => (
     <>
+      {/* Period Selector */}
+      <div className="mb-8">
+        <label className="block text-lg font-semibold mb-3 text-gray-700">
+          Time Period:
+        </label>
+        <div className="flex gap-3 flex-wrap">
+          {Object.keys(periodData).map(periodKey => (
+            <button
+              key={periodKey}
+              onClick={() => setSelectedPeriod(periodKey)}
+              className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                selectedPeriod === periodKey
+                  ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+              }`}
+            >
+              {periodData[periodKey].period}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left: Bar Chart Visualization */}
         <div className="flex flex-col items-center justify-center">
@@ -283,12 +322,12 @@ export default function DisplacementTracker() {
           <div className="mt-4 text-center w-full">
             <div
               className="text-xl font-bold mb-1"
-              style={{ color: getStatusColor() }}
+              style={{ color: getStatusColor(currentData.status) }}
             >
-              {getStatusText()}
+              {getStatusText(currentData.status, currentData.period)}
             </div>
             <div className="text-sm text-gray-600">
-              Net Change: {netChange > 0 ? '+' : ''}{netChange.toFixed(2)} EJ
+              Net Change: {currentData.netChange > 0 ? '+' : ''}{currentData.netChange.toFixed(2)} EJ
             </div>
           </div>
 
@@ -317,14 +356,14 @@ export default function DisplacementTracker() {
               Total Energy Service Growth
             </div>
             <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">
-              {totalEnergyGrowth > 0 ? '+' : ''}{totalEnergyGrowth.toFixed(2)}
+              {currentData.totalEnergyGrowth > 0 ? '+' : ''}{currentData.totalEnergyGrowth.toFixed(2)}
               <span className="text-base sm:text-xl md:text-2xl ml-1 sm:ml-2 text-gray-500">EJ</span>
             </div>
             <div className="text-base sm:text-lg font-semibold text-green-600 mt-2">
-              {totalEnergyGrowthPercent > 0 ? '+' : ''}{totalEnergyGrowthPercent.toFixed(2)}%
+              {currentData.totalEnergyGrowthPercent > 0 ? '+' : ''}{currentData.totalEnergyGrowthPercent.toFixed(2)}%
             </div>
             <div className="text-xs sm:text-sm text-gray-600 mt-1">
-              New demand for energy services in 2024
+              New demand for energy services ({currentData.period})
             </div>
           </div>
 
@@ -334,14 +373,14 @@ export default function DisplacementTracker() {
               Net Change in Fossil Fuel Consumption
             </div>
             <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">
-              {netChange > 0 ? '+' : ''}{netChange.toFixed(2)}
+              {currentData.netChange > 0 ? '+' : ''}{currentData.netChange.toFixed(2)}
               <span className="text-base sm:text-xl md:text-2xl ml-1 sm:ml-2 text-gray-500">EJ</span>
             </div>
             <div className="text-base sm:text-lg font-semibold text-red-600 mt-2">
-              {netChangePercent > 0 ? '+' : ''}{netChangePercent.toFixed(2)}%
+              {currentData.netChangePercent > 0 ? '+' : ''}{currentData.netChangePercent.toFixed(2)}%
             </div>
             <div className="text-xs sm:text-sm text-gray-600 mt-1">
-              Change in fossil fuel consumption for 2024
+              Change in fossil fuel consumption ({currentData.period})
             </div>
           </div>
 
@@ -349,18 +388,18 @@ export default function DisplacementTracker() {
           <div
             className="p-6 rounded-lg border-l-4"
             style={{
-              backgroundColor: `${getStatusColor()}10`,
-              borderLeftColor: getStatusColor()
+              backgroundColor: `${getStatusColor(currentData.status)}10`,
+              borderLeftColor: getStatusColor(currentData.status)
             }}
           >
             <div
               className="text-sm font-semibold uppercase tracking-wide mb-2"
-              style={{ color: getStatusColor() }}
+              style={{ color: getStatusColor(currentData.status) }}
             >
               Current Status
             </div>
             <div className="text-gray-700">
-              {getStatusDescription()}
+              {getStatusDescription(currentData.status, currentData.period)}
             </div>
           </div>
         </div>
