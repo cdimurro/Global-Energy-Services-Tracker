@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2025-11-11T19:49:19.185239",
+    "generated_at": "2025-11-11T19:53:43.520412",
     "version": "v2.0",
     "description": "Global useful energy by source (Exajoules) - Tier 2: Primary \u00d7 Efficiency",
     "sources": [
       "Our World in Data Energy Dataset",
       "IEA World Energy Outlook 2024",
       "IEA Energy Efficiency Indicators",
-      "Brockway et al. 2021"
+      "Brockway et al. 2019 - Energy services baseline"
     ],
     "methodology": "Three-tier framework: Primary Energy \u2192 Useful Energy (\u00d7efficiency) \u2192 Energy Services (\u00d7exergy)",
     "unit": "Exajoules (EJ)"

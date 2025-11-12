@@ -462,7 +462,7 @@ Interpretation: Clean energy is growing fast enough to both meet all demand grow
 
 1. IEA World Energy Outlook 2024 - Displacement methodology
 2. RMI Energy Analysis 2024 - Fossil fuel growth metrics
-3. Brockway et al. 2021 - Energy services framework
+3. Brockway et al. 2019 - Energy services exergy chains framework
 4. LLNL Energy Flow Charts - Sankey diagram methodology
 
 ---

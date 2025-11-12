@@ -10,7 +10,8 @@
       "Bash(do sed -i 's|/data/useful_energy_timeseries\\.json|/data/energy_services_timeseries.json|g' \"$file\")",
       "Bash(done)",
       "Bash(git add:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(/dev/null)"
     ],
     "deny": [],
     "ask": []

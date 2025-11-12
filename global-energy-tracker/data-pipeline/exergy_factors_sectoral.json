@@ -5,7 +5,7 @@
     "sources": [
       "IEA Energy Efficiency Indicators (EEI) - Sectoral exergy framework",
       "IEA World Energy Outlook 2024 - Exergy efficiency data",
-      "Brockway et al. 2021 - Exergy analysis of global energy flows",
+      "Brockway et al. 2019 - Exergy chains analysis of global energy flows",
       "Cullen & Allwood 2010 - Theoretical minimum energy demand"
     ],
     "key_insight": "Exergy accounts for thermodynamic quality: mechanical work and electricity are 100% quality, low-temperature heat is 20% quality",

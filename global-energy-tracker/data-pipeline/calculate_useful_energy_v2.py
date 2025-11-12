@@ -294,7 +294,7 @@ def save_results(results, base_filename='useful_energy_timeseries'):
                 'Our World in Data Energy Dataset',
                 'IEA World Energy Outlook 2024',
                 'IEA Energy Efficiency Indicators',
-                'Brockway et al. 2021'
+                'Brockway et al. 2019 - Energy services baseline'
             ],
             'methodology': 'Three-tier framework: Primary Energy → Useful Energy (×efficiency) → Energy Services (×exergy)',
             'unit': 'Exajoules (EJ)'
