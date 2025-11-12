@@ -368,20 +368,20 @@ export default function Regions() {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setViewMode('regions')}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   viewMode === 'regions'
                     ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}
               >
                 Compare Regions
               </button>
               <button
                 onClick={() => setViewMode('sources')}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   viewMode === 'sources'
                     ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}
               >
                 Compare Energy Sources
@@ -987,20 +987,20 @@ export default function Regions() {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setViewMode('regions')}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   viewMode === 'regions'
                     ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}
               >
                 Compare Regions
               </button>
               <button
                 onClick={() => setViewMode('sources')}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   viewMode === 'sources'
                     ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}
               >
                 Compare Energy Sources
