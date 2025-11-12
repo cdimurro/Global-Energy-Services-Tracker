@@ -136,9 +136,15 @@ export default function NetChangeTimeline() {
           </div>
 
           {/* Net Change */}
-          <div className="bg-purple-50 p-2 rounded border border-purple-300 mt-2">
+          <div className={`p-2 rounded border mt-2 ${
+            data.netChange > 0
+              ? 'bg-red-50 border-red-300'
+              : 'bg-green-50 border-green-300'
+          }`}>
             <div className="flex justify-between items-center gap-6">
-              <span className="text-xs font-semibold text-purple-800">Net Change</span>
+              <span className={`text-xs font-semibold ${
+                data.netChange > 0 ? 'text-red-800' : 'text-green-800'
+              }`}>Net Change</span>
               <div className="text-right">
                 <div className={`text-base font-bold ${data.netChange > 0 ? 'text-red-700' : 'text-green-700'}`}>
                   {data.netChange > 0 ? '+' : ''}{data.netChange.toFixed(4)} EJ
@@ -299,7 +305,7 @@ export default function NetChangeTimeline() {
             stroke="#9333EA"
             strokeWidth={3}
             fill="#9333EA"
-            fillOpacity={0.5}
+            fillOpacity={0.2}
             baseLine={0}
             name="Net Change"
           />
