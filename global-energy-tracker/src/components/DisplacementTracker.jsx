@@ -65,9 +65,9 @@ export default function DisplacementTracker() {
         ? (totalEnergyGrowthValue / startYear.total_services_ej) * 100
         : 0;
 
-      // Net Change = Energy Services Demand - Clean Displacement
-      // This represents Δ Fossil Fuel Consumption
-      const netChangeValue = totalEnergyGrowthValue - displacementValue;
+      // Net Change = Fossil Fuel Growth - Clean Displacement
+      // This represents the actual change in fossil fuel consumption
+      const netChangeValue = fossilGrowthValue - displacementValue;
       const netChangePercentValue = startYear.fossil_services_ej > 0
         ? (netChangeValue / startYear.fossil_services_ej) * 100
         : 0;
@@ -283,8 +283,8 @@ export default function DisplacementTracker() {
               onClick={() => setSelectedPeriod(periodKey)}
               className={`px-6 py-3 rounded-lg font-medium transition-all ${
                 selectedPeriod === periodKey
-                  ? 'bg-gray-700 text-white ring-2 ring-gray-700 ring-offset-2'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                  ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 border border-gray-300'
               }`}
             >
               {periodData[periodKey].period}
@@ -413,22 +413,15 @@ export default function DisplacementTracker() {
       <div className="mt-8 p-6 bg-gray-50 rounded-lg">
         <div className="text-center mb-4">
           <div className="text-lg font-semibold text-gray-800 mb-2">
-            Fossil Fuel Consumption Change Formula:
+            Peak Fossil Fuel Consumption Occurs When:
           </div>
-          <div className="text-2xl font-mono text-gray-900 mb-3">
-            Δ Fossil Fuel Consumption = Energy Services Demand - Clean Displacement
-          </div>
-          <div className="text-base text-gray-700 mb-2">
-            Where:
-          </div>
-          <div className="text-sm text-gray-600 space-y-1">
-            <div><strong>Clean Displacement (D):</strong> Fossil fuel consumption replaced by clean energy and efficiency</div>
-            <div><strong>Energy Services Demand:</strong> Net change in demand for new energy services</div>
-            <div><strong>Net Change:</strong> Change in fossil fuel consumption after accounting for displacement</div>
+          <div className="text-2xl font-mono text-gray-900">
+            Clean Energy Displacement ≥ Fossil Fuel Growth
           </div>
         </div>
-        <div className="text-sm text-gray-600 text-center max-w-3xl mx-auto mt-4 pt-4 border-t border-gray-300">
-          When this number is <strong>positive</strong>, fossil fuel consumption is increasing. When this number is <strong>negative</strong>, fossil fuel consumption is declining.
+        <div className="text-sm text-gray-600 text-center max-w-3xl mx-auto">
+          When clean energy displacement (D) meets or exceeds fossil fuel growth for a sustained period,
+          fossil fuel consumption peaks and begins to decline. Net Change shows the actual change in fossil consumption.
         </div>
         <div className="text-xs text-gray-500 text-center mt-4">
           Data sources: Our World in Data, BP Statistical Review

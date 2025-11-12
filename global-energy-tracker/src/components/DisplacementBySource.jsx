@@ -58,7 +58,16 @@ export default function DisplacementBySource() {
         const endValue = endYear.sources_services_ej[source] || 0;
         const growth = endValue - startValue;
         const annualGrowth = growth / period.years;
-        const growthRate = startValue > 0 ? ((endValue / startValue) - 1) * 100 / period.years : 0;
+        // For growth rate: if start is 0, show as N/A or use average annual growth relative to end value
+        let growthRate;
+        if (startValue > 0) {
+          growthRate = ((endValue / startValue) - 1) * 100 / period.years;
+        } else if (endValue > 0) {
+          // New source: calculate CAGR assuming tiny initial value (0.001 EJ)
+          growthRate = ((endValue / 0.001) - 1) * 100 / period.years;
+        } else {
+          growthRate = 0;
+        }
 
         return {
           source,
@@ -193,8 +202,8 @@ export default function DisplacementBySource() {
               onClick={() => setSelectedPeriod(periodKey)}
               className={`px-6 py-3 rounded-lg font-medium transition-all ${
                 selectedPeriod === periodKey
-                  ? 'bg-gray-700 text-white ring-2 ring-gray-700 ring-offset-2'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                  ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 border border-gray-300'
               }`}
             >
               {sourceData[periodKey].period}
