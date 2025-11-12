@@ -59,14 +59,15 @@ export default function DisplacementTracker() {
       // Displacement (D) = clean energy growth (positive only)
       const displacementValue = Math.max(0, cleanGrowth);
 
-      // Total Energy Service Growth
+      // Total Energy Service Growth (Energy Services Demand)
       const totalEnergyGrowthValue = endYear.total_services_ej - startYear.total_services_ej;
       const totalEnergyGrowthPercentValue = startYear.total_services_ej > 0
         ? (totalEnergyGrowthValue / startYear.total_services_ej) * 100
         : 0;
 
-      // Net Change = Fossil Growth
-      const netChangeValue = fossilGrowthValue;
+      // Net Change = Energy Services Demand - Clean Displacement
+      // This represents Δ Fossil Fuel Consumption
+      const netChangeValue = totalEnergyGrowthValue - displacementValue;
       const netChangePercentValue = startYear.fossil_services_ej > 0
         ? (netChangeValue / startYear.fossil_services_ej) * 100
         : 0;
@@ -79,15 +80,18 @@ export default function DisplacementTracker() {
         ? (fossilGrowthValue / startYear.fossil_services_ej) * 100
         : 0;
 
-      // Determine status
+      // Determine status based on net change
       let status;
       if (cleanGrowth < 0) {
         status = 'recarbonization';
-      } else if (displacementValue < fossilGrowthValue) {
+      } else if (netChangeValue > 0.5) {
+        // Fossil consumption is rising significantly
         status = 'rising';
-      } else if (Math.abs(displacementValue - fossilGrowthValue) < 0.01) {
+      } else if (Math.abs(netChangeValue) <= 0.5) {
+        // Fossil consumption is roughly flat (within 0.5 EJ)
         status = 'peak';
       } else {
+        // Fossil consumption is declining
         status = 'declining';
       }
 
@@ -279,7 +283,7 @@ export default function DisplacementTracker() {
               onClick={() => setSelectedPeriod(periodKey)}
               className={`px-6 py-3 rounded-lg font-medium transition-all ${
                 selectedPeriod === periodKey
-                  ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                  ? 'bg-gray-700 text-white ring-2 ring-gray-700 ring-offset-2'
                   : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
               }`}
             >
@@ -409,15 +413,22 @@ export default function DisplacementTracker() {
       <div className="mt-8 p-6 bg-gray-50 rounded-lg">
         <div className="text-center mb-4">
           <div className="text-lg font-semibold text-gray-800 mb-2">
-            Peak Fossil Fuel Consumption Occurs When:
+            Fossil Fuel Consumption Change Formula:
           </div>
-          <div className="text-2xl font-mono text-gray-900">
-            Clean Energy Displacement ≥ Fossil Fuel Growth
+          <div className="text-2xl font-mono text-gray-900 mb-3">
+            Δ Fossil Fuel Consumption = Energy Services Demand - Clean Displacement
+          </div>
+          <div className="text-base text-gray-700 mb-2">
+            Where:
+          </div>
+          <div className="text-sm text-gray-600 space-y-1">
+            <div><strong>Clean Displacement (D):</strong> Fossil fuel consumption replaced by clean energy and efficiency</div>
+            <div><strong>Energy Services Demand:</strong> Net change in demand for new energy services</div>
+            <div><strong>Net Change:</strong> Change in fossil fuel consumption after accounting for displacement</div>
           </div>
         </div>
-        <div className="text-sm text-gray-600 text-center max-w-3xl mx-auto">
-          When clean energy displacement (D) meets or exceeds fossil fuel growth for a sustained period,
-          fossil fuel consumption peaks and begins to decline. Net Change shows the actual change in fossil consumption.
+        <div className="text-sm text-gray-600 text-center max-w-3xl mx-auto mt-4 pt-4 border-t border-gray-300">
+          When this number is <strong>positive</strong>, fossil fuel consumption is increasing. When this number is <strong>negative</strong>, fossil fuel consumption is declining.
         </div>
         <div className="text-xs text-gray-500 text-center mt-4">
           Data sources: Our World in Data, BP Statistical Review

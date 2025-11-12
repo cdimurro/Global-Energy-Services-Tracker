@@ -186,14 +186,14 @@ export default function DisplacementBySource() {
         <label className="block text-lg font-semibold mb-3 text-gray-700">
           Time Period:
         </label>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap">
           {Object.keys(sourceData).map(periodKey => (
             <button
               key={periodKey}
               onClick={() => setSelectedPeriod(periodKey)}
               className={`px-6 py-3 rounded-lg font-medium transition-all ${
                 selectedPeriod === periodKey
-                  ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                  ? 'bg-gray-700 text-white ring-2 ring-gray-700 ring-offset-2'
                   : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
               }`}
             >
