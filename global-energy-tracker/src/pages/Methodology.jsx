@@ -97,17 +97,6 @@ export default function Methodology() {
             <p className="mb-4">
               We then apply a <strong>three-tier calculation</strong> framework validated against IEA World Energy Outlook 2024, Brockway et al. 2019, and RMI 2024:
             </p>
-            <div className="bg-gray-100 border border-gray-300 p-4 my-4">
-              <p className="font-semibold mb-3 text-gray-800">The Three-Tier Conversion Process:</p>
-              <div className="space-y-2 text-sm">
-                <p><strong>Tier 1 → 2:</strong> Apply efficiency factors (time-varying, region-specific) to get Useful Energy</p>
-                <p className="ml-4 text-gray-600">Example: 154 EJ coal (2024) × 0.32 efficiency = 49.3 EJ useful</p>
-                <p><strong>Tier 2 → 3:</strong> Apply exergy quality factors (sector-weighted) to get Energy Services</p>
-                <p className="ml-4 text-gray-600">Example: 49.3 EJ useful × 0.84 exergy (coal: 70% power, 30% heat) = 41.4 EJ services</p>
-                <p><strong>Final Result:</strong> Sum all sources to get global totals</p>
-                <p className="ml-4 text-gray-600">2024: 620 EJ primary → 198 EJ useful → 150 EJ services (24.8% overall exergy efficiency)</p>
-              </div>
-            </div>
             <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4">
               <p className="font-semibold text-gray-800 mb-2">Validation ✓</p>
               <p className="text-sm text-gray-700">

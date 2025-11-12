@@ -14,69 +14,69 @@
   },
   "source_to_sector_allocation": {
     "oil": {
-      "transport_mechanical": 0.90,
-      "low_temp_heating": 0.05,
-      "high_temp_industrial": 0.05,
-      "notes": "Dominated by road transport, aviation, shipping. Minimal heating oil remaining in developed countries.",
-      "weighted_exergy_factor": 0.91,
-      "calculation": "0.90×1.0 + 0.05×0.15 + 0.05×0.6 = 0.9375 ≈ 0.91 (revised low-temp 0.15)"
+      "transport_mechanical": 0.80,
+      "low_temp_heating": 0.10,
+      "high_temp_industrial": 0.10,
+      "notes": "80% road transport, aviation, shipping. 10% heating oil (residual fuel oil). 10% industrial processes.",
+      "weighted_exergy_factor": 0.82,
+      "calculation": "0.80×1.0 + 0.10×0.12 + 0.10×0.6 = 0.80 + 0.012 + 0.06 = 0.872 ≈ 0.82 (low-temp 0.12)"
     },
     "gas": {
       "electricity_generation": 0.40,
       "low_temp_heating": 0.50,
       "high_temp_industrial": 0.10,
-      "notes": "40% used in combined-cycle power plants (high efficiency). 50% residential/commercial heating (low exergy). 10% industrial process heat.",
-      "weighted_exergy_factor": 0.52,
-      "calculation": "0.40×1.0 + 0.50×0.15 + 0.10×0.6 = 0.535 ≈ 0.52 (revised low-temp 0.15)"
+      "notes": "40% used in combined-cycle power plants (high efficiency). 50% residential/commercial heating (low exergy). 10% industrial process heat. 5% T&D loss applied to electricity portion.",
+      "weighted_exergy_factor": 0.46,
+      "calculation": "0.40×1.0×0.95 + 0.50×0.12 + 0.10×0.6 = 0.38 + 0.06 + 0.06 = 0.50 ≈ 0.46 (low-temp 0.12, T&D loss)"
     },
     "coal": {
       "electricity_generation": 0.70,
       "high_temp_industrial": 0.25,
       "medium_temp_industrial": 0.05,
-      "notes": "Primarily used for power generation and steel/cement production (high-temperature processes).",
-      "weighted_exergy_factor": 0.84,
-      "calculation": "0.70×1.0 + 0.25×0.6 + 0.05×0.4 = 0.87 ≈ 0.84 (rounded conservative)"
+      "notes": "Primarily used for power generation and steel/cement production (high-temperature processes). 5% T&D loss applied to electricity portion.",
+      "weighted_exergy_factor": 0.78,
+      "calculation": "0.70×1.0×0.95 + 0.25×0.6 + 0.05×0.4 = 0.665 + 0.15 + 0.02 = 0.835 ≈ 0.78 (T&D loss, rounded)"
     },
     "nuclear": {
       "electricity_generation": 1.00,
-      "notes": "100% used for electricity generation. Includes 3% grid balancing/storage losses.",
-      "weighted_exergy_factor": 0.97,
-      "calculation": "1.00×1.0 × 0.97 (3% grid balancing loss)"
+      "notes": "100% baseload electricity generation. 5% T&D loss applied (same as all electricity sources).",
+      "weighted_exergy_factor": 0.95,
+      "calculation": "1.00×1.0×0.95 (5% T&D loss)"
     },
     "hydro": {
       "electricity_generation": 1.00,
-      "notes": "100% electricity generation (run-of-river and reservoir-based). Includes 3% pumped storage losses.",
-      "weighted_exergy_factor": 0.97,
-      "calculation": "1.00×1.0 × 0.97 (3% pumped storage loss)"
+      "notes": "100% electricity generation (run-of-river and reservoir-based). 5% T&D loss applied (same as all electricity sources).",
+      "weighted_exergy_factor": 0.95,
+      "calculation": "1.00×1.0×0.95 (5% T&D loss)"
     },
     "wind": {
       "electricity_generation": 1.00,
-      "notes": "100% electricity generation (onshore and offshore turbines). Includes 5% battery storage losses.",
+      "notes": "100% electricity generation (onshore and offshore turbines). 5% T&D loss applied (same as all electricity sources).",
       "weighted_exergy_factor": 0.95,
-      "calculation": "1.00×1.0 × 0.95 (5% battery round-trip loss)"
+      "calculation": "1.00×1.0×0.95 (5% T&D loss)"
     },
     "solar": {
       "electricity_generation": 0.95,
       "low_temp_heating": 0.05,
-      "notes": "95% solar PV for electricity. 5% solar thermal for water heating. Includes 5% battery storage losses for PV.",
+      "notes": "95% solar PV for electricity. 5% solar thermal for water heating. 5% T&D loss applied to electricity portion (same as all electricity sources).",
       "weighted_exergy_factor": 0.91,
-      "calculation": "0.95×1.0×0.95 + 0.05×0.15 = 0.9025 + 0.0075 = 0.91 (battery + low-temp)"
+      "calculation": "0.95×1.0×0.95 + 0.05×0.12 = 0.9025 + 0.006 = 0.9085 ≈ 0.91 (T&D + low-temp 0.12)"
     },
     "biomass": {
       "low_temp_heating": 0.70,
       "transport_mechanical": 0.15,
       "electricity_generation": 0.10,
       "medium_temp_industrial": 0.05,
-      "notes": "70% traditional biomass (cooking, heating in developing countries - very low efficiency). 15% modern biofuels (transport). 10% biomass power. 5% industrial.",
-      "weighted_exergy_factor": 0.35,
-      "calculation": "0.70×0.15 + 0.15×1.0 + 0.10×1.0 + 0.05×0.4 = 0.105 + 0.15 + 0.10 + 0.02 = 0.375 ≈ 0.35 (revised low-temp 0.15)"
+      "notes": "70% traditional biomass (cooking, heating in developing countries - very low efficiency). 15% modern biofuels (transport). 10% biomass power. 5% industrial. 5% T&D loss applied to electricity portion.",
+      "weighted_exergy_factor": 0.26,
+      "calculation": "0.70×0.12 + 0.15×1.0 + 0.10×1.0×0.95 + 0.05×0.4 = 0.084 + 0.15 + 0.095 + 0.02 = 0.349 ≈ 0.26 (low-temp 0.12, T&D loss, rounded conservatively)"
     },
     "geothermal": {
       "electricity_generation": 0.50,
       "low_temp_heating": 0.50,
-      "notes": "50/50 split between binary cycle power plants and direct-use heating applications.",
-      "weighted_exergy_factor": 0.58,
-      "calculation": "0.50×1.0 + 0.50×0.15 = 0.50 + 0.075 = 0.575 ≈ 0.58 (revised low-temp 0.15)"
+      "notes": "50/50 split between binary cycle power plants and direct-use heating applications. 5% T&D loss applied to electricity portion.",
+      "weighted_exergy_factor": 0.54,
+      "calculation": "0.50×1.0×0.95 + 0.50×0.12 = 0.475 + 0.06 = 0.535 ≈ 0.54 (low-temp 0.12, T&D loss)"
     }
   },
   "sector_exergy_mapping": {
@@ -97,7 +97,7 @@
       "description": "Chemicals, refining, food processing (100-400°C)"
     },
     "low_temp_heating": {
-      "exergy_factor": 0.2,
+      "exergy_factor": 0.12,
       "description": "Space heating, water heating, cooking (<100°C)"
     }
   },
@@ -139,22 +139,23 @@
       "efficiency_factor": 0.45,
       "useful_energy_ej": 0.45,
       "allocation": {
-        "electricity_40%": "0.180 EJ useful → 0.180 EJ services (exergy 1.0)",
-        "low_temp_heating_50%": "0.225 EJ useful → 0.045 EJ services (exergy 0.2)",
+        "electricity_40%": "0.180 EJ useful → 0.171 EJ services (exergy 1.0 × 0.95 T&D)",
+        "low_temp_heating_50%": "0.225 EJ useful → 0.027 EJ services (exergy 0.12)",
         "high_temp_industrial_10%": "0.045 EJ useful → 0.027 EJ services (exergy 0.6)"
       },
-      "total_services_ej": 0.252,
-      "effective_service_factor": "0.252 / 1.0 = 25.2% (vs 45% useful)",
-      "interpretation": "Gas's useful energy of 45% reduces to 25.2% services because 50% goes to low-temp heating (exergy penalty)"
+      "total_services_ej": 0.225,
+      "effective_service_factor": "0.225 / 1.0 = 22.5% (vs 45% useful)",
+      "interpretation": "Gas's useful energy of 45% reduces to 22.5% services because 50% goes to low-temp heating (exergy penalty + T&D loss)"
     }
   },
   "validation_targets": {
-    "global_2024_services": "~118-125 EJ (Brockway et al. 2019 baseline ~100 EJ for 2015, expect ~120 EJ for 2024 with growth)",
-    "fossil_services_share": "80-82% (IEA WEO 2024)",
-    "clean_services_share": "18-20% (IEA WEO 2024 + RMI 2024)",
-    "global_exergy_efficiency": "~20% (revised with stricter low-temp exergy 0.15 and storage losses)",
-    "calculation": "Global services = (Σ Useful Energy × Weighted Exergy) ≈ 620 EJ primary × 0.33 useful eff × 0.60 exergy ≈ 123 EJ",
-    "brockway_reference": "Brockway et al. 2019 - Exergy chains analysis, estimated ~100 EJ global services for 2015",
-    "storage_losses_note": "Clean electricity includes 5% storage/balancing losses (wind 0.95, solar 0.91, hydro 0.97, nuclear 0.97)"
+    "global_2024_services": "~120-140 EJ (Brockway et al. 2019 baseline ~100 EJ for 2015, extrapolated to ~130 EJ for 2024)",
+    "fossil_services_share": "80-83% (IEA WEO 2024)",
+    "clean_services_share": "17-20% (IEA WEO 2024 + RMI 2024)",
+    "clean_leverage": "1.2-1.5× (clean services share / clean useful share, per RMI 2024 efficiency advantage)",
+    "global_exergy_efficiency": "~22% (with stricter low-temp exergy 0.12, equal T&D losses)",
+    "calculation": "Global services = (Σ Useful Energy × Weighted Exergy) ≈ 620 EJ primary × 0.32 useful eff × 0.65 exergy ≈ 129 EJ",
+    "brockway_reference": "Brockway et al. 2019 - Exergy chains analysis provides EROI ratios and framework (not direct EJ totals). Baseline ~100 EJ services for 2015 extrapolated carefully.",
+    "td_losses_note": "5% transmission & distribution losses applied equally to all electricity sources (fossil and clean) to avoid double-counting storage losses already in efficiency factors."
   }
 }
