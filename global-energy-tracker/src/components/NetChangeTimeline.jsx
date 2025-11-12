@@ -292,25 +292,34 @@ export default function NetChangeTimeline() {
             name="Efficiency Savings"
           />
 
-          {/* Net Change split into positive (red) and negative (green) areas */}
+          {/* Net Change positive area (red fill, no stroke) */}
           <Area
             type="monotone"
             dataKey="netChangePositive"
-            stroke="#9333EA"
-            strokeWidth={3}
+            stroke="none"
             fill="#DC2626"
             fillOpacity={0.6}
-            name="Net Change"
+            legendType="none"
           />
+
+          {/* Net Change negative area (green fill, no stroke) */}
           <Area
             type="monotone"
             dataKey="netChangeNegative"
-            stroke="#9333EA"
-            strokeWidth={3}
+            stroke="none"
             fill="#16A34A"
             fillOpacity={0.6}
-            name="Net Change"
             legendType="none"
+          />
+
+          {/* Net Change line (continuous purple stroke) */}
+          <Line
+            type="monotone"
+            dataKey="netChange"
+            stroke="#9333EA"
+            strokeWidth={3}
+            dot={false}
+            name="Net Change"
           />
 
         </ComposedChart>
