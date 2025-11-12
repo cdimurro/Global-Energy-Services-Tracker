@@ -715,28 +715,77 @@ export default function Regions() {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 gap-x-6 text-sm">
+                  <div className={showAnnualChange ? "space-y-3" : "grid grid-cols-2 gap-x-6 text-sm"}>
                     {/* Column 1 */}
                     <div className="space-y-1">
                       {column1.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
                         const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
-                        const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
-                        return (
-                          <div key={index} className="flex items-center justify-between gap-2">
-                            <div className="flex items-center gap-1 min-w-0">
-                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
-                              <span className="truncate text-xs">{entry.name}:</span>
+                        if (showAnnualChange) {
+                          // For annual change view: calculate relative change percentage
+                          // Need to find previous year's value to calculate percentage change
+                          const prevYearData = filteredByTime?.[regionName]?.data.find(d => d.year === label - 1);
+                          let prevValue = 0;
+
+                          if (prevYearData) {
+                            if (viewMode === 'regions') {
+                              // Get previous year value for the selected source
+                              if (selectedSource === 'all') {
+                                prevValue = getEnergyValue(prevYearData, 'total_useful_ej');
+                              } else if (selectedSource === 'fossil') {
+                                const fossilSources = ['coal', 'oil', 'gas'];
+                                const sourcesObj = getSourcesObject(prevYearData);
+                                prevValue = fossilSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                              } else if (selectedSource === 'clean') {
+                                const cleanSources = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
+                                const sourcesObj = getSourcesObject(prevYearData);
+                                prevValue = cleanSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                              } else {
+                                const sourcesObj = getSourcesObject(prevYearData);
+                                prevValue = sourcesObj[selectedSource] || 0;
+                              }
+                            } else {
+                              // Sources mode - get previous year value for this specific source
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = sourcesObj[entry.dataKey] || 0;
+                            }
+                          }
+
+                          const relativeChange = prevValue > 0 ? (entry.value / prevValue) * 100 : 0;
+                          const sharePercent = totalForRegion > 0 ? ((prevValue + entry.value) / totalForRegion * 100) : 0;
+
+                          return (
+                            <div key={index} className="border-b border-gray-200 pb-2 mb-2 last:border-0">
+                              <div className="flex items-center gap-1 mb-1">
+                                <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                                <span className="text-sm font-semibold">{entry.name}</span>
+                              </div>
+                              <div className="ml-4 text-xs space-y-0.5">
+                                <div><span className="text-gray-600">Absolute Change: </span><span className="font-semibold">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ</span></div>
+                                <div><span className="text-gray-600">Relative Change: </span><span className="font-semibold">{relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%</span></div>
+                                <div><span className="text-gray-600">Share: </span><span className="font-semibold">{sharePercent.toFixed(1)}%</span></div>
+                              </div>
                             </div>
-                            <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
-                          </div>
-                        );
+                          );
+                        } else {
+                          // For absolute value view: show value and share percentage
+                          const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
+                          return (
+                            <div key={index} className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-1 min-w-0">
+                                <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                                <span className="truncate text-xs">{entry.name}:</span>
+                              </div>
+                              <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
+                            </div>
+                          );
+                        }
                       })}
                     </div>
                     {/* Column 2 */}
-                    <div className="space-y-1">
+                    {!showAnnualChange && <div className="space-y-1">
                       {column2.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
@@ -753,7 +802,55 @@ export default function Regions() {
                           </div>
                         );
                       })}
-                    </div>
+                    </div>}
+                    {showAnnualChange && <div className="space-y-1">
+                      {column2.map((entry, index) => {
+                        const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
+                        const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+                        const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
+                        const prevYearData = filteredByTime?.[regionName]?.data.find(d => d.year === label - 1);
+                        let prevValue = 0;
+
+                        if (prevYearData) {
+                          if (viewMode === 'regions') {
+                            if (selectedSource === 'all') {
+                              prevValue = getEnergyValue(prevYearData, 'total_useful_ej');
+                            } else if (selectedSource === 'fossil') {
+                              const fossilSources = ['coal', 'oil', 'gas'];
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = fossilSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                            } else if (selectedSource === 'clean') {
+                              const cleanSources = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = cleanSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                            } else {
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = sourcesObj[selectedSource] || 0;
+                            }
+                          } else {
+                            const sourcesObj = getSourcesObject(prevYearData);
+                            prevValue = sourcesObj[entry.dataKey] || 0;
+                          }
+                        }
+
+                        const relativeChange = prevValue > 0 ? (entry.value / prevValue) * 100 : 0;
+                        const sharePercent = totalForRegion > 0 ? ((prevValue + entry.value) / totalForRegion * 100) : 0;
+
+                        return (
+                          <div key={index} className="border-b border-gray-200 pb-2 mb-2 last:border-0">
+                            <div className="flex items-center gap-1 mb-1">
+                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                              <span className="text-sm font-semibold">{entry.name}</span>
+                            </div>
+                            <div className="ml-4 text-xs space-y-0.5">
+                              <div><span className="text-gray-600">Absolute Change: </span><span className="font-semibold">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ</span></div>
+                              <div><span className="text-gray-600">Relative Change: </span><span className="font-semibold">{relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%</span></div>
+                              <div><span className="text-gray-600">Share: </span><span className="font-semibold">{sharePercent.toFixed(1)}%</span></div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>}
                   </div>
                 </div>
               );
@@ -1352,28 +1449,77 @@ export default function Regions() {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 gap-x-6 text-sm">
+                  <div className={showAnnualChange ? "space-y-3" : "grid grid-cols-2 gap-x-6 text-sm"}>
                     {/* Column 1 */}
                     <div className="space-y-1">
                       {column1.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
                         const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
-                        const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
 
-                        return (
-                          <div key={index} className="flex items-center justify-between gap-2">
-                            <div className="flex items-center gap-1 min-w-0">
-                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
-                              <span className="truncate text-xs">{entry.name}:</span>
+                        if (showAnnualChange) {
+                          // For annual change view: calculate relative change percentage
+                          // Need to find previous year's value to calculate percentage change
+                          const prevYearData = filteredByTime?.[regionName]?.data.find(d => d.year === label - 1);
+                          let prevValue = 0;
+
+                          if (prevYearData) {
+                            if (viewMode === 'regions') {
+                              // Get previous year value for the selected source
+                              if (selectedSource === 'all') {
+                                prevValue = getEnergyValue(prevYearData, 'total_useful_ej');
+                              } else if (selectedSource === 'fossil') {
+                                const fossilSources = ['coal', 'oil', 'gas'];
+                                const sourcesObj = getSourcesObject(prevYearData);
+                                prevValue = fossilSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                              } else if (selectedSource === 'clean') {
+                                const cleanSources = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
+                                const sourcesObj = getSourcesObject(prevYearData);
+                                prevValue = cleanSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                              } else {
+                                const sourcesObj = getSourcesObject(prevYearData);
+                                prevValue = sourcesObj[selectedSource] || 0;
+                              }
+                            } else {
+                              // Sources mode - get previous year value for this specific source
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = sourcesObj[entry.dataKey] || 0;
+                            }
+                          }
+
+                          const relativeChange = prevValue > 0 ? (entry.value / prevValue) * 100 : 0;
+                          const sharePercent = totalForRegion > 0 ? ((prevValue + entry.value) / totalForRegion * 100) : 0;
+
+                          return (
+                            <div key={index} className="border-b border-gray-200 pb-2 mb-2 last:border-0">
+                              <div className="flex items-center gap-1 mb-1">
+                                <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                                <span className="text-sm font-semibold">{entry.name}</span>
+                              </div>
+                              <div className="ml-4 text-xs space-y-0.5">
+                                <div><span className="text-gray-600">Absolute Change: </span><span className="font-semibold">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ</span></div>
+                                <div><span className="text-gray-600">Relative Change: </span><span className="font-semibold">{relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%</span></div>
+                                <div><span className="text-gray-600">Share: </span><span className="font-semibold">{sharePercent.toFixed(1)}%</span></div>
+                              </div>
                             </div>
-                            <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
-                          </div>
-                        );
+                          );
+                        } else {
+                          // For absolute value view: show value and share percentage
+                          const percentage = totalForRegion > 0 ? (entry.value / totalForRegion * 100) : 0;
+                          return (
+                            <div key={index} className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-1 min-w-0">
+                                <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                                <span className="truncate text-xs">{entry.name}:</span>
+                              </div>
+                              <span className="font-semibold text-xs whitespace-nowrap">{entry.value.toFixed(0)} PJ ({percentage.toFixed(2)}%)</span>
+                            </div>
+                          );
+                        }
                       })}
                     </div>
                     {/* Column 2 */}
-                    <div className="space-y-1">
+                    {!showAnnualChange && <div className="space-y-1">
                       {column2.map((entry, index) => {
                         const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
                         const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
@@ -1390,7 +1536,55 @@ export default function Regions() {
                           </div>
                         );
                       })}
-                    </div>
+                    </div>}
+                    {showAnnualChange && <div className="space-y-1">
+                      {column2.map((entry, index) => {
+                        const regionName = viewMode === 'regions' ? entry.name : selectedRegion;
+                        const yearData = filteredByTime?.[regionName]?.data.find(d => d.year === label);
+                        const totalForRegion = getEnergyValue(yearData, 'total_useful_ej');
+                        const prevYearData = filteredByTime?.[regionName]?.data.find(d => d.year === label - 1);
+                        let prevValue = 0;
+
+                        if (prevYearData) {
+                          if (viewMode === 'regions') {
+                            if (selectedSource === 'all') {
+                              prevValue = getEnergyValue(prevYearData, 'total_useful_ej');
+                            } else if (selectedSource === 'fossil') {
+                              const fossilSources = ['coal', 'oil', 'gas'];
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = fossilSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                            } else if (selectedSource === 'clean') {
+                              const cleanSources = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = cleanSources.reduce((sum, source) => sum + (sourcesObj[source] || 0), 0);
+                            } else {
+                              const sourcesObj = getSourcesObject(prevYearData);
+                              prevValue = sourcesObj[selectedSource] || 0;
+                            }
+                          } else {
+                            const sourcesObj = getSourcesObject(prevYearData);
+                            prevValue = sourcesObj[entry.dataKey] || 0;
+                          }
+                        }
+
+                        const relativeChange = prevValue > 0 ? (entry.value / prevValue) * 100 : 0;
+                        const sharePercent = totalForRegion > 0 ? ((prevValue + entry.value) / totalForRegion * 100) : 0;
+
+                        return (
+                          <div key={index} className="border-b border-gray-200 pb-2 mb-2 last:border-0">
+                            <div className="flex items-center gap-1 mb-1">
+                              <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: entry.color }} />
+                              <span className="text-sm font-semibold">{entry.name}</span>
+                            </div>
+                            <div className="ml-4 text-xs space-y-0.5">
+                              <div><span className="text-gray-600">Absolute Change: </span><span className="font-semibold">{entry.value > 0 ? '+' : ''}{entry.value.toFixed(0)} PJ</span></div>
+                              <div><span className="text-gray-600">Relative Change: </span><span className="font-semibold">{relativeChange > 0 ? '+' : ''}{relativeChange.toFixed(1)}%</span></div>
+                              <div><span className="text-gray-600">Share: </span><span className="font-semibold">{sharePercent.toFixed(1)}%</span></div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>}
                   </div>
                 </div>
               );
