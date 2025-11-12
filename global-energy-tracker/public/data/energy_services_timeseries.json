@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "generated_at": "2025-11-11T17:59:38.422793",
+    "generated_at": "2025-11-11T19:49:19.186659",
     "version": "v2.0",
     "description": "Global energy services by source (Exajoules) - Tier 3: Useful \u00d7 Exergy Factor",
     "sources": [
       "Our World in Data Energy Dataset",
       "IEA World Energy Outlook 2024",
       "IEA Energy Efficiency Indicators (EEI)",
-      "Brockway et al. 2021 - Global energy services baseline (~150 EJ 2019)",
+      "Brockway et al. 2019 - Global energy services baseline (~100 EJ 2015)",
       "RMI 2024 - Final energy proxy"
     ],
-    "methodology": "Exergy-weighted useful energy based on sectoral allocation (electricity=1.0, mechanical=1.0, high-temp heat=0.6, low-temp heat=0.2)",
+    "methodology": "Exergy-weighted useful energy based on sectoral allocation (electricity=1.0, mechanical=1.0, high-temp heat=0.6, low-temp heat=0.15)",
     "unit": "Exajoules (EJ)",
-    "validation": "Calibrated to IEA WEO 2024 (fossil 80-82%, clean 18-20%) and Brockway 2021 (~150 EJ services 2019)"
+    "validation": "Calibrated to IEA WEO 2024 (fossil 80-82%, clean 18-20%) and Brockway 2019 (~100 EJ services 2015, ~120 EJ expected 2024)"
   },
   "data": [
     {

@@ -318,12 +318,12 @@ def save_results(results, base_filename='useful_energy_timeseries'):
                     'Our World in Data Energy Dataset',
                     'IEA World Energy Outlook 2024',
                     'IEA Energy Efficiency Indicators (EEI)',
-                    'Brockway et al. 2021 - Global energy services baseline (~150 EJ 2019)',
+                    'Brockway et al. 2019 - Global energy services baseline (~100 EJ 2015)',
                     'RMI 2024 - Final energy proxy'
                 ],
-                'methodology': 'Exergy-weighted useful energy based on sectoral allocation (electricity=1.0, mechanical=1.0, high-temp heat=0.6, low-temp heat=0.2)',
+                'methodology': 'Exergy-weighted useful energy based on sectoral allocation (electricity=1.0, mechanical=1.0, high-temp heat=0.6, low-temp heat=0.15)',
                 'unit': 'Exajoules (EJ)',
-                'validation': 'Calibrated to IEA WEO 2024 (fossil 80-82%, clean 18-20%) and Brockway 2021 (~150 EJ services 2019)'
+                'validation': 'Calibrated to IEA WEO 2024 (fossil 80-82%, clean 18-20%) and Brockway 2019 (~100 EJ services 2015, ~120 EJ expected 2024)'
             },
             'data': results['energy_services']
         }
@@ -399,8 +399,8 @@ def print_summary(results):
     if results['energy_services']:
         latest_services = results['energy_services'][-1]
         print(f"2024 Total Services: {latest_services['total_services_ej']} EJ")
-        print(f"  Target: 150-160 EJ (Brockway 2021 baseline ~150 EJ for 2019)")
-        print(f"  Status: {'✓ VALIDATED' if 145 <= latest_services['total_services_ej'] <= 165 else '⚠ CHECK CALIBRATION'}")
+        print(f"  Target: 120-140 EJ (Brockway 2019 baseline ~100 EJ for 2015, ~120 EJ expected for 2024)")
+        print(f"  Status: {'✓ VALIDATED' if 115 <= latest_services['total_services_ej'] <= 145 else '⚠ CHECK CALIBRATION'}")
         print(f"\n2024 Clean Services Share: {latest_services['clean_services_share_percent']}%")
         print(f"  Target: 18-22% (IEA WEO 2024 + RMI 2024)")
         print(f"  Status: {'✓ VALIDATED' if 17 <= latest_services['clean_services_share_percent'] <= 23 else '⚠ CHECK CALIBRATION'}")

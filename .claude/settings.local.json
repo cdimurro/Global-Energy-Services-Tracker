@@ -9,7 +9,8 @@
       "Bash(for file in components/DisplacementBySource.jsx components/DisplacementTracker.jsx components/InteractiveChart.jsx components/NetChangeTimeline.jsx components/ParameterStatusTable.jsx components/SectoralEnergyGrowth.jsx pages/EnergySupply.jsx pages/Regions.jsx services/aiChatService.js)",
       "Bash(do sed -i 's|/data/useful_energy_timeseries\\.json|/data/energy_services_timeseries.json|g' \"$file\")",
       "Bash(done)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
