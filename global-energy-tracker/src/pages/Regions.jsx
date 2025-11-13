@@ -48,11 +48,11 @@ export default function Regions() {
   const [isFullscreenChart3, setIsFullscreenChart3] = useState(false);
 
   // Filter states
-  const [selectedRegions, setSelectedRegions] = useState(['United States']);
+  const [selectedRegions, setSelectedRegions] = useState(['Global']);
   const [selectedSource, setSelectedSource] = useState('all'); // Single source for regions mode - default to "all"
   const [selectedSources, setSelectedSources] = useState([]); // Multiple sources for sources mode - starts empty when category is active
-  const [selectedRegion, setSelectedRegion] = useState('United States'); // Single region for sources mode - default to US
-  const [selectedRegionForMix, setSelectedRegionForMix] = useState('United States');
+  const [selectedRegion, setSelectedRegion] = useState('Global'); // Single region for sources mode - default to Global
+  const [selectedRegionForMix, setSelectedRegionForMix] = useState('Global');
   const [viewMode, setViewMode] = useState('regions'); // 'regions' or 'sources'
   const [quickFilterRegions, setQuickFilterRegions] = useState('all'); // 'all', 'fossil', 'clean' for regions mode
   const [quickFilterSources, setQuickFilterSources] = useState('all'); // 'all', 'fossil', 'clean' for sources mode - when active, selectedSources is ignored
@@ -646,7 +646,7 @@ export default function Regions() {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
-            <YAxis label={{ value: getYAxisLabel(), angle: -90, position: 'insideLeft' }} />
+            <YAxis label={{ value: getYAxisLabel(), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }} />
             <Tooltip content={({ active, payload, label }) => {
               if (!active || !payload || payload.length === 0) return null;
 
@@ -925,7 +925,7 @@ export default function Regions() {
               textAnchor="end"
               height={120}
             />
-            <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+            <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }} domain={[0, 100]} />
             <Tooltip content={({ active, payload }) => {
               if (!active || !payload || payload.length === 0) return null;
               const data = payload[0].payload;
@@ -1026,7 +1026,8 @@ export default function Regions() {
               label={{
                 value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Energy Services (PJ)',
                 angle: -90,
-                position: 'insideLeft'
+                position: 'insideLeft',
+                style: { textAnchor: 'middle' }
               }}
               domain={showRelativeChart3 ? [0, 100] : [0, 'auto']}
               ticks={showRelativeChart3 ? [0, 25, 50, 75, 100] : undefined}
@@ -1370,7 +1371,7 @@ export default function Regions() {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
-            <YAxis label={{ value: getYAxisLabel(), angle: -90, position: 'insideLeft' }} />
+            <YAxis label={{ value: getYAxisLabel(), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }} />
             <Tooltip content={({ active, payload, label }) => {
               if (!active || !payload || payload.length === 0) return null;
 
@@ -1640,7 +1641,7 @@ export default function Regions() {
               textAnchor="end"
               height={120}
             />
-            <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+            <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }} domain={[0, 100]} />
             <Tooltip content={({ active, payload }) => {
               if (!active || !payload || payload.length === 0) return null;
               const data = payload[0].payload;
@@ -1732,7 +1733,8 @@ export default function Regions() {
               label={{
                 value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Energy Services (PJ)',
                 angle: -90,
-                position: 'insideLeft'
+                position: 'insideLeft',
+                style: { textAnchor: 'middle' }
               }}
               domain={showRelativeChart3 ? [0, 100] : [0, 'auto']}
               ticks={showRelativeChart3 ? [0, 25, 50, 75, 100] : undefined}

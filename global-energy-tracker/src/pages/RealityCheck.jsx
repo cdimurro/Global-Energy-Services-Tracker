@@ -27,7 +27,7 @@ export default function RealityCheck() {
               Fossil Fuels Rule the Real World
             </h2>
             <p className="mb-4">
-              Despite the hype surrounding the energy transition, <strong>81.4% of useful energy services</strong> (mobility, heat, manufacturing) still come from oil, gas and coal. Fossil fuels have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
+              Despite the hype surrounding the energy transition, <strong>81.97% of useful energy services</strong> (mobility, heat, manufacturing) still come from oil, gas and coal. Fossil fuels have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
             </p>
             <ul className="list-disc ml-6 space-y-2 mb-4">
               <li>High energy density</li>

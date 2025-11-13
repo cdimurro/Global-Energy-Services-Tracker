@@ -13,44 +13,74 @@ EFFICIENCY_FACTORS = {
     'gas': 0.40
 }
 
-# Regions to include (targeting 20+ key importers and exporters)
-REGIONS = [
-    # Major importers
-    'Japan',
-    'South Korea',
-    'India',
-    'China',
-    'Germany',
-    'France',
-    'Italy',
-    'Spain',
-    'United Kingdom',
-    'Turkey',
-    'Poland',
-    'Thailand',
-    'Taiwan',
-    'Netherlands',
-    'Belgium',
+# Continental regions (for aggregation)
+CONTINENTAL_REGIONS = {
+    'Africa': [
+        'South Africa', 'Nigeria', 'Egypt', 'Algeria', 'Morocco', 'Ethiopia',
+        'Kenya', 'Tanzania', 'Ghana', 'Angola', 'Sudan', 'Tunisia', 'Libya',
+        'Mozambique', 'Zambia', 'Zimbabwe', 'Uganda', 'Senegal', 'Mali',
+        'Cameroon', 'Ivory Coast', 'Madagascar', 'Burkina Faso', 'Niger',
+        'Malawi', 'Mauritius', 'Namibia', 'Botswana', 'Gabon', 'Guinea',
+        'Rwanda', 'Benin', 'Burundi', 'Eritrea', 'Central African Republic',
+        'Chad', 'Congo', 'Democratic Republic of Congo', 'Djibouti',
+        'Equatorial Guinea', 'Gambia', 'Guinea-Bissau', 'Lesotho', 'Liberia',
+        'Mauritania', 'Reunion', 'Sao Tome and Principe', 'Seychelles',
+        'Sierra Leone', 'Somalia', 'South Sudan', 'Togo', 'Western Sahara'
+    ],
+    'Asia': [
+        'China', 'India', 'Japan', 'South Korea', 'Indonesia', 'Thailand',
+        'Malaysia', 'Taiwan', 'Singapore', 'Philippines', 'Vietnam', 'Pakistan',
+        'Bangladesh', 'Iran', 'Iraq', 'Saudi Arabia', 'Turkey', 'United Arab Emirates',
+        'Israel', 'Kuwait', 'Qatar', 'Myanmar', 'Sri Lanka', 'Kazakhstan',
+        'Uzbekistan', 'Afghanistan', 'Nepal', 'Yemen', 'Syria', 'Jordan',
+        'Lebanon', 'Oman', 'Bahrain', 'Cambodia', 'Laos', 'Mongolia',
+        'Brunei', 'Timor-Leste', 'North Korea', 'Turkmenistan', 'Tajikistan',
+        'Kyrgyzstan', 'Armenia', 'Georgia', 'Azerbaijan', 'Bhutan', 'Maldives',
+        'Palestine', 'Hong Kong', 'Macao'
+    ],
+    'Europe': [
+        'Germany', 'United Kingdom', 'France', 'Italy', 'Spain', 'Poland',
+        'Netherlands', 'Belgium', 'Russia', 'Norway', 'Sweden', 'Austria',
+        'Switzerland', 'Denmark', 'Finland', 'Portugal', 'Czech Republic',
+        'Greece', 'Hungary', 'Romania', 'Ireland', 'Slovakia', 'Bulgaria',
+        'Croatia', 'Lithuania', 'Slovenia', 'Latvia', 'Estonia', 'Luxembourg',
+        'Cyprus', 'Malta', 'Iceland', 'Albania', 'Serbia', 'Bosnia and Herzegovina',
+        'North Macedonia', 'Montenegro', 'Moldova', 'Belarus', 'Ukraine',
+        'Liechtenstein', 'Monaco', 'Andorra', 'San Marino', 'Vatican',
+        'Kosovo', 'Faroe Islands', 'Gibraltar', 'Greenland', 'Isle of Man',
+        'Jersey', 'Guernsey'
+    ],
+    'North America': [
+        'United States', 'Canada', 'Mexico', 'Guatemala', 'Cuba', 'Haiti',
+        'Dominican Republic', 'Honduras', 'Nicaragua', 'El Salvador',
+        'Costa Rica', 'Panama', 'Jamaica', 'Trinidad and Tobago', 'Belize',
+        'Bahamas', 'Barbados', 'Saint Lucia', 'Grenada', 'Saint Vincent and the Grenadines',
+        'Antigua and Barbuda', 'Dominica', 'Saint Kitts and Nevis',
+        'Aruba', 'Bermuda', 'Cayman Islands', 'Curacao', 'Puerto Rico',
+        'Sint Maarten (Dutch part)', 'Turks and Caicos Islands',
+        'British Virgin Islands', 'Caribbean Netherlands', 'Guadeloupe',
+        'Martinique', 'Montserrat', 'Saint Barthelemy', 'Saint Martin (French part)',
+        'Saint Pierre and Miquelon', 'United States Virgin Islands'
+    ],
+    'South America': [
+        'Brazil', 'Argentina', 'Colombia', 'Chile', 'Peru', 'Venezuela',
+        'Ecuador', 'Bolivia', 'Paraguay', 'Uruguay', 'Guyana', 'Suriname',
+        'French Guiana', 'Falkland Islands'
+    ],
+    'Oceania': [
+        'Australia', 'New Zealand', 'Papua New Guinea', 'Fiji', 'Solomon Islands',
+        'New Caledonia', 'French Polynesia', 'Samoa', 'Vanuatu', 'Guam',
+        'Kiribati', 'Micronesia (country)', 'Tonga', 'Palau', 'Cook Islands',
+        'Nauru', 'Tuvalu', 'Marshall Islands', 'American Samoa', 'Northern Mariana Islands',
+        'Wallis and Futuna', 'Niue', 'Tokelau'
+    ]
+}
 
-    # Major exporters
-    'Russia',
-    'Saudi Arabia',
-    'United States',
-    'Canada',
-    'Australia',
-    'Norway',
-    'Qatar',
-    'Kuwait',
-    'United Arab Emirates',
-    'Iraq',
-    'Iran',
-
-    # Transitioning economies
-    'Brazil',
-    'Mexico',
-    'Indonesia',
-    'Malaysia',
-    'South Africa'
+# Individual countries to include (targeting key importers and exporters that match Regions page)
+COUNTRIES = [
+    'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany',
+    'India', 'Indonesia', 'Japan', 'Mexico', 'Russia', 'Saudi Arabia',
+    'South Africa', 'South Korea', 'United Kingdom', 'United States'
 ]
 
 def calculate_net_imports():
@@ -61,11 +91,18 @@ def calculate_net_imports():
     print("Loading OWID energy dataset...")
     df = pd.read_csv(INPUT_FILE)
 
-    # Filter to selected regions and years with data
-    df = df[df['country'].isin(REGIONS)]
+    # Filter to years with data
     df = df[df['year'] >= 1965]
 
-    print(f"Processing {len(df['country'].unique())} regions from {df['year'].min()} to {df['year'].max()}")
+    # Get all countries that are in continental regions or in our country list
+    all_countries_needed = set(COUNTRIES)
+    for continent_countries in CONTINENTAL_REGIONS.values():
+        all_countries_needed.update(continent_countries)
+
+    # Filter to only the countries we need
+    df = df[df['country'].isin(all_countries_needed)]
+
+    print(f"Processing data from {df['year'].min()} to {df['year'].max()}")
 
     # Initialize results structure
     results = {
@@ -81,8 +118,154 @@ def calculate_net_imports():
         'regions': []
     }
 
-    # Process each region
-    for country in sorted(df['country'].unique()):
+    # First, calculate Global totals by summing all regions for each year
+    print("Calculating global totals...")
+    global_years = {}
+    for country in df['country'].unique():
+        country_data = df[df['country'] == country]
+        for _, row in country_data.iterrows():
+            year = int(row['year'])
+            if year not in global_years:
+                global_years[year] = {
+                    'coal': {'primary_ej': 0, 'useful_ej': 0},
+                    'oil': {'primary_ej': 0, 'useful_ej': 0},
+                    'gas': {'primary_ej': 0, 'useful_ej': 0}
+                }
+
+            # Handle NaN values
+            coal_consumption = 0 if pd.isna(row.get('coal_consumption', 0)) else row.get('coal_consumption', 0)
+            coal_production = 0 if pd.isna(row.get('coal_production', 0)) else row.get('coal_production', 0)
+            oil_consumption = 0 if pd.isna(row.get('oil_consumption', 0)) else row.get('oil_consumption', 0)
+            oil_production = 0 if pd.isna(row.get('oil_production', 0)) else row.get('oil_production', 0)
+            gas_consumption = 0 if pd.isna(row.get('gas_consumption', 0)) else row.get('gas_consumption', 0)
+            gas_production = 0 if pd.isna(row.get('gas_production', 0)) else row.get('gas_production', 0)
+
+            # Calculate net imports in TWh then convert to EJ
+            coal_net_ej = (coal_consumption - coal_production) / 277.778
+            oil_net_ej = (oil_consumption - oil_production) / 277.778
+            gas_net_ej = (gas_consumption - gas_production) / 277.778
+
+            # Add to global totals
+            global_years[year]['coal']['primary_ej'] += coal_net_ej
+            global_years[year]['coal']['useful_ej'] += coal_net_ej * EFFICIENCY_FACTORS['coal']
+            global_years[year]['oil']['primary_ej'] += oil_net_ej
+            global_years[year]['oil']['useful_ej'] += oil_net_ej * EFFICIENCY_FACTORS['oil']
+            global_years[year]['gas']['primary_ej'] += gas_net_ej
+            global_years[year]['gas']['useful_ej'] += gas_net_ej * EFFICIENCY_FACTORS['gas']
+
+    # Build Global region entry
+    global_entry = {
+        'region': 'Global',
+        'years': []
+    }
+    for year in sorted(global_years.keys()):
+        year_data = global_years[year]
+        # Calculate totals
+        total_primary = year_data['coal']['primary_ej'] + year_data['oil']['primary_ej'] + year_data['gas']['primary_ej']
+        total_useful = year_data['coal']['useful_ej'] + year_data['oil']['useful_ej'] + year_data['gas']['useful_ej']
+
+        global_entry['years'].append({
+            'year': year,
+            'coal': {
+                'primary_ej': round(year_data['coal']['primary_ej'], 4),
+                'useful_ej': round(year_data['coal']['useful_ej'], 4)
+            },
+            'oil': {
+                'primary_ej': round(year_data['oil']['primary_ej'], 4),
+                'useful_ej': round(year_data['oil']['useful_ej'], 4)
+            },
+            'gas': {
+                'primary_ej': round(year_data['gas']['primary_ej'], 4),
+                'useful_ej': round(year_data['gas']['useful_ej'], 4)
+            },
+            'total': {
+                'primary_ej': round(total_primary, 4),
+                'useful_ej': round(total_useful, 4)
+            }
+        })
+
+    # Add Global entry first
+    results['regions'].append(global_entry)
+    print(f"  - Global totals calculated for {len(global_entry['years'])} years")
+
+    # Calculate continental region totals
+    print("Calculating continental region totals...")
+    for continent, countries in sorted(CONTINENTAL_REGIONS.items()):
+        continent_years = {}
+
+        # Sum data from all countries in this continent
+        for country in countries:
+            country_data = df[df['country'] == country]
+            if country_data.empty:
+                continue
+
+            for _, row in country_data.iterrows():
+                year = int(row['year'])
+                if year not in continent_years:
+                    continent_years[year] = {
+                        'coal': {'primary_ej': 0, 'useful_ej': 0},
+                        'oil': {'primary_ej': 0, 'useful_ej': 0},
+                        'gas': {'primary_ej': 0, 'useful_ej': 0}
+                    }
+
+                # Handle NaN values
+                coal_consumption = 0 if pd.isna(row.get('coal_consumption', 0)) else row.get('coal_consumption', 0)
+                coal_production = 0 if pd.isna(row.get('coal_production', 0)) else row.get('coal_production', 0)
+                oil_consumption = 0 if pd.isna(row.get('oil_consumption', 0)) else row.get('oil_consumption', 0)
+                oil_production = 0 if pd.isna(row.get('oil_production', 0)) else row.get('oil_production', 0)
+                gas_consumption = 0 if pd.isna(row.get('gas_consumption', 0)) else row.get('gas_consumption', 0)
+                gas_production = 0 if pd.isna(row.get('gas_production', 0)) else row.get('gas_production', 0)
+
+                # Calculate net imports in TWh then convert to EJ
+                coal_net_ej = (coal_consumption - coal_production) / 277.778
+                oil_net_ej = (oil_consumption - oil_production) / 277.778
+                gas_net_ej = (gas_consumption - gas_production) / 277.778
+
+                # Add to continent totals
+                continent_years[year]['coal']['primary_ej'] += coal_net_ej
+                continent_years[year]['coal']['useful_ej'] += coal_net_ej * EFFICIENCY_FACTORS['coal']
+                continent_years[year]['oil']['primary_ej'] += oil_net_ej
+                continent_years[year]['oil']['useful_ej'] += oil_net_ej * EFFICIENCY_FACTORS['oil']
+                continent_years[year]['gas']['primary_ej'] += gas_net_ej
+                continent_years[year]['gas']['useful_ej'] += gas_net_ej * EFFICIENCY_FACTORS['gas']
+
+        # Build continent entry
+        if continent_years:
+            continent_entry = {
+                'region': continent,
+                'years': []
+            }
+            for year in sorted(continent_years.keys()):
+                year_data = continent_years[year]
+                total_primary = year_data['coal']['primary_ej'] + year_data['oil']['primary_ej'] + year_data['gas']['primary_ej']
+                total_useful = year_data['coal']['useful_ej'] + year_data['oil']['useful_ej'] + year_data['gas']['useful_ej']
+
+                continent_entry['years'].append({
+                    'year': year,
+                    'coal': {
+                        'primary_ej': round(year_data['coal']['primary_ej'], 4),
+                        'useful_ej': round(year_data['coal']['useful_ej'], 4)
+                    },
+                    'oil': {
+                        'primary_ej': round(year_data['oil']['primary_ej'], 4),
+                        'useful_ej': round(year_data['oil']['useful_ej'], 4)
+                    },
+                    'gas': {
+                        'primary_ej': round(year_data['gas']['primary_ej'], 4),
+                        'useful_ej': round(year_data['gas']['useful_ej'], 4)
+                    },
+                    'total': {
+                        'primary_ej': round(total_primary, 4),
+                        'useful_ej': round(total_useful, 4)
+                    }
+                })
+
+            results['regions'].append(continent_entry)
+            print(f"  - {continent} calculated for {len(continent_entry['years'])} years")
+
+    # Process individual countries
+    print("Processing individual countries...")
+    for country in COUNTRIES:
         country_data = df[df['country'] == country].sort_values('year')
 
         region_entry = {
@@ -155,6 +338,7 @@ def calculate_net_imports():
         # Only include regions with at least some data
         if region_entry['years']:
             results['regions'].append(region_entry)
+            print(f"  - {country} processed for {len(region_entry['years'])} years")
 
     # Save to JSON
     output_path = OUTPUT_FILE

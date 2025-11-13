@@ -1,4 +1,4 @@
-# Global Energy Services Tracker v2.0
+# Global Energy Services Tracker v2.1
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-19.1-blue.svg)](https://reactjs.org/)
@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-The Global Energy Services Tracker v2.0 is a data visualization platform that reveals the **true state of the global energy transition** using a rigorous **exergy-weighted framework** to measure thermodynamic value, not just energy flows.
+The Global Energy Services Tracker v2.1 is a data visualization platform that reveals the **true state of the global energy transition** using a rigorous **exergy-weighted framework** to measure thermodynamic value, not just energy flows.
 
 ### The Core Insight
 
@@ -21,7 +21,7 @@ Most energy analysis focuses on **primary energy** (total energy extracted from 
 1. **Fossil fuels waste 60-70% of their energy as heat** during conversion, whereas clean energy sources are 70%+ efficient
 2. **Not all energy is equally valuable** - high-quality electricity delivers more useful work than low-temperature heat
 
-Version 2.0 introduces **exergy weighting** to account for thermodynamic quality. A joule of electricity (exergy factor 1.0) is fundamentally more valuable than a joule of low-temperature heat (exergy factor 0.2).
+This platform introduces **exergy weighting** to account for thermodynamic quality. A joule of electricity (exergy factor 1.0) is fundamentally more valuable than a joule of low-temperature heat (exergy factor 0.2).
 
 ### The Three-Tier Framework:
 - **Tier 1: Primary Energy** - what we extract from nature (traditional metrics)
@@ -51,31 +51,10 @@ This platform provides the first comprehensive, publicly accessible visualizatio
 
 ---
 
-## What's New in v2.0
-
-Version 2.0 represents a major methodological upgrade with validation against peer-reviewed research:
-
-### New Features
-- **Three-tier energy framework** (Primary → Useful → Services) based on Cullen & Allwood 2010
-- **Exergy quality weighting** accounting for thermodynamic value differences between electricity, heat, and work
-- **Time-varying efficiency** (1965-2024) showing technological improvements over 60 years
-- **Regional efficiency variations** across 5+ major regions (China, USA, EU, India, Rest of World)
-- **Rebound effect modeling** (7% global average) based on IEA research
-- **Comprehensive validation** against Brockway et al. 2021, IEA WEO 2024, and RMI 2024
-
-### Validation Benchmarks
-- Brockway et al. 2021 (useful-to-final ratios): ✓ Within 3%
-- IEA WEO 2024 (efficiency trajectories): ✓ Within 2%
-- RMI 2024 (clean energy leverage): ✓ Within 5%
-
-See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for detailed validation methodology.
-
----
-
 ## Key Features
 
 ### 📊 Interactive Dashboards
-- **8 comprehensive pages** analyzing different aspects of the energy transition
+- **9 comprehensive pages** analyzing different aspects of the energy transition
 - **Real-time data visualization** with Recharts library
 - **Export functionality** (PNG, CSV) for all charts
 - **Responsive design** works on desktop, tablet, and mobile
@@ -85,9 +64,10 @@ See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for detailed validation methodo
 - **Dual view modes**: Compare regions OR compare energy sources
 - **1965-2024 historical data** showing energy mix evolution
 - **Regional efficiency variations** accounting for technological differences
+- **Net energy imports tracking** showing energy trade flows
 - **Granular precision** using petajoules (PJ) for regional data
 
-### 🔬 Rigorous v2.0 Methodology
+### 🔬 Rigorous Methodology
 - **Three-tier framework**: Primary → Useful → Services
 - **Exergy-weighted services** accounting for thermodynamic quality
 - **Time-varying efficiency** showing 60 years of technological improvement
@@ -101,7 +81,7 @@ See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for detailed validation methodo
 
 ### Three-Tier Energy Framework
 
-Version 2.0 implements a comprehensive three-tier framework based on Cullen & Allwood (2010) and validated against Brockway et al. (2021):
+The tracker implements a comprehensive three-tier framework based on Cullen & Allwood (2010) and validated against Brockway et al. (2021):
 
 ```
 Tier 1: Primary Energy (extraction)
@@ -127,21 +107,19 @@ Energy Services = Useful Energy × Exergy Quality Factor
 
 **Example**: 100 EJ of useful electricity (exergy factor 1.0) = 100 EJ of services, but 100 EJ of low-temperature heat (exergy factor 0.2) = 20 EJ of services.
 
-### v2.0 Efficiency Factors (2024)
+### Efficiency Factors (2024)
 
 | Energy Source | Efficiency | Rationale |
 |--------------|-----------|-----------|
 | Coal | 32% | Thermal power plants + transmission losses |
 | Oil | 30% | Internal combustion engines + refining losses |
-| Natural Gas | 45% | Combined cycle plants + direct heating (improved from v1.0) |
-| **Nuclear** | **33%** | **Thermal plant efficiency (updated from v1.0)** |
-| Biomass | 15% | Low-efficiency combustion (corrected from v1.0) |
-| **Hydro** | **70%** | **Turbine efficiency + T&D losses (updated from v1.0)** |
-| **Wind** | **70%** | **Generator efficiency + T&D losses (updated from v1.0)** |
-| **Solar** | **70%** | **Panel/CSP efficiency + T&D losses (updated from v1.0)** |
+| Natural Gas | 45% | Combined cycle plants + direct heating |
+| Nuclear | 33% | Thermal plant efficiency |
+| Biomass | 15% | Low-efficiency combustion |
+| Hydro | 70% | Turbine efficiency + T&D losses |
+| Wind | 70% | Generator efficiency + T&D losses |
+| Solar | 70% | Panel/CSP efficiency + T&D losses |
 | Geothermal | 70% | Direct heat/electricity with minimal losses |
-
-**Key Changes from v1.0**: Gas efficiency reduced to 45% (more realistic), Nuclear increased to 33% (modern plants), Biomass corrected to 15% (accounts for poor combustion efficiency), Clean electricity standardized at 70% (validated against IEA EEI 2024).
 
 **Sources**: IEA Energy Efficiency Indicators (EEI) 2024, IEA World Energy Outlook (WEO) 2024, Brockway et al. 2021
 
@@ -254,7 +232,7 @@ Examples:
 
 ## Validation & Benchmarks
 
-Version 2.0 has been rigorously validated against three authoritative sources:
+The tracker has been rigorously validated against three authoritative sources:
 
 ### 1. Brockway et al. (2021) - Useful-to-Final Energy Ratios
 
@@ -315,12 +293,13 @@ See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for detailed validation calcula
 ```
 global-energy-tracker/
 ├── src/
-│   ├── pages/              # 8 main dashboard pages
+│   ├── pages/              # 9 main dashboard pages
 │   │   ├── Home.jsx
-│   │   ├── Displacement.jsx
+│   │   ├── DisplacementAnalysis.jsx
 │   │   ├── EnergySupply.jsx
 │   │   ├── DemandGrowth.jsx
 │   │   ├── Regions.jsx
+│   │   ├── Imports.jsx
 │   │   ├── ParameterStatus.jsx
 │   │   ├── RealityCheck.jsx
 │   │   └── Methodology.jsx
@@ -328,25 +307,27 @@ global-energy-tracker/
 │   │   ├── PageLayout.jsx
 │   │   ├── Navigation.jsx
 │   │   ├── AIChatbot.jsx
-│   │   └── SectoralEnergyGrowth.jsx
+│   │   └── InteractiveChart.jsx
 │   └── utils/              # Utilities and helpers
 │       ├── chartExport.js
 │       └── energyColors.js
-├── public/data/            # Generated JSON data files (v2.0)
-│   ├── energy_services_timeseries.json       # NEW: Tier 3 exergy-weighted
+├── public/data/            # Generated JSON data files
+│   ├── energy_services_timeseries.json       # Tier 3 exergy-weighted
 │   ├── useful_energy_timeseries.json         # Tier 2 data
 │   ├── regional_energy_timeseries.json
+│   ├── regional_net_imports_timeseries.json  # Net energy imports
 │   └── demand_growth_projections.json
-├── data-pipeline/          # Python data processing scripts (v2.0)
-│   ├── calculate_useful_energy_v2.py         # NEW: Three-tier framework
+├── data-pipeline/          # Python data processing scripts
+│   ├── calculate_useful_energy_v2.py         # Three-tier framework
 │   ├── calculate_regional_useful_energy.py
-│   ├── efficiency_factors_v2.json            # NEW: v2.0 efficiency values
-│   ├── exergy_factors.json                   # NEW: Quality weighting
-│   ├── regional_efficiency_factors.json      # NEW: Regional variations
-│   ├── time_varying_efficiency.json          # NEW: 1965-2024 trends
-│   └── rebound_effect_config.json            # NEW: 7% rebound modeling
-├── PROJECT_OVERVIEW.md     # Comprehensive methodology documentation (v2.0)
-├── DATA_AND_ASSUMPTIONS.md # Technical reference with all calculations (v2.0)
+│   ├── calculate_net_imports.py              # Net imports calculation
+│   ├── efficiency_factors_v2.json            # Efficiency values
+│   ├── exergy_factors.json                   # Quality weighting
+│   ├── regional_efficiency_factors.json      # Regional variations
+│   ├── time_varying_efficiency.json          # 1965-2024 trends
+│   └── rebound_effect_config.json            # 7% rebound modeling
+├── PROJECT_OVERVIEW.md     # Comprehensive methodology documentation
+├── DATA_AND_ASSUMPTIONS.md # Technical reference with all calculations
 └── README.md               # This file
 ```
 
@@ -369,13 +350,16 @@ Projections showing how rapid demand growth undermines displacement (Baseline, A
 ### 5. 🌍 Regions
 Geographic analysis with dual view modes, efficiency rankings, and energy mix evolution (1965-2024).
 
-### 6. 📋 Parameter Status
+### 6. 🌐 Net Energy Imports
+Track energy trade flows and net imports over time across major regions, revealing energy independence trends.
+
+### 7. 📋 Parameter Status
 Year-by-year breakdown of all key metrics in an interactive table format.
 
-### 7. 🎯 Reality Check
+### 8. 🎯 Reality Check
 Analytical essay confronting uncomfortable truths about the energy transition.
 
-### 8. 🔬 Methodology
+### 9. 🔬 Methodology
 Technical documentation of the useful energy approach and calculation methods.
 
 ---
@@ -431,44 +415,9 @@ This is an open, data-driven project. We welcome contributions:
 
 ---
 
-## Known Limitations
+## Data Pipeline
 
-Version 2.0 addresses most v1.0 limitations, but some constraints remain:
-
-### 1. Exergy Factor Precision
-Exergy quality factors are weighted averages based on typical end-use distributions (Brockway et al. 2021). Actual exergy factors vary by:
-- Specific application (e.g., industrial vs. residential heat)
-- Temperature requirements (high-temp vs. low-temp processes)
-- Geographic context (heating vs. cooling climates)
-
-**v2.0 Improvement**: We now model source-specific exergy factors instead of assuming uniform values.
-
-### 2. Energy Efficiency Rebound Effects
-Efficiency improvements often lead to increased consumption (Jevons Paradox).
-
-**v2.0 Improvement**: We explicitly model a 7% rebound effect based on IEA research, rather than implicitly assuming it.
-
-### 3. Regional Efficiency Variations
-**v2.0 Improvement**: Now explicitly modeled for 5+ major regions:
-- China coal plants: ~38% efficient (newer fleet)
-- U.S. natural gas: ~48% efficient (high CCGT penetration)
-- EU overall: ~46% (mixed portfolio)
-- India: ~40% (developing infrastructure)
-- Rest of World: ~42% (global average)
-
-**Source**: IEA Energy Efficiency Indicators (EEI) 2024
-
-### 4. Time-Varying Efficiency
-**v2.0 Improvement**: Efficiency factors now vary by year (1965-2024) to capture technological improvements, validated against IEA historical trends.
-
-### 5. Data Lag
-OWID data has a ~1 year lag. "2024" data is preliminary and subject to revision. This limitation remains in v2.0.
-
----
-
-## Data Pipeline (v2.0)
-
-The v2.0 data pipeline implements the three-tier framework with time-varying, regionally-differentiated efficiency:
+The data pipeline implements the three-tier framework with time-varying, regionally-differentiated efficiency:
 
 ### Pipeline Steps
 
@@ -504,7 +453,7 @@ The v2.0 data pipeline implements the three-tier framework with time-varying, re
    - React components consume via `import`
    - Real-time chart rendering
 
-### Configuration Files (v2.0)
+### Configuration Files
 
 | File | Purpose |
 |------|---------|
@@ -514,24 +463,26 @@ The v2.0 data pipeline implements the three-tier framework with time-varying, re
 | `time_varying_efficiency.json` | Year-by-year efficiency trends (1965-2024) |
 | `rebound_effect_config.json` | 7% rebound effect parameters |
 
-### Running the v2.0 Pipeline
+### Running the Pipeline
 
 ```bash
 cd data-pipeline
 python calculate_useful_energy_v2.py
 python calculate_regional_useful_energy.py
+python calculate_net_imports.py
 ```
 
 Output files generated in `public/data/`:
-- `energy_services_timeseries.json` (Tier 3 - NEW in v2.0)
+- `energy_services_timeseries.json` (Tier 3)
 - `useful_energy_timeseries.json` (Tier 2)
 - `regional_energy_timeseries.json`
+- `regional_net_imports_timeseries.json`
 
 ---
 
-## Validation & Accuracy (v2.0)
+## Validation & Accuracy
 
-Version 2.0 has been validated against peer-reviewed research and authoritative sources:
+The tracker has been validated against peer-reviewed research and authoritative sources:
 
 - ✅ **Brockway et al. (2021)**: Useful-to-final energy ratios (within 3%)
 - ✅ **IEA World Energy Outlook 2024**: Historical trends and projections (within 2%)
@@ -539,7 +490,7 @@ Version 2.0 has been validated against peer-reviewed research and authoritative 
 - ✅ **Rocky Mountain Institute (RMI) 2024**: Clean energy leverage (within 5%)
 - ✅ **Cullen & Allwood (2010)**: Exergy methodology framework (exact match)
 
-**Accuracy Score**: 96% alignment with authoritative sources (improved from 92% in v1.0)
+**Accuracy Score**: 96% alignment with authoritative sources
 
 See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for complete validation checklist and all calculation formulas.
 
@@ -547,7 +498,7 @@ See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for complete validation checkli
 
 ## Academic References
 
-Version 2.0 methodology is based on peer-reviewed research and authoritative energy data:
+The methodology is based on peer-reviewed research and authoritative energy data:
 
 ### Core Methodology Papers
 
@@ -627,7 +578,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you use this data or methodology in your research, please cite:
 
 ```
-Global Energy Services Tracker v2.0 (2025)
+Global Energy Services Tracker v2.1 (2025)
 GitHub Repository: https://github.com/cdimurro/Global-Energy-Services-Tracker
 Methodology: Three-tier exergy-weighted energy services framework
 Framework: Based on Cullen & Allwood (2010) and Brockway et al. (2021)
@@ -651,6 +602,6 @@ Data Sources: Our World in Data Energy Dataset (2024)
 
 **Goal**: Create the most accurate, honest, and useful public resource for understanding the global energy transition using thermodynamically rigorous exergy accounting.
 
-**Version**: 2.0 (Three-Tier Exergy Framework)
+**Version**: 2.1
 
-*Last Updated: January 2025*
+*Last Updated: November 2025*

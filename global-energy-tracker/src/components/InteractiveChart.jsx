@@ -13,8 +13,8 @@ export default function InteractiveChart() {
   const [energyData, setEnergyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [chartType, setChartType] = useState('absolute'); // 'absolute' or 'change'
-  const [selectedSources, setSelectedSources] = useState(['fossil', 'clean']);
-  const [viewMode, setViewMode] = useState('grouped'); // 'grouped' or 'individual'
+  const [selectedSources, setSelectedSources] = useState(ENERGY_SOURCES);
+  const [viewMode, setViewMode] = useState('allSources'); // 'grouped', 'individual', 'allSources', 'allFossil', 'allClean'
   const [showRelative, setShowRelative] = useState(false); // toggle for percentage view
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -148,7 +148,7 @@ export default function InteractiveChart() {
 
     // Calculate the total of displayed sources
     const displayedTotal = payload.reduce((sum, entry) => sum + entry.value, 0);
-    const displayedPercentage = actualTotal > 0 ? ((displayedTotal / actualTotal) * 100).toFixed(1) : '0.0';
+    const displayedPercentage = actualTotal > 0 ? ((displayedTotal / actualTotal) * 100).toFixed(2) : '0.00';
 
     return (
       <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
@@ -172,7 +172,7 @@ export default function InteractiveChart() {
                 );
               } else {
                 // Calculate percentage based on actual total energy services for this year
-                const percentage = actualTotal > 0 ? ((entry.value / actualTotal) * 100).toFixed(1) : '0.0';
+                const percentage = actualTotal > 0 ? ((entry.value / actualTotal) * 100).toFixed(2) : '0.00';
                 return (
                   <div key={index} className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2">

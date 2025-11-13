@@ -120,11 +120,11 @@ export default function Home() {
   return (
     <PageLayout>
       {/* Page Header */}
-      <div className="text-center mb-4 sm:mb-8">
-        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-800 mb-1 sm:mb-3 px-2">
+      <div className="text-center mb-8">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3">
           Global Energy Services Tracker
         </h1>
-        <p className="text-[10px] sm:text-sm text-gray-600 px-4 leading-tight">
+        <p className="text-sm text-gray-600">
           Get a complete view of the energy system and gain valuable insights by measuring energy services instead of primary energy.
         </p>
       </div>
