@@ -4,7 +4,7 @@ import os
 
 # Configuration
 INPUT_FILE = 'downloads/owid_energy_data.csv'
-OUTPUT_FILE = '../public/data/regional_net_imports_timeseries.json'
+OUTPUT_FILE = '../global-energy-tracker/public/data/regional_net_imports_timeseries.json'
 
 # Efficiency factors for converting primary to useful energy
 EFFICIENCY_FACTORS = {

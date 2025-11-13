@@ -2,7 +2,7 @@ import json
 import os
 
 # Configuration
-OUTPUT_FILE = '../public/data/energy_potential_by_region.json'
+OUTPUT_FILE = '../global-energy-tracker/public/data/energy_potential_by_region.json'
 
 # Energy potential estimates by region/country
 # Sources: BP Statistical Review (fossil reserves), IRENA (renewable potential), academic literature

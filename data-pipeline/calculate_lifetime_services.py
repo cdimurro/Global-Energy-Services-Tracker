@@ -2,7 +2,7 @@ import json
 import os
 
 # Configuration
-OUTPUT_FILE = '../public/data/lifetime_services_comparison.json'
+OUTPUT_FILE = '../global-energy-tracker/public/data/lifetime_services_comparison.json'
 
 # Power plant specifications
 # Sources: IRENA, IEA, industry literature
