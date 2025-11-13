@@ -16,11 +16,6 @@ function Imports() {
   const [selectedFuel, setSelectedFuel] = useState('total');
   const [energyType, setEnergyType] = useState('primary'); // primary or useful
 
-  // Chart 3 controls
-  const [showFossil, setShowFossil] = useState(true);
-  const [showRenewable, setShowRenewable] = useState(true);
-  const [sortBy, setSortBy] = useState('advantage'); // advantage, fossil, renewable
-
   useEffect(() => {
     Promise.all([
       fetch('/data/regional_net_imports_timeseries.json').then(res => res.json()),
@@ -83,23 +78,15 @@ function Imports() {
     });
   }, [netImportsData, selectedRegions, selectedFuel, energyType]);
 
-  // Process Chart 3 data
+  // Process Chart 3 data - always sort by renewable advantage
   const chart3Data = useMemo(() => {
     if (!energyPotentialData) return [];
 
     let sorted = [...energyPotentialData.regions];
-
-    // Sort based on selection
-    if (sortBy === 'advantage') {
-      sorted.sort((a, b) => b.renewable_advantage_ratio - a.renewable_advantage_ratio);
-    } else if (sortBy === 'fossil') {
-      sorted.sort((a, b) => b.fossil_reserves.total - a.fossil_reserves.total);
-    } else if (sortBy === 'renewable') {
-      sorted.sort((a, b) => b.renewable_potential.total - a.renewable_potential.total);
-    }
+    sorted.sort((a, b) => b.renewable_advantage_ratio - a.renewable_advantage_ratio);
 
     return sorted.slice(0, 20); // Top 20 regions
-  }, [energyPotentialData, sortBy]);
+  }, [energyPotentialData]);
 
   const availableRegions = netImportsData?.regions.map(r => r.region).sort() || [];
 
@@ -367,11 +354,10 @@ function Imports() {
                 Fossil plants have negative net services due to perpetual fuel imports. Renewables provide positive lifetime value.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+            <div className="flex gap-2">
               <button
                 onClick={() => downloadChartAsPNG('chart2', 'lifetime_services_comparison')}
-                className="px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-xs sm:text-sm whitespace-nowrap"
-                title="Download chart as PNG image"
+                className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
               >
                 Download PNG
               </button>
@@ -384,12 +370,11 @@ function Imports() {
                     'Generation (TWh)': p.lifetime_generation_twh,
                     'Useful Energy (EJ)': p.lifetime_useful_energy_ej,
                     'Fuel Imports (EJ)': p.lifetime_fuel_imports_ej,
-                    'Net Services (EJ)': p.net_lifetime_services_ej
+                    'Net Energy Services (EJ)': p.net_lifetime_services_ej
                   }));
                   downloadDataAsCSV(csvData, 'lifetime_services_comparison');
                 }}
-                className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-xs sm:text-sm whitespace-nowrap"
-                title="Download chart data as CSV"
+                className="px-3 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
               >
                 Download CSV
               </button>
@@ -473,56 +458,9 @@ function Imports() {
             </div>
           </div>
 
-          {/* Controls */}
-          <div className="mb-6 space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Sort By:</label>
-              <div className="flex gap-2">
-                {[
-                  { value: 'advantage', label: 'Renewable Advantage' },
-                  { value: 'renewable', label: 'Renewable Potential' },
-                  { value: 'fossil', label: 'Fossil Reserves' }
-                ].map(option => (
-                  <button
-                    key={option.value}
-                    onClick={() => setSortBy(option.value)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
-                      sortBy === option.value
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={showFossil}
-                  onChange={(e) => setShowFossil(e.target.checked)}
-                  className="mr-2"
-                />
-                <span className="text-sm font-medium text-gray-700">Show Fossil Reserves</span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={showRenewable}
-                  onChange={(e) => setShowRenewable(e.target.checked)}
-                  className="mr-2"
-                />
-                <span className="text-sm font-medium text-gray-700">Show Renewable Potential</span>
-              </label>
-            </div>
-          </div>
-
           {/* Chart */}
           <div id="chart3">
-            <ResponsiveContainer width="100%" height={600}>
+            <ResponsiveContainer width="100%" height={700}>
               <BarChart
                 data={chart3Data}
                 layout="vertical"
@@ -538,12 +476,8 @@ function Imports() {
                 <YAxis dataKey="region" type="category" width={140} />
                 <Tooltip content={<CustomTooltipChart3 />} />
                 <Legend />
-                {showFossil && (
-                  <Bar dataKey="fossil_reserves.total" fill="#DC2626" name="Fossil Reserves (EJ)" />
-                )}
-                {showRenewable && (
-                  <Bar dataKey="renewable_potential.total" fill="#22C55E" name="Renewable Potential (EJ)" />
-                )}
+                <Bar dataKey="fossil_reserves.total" fill="#DC2626" name="Fossil Reserves (EJ)" />
+                <Bar dataKey="renewable_potential.total" fill="#22C55E" name="Renewable Potential (EJ)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -586,10 +520,10 @@ function Imports() {
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-600">
             <h3 className="font-bold text-lg text-gray-800 mb-2">The Renewable Advantage</h3>
             <p className="text-gray-700 mb-3">
-              Build <strong>renewable energy infrastructure</strong> and it <strong>will generate energy for decades.</strong>
+              Renewable energy infrastructure <strong>will generate energy for decades.</strong>
             </p>
             <p className="text-gray-700 mb-3">
-              Build <strong>fossil fuel infrastructure</strong> and it <strong>will require imports for decades.</strong>
+              Fossil fuel infrastructure <strong>will require fuel deliveries for decades.</strong>
             </p>
             <p className="text-gray-700 mt-3">
               Renewables require a one-time capital investment. Then they provide <strong>decades of energy independence</strong>. No fuel price risk, no supply disruptions, no emissions.
