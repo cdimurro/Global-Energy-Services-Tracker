@@ -70,7 +70,7 @@ export default function Home() {
   };
 
   const renderCustomLabel = (entry) => {
-    return `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)`;
+    return `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(2)}%)`;
   };
 
   // Download functions for Global Energy Services chart
@@ -164,7 +164,7 @@ export default function Home() {
                   cx="50%"
                   cy="50%"
                   labelLine={width >= 640}
-                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(2)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
                   outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
                   fill="#8884d8"
                   dataKey="value"
@@ -193,7 +193,7 @@ export default function Home() {
                 <span className="text-xs sm:text-lg md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
               <div className="text-base sm:text-2xl md:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
-                {fossil_services_share_percent.toFixed(1)}%
+                {fossil_services_share_percent.toFixed(2)}%
               </div>
               <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
@@ -208,7 +208,7 @@ export default function Home() {
                 <span className="text-xs sm:text-lg md:text-2xl ml-1 text-gray-500">EJ</span>
               </div>
               <div className="text-base sm:text-2xl md:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
-                {clean_services_share_percent.toFixed(1)}%
+                {clean_services_share_percent.toFixed(2)}%
               </div>
               <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
@@ -239,7 +239,7 @@ export default function Home() {
                   cx="50%"
                   cy="50%"
                   labelLine={width >= 640}
-                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(2)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
                   outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
                   fill="#8884d8"
                   dataKey="value"
@@ -278,7 +278,7 @@ export default function Home() {
                     <span className="text-lg ml-1 text-gray-500">EJ</span>
                   </div>
                   <div className="text-2xl font-semibold text-gray-600">
-                    {share.toFixed(1)}%
+                    {share.toFixed(2)}%
                   </div>
                   <div className="text-xs text-gray-500 mt-1">of fossil energy</div>
                 </div>
@@ -311,7 +311,7 @@ export default function Home() {
                   cx="50%"
                   cy="50%"
                   labelLine={width >= 640}
-                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(2)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
                   outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
                   fill="#8884d8"
                   dataKey="value"
@@ -350,7 +350,7 @@ export default function Home() {
                   </div>
                   <div className="text-xs text-gray-500 mb-1">EJ</div>
                   <div className="text-lg font-semibold text-gray-600">
-                    {share.toFixed(1)}%
+                    {share.toFixed(2)}%
                   </div>
                 </div>
               );
