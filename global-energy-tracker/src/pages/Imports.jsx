@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PageLayout from '../components/PageLayout';
+import AIChatbot from '../components/AIChatbot';
 import { downloadChartAsPNG, downloadDataAsCSV } from '../utils/chartExport';
 
 function Imports() {
@@ -547,12 +548,14 @@ function Imports() {
       </div>
 
       {/* Understanding Energy Imports Section */}
-      <div className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Understanding Energy Imports</h2>
+      <div className="metric-card bg-white mb-8 border-2 border-blue-200">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          Understanding Energy Imports
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1: The Fossil Trap */}
-          <div className="bg-red-50 border-l-4 border-red-600 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-red-900 mb-3">The Fossil Trap</h3>
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">The Fossil Trap</h3>
             <p className="text-gray-700 mb-3">
               Fossil fuel power plants create a <strong>perpetual import dependency</strong>. A coal or gas plant requires continuous fuel shipments throughout its 30-40 year lifetime.
             </p>
@@ -568,8 +571,8 @@ function Imports() {
           </div>
 
           {/* Card 2: Electrification Benefit */}
-          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-blue-900 mb-3">Electrification Benefit</h3>
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Electrification Benefit</h3>
             <p className="text-gray-700 mb-3">
               Electric motors are <strong>3-4x more efficient</strong> than combustion engines. When you replace:
             </p>
@@ -584,8 +587,8 @@ function Imports() {
           </div>
 
           {/* Card 3: Renewable Edge */}
-          <div className="bg-green-50 border-l-4 border-green-600 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-green-900 mb-3">Renewable Edge</h3>
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Renewable Edge</h3>
             <p className="text-gray-700 mb-3">
               Solar, wind, and hydro plants require <strong>zero fuel imports</strong>. The same 600 MW capacity delivers:
             </p>
@@ -600,8 +603,8 @@ function Imports() {
           </div>
 
           {/* Card 4: Action */}
-          <div className="bg-purple-50 border-l-4 border-purple-600 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-purple-900 mb-3">Action: Map Your Transition</h3>
+          <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-600">
+            <h3 className="font-bold text-lg text-gray-800 mb-2">Action: Map Your Transition</h3>
             <p className="text-gray-700 mb-3">
               For net importing nations, the path to energy independence is clear:
             </p>
@@ -616,6 +619,11 @@ function Imports() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* AI Chatbot */}
+      <div className="mb-8">
+        <AIChatbot />
       </div>
     </PageLayout>
   );
