@@ -72,7 +72,19 @@ export default function EnergySupply() {
       if (!yearData.sources_useful_ej) return processed;
 
       Object.entries(yearData.sources_useful_ej).forEach(([source, useful]) => {
-        const efficiency = eff[source] || 0.5;
+        let efficiency = eff[source] || 0.5;
+
+        // For renewables, use realistic efficiency reflecting minimal conversion losses
+        // These sources have T&D losses (~8-10%) but no combustion waste
+        if (['solar', 'wind', 'hydro'].includes(source)) {
+          efficiency = 0.90; // ~90% accounting for T&D losses only
+        } else if (source === 'geothermal') {
+          efficiency = 0.85; // Some conversion losses but minimal
+        } else if (source === 'nuclear') {
+          // Nuclear has thermal conversion losses - keep original efficiency
+          efficiency = eff[source] || 0.25;
+        }
+
         const primary = useful / efficiency;
         const waste = primary - useful;
 
@@ -141,14 +153,39 @@ export default function EnergySupply() {
 
             let efficiency = eff[source] || 0.5;
 
-            // Apply efficiency improvements for clean sources based on scenario
-            if (CLEAN_SOURCES.includes(source)) {
+            // For renewables, use realistic efficiency reflecting minimal conversion losses
+            if (['solar', 'wind', 'hydro'].includes(source)) {
+              // Start at 90% (T&D losses only), can improve to 95% max
+              let baseEfficiency = 0.90;
               if (selectedScenario.includes('Accelerated')) {
-                efficiency = Math.min(0.95, efficiency + (yearsSince2024 * 0.01)); // +1%/year, max 95%
+                efficiency = Math.min(0.95, baseEfficiency + (yearsSince2024 * 0.002)); // +0.2%/year
               } else if (selectedScenario.includes('Net-Zero')) {
-                efficiency = Math.min(0.95, efficiency + (yearsSince2024 * 0.02)); // +2%/year, max 95%
+                efficiency = Math.min(0.95, baseEfficiency + (yearsSince2024 * 0.004)); // +0.4%/year
+              } else {
+                efficiency = baseEfficiency; // Baseline stays at 90%
               }
+            } else if (source === 'geothermal') {
+              // Geothermal has some conversion losses
+              let baseEfficiency = 0.85;
+              if (selectedScenario.includes('Accelerated')) {
+                efficiency = Math.min(0.92, baseEfficiency + (yearsSince2024 * 0.003));
+              } else if (selectedScenario.includes('Net-Zero')) {
+                efficiency = Math.min(0.92, baseEfficiency + (yearsSince2024 * 0.005));
+              } else {
+                efficiency = baseEfficiency;
+              }
+            } else if (source === 'nuclear') {
+              // Nuclear has thermal conversion losses - keep original efficiency
+              efficiency = eff[source] || 0.25;
+              // Can improve slightly with advanced reactors
+              if (selectedScenario.includes('Net-Zero')) {
+                efficiency = Math.min(0.35, efficiency + (yearsSince2024 * 0.002));
+              }
+            } else if (CLEAN_SOURCES.includes(source)) {
+              // Other clean sources (biomass) - use fossil-like efficiency
+              efficiency = eff[source] || 0.3;
             }
+            // Fossil sources keep their base efficiency (no improvement assumed)
 
             const primary = useful / efficiency;
             const waste = primary - useful;
