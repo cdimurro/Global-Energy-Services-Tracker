@@ -222,7 +222,7 @@ export default function InteractiveChart() {
                   </div>
                   <div className="text-sm ml-5">
                     <span className="text-gray-600">Share: </span>
-                    <span className="font-semibold text-gray-900">{sharePercent.toFixed(1)}%</span>
+                    <span className="font-semibold text-gray-900">{sharePercent.toFixed(2)}%</span>
                   </div>
                 </div>
                 <div className="text-right">
