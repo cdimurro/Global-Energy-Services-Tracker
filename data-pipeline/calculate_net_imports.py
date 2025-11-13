@@ -97,16 +97,23 @@ def calculate_net_imports():
             # Calculate net imports for each fuel type (TWh)
             # Net imports = consumption - production (positive = importer, negative = exporter)
 
-            coal_consumption = row.get('coal_consumption', 0) or 0
-            coal_production = row.get('coal_production', 0) or 0
+            # Handle NaN values from pandas
+            coal_consumption = row.get('coal_consumption', 0)
+            coal_consumption = 0 if pd.isna(coal_consumption) else coal_consumption
+            coal_production = row.get('coal_production', 0)
+            coal_production = 0 if pd.isna(coal_production) else coal_production
             coal_net_twh = coal_consumption - coal_production
 
-            oil_consumption = row.get('oil_consumption', 0) or 0
-            oil_production = row.get('oil_production', 0) or 0
+            oil_consumption = row.get('oil_consumption', 0)
+            oil_consumption = 0 if pd.isna(oil_consumption) else oil_consumption
+            oil_production = row.get('oil_production', 0)
+            oil_production = 0 if pd.isna(oil_production) else oil_production
             oil_net_twh = oil_consumption - oil_production
 
-            gas_consumption = row.get('gas_consumption', 0) or 0
-            gas_production = row.get('gas_production', 0) or 0
+            gas_consumption = row.get('gas_consumption', 0)
+            gas_consumption = 0 if pd.isna(gas_consumption) else gas_consumption
+            gas_production = row.get('gas_production', 0)
+            gas_production = 0 if pd.isna(gas_production) else gas_production
             gas_net_twh = gas_consumption - gas_production
 
             # Convert TWh to EJ (1 EJ = 277.778 TWh)

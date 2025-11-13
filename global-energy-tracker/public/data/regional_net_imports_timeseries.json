@@ -1168,16 +1168,16 @@
             "useful_ej": 0.0816
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6785,
+            "useful_ej": 0.2375
           },
           "gas": {
             "primary_ej": -0.0032,
             "useful_ej": -0.0013
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9473,
+            "useful_ej": 0.3178
           }
         },
         {
@@ -1187,16 +1187,16 @@
             "useful_ej": 0.0789
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6921,
+            "useful_ej": 0.2422
           },
           "gas": {
             "primary_ej": 0.0003,
             "useful_ej": 0.0001
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9553,
+            "useful_ej": 0.3212
           }
         },
         {
@@ -1206,16 +1206,16 @@
             "useful_ej": 0.0833
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.7633,
+            "useful_ej": 0.2672
           },
           "gas": {
             "primary_ej": 0.0129,
             "useful_ej": 0.0052
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.054,
+            "useful_ej": 0.3557
           }
         },
         {
@@ -1225,16 +1225,16 @@
             "useful_ej": 0.1034
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8862,
+            "useful_ej": 0.3102
           },
           "gas": {
             "primary_ej": 0.0397,
             "useful_ej": 0.0159
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2706,
+            "useful_ej": 0.4295
           }
         },
         {
@@ -1244,16 +1244,16 @@
             "useful_ej": 0.1106
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0224,
+            "useful_ej": 0.3578
           },
           "gas": {
             "primary_ej": 0.0873,
             "useful_ej": 0.0349
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.4782,
+            "useful_ej": 0.5033
           }
         },
         {
@@ -1263,16 +1263,16 @@
             "useful_ej": 0.1129
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1153,
+            "useful_ej": 0.3904
           },
           "gas": {
             "primary_ej": 0.1395,
             "useful_ej": 0.0558
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.631,
+            "useful_ej": 0.559
           }
         },
         {
@@ -1282,16 +1282,16 @@
             "useful_ej": 0.081
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.143,
+            "useful_ej": 0.4001
           },
           "gas": {
             "primary_ej": 0.1936,
             "useful_ej": 0.0774
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6066,
+            "useful_ej": 0.5585
           }
         },
         {
@@ -1301,16 +1301,16 @@
             "useful_ej": 0.0771
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2365,
+            "useful_ej": 0.4328
           },
           "gas": {
             "primary_ej": 0.2449,
             "useful_ej": 0.098
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7383,
+            "useful_ej": 0.6078
           }
         },
         {
@@ -1320,16 +1320,16 @@
             "useful_ej": 0.0644
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2983,
+            "useful_ej": 0.4544
           },
           "gas": {
             "primary_ej": 0.2946,
             "useful_ej": 0.1178
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8077,
+            "useful_ej": 0.6367
           }
         },
         {
@@ -1339,16 +1339,16 @@
             "useful_ej": 0.0798
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1437,
+            "useful_ej": 0.4003
           },
           "gas": {
             "primary_ej": 0.3483,
             "useful_ej": 0.1393
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7578,
+            "useful_ej": 0.6194
           }
         },
         {
@@ -1358,16 +1358,16 @@
             "useful_ej": 0.0481
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0854,
+            "useful_ej": 0.3799
           },
           "gas": {
             "primary_ej": 0.3445,
             "useful_ej": 0.1378
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5903,
+            "useful_ej": 0.5658
           }
         },
         {
@@ -1377,16 +1377,16 @@
             "useful_ej": 0.0546
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1321,
+            "useful_ej": 0.3962
           },
           "gas": {
             "primary_ej": 0.3646,
             "useful_ej": 0.1458
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6788,
+            "useful_ej": 0.5967
           }
         },
         {
@@ -1396,16 +1396,16 @@
             "useful_ej": 0.0576
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1135,
+            "useful_ej": 0.3897
           },
           "gas": {
             "primary_ej": 0.3585,
             "useful_ej": 0.1434
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6641,
+            "useful_ej": 0.5908
           }
         },
         {
@@ -1415,16 +1415,16 @@
             "useful_ej": 0.0642
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1882,
+            "useful_ej": 0.4159
           },
           "gas": {
             "primary_ej": 0.3555,
             "useful_ej": 0.1422
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7577,
+            "useful_ej": 0.6223
           }
         },
         {
@@ -1434,16 +1434,16 @@
             "useful_ej": 0.0813
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1809,
+            "useful_ej": 0.4133
           },
           "gas": {
             "primary_ej": 0.3886,
             "useful_ej": 0.1554
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8405,
+            "useful_ej": 0.6501
           }
         },
         {
@@ -2152,153 +2152,153 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1299,
+            "useful_ej": 0.039
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2869,
+            "useful_ej": 0.4504
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5908,
+            "useful_ej": 0.2363
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0076,
+            "useful_ej": 0.7257
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1291,
+            "useful_ej": 0.0387
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.3794,
+            "useful_ej": 0.4828
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6075,
+            "useful_ej": 0.243
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.116,
+            "useful_ej": 0.7645
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1293,
+            "useful_ej": 0.0388
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2919,
+            "useful_ej": 0.4522
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6259,
+            "useful_ej": 0.2504
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0471,
+            "useful_ej": 0.7413
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1002,
+            "useful_ej": 0.0301
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1059,
+            "useful_ej": 0.3871
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6119,
+            "useful_ej": 0.2448
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.818,
+            "useful_ej": 0.6619
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1108,
+            "useful_ej": 0.0332
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2276,
+            "useful_ej": 0.4297
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6106,
+            "useful_ej": 0.2442
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.949,
+            "useful_ej": 0.7071
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1155,
+            "useful_ej": 0.0346
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1947,
+            "useful_ej": 0.4182
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5239,
+            "useful_ej": 0.2096
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8342,
+            "useful_ej": 0.6624
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1,
+            "useful_ej": 0.03
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1547,
+            "useful_ej": 0.4041
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4954,
+            "useful_ej": 0.1982
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7501,
+            "useful_ej": 0.6323
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1102,
+            "useful_ej": 0.0331
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1763,
+            "useful_ej": 0.4117
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4771,
+            "useful_ej": 0.1908
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7635,
+            "useful_ej": 0.6356
           }
         }
       ]
@@ -6732,153 +6732,153 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3926,
+            "useful_ej": 0.1178
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.2455,
+            "useful_ej": 1.1359
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6116,
+            "useful_ej": 0.6446
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.2496,
+            "useful_ej": 1.8983
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3607,
+            "useful_ej": 0.1082
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.1667,
+            "useful_ej": 1.1084
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5422,
+            "useful_ej": 0.6169
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.0697,
+            "useful_ej": 1.8335
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2859,
+            "useful_ej": 0.0858
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.1406,
+            "useful_ej": 1.0992
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5718,
+            "useful_ej": 0.6287
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.9984,
+            "useful_ej": 1.8137
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2015,
+            "useful_ej": 0.0605
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.6485,
+            "useful_ej": 0.927
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.461,
+            "useful_ej": 0.5844
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.311,
+            "useful_ej": 1.5718
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2704,
+            "useful_ej": 0.0811
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.8475,
+            "useful_ej": 0.9966
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5495,
+            "useful_ej": 0.6198
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.6674,
+            "useful_ej": 1.6976
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2318,
+            "useful_ej": 0.0696
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.842,
+            "useful_ej": 0.9947
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.3912,
+            "useful_ej": 0.5565
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.4651,
+            "useful_ej": 1.6207
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1772,
+            "useful_ej": 0.0531
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.7975,
+            "useful_ej": 0.9791
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.226,
+            "useful_ej": 0.4904
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.2006,
+            "useful_ej": 1.5227
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1777,
+            "useful_ej": 0.0533
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.7924,
+            "useful_ej": 0.9773
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1509,
+            "useful_ej": 0.4603
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.121,
+            "useful_ej": 1.491
           }
         }
       ]
@@ -7881,16 +7881,16 @@
             "useful_ej": 0.4077
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.0721,
+            "useful_ej": 1.7752
           },
           "gas": {
             "primary_ej": 2.929,
             "useful_ej": 1.1716
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 9.3601,
+            "useful_ej": 3.3545
           }
         },
         {
@@ -7900,16 +7900,16 @@
             "useful_ej": 0.3967
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.8131,
+            "useful_ej": 1.6846
           },
           "gas": {
             "primary_ej": 2.8911,
             "useful_ej": 1.1564
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 9.0264,
+            "useful_ej": 3.2377
           }
         },
         {
@@ -7919,16 +7919,16 @@
             "useful_ej": 0.3172
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.8637,
+            "useful_ej": 1.7023
           },
           "gas": {
             "primary_ej": 3.0223,
             "useful_ej": 1.2089
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 8.9433,
+            "useful_ej": 3.2284
           }
         },
         {
@@ -7938,16 +7938,16 @@
             "useful_ej": 0.2624
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.4037,
+            "useful_ej": 1.5413
           },
           "gas": {
             "primary_ej": 2.9727,
             "useful_ej": 1.1891
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 8.2509,
+            "useful_ej": 2.9927
           }
         },
         {
@@ -7957,16 +7957,16 @@
             "useful_ej": 0.3257
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.3551,
+            "useful_ej": 1.5243
           },
           "gas": {
             "primary_ej": 3.1392,
             "useful_ej": 1.2557
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 8.5801,
+            "useful_ej": 3.1057
           }
         },
         {
@@ -7976,16 +7976,16 @@
             "useful_ej": 0.3352
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.4711,
+            "useful_ej": 1.5649
           },
           "gas": {
             "primary_ej": 2.5677,
             "useful_ej": 1.0271
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 8.1563,
+            "useful_ej": 2.9272
           }
         },
         {
@@ -7995,16 +7995,16 @@
             "useful_ej": 0.2516
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.1958,
+            "useful_ej": 1.4685
           },
           "gas": {
             "primary_ej": 2.4837,
             "useful_ej": 0.9935
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 7.5181,
+            "useful_ej": 2.7136
           }
         },
         {
@@ -8014,16 +8014,16 @@
             "useful_ej": 0.2262
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.2356,
+            "useful_ej": 1.4824
           },
           "gas": {
             "primary_ej": 2.6968,
             "useful_ej": 1.0787
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 7.6865,
+            "useful_ej": 2.7874
           }
         }
       ]
@@ -11312,8 +11312,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0431,
+            "useful_ej": 0.0129
           },
           "oil": {
             "primary_ej": -6.5908,
@@ -11324,15 +11324,15 @@
             "useful_ej": -0.1274
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.8662,
+            "useful_ej": -2.4212
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0571,
+            "useful_ej": 0.0171
           },
           "oil": {
             "primary_ej": -5.9946,
@@ -11343,15 +11343,15 @@
             "useful_ej": -0.1077
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.2069,
+            "useful_ej": -2.1887
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0682,
+            "useful_ej": 0.0204
           },
           "oil": {
             "primary_ej": -3.2124,
@@ -11362,15 +11362,15 @@
             "useful_ej": -0.1429
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.5015,
+            "useful_ej": -1.2468
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.077,
+            "useful_ej": 0.0231
           },
           "oil": {
             "primary_ej": -2.7469,
@@ -11381,15 +11381,15 @@
             "useful_ej": 0.0143
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.6342,
+            "useful_ej": -0.924
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0729,
+            "useful_ej": 0.0219
           },
           "oil": {
             "primary_ej": -3.4498,
@@ -11400,15 +11400,15 @@
             "useful_ej": -0.1918
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.8563,
+            "useful_ej": -1.3773
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0775,
+            "useful_ej": 0.0232
           },
           "oil": {
             "primary_ej": -3.8039,
@@ -11419,15 +11419,15 @@
             "useful_ej": -0.1196
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.0254,
+            "useful_ej": -1.4277
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.065,
+            "useful_ej": 0.0195
           },
           "oil": {
             "primary_ej": -5.1269,
@@ -11438,15 +11438,15 @@
             "useful_ej": -0.1894
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.5354,
+            "useful_ej": -1.9643
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0664,
+            "useful_ej": 0.0199
           },
           "oil": {
             "primary_ej": -6.0553,
@@ -11457,8 +11457,8 @@
             "useful_ej": -0.2523
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.6197,
+            "useful_ej": -2.3517
           }
         }
       ]
@@ -11469,8 +11469,8 @@
         {
           "year": 1965,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.6428,
@@ -11481,15 +11481,15 @@
             "useful_ej": 0.0005
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.6416,
+            "useful_ej": -0.9245
           }
         },
         {
           "year": 1966,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.8012,
@@ -11500,15 +11500,15 @@
             "useful_ej": -0.0022
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.8067,
+            "useful_ej": -0.9826
           }
         },
         {
           "year": 1967,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.458,
@@ -11519,15 +11519,15 @@
             "useful_ej": -0.0024
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.4641,
+            "useful_ej": -0.8627
           }
         },
         {
           "year": 1968,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.0281,
@@ -11538,15 +11538,15 @@
             "useful_ej": -0.0059
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.0428,
+            "useful_ej": -1.0657
           }
         },
         {
           "year": 1969,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.0511,
@@ -11557,15 +11557,15 @@
             "useful_ej": -0.0051
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.0638,
+            "useful_ej": -1.073
           }
         },
         {
           "year": 1970,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.0821,
@@ -11576,15 +11576,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.0821,
+            "useful_ej": -1.0787
           }
         },
         {
           "year": 1971,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.373,
@@ -11595,15 +11595,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.373,
+            "useful_ej": -1.1806
           }
         },
         {
           "year": 1972,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.885,
@@ -11614,15 +11614,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.885,
+            "useful_ej": -1.0098
           }
         },
         {
           "year": 1973,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.0183,
@@ -11633,15 +11633,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.0183,
+            "useful_ej": -1.4064
           }
         },
         {
           "year": 1974,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.9316,
@@ -11652,15 +11652,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.9316,
+            "useful_ej": -1.3761
           }
         },
         {
           "year": 1975,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.5358,
@@ -11671,15 +11671,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.5358,
+            "useful_ej": -1.5875
           }
         },
         {
           "year": 1976,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.8317,
@@ -11690,15 +11690,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.8317,
+            "useful_ej": -1.6911
           }
         },
         {
           "year": 1977,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.6523,
@@ -11709,15 +11709,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.6523,
+            "useful_ej": -1.6283
           }
         },
         {
           "year": 1978,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.0833,
@@ -11728,15 +11728,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.0833,
+            "useful_ej": -1.7792
           }
         },
         {
           "year": 1979,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -6.9249,
@@ -11747,8 +11747,8 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.9249,
+            "useful_ej": -2.4237
           }
         },
         {
@@ -12457,8 +12457,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.589,
@@ -12469,15 +12469,15 @@
             "useful_ej": 0.0189
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.5419,
+            "useful_ej": -2.6373
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.8094,
@@ -12488,15 +12488,15 @@
             "useful_ej": 0.058
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.6644,
+            "useful_ej": -2.6753
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -8.1547,
@@ -12507,15 +12507,15 @@
             "useful_ej": 0.1228
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.8476,
+            "useful_ej": -2.7313
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.0261,
@@ -12526,15 +12526,15 @@
             "useful_ej": 0.1653
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.6129,
+            "useful_ej": -2.2938
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -6.8081,
@@ -12545,15 +12545,15 @@
             "useful_ej": 0.1053
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.5449,
+            "useful_ej": -2.2775
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.5072,
@@ -12564,15 +12564,15 @@
             "useful_ej": 0.1306
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.1806,
+            "useful_ej": -2.4969
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.0441,
@@ -12583,15 +12583,15 @@
             "useful_ej": 0.1269
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.7268,
+            "useful_ej": -2.3385
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.1035,
@@ -12602,8 +12602,8 @@
             "useful_ej": 0.113
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.821,
+            "useful_ej": -2.3732
           }
         }
       ]
@@ -13602,8 +13602,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4003,
+            "useful_ej": 0.1201
           },
           "oil": {
             "primary_ej": 2.4265,
@@ -13614,15 +13614,15 @@
             "useful_ej": 0.9548
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.2138,
+            "useful_ej": 1.9242
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3672,
+            "useful_ej": 0.1102
           },
           "oil": {
             "primary_ej": 2.4623,
@@ -13633,15 +13633,15 @@
             "useful_ej": 0.922
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.1344,
+            "useful_ej": 1.8939
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2774,
+            "useful_ej": 0.0832
           },
           "oil": {
             "primary_ej": 2.4292,
@@ -13652,15 +13652,15 @@
             "useful_ej": 0.9528
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.0887,
+            "useful_ej": 1.8863
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2119,
+            "useful_ej": 0.0636
           },
           "oil": {
             "primary_ej": 1.9182,
@@ -13671,15 +13671,15 @@
             "useful_ej": 0.9175
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.4238,
+            "useful_ej": 1.6524
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2343,
+            "useful_ej": 0.0703
           },
           "oil": {
             "primary_ej": 2.1888,
@@ -13690,15 +13690,15 @@
             "useful_ej": 0.9963
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.914,
+            "useful_ej": 1.8327
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3111,
+            "useful_ej": 0.0933
           },
           "oil": {
             "primary_ej": 2.4366,
@@ -13709,15 +13709,15 @@
             "useful_ej": 0.8934
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.9812,
+            "useful_ej": 1.8395
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.193,
+            "useful_ej": 0.0579
           },
           "oil": {
             "primary_ej": 2.3901,
@@ -13728,15 +13728,15 @@
             "useful_ej": 0.8028
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.59,
+            "useful_ej": 1.6972
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1006,
+            "useful_ej": 0.0302
           },
           "oil": {
             "primary_ej": 2.3793,
@@ -13747,8 +13747,8 @@
             "useful_ej": 0.8082
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.5004,
+            "useful_ej": 1.6711
           }
         }
       ]
@@ -14751,16 +14751,16 @@
             "useful_ej": 1.5191
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 8.0771,
+            "useful_ej": 2.827
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.2115,
+            "useful_ej": 1.6846
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 17.3522,
+            "useful_ej": 6.0307
           }
         },
         {
@@ -14770,16 +14770,16 @@
             "useful_ej": 1.4903
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 7.8045,
+            "useful_ej": 2.7316
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.1655,
+            "useful_ej": 1.6662
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 16.9375,
+            "useful_ej": 5.888
           }
         },
         {
@@ -14789,16 +14789,16 @@
             "useful_ej": 1.4663
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 7.6048,
+            "useful_ej": 2.6617
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.8924,
+            "useful_ej": 1.557
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 16.385,
+            "useful_ej": 5.685
           }
         },
         {
@@ -14808,16 +14808,16 @@
             "useful_ej": 1.367
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 6.7591,
+            "useful_ej": 2.3657
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.7486,
+            "useful_ej": 1.4994
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 15.0644,
+            "useful_ej": 5.2321
           }
         },
         {
@@ -14827,16 +14827,16 @@
             "useful_ej": 1.4741
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 6.8817,
+            "useful_ej": 2.4086
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.6983,
+            "useful_ej": 1.4793
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 15.4937,
+            "useful_ej": 5.362
           }
         },
         {
@@ -14846,16 +14846,16 @@
             "useful_ej": 1.4697
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 6.9317,
+            "useful_ej": 2.4261
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.5833,
+            "useful_ej": 1.4333
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 15.414,
+            "useful_ej": 5.3291
           }
         },
         {
@@ -14865,16 +14865,16 @@
             "useful_ej": 1.3561
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 6.7776,
+            "useful_ej": 2.3721
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.298,
+            "useful_ej": 1.3192
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 14.5959,
+            "useful_ej": 5.0474
           }
         },
         {
@@ -14884,16 +14884,16 @@
             "useful_ej": 1.3553
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 6.4184,
+            "useful_ej": 2.2464
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.274,
+            "useful_ej": 1.3096
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 14.21,
+            "useful_ej": 4.9113
           }
         }
       ]
@@ -14904,8 +14904,8 @@
         {
           "year": 1965,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.7597,
@@ -14916,15 +14916,15 @@
             "useful_ej": -0.0063
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.7753,
+            "useful_ej": -1.6722
           }
         },
         {
           "year": 1966,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.0398,
@@ -14935,15 +14935,15 @@
             "useful_ej": 0.0028
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.0328,
+            "useful_ej": -1.7611
           }
         },
         {
           "year": 1967,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.0807,
@@ -14954,15 +14954,15 @@
             "useful_ej": -0.0099
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.1055,
+            "useful_ej": -1.7882
           }
         },
         {
           "year": 1968,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.3684,
@@ -14973,15 +14973,15 @@
             "useful_ej": -0.0122
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.399,
+            "useful_ej": -1.8912
           }
         },
         {
           "year": 1969,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.6996,
@@ -14992,15 +14992,15 @@
             "useful_ej": -0.0136
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.7337,
+            "useful_ej": -2.0085
           }
         },
         {
           "year": 1970,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -6.1609,
@@ -15011,15 +15011,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.1609,
+            "useful_ej": -2.1563
           }
         },
         {
           "year": 1971,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -6.6142,
@@ -15030,15 +15030,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.6142,
+            "useful_ej": -2.315
           }
         },
         {
           "year": 1972,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -6.8002,
@@ -15049,15 +15049,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.8002,
+            "useful_ej": -2.3801
           }
         },
         {
           "year": 1973,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -6.2442,
@@ -15068,15 +15068,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.2442,
+            "useful_ej": -2.1855
           }
         },
         {
           "year": 1974,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.259,
@@ -15087,15 +15087,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.259,
+            "useful_ej": -1.8407
           }
         },
         {
           "year": 1975,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.3141,
@@ -15106,15 +15106,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.3141,
+            "useful_ej": -1.5099
           }
         },
         {
           "year": 1976,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.4376,
@@ -15125,15 +15125,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.4376,
+            "useful_ej": -1.5532
           }
         },
         {
           "year": 1977,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.0606,
@@ -15144,15 +15144,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.0606,
+            "useful_ej": -1.4212
           }
         },
         {
           "year": 1978,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.3832,
@@ -15163,15 +15163,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.3832,
+            "useful_ej": -1.5341
           }
         },
         {
           "year": 1979,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.2349,
@@ -15182,8 +15182,8 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.2349,
+            "useful_ej": -1.8322
           }
         },
         {
@@ -15892,8 +15892,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0071,
+            "useful_ej": 0.0021
           },
           "oil": {
             "primary_ej": -5.1529,
@@ -15904,15 +15904,15 @@
             "useful_ej": 0.0688
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.9738,
+            "useful_ej": -1.7326
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0098,
+            "useful_ej": 0.003
           },
           "oil": {
             "primary_ej": -5.1835,
@@ -15923,15 +15923,15 @@
             "useful_ej": 0.0619
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.0189,
+            "useful_ej": -1.7493
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0079,
+            "useful_ej": 0.0024
           },
           "oil": {
             "primary_ej": -5.0788,
@@ -15942,15 +15942,15 @@
             "useful_ej": 0.0737
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.8866,
+            "useful_ej": -1.7015
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.002,
+            "useful_ej": 0.0006
           },
           "oil": {
             "primary_ej": -4.6294,
@@ -15961,15 +15961,15 @@
             "useful_ej": 0.0817
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.4231,
+            "useful_ej": -1.538
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0039,
+            "useful_ej": 0.0012
           },
           "oil": {
             "primary_ej": -4.4709,
@@ -15980,15 +15980,15 @@
             "useful_ej": 0.1104
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.191,
+            "useful_ej": -1.4532
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0021,
+            "useful_ej": 0.0006
           },
           "oil": {
             "primary_ej": -5.1872,
@@ -15999,15 +15999,15 @@
             "useful_ej": 0.122
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.8802,
+            "useful_ej": -1.6929
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0039,
+            "useful_ej": 0.0012
           },
           "oil": {
             "primary_ej": -4.9036,
@@ -16018,15 +16018,15 @@
             "useful_ej": 0.1285
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.5784,
+            "useful_ej": -1.5866
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0039,
+            "useful_ej": 0.0012
           },
           "oil": {
             "primary_ej": -4.4771,
@@ -16037,8 +16037,8 @@
             "useful_ej": 0.1401
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.1231,
+            "useful_ej": -1.4258
           }
         }
       ]
@@ -17037,8 +17037,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8691,
+            "useful_ej": 0.2607
           },
           "oil": {
             "primary_ej": 0.1273,
@@ -17049,15 +17049,15 @@
             "useful_ej": -0.4974
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.247,
+            "useful_ej": -0.1921
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9322,
+            "useful_ej": 0.2797
           },
           "oil": {
             "primary_ej": 0.1634,
@@ -17068,15 +17068,15 @@
             "useful_ej": -0.4528
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.0363,
+            "useful_ej": -0.1159
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.881,
+            "useful_ej": 0.2643
           },
           "oil": {
             "primary_ej": 0.3778,
@@ -17087,15 +17087,15 @@
             "useful_ej": -0.4646
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0972,
+            "useful_ej": -0.0681
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0371,
+            "useful_ej": 0.3111
           },
           "oil": {
             "primary_ej": 0.2041,
@@ -17106,15 +17106,15 @@
             "useful_ej": -0.4245
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.18,
+            "useful_ej": -0.0419
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9588,
+            "useful_ej": 0.2877
           },
           "oil": {
             "primary_ej": 0.253,
@@ -17125,15 +17125,15 @@
             "useful_ej": -0.3978
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2173,
+            "useful_ej": -0.0216
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9897,
+            "useful_ej": 0.2969
           },
           "oil": {
             "primary_ej": 0.5589,
@@ -17144,15 +17144,15 @@
             "useful_ej": -0.4472
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4306,
+            "useful_ej": 0.0453
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.027,
+            "useful_ej": 0.3081
           },
           "oil": {
             "primary_ej": 0.7104,
@@ -17163,15 +17163,15 @@
             "useful_ej": -0.4921
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5072,
+            "useful_ej": 0.0647
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0824,
+            "useful_ej": 0.3247
           },
           "oil": {
             "primary_ej": 0.7921,
@@ -17182,8 +17182,8 @@
             "useful_ej": -0.4925
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6434,
+            "useful_ej": 0.1095
           }
         }
       ]
@@ -19327,153 +19327,153 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3851,
+            "useful_ej": 0.1155
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8745,
+            "useful_ej": 0.6561
           },
           "gas": {
             "primary_ej": -0.0584,
             "useful_ej": -0.0234
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.2012,
+            "useful_ej": 0.7482
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3459,
+            "useful_ej": 0.1038
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8226,
+            "useful_ej": 0.6379
           },
           "gas": {
             "primary_ej": 0.112,
             "useful_ej": 0.0448
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.2805,
+            "useful_ej": 0.7865
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2689,
+            "useful_ej": 0.0807
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7773,
+            "useful_ej": 0.6221
           },
           "gas": {
             "primary_ej": 0.3398,
             "useful_ej": 0.1359
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.386,
+            "useful_ej": 0.8386
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.172,
+            "useful_ej": 0.0516
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6911,
+            "useful_ej": 0.5919
           },
           "gas": {
             "primary_ej": 0.5774,
             "useful_ej": 0.231
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.4405,
+            "useful_ej": 0.8744
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2344,
+            "useful_ej": 0.0703
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6939,
+            "useful_ej": 0.5929
           },
           "gas": {
             "primary_ej": 0.6061,
             "useful_ej": 0.2424
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.5344,
+            "useful_ej": 0.9056
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2316,
+            "useful_ej": 0.0695
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6595,
+            "useful_ej": 0.5808
           },
           "gas": {
             "primary_ej": 0.4521,
             "useful_ej": 0.1808
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.3432,
+            "useful_ej": 0.8311
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1582,
+            "useful_ej": 0.0475
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6694,
+            "useful_ej": 0.5843
           },
           "gas": {
             "primary_ej": 0.578,
             "useful_ej": 0.2312
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.4056,
+            "useful_ej": 0.863
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1734,
+            "useful_ej": 0.052
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5588,
+            "useful_ej": 0.5456
           },
           "gas": {
             "primary_ej": 0.6508,
             "useful_ej": 0.2603
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.383,
+            "useful_ej": 0.8579
           }
         }
       ]
@@ -20472,8 +20472,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0342,
+            "useful_ej": 0.0103
           },
           "oil": {
             "primary_ej": -3.3378,
@@ -20484,15 +20484,15 @@
             "useful_ej": -1.6974
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.547,
+            "useful_ej": -2.8553
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0334,
+            "useful_ej": 0.01
           },
           "oil": {
             "primary_ej": -3.0955,
@@ -20503,15 +20503,15 @@
             "useful_ej": -1.6646
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.2235,
+            "useful_ej": -2.738
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0327,
+            "useful_ej": 0.0098
           },
           "oil": {
             "primary_ej": -2.918,
@@ -20522,15 +20522,15 @@
             "useful_ej": -1.5655
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -6.7991,
+            "useful_ej": -2.577
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0323,
+            "useful_ej": 0.0097
           },
           "oil": {
             "primary_ej": -3.51,
@@ -20541,15 +20541,15 @@
             "useful_ej": -1.526
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.2928,
+            "useful_ej": -2.7448
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0352,
+            "useful_ej": 0.0106
           },
           "oil": {
             "primary_ej": -3.5698,
@@ -20560,15 +20560,15 @@
             "useful_ej": -1.5708
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.4616,
+            "useful_ej": -2.8097
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0337,
+            "useful_ej": 0.0101
           },
           "oil": {
             "primary_ej": -3.3502,
@@ -20579,15 +20579,15 @@
             "useful_ej": -1.7145
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.6027,
+            "useful_ej": -2.877
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0305,
+            "useful_ej": 0.0091
           },
           "oil": {
             "primary_ej": -3.5805,
@@ -20598,15 +20598,15 @@
             "useful_ej": -1.6178
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.5944,
+            "useful_ej": -2.8618
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0317,
+            "useful_ej": 0.0095
           },
           "oil": {
             "primary_ej": -3.2082,
@@ -20617,8 +20617,8 @@
             "useful_ej": -1.5816
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.1304,
+            "useful_ej": -2.6949
           }
         }
       ]
@@ -21621,16 +21621,16 @@
             "useful_ej": -0.0001
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.3066,
+            "useful_ej": 0.4573
           },
           "gas": {
             "primary_ej": 0.5451,
             "useful_ej": 0.218
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8514,
+            "useful_ej": 0.6753
           }
         },
         {
@@ -21640,16 +21640,16 @@
             "useful_ej": 0.0318
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.3402,
+            "useful_ej": 0.4691
           },
           "gas": {
             "primary_ej": 0.574,
             "useful_ej": 0.2296
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0201,
+            "useful_ej": 0.7305
           }
         },
         {
@@ -21659,16 +21659,16 @@
             "useful_ej": -0.003
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.3661,
+            "useful_ej": 0.4782
           },
           "gas": {
             "primary_ej": 0.6085,
             "useful_ej": 0.2434
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9648,
+            "useful_ej": 0.7186
           }
         },
         {
@@ -21678,16 +21678,16 @@
             "useful_ej": 0.0115
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2941,
+            "useful_ej": 0.4529
           },
           "gas": {
             "primary_ej": 0.6169,
             "useful_ej": 0.2468
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9493,
+            "useful_ej": 0.7112
           }
         },
         {
@@ -21697,16 +21697,16 @@
             "useful_ej": 0.0434
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.3504,
+            "useful_ej": 0.4726
           },
           "gas": {
             "primary_ej": 0.6656,
             "useful_ej": 0.2662
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.1607,
+            "useful_ej": 0.7823
           }
         },
         {
@@ -21716,16 +21716,16 @@
             "useful_ej": 0.0221
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.4019,
+            "useful_ej": 0.4907
           },
           "gas": {
             "primary_ej": 0.5328,
             "useful_ej": 0.2131
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0084,
+            "useful_ej": 0.7259
           }
         },
         {
@@ -21735,16 +21735,16 @@
             "useful_ej": -0.0018
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.398,
+            "useful_ej": 0.4893
           },
           "gas": {
             "primary_ej": 0.5677,
             "useful_ej": 0.2271
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9596,
+            "useful_ej": 0.7146
           }
         },
         {
@@ -21754,16 +21754,16 @@
             "useful_ej": -0.0184
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.4183,
+            "useful_ej": 0.4964
           },
           "gas": {
             "primary_ej": 0.6264,
             "useful_ej": 0.2506
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9835,
+            "useful_ej": 0.7286
           }
         }
       ]
@@ -21774,8 +21774,8 @@
         {
           "year": 1965,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.4838,
@@ -21786,15 +21786,15 @@
             "useful_ej": -0.0002
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.4843,
+            "useful_ej": -0.1695
           }
         },
         {
           "year": 1966,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.6048,
@@ -21805,15 +21805,15 @@
             "useful_ej": -0.0002
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.6053,
+            "useful_ej": -0.2119
           }
         },
         {
           "year": 1967,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.6725,
@@ -21824,15 +21824,15 @@
             "useful_ej": -0.0003
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.6732,
+            "useful_ej": -0.2356
           }
         },
         {
           "year": 1968,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.7069,
@@ -21843,15 +21843,15 @@
             "useful_ej": -0.0012
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.71,
+            "useful_ej": -0.2487
           }
         },
         {
           "year": 1969,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.7377,
@@ -21862,15 +21862,15 @@
             "useful_ej": -0.002
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.7428,
+            "useful_ej": -0.2602
           }
         },
         {
           "year": 1970,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.7529,
@@ -21881,15 +21881,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.7529,
+            "useful_ej": -0.2635
           }
         },
         {
           "year": 1971,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.8928,
@@ -21900,15 +21900,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.8928,
+            "useful_ej": -0.3125
           }
         },
         {
           "year": 1972,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.0033,
@@ -21919,15 +21919,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.0033,
+            "useful_ej": -0.3511
           }
         },
         {
           "year": 1973,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.1827,
@@ -21938,15 +21938,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.1827,
+            "useful_ej": -0.4139
           }
         },
         {
           "year": 1974,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.072,
@@ -21957,15 +21957,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.072,
+            "useful_ej": -0.3752
           }
         },
         {
           "year": 1975,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.9015,
@@ -21976,15 +21976,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.9015,
+            "useful_ej": -0.3155
           }
         },
         {
           "year": 1976,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.0049,
@@ -21995,15 +21995,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.0049,
+            "useful_ej": -0.3517
           }
         },
         {
           "year": 1977,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.8894,
@@ -22014,15 +22014,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.8894,
+            "useful_ej": -0.3113
           }
         },
         {
           "year": 1978,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.992,
@@ -22033,15 +22033,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.992,
+            "useful_ej": -0.3472
           }
         },
         {
           "year": 1979,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.0364,
@@ -22052,8 +22052,8 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.0364,
+            "useful_ej": -0.3627
           }
         },
         {
@@ -22762,8 +22762,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0012,
+            "useful_ej": 0.0004
           },
           "oil": {
             "primary_ej": -2.5846,
@@ -22774,15 +22774,15 @@
             "useful_ej": -1.8633
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.2416,
+            "useful_ej": -2.7675
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0017,
+            "useful_ej": 0.0005
           },
           "oil": {
             "primary_ej": -2.586,
@@ -22793,15 +22793,15 @@
             "useful_ej": -1.9218
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.3888,
+            "useful_ej": -2.8264
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0015,
+            "useful_ej": 0.0004
           },
           "oil": {
             "primary_ej": -2.4188,
@@ -22812,15 +22812,15 @@
             "useful_ej": -1.9528
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.2994,
+            "useful_ej": -2.799
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0003,
+            "useful_ej": 0.0001
           },
           "oil": {
             "primary_ej": -2.542,
@@ -22831,15 +22831,15 @@
             "useful_ej": -1.9633
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.4499,
+            "useful_ej": -2.8529
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0001,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.4476,
@@ -22850,15 +22850,15 @@
             "useful_ej": -1.9678
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.3671,
+            "useful_ej": -2.8245
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0004,
+            "useful_ej": 0.0001
           },
           "oil": {
             "primary_ej": -2.4266,
@@ -22869,15 +22869,15 @@
             "useful_ej": -1.9932
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.4093,
+            "useful_ej": -2.8424
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0005,
+            "useful_ej": 0.0001
           },
           "oil": {
             "primary_ej": -2.4765,
@@ -22888,15 +22888,15 @@
             "useful_ej": -1.9755
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.4149,
+            "useful_ej": -2.8422
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0005,
+            "useful_ej": 0.0002
           },
           "oil": {
             "primary_ej": -2.4999,
@@ -22907,8 +22907,8 @@
             "useful_ej": -1.9148
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.2864,
+            "useful_ej": -2.7896
           }
         }
       ]
@@ -23684,8 +23684,8 @@
         {
           "year": 1965,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.8235,
@@ -23696,15 +23696,15 @@
             "useful_ej": -0.0092
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.8465,
+            "useful_ej": -1.3474
           }
         },
         {
           "year": 1966,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -4.6514,
@@ -23715,15 +23715,15 @@
             "useful_ej": -0.0093
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.6746,
+            "useful_ej": -1.6373
           }
         },
         {
           "year": 1967,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.0764,
@@ -23734,15 +23734,15 @@
             "useful_ej": -0.0072
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.0943,
+            "useful_ej": -1.7839
           }
         },
         {
           "year": 1968,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.6108,
@@ -23753,15 +23753,15 @@
             "useful_ej": -0.0134
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.6442,
+            "useful_ej": -1.9771
           }
         },
         {
           "year": 1969,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -5.9606,
@@ -23772,15 +23772,15 @@
             "useful_ej": -0.0121
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.9909,
+            "useful_ej": -2.0983
           }
         },
         {
           "year": 1970,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -7.1549,
@@ -23791,15 +23791,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -7.1549,
+            "useful_ej": -2.5042
           }
         },
         {
           "year": 1971,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -9.1799,
@@ -23810,15 +23810,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -9.1799,
+            "useful_ej": -3.213
           }
         },
         {
           "year": 1972,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -11.7741,
@@ -23829,15 +23829,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -11.7741,
+            "useful_ej": -4.1209
           }
         },
         {
           "year": 1973,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -15.0559,
@@ -23848,15 +23848,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -15.0559,
+            "useful_ej": -5.2696
           }
         },
         {
           "year": 1974,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -16.9167,
@@ -23867,15 +23867,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -16.9167,
+            "useful_ej": -5.9208
           }
         },
         {
           "year": 1975,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -14.2257,
@@ -23886,15 +23886,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -14.2257,
+            "useful_ej": -4.979
           }
         },
         {
           "year": 1976,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -17.3532,
@@ -23905,15 +23905,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -17.3532,
+            "useful_ej": -6.0736
           }
         },
         {
           "year": 1977,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -18.5068,
@@ -23924,15 +23924,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -18.5068,
+            "useful_ej": -6.4774
           }
         },
         {
           "year": 1978,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -16.5774,
@@ -23943,15 +23943,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -16.5774,
+            "useful_ej": -5.8021
           }
         },
         {
           "year": 1979,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -18.9898,
@@ -23962,8 +23962,8 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -18.9898,
+            "useful_ej": -6.6464
           }
         },
         {
@@ -24672,8 +24672,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0048,
+            "useful_ej": 0.0014
           },
           "oil": {
             "primary_ej": -15.9015,
@@ -24684,15 +24684,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -15.8967,
+            "useful_ej": -5.5641
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.004,
+            "useful_ej": 0.0012
           },
           "oil": {
             "primary_ej": -17.0253,
@@ -24703,15 +24703,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -17.0213,
+            "useful_ej": -5.9577
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0042,
+            "useful_ej": 0.0013
           },
           "oil": {
             "primary_ej": -16.6273,
@@ -24722,15 +24722,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -16.6231,
+            "useful_ej": -5.8183
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0037,
+            "useful_ej": 0.0011
           },
           "oil": {
             "primary_ej": -15.4383,
@@ -24741,15 +24741,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -15.4346,
+            "useful_ej": -5.4023
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0046,
+            "useful_ej": 0.0014
           },
           "oil": {
             "primary_ej": -14.9611,
@@ -24760,15 +24760,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -14.9565,
+            "useful_ej": -5.235
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0045,
+            "useful_ej": 0.0014
           },
           "oil": {
             "primary_ej": -16.8822,
@@ -24779,15 +24779,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -16.8777,
+            "useful_ej": -5.9074
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0056,
+            "useful_ej": 0.0017
           },
           "oil": {
             "primary_ej": -14.896,
@@ -24798,15 +24798,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -14.8904,
+            "useful_ej": -5.2119
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0062,
+            "useful_ej": 0.0019
           },
           "oil": {
             "primary_ej": -13.9853,
@@ -24817,8 +24817,8 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -13.9791,
+            "useful_ej": -4.893
           }
         }
       ]
@@ -24833,16 +24833,16 @@
             "useful_ej": -0.0431
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2425,
+            "useful_ej": 0.0849
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0989,
+            "useful_ej": 0.0418
           }
         },
         {
@@ -24852,16 +24852,16 @@
             "useful_ej": -0.0432
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2635,
+            "useful_ej": 0.0922
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1194,
+            "useful_ej": 0.049
           }
         },
         {
@@ -24871,16 +24871,16 @@
             "useful_ej": -0.0443
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2872,
+            "useful_ej": 0.1005
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1395,
+            "useful_ej": 0.0562
           }
         },
         {
@@ -24890,16 +24890,16 @@
             "useful_ej": -0.0467
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3122,
+            "useful_ej": 0.1093
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1564,
+            "useful_ej": 0.0625
           }
         },
         {
@@ -24909,16 +24909,16 @@
             "useful_ej": -0.0515
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3432,
+            "useful_ej": 0.1201
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1716,
+            "useful_ej": 0.0686
           }
         },
         {
@@ -24928,16 +24928,16 @@
             "useful_ej": -0.054
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3719,
+            "useful_ej": 0.1302
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1918,
+            "useful_ej": 0.0761
           }
         },
         {
@@ -24947,16 +24947,16 @@
             "useful_ej": -0.0597
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4065,
+            "useful_ej": 0.1423
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0022,
+            "useful_ej": 0.0009
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2097,
+            "useful_ej": 0.0834
           }
         },
         {
@@ -24966,16 +24966,16 @@
             "useful_ej": -0.0555
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.443,
+            "useful_ej": 0.1551
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0033,
+            "useful_ej": 0.0013
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2615,
+            "useful_ej": 0.1009
           }
         },
         {
@@ -24985,16 +24985,16 @@
             "useful_ej": -0.0598
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4888,
+            "useful_ej": 0.1711
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0036,
+            "useful_ej": 0.0014
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.293,
+            "useful_ej": 0.1127
           }
         },
         {
@@ -25004,16 +25004,16 @@
             "useful_ej": -0.068
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4763,
+            "useful_ej": 0.1667
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0042,
+            "useful_ej": 0.0017
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2537,
+            "useful_ej": 0.1004
           }
         },
         {
@@ -25023,16 +25023,16 @@
             "useful_ej": -0.0649
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.506,
+            "useful_ej": 0.1771
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0055,
+            "useful_ej": 0.0022
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2953,
+            "useful_ej": 0.1144
           }
         },
         {
@@ -25042,16 +25042,16 @@
             "useful_ej": -0.0939
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5116,
+            "useful_ej": 0.1791
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0056,
+            "useful_ej": 0.0022
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2041,
+            "useful_ej": 0.0874
           }
         },
         {
@@ -25061,16 +25061,16 @@
             "useful_ej": -0.1425
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5067,
+            "useful_ej": 0.1773
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0053,
+            "useful_ej": 0.0021
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.037,
+            "useful_ej": 0.037
           }
         },
         {
@@ -25080,16 +25080,16 @@
             "useful_ej": -0.1958
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5321,
+            "useful_ej": 0.1862
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0055,
+            "useful_ej": 0.0022
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.115,
+            "useful_ej": -0.0073
           }
         },
         {
@@ -25099,16 +25099,16 @@
             "useful_ej": -0.262
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5043,
+            "useful_ej": 0.1765
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0068,
+            "useful_ej": 0.0027
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.3623,
+            "useful_ej": -0.0828
           }
         },
         {
@@ -25821,16 +25821,16 @@
             "useful_ej": -0.6762
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1955,
+            "useful_ej": 0.4184
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1444,
+            "useful_ej": 0.0578
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.9142,
+            "useful_ej": -0.2
           }
         },
         {
@@ -25840,16 +25840,16 @@
             "useful_ej": -0.7453
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1589,
+            "useful_ej": 0.4056
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1588,
+            "useful_ej": 0.0635
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.1668,
+            "useful_ej": -0.2762
           }
         },
         {
@@ -25859,16 +25859,16 @@
             "useful_ej": -0.6782
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1373,
+            "useful_ej": 0.3981
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1534,
+            "useful_ej": 0.0614
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.9698,
+            "useful_ej": -0.2187
           }
         },
         {
@@ -25878,16 +25878,16 @@
             "useful_ej": -0.6586
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9864,
+            "useful_ej": 0.3453
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1429,
+            "useful_ej": 0.0572
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.0658,
+            "useful_ej": -0.2561
           }
         },
         {
@@ -25897,16 +25897,16 @@
             "useful_ej": -0.5838
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0376,
+            "useful_ej": 0.3632
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1512,
+            "useful_ej": 0.0605
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.7573,
+            "useful_ej": -0.1602
           }
         },
         {
@@ -25916,16 +25916,16 @@
             "useful_ej": -0.6191
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0361,
+            "useful_ej": 0.3626
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1537,
+            "useful_ej": 0.0615
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.874,
+            "useful_ej": -0.195
           }
         },
         {
@@ -25935,16 +25935,16 @@
             "useful_ej": -0.6265
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0441,
+            "useful_ej": 0.3654
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1708,
+            "useful_ej": 0.0683
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.8735,
+            "useful_ej": -0.1928
           }
         },
         {
@@ -25954,16 +25954,16 @@
             "useful_ej": -0.6145
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9648,
+            "useful_ej": 0.3377
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1718,
+            "useful_ej": 0.0687
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.9117,
+            "useful_ej": -0.2081
           }
         }
       ]
@@ -25978,16 +25978,16 @@
             "useful_ej": -0.028
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0544,
+            "useful_ej": 0.0191
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.0389,
+            "useful_ej": -0.0089
           }
         },
         {
@@ -25997,16 +25997,16 @@
             "useful_ej": -0.0318
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0815,
+            "useful_ej": 0.0285
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.0243,
+            "useful_ej": -0.0032
           }
         },
         {
@@ -26016,16 +26016,16 @@
             "useful_ej": -0.0422
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1413,
+            "useful_ej": 0.0495
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0007,
+            "useful_ej": 0.0073
           }
         },
         {
@@ -26035,16 +26035,16 @@
             "useful_ej": -0.0266
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2089,
+            "useful_ej": 0.0731
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1202,
+            "useful_ej": 0.0465
           }
         },
         {
@@ -26054,16 +26054,16 @@
             "useful_ej": -0.0241
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2836,
+            "useful_ej": 0.0993
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2033,
+            "useful_ej": 0.0752
           }
         },
         {
@@ -26073,16 +26073,16 @@
             "useful_ej": -0.0383
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.3542,
+            "useful_ej": 0.124
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2266,
+            "useful_ej": 0.0857
           }
         },
         {
@@ -26092,16 +26092,16 @@
             "useful_ej": -0.041
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4,
+            "useful_ej": 0.14
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2635,
+            "useful_ej": 0.0991
           }
         },
         {
@@ -26111,16 +26111,16 @@
             "useful_ej": -0.0358
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4176,
+            "useful_ej": 0.1462
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.2982,
+            "useful_ej": 0.1103
           }
         },
         {
@@ -26130,16 +26130,16 @@
             "useful_ej": -0.0267
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.514,
+            "useful_ej": 0.1799
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.425,
+            "useful_ej": 0.1532
           }
         },
         {
@@ -26149,16 +26149,16 @@
             "useful_ej": 0.0844
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.531,
+            "useful_ej": 0.1858
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8123,
+            "useful_ej": 0.2703
           }
         },
         {
@@ -26168,16 +26168,16 @@
             "useful_ej": -0.0538
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6018,
+            "useful_ej": 0.2106
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.4226,
+            "useful_ej": 0.1569
           }
         },
         {
@@ -26187,16 +26187,16 @@
             "useful_ej": -0.0319
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.6756,
+            "useful_ej": 0.2365
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.5692,
+            "useful_ej": 0.2045
           }
         },
         {
@@ -26206,16 +26206,16 @@
             "useful_ej": -0.029
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.805,
+            "useful_ej": 0.2817
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.7083,
+            "useful_ej": 0.2527
           }
         },
         {
@@ -26225,16 +26225,16 @@
             "useful_ej": -0.0345
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9205,
+            "useful_ej": 0.3222
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8056,
+            "useful_ej": 0.2877
           }
         },
         {
@@ -26244,16 +26244,16 @@
             "useful_ej": -0.0113
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0357,
+            "useful_ej": 0.3625
           },
           "gas": {
             "primary_ej": 0.0,
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9979,
+            "useful_ej": 0.3511
           }
         },
         {
@@ -26966,16 +26966,16 @@
             "useful_ej": 1.1006
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.4164,
+            "useful_ej": 1.8958
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7912,
+            "useful_ej": 0.7165
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.8764,
+            "useful_ej": 3.7129
           }
         },
         {
@@ -26985,16 +26985,16 @@
             "useful_ej": 1.1354
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.3989,
+            "useful_ej": 1.8896
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0809,
+            "useful_ej": 0.8324
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 11.2645,
+            "useful_ej": 3.8574
           }
         },
         {
@@ -27004,16 +27004,16 @@
             "useful_ej": 1.0704
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.3532,
+            "useful_ej": 1.8736
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0172,
+            "useful_ej": 0.8069
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.9385,
+            "useful_ej": 3.7509
           }
         },
         {
@@ -27023,16 +27023,16 @@
             "useful_ej": 0.9474
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.0604,
+            "useful_ej": 1.7711
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0713,
+            "useful_ej": 0.8285
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.2898,
+            "useful_ej": 3.5471
           }
         },
         {
@@ -27042,16 +27042,16 @@
             "useful_ej": 0.9765
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.398,
+            "useful_ej": 1.8893
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.2467,
+            "useful_ej": 0.8987
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.8996,
+            "useful_ej": 3.7645
           }
         },
         {
@@ -27061,16 +27061,16 @@
             "useful_ej": 0.9389
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.4666,
+            "useful_ej": 1.9133
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.2456,
+            "useful_ej": 0.8983
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.8417,
+            "useful_ej": 3.7504
           }
         },
         {
@@ -27080,16 +27080,16 @@
             "useful_ej": 0.9088
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.3625,
+            "useful_ej": 1.8769
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.1627,
+            "useful_ej": 0.8651
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.5545,
+            "useful_ej": 3.6507
           }
         },
         {
@@ -27099,16 +27099,16 @@
             "useful_ej": 0.8526
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.5446,
+            "useful_ej": 1.9406
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.2914,
+            "useful_ej": 0.9165
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 10.6779,
+            "useful_ej": 3.7097
           }
         }
       ]
@@ -28111,16 +28111,16 @@
             "useful_ej": 0.1548
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.6051,
+            "useful_ej": 0.9118
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1416,
+            "useful_ej": 0.4567
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.2626,
+            "useful_ej": 1.5232
           }
         },
         {
@@ -28130,16 +28130,16 @@
             "useful_ej": 0.1337
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.6411,
+            "useful_ej": 0.9244
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1339,
+            "useful_ej": 0.4536
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.2205,
+            "useful_ej": 1.5116
           }
         },
         {
@@ -28149,16 +28149,16 @@
             "useful_ej": 0.063
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.6482,
+            "useful_ej": 0.9269
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2951,
+            "useful_ej": 0.518
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.1531,
+            "useful_ej": 1.5079
           }
         },
         {
@@ -28168,16 +28168,16 @@
             "useful_ej": 0.0366
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.1306,
+            "useful_ej": 0.7457
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1696,
+            "useful_ej": 0.4679
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.4222,
+            "useful_ej": 1.2501
           }
         },
         {
@@ -28187,16 +28187,16 @@
             "useful_ej": 0.0398
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.3549,
+            "useful_ej": 0.8242
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.2357,
+            "useful_ej": 0.4943
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.7233,
+            "useful_ej": 1.3583
           }
         },
         {
@@ -28206,16 +28206,16 @@
             "useful_ej": 0.0465
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.6149,
+            "useful_ej": 0.9152
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.1871,
+            "useful_ej": 0.4748
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.9571,
+            "useful_ej": 1.4366
           }
         },
         {
@@ -28225,16 +28225,16 @@
             "useful_ej": 0.0326
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.5097,
+            "useful_ej": 0.8784
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.061,
+            "useful_ej": 0.4244
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.6794,
+            "useful_ej": 1.3354
           }
         },
         {
@@ -28244,16 +28244,16 @@
             "useful_ej": 0.0294
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.667,
+            "useful_ej": 0.9335
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0211,
+            "useful_ej": 0.4084
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 3.786,
+            "useful_ej": 1.3712
           }
         }
       ]
@@ -29252,153 +29252,153 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6958,
+            "useful_ej": 0.5087
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9816,
+            "useful_ej": 0.6935
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8368,
+            "useful_ej": 0.3347
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.5142,
+            "useful_ej": 1.537
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7048,
+            "useful_ej": 0.5114
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9593,
+            "useful_ej": 0.6858
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8518,
+            "useful_ej": 0.3407
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.516,
+            "useful_ej": 1.5379
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.671,
+            "useful_ej": 0.5013
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.847,
+            "useful_ej": 0.6465
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8374,
+            "useful_ej": 0.3349
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.3554,
+            "useful_ej": 1.4827
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5618,
+            "useful_ej": 0.4685
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7673,
+            "useful_ej": 0.6186
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.8958,
+            "useful_ej": 0.3583
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.225,
+            "useful_ej": 1.4454
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6766,
+            "useful_ej": 0.503
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8706,
+            "useful_ej": 0.6547
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.9825,
+            "useful_ej": 0.393
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.5297,
+            "useful_ej": 1.5507
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5814,
+            "useful_ej": 0.4744
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7234,
+            "useful_ej": 0.6032
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0104,
+            "useful_ej": 0.4042
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.3152,
+            "useful_ej": 1.4818
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.49,
+            "useful_ej": 0.447
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.628,
+            "useful_ej": 0.5698
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.0061,
+            "useful_ej": 0.4024
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.1241,
+            "useful_ej": 1.4192
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.4274,
+            "useful_ej": 0.4282
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6125,
+            "useful_ej": 0.5644
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.067,
+            "useful_ej": 0.4268
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.1069,
+            "useful_ej": 1.4194
           }
         }
       ]
@@ -31546,16 +31546,16 @@
             "useful_ej": 0.3061
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0836,
+            "useful_ej": 0.7293
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8565,
+            "useful_ej": 0.7426
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.9605,
+            "useful_ej": 1.778
           }
         },
         {
@@ -31565,16 +31565,16 @@
             "useful_ej": 0.3054
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0858,
+            "useful_ej": 0.73
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7004,
+            "useful_ej": 0.6801
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.8041,
+            "useful_ej": 1.7156
           }
         },
         {
@@ -31584,16 +31584,16 @@
             "useful_ej": 0.3086
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0755,
+            "useful_ej": 0.7264
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.5609,
+            "useful_ej": 0.6243
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.6651,
+            "useful_ej": 1.6594
           }
         },
         {
@@ -31603,16 +31603,16 @@
             "useful_ej": 0.3127
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.9713,
+            "useful_ej": 0.6899
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.6637,
+            "useful_ej": 0.6655
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.6774,
+            "useful_ej": 1.6681
           }
         },
         {
@@ -31622,16 +31622,16 @@
             "useful_ej": 0.2956
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0938,
+            "useful_ej": 0.7328
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.0624,
+            "useful_ej": 0.8249
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.1416,
+            "useful_ej": 1.8534
           }
         },
         {
@@ -31641,16 +31641,16 @@
             "useful_ej": 0.2802
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.1832,
+            "useful_ej": 0.7641
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8338,
+            "useful_ej": 0.7335
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 4.9509,
+            "useful_ej": 1.7778
           }
         },
         {
@@ -31660,16 +31660,16 @@
             "useful_ej": 0.3096
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.3236,
+            "useful_ej": 0.8133
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.7308,
+            "useful_ej": 0.6923
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.0865,
+            "useful_ej": 1.8152
           }
         },
         {
@@ -31679,16 +31679,16 @@
             "useful_ej": 0.3153
           },
           "oil": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 2.3698,
+            "useful_ej": 0.8294
           },
           "gas": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 1.8331,
+            "useful_ej": 0.7332
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 5.254,
+            "useful_ej": 1.878
           }
         }
       ]
@@ -31699,8 +31699,8 @@
         {
           "year": 1965,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.5691,
@@ -31711,15 +31711,15 @@
             "useful_ej": -0.0073
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.5873,
+            "useful_ej": -0.2065
           }
         },
         {
           "year": 1966,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.7266,
@@ -31730,15 +31730,15 @@
             "useful_ej": -0.0087
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.7485,
+            "useful_ej": -0.2631
           }
         },
         {
           "year": 1967,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -0.7712,
@@ -31749,15 +31749,15 @@
             "useful_ej": -0.0038
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -0.7808,
+            "useful_ej": -0.2737
           }
         },
         {
           "year": 1968,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.0057,
@@ -31768,15 +31768,15 @@
             "useful_ej": -0.0032
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.0138,
+            "useful_ej": -0.3552
           }
         },
         {
           "year": 1969,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.2685,
@@ -31787,15 +31787,15 @@
             "useful_ej": -0.0048
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.2806,
+            "useful_ej": -0.4488
           }
         },
         {
           "year": 1970,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -1.5756,
@@ -31806,15 +31806,15 @@
             "useful_ej": 0.0001
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -1.5754,
+            "useful_ej": -0.5514
           }
         },
         {
           "year": 1971,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.1422,
@@ -31825,15 +31825,15 @@
             "useful_ej": -0.002
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.1471,
+            "useful_ej": -0.7517
           }
         },
         {
           "year": 1972,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -2.4373,
@@ -31844,15 +31844,15 @@
             "useful_ej": -0.0016
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -2.4413,
+            "useful_ej": -0.8547
           }
         },
         {
           "year": 1973,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.0951,
@@ -31863,15 +31863,15 @@
             "useful_ej": -0.0001
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.0953,
+            "useful_ej": -1.0834
           }
         },
         {
           "year": 1974,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.3864,
@@ -31882,15 +31882,15 @@
             "useful_ej": 0.0009
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.3842,
+            "useful_ej": -1.1844
           }
         },
         {
           "year": 1975,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.3458,
@@ -31901,15 +31901,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.3458,
+            "useful_ej": -1.171
           }
         },
         {
           "year": 1976,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.8964,
@@ -31920,15 +31920,15 @@
             "useful_ej": 0.0
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.8964,
+            "useful_ej": -1.3637
           }
         },
         {
           "year": 1977,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.9925,
@@ -31939,15 +31939,15 @@
             "useful_ej": -0.0073
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.0107,
+            "useful_ej": -1.4047
           }
         },
         {
           "year": 1978,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.6452,
@@ -31958,15 +31958,15 @@
             "useful_ej": -0.0239
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.7049,
+            "useful_ej": -1.2997
           }
         },
         {
           "year": 1979,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0,
+            "useful_ej": 0.0
           },
           "oil": {
             "primary_ej": -3.6217,
@@ -31977,8 +31977,8 @@
             "useful_ej": -0.0246
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -3.6831,
+            "useful_ej": -1.2922
           }
         },
         {
@@ -32687,8 +32687,8 @@
         {
           "year": 2017,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0891,
+            "useful_ej": 0.0267
           },
           "oil": {
             "primary_ej": -5.4209,
@@ -32699,15 +32699,15 @@
             "useful_ej": 0.1861
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.8665,
+            "useful_ej": -1.6845
           }
         },
         {
           "year": 2018,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0804,
+            "useful_ej": 0.0241
           },
           "oil": {
             "primary_ej": -5.4732,
@@ -32718,15 +32718,15 @@
             "useful_ej": 0.1682
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.9722,
+            "useful_ej": -1.7233
           }
         },
         {
           "year": 2019,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.0744,
+            "useful_ej": 0.0223
           },
           "oil": {
             "primary_ej": -5.6727,
@@ -32737,15 +32737,15 @@
             "useful_ej": 0.1915
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.1195,
+            "useful_ej": -1.7716
           }
         },
         {
           "year": 2020,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.089,
+            "useful_ej": 0.0267
           },
           "oil": {
             "primary_ej": -5.3142,
@@ -32756,15 +32756,15 @@
             "useful_ej": 0.2015
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.7213,
+            "useful_ej": -1.6317
           }
         },
         {
           "year": 2021,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1086,
+            "useful_ej": 0.0326
           },
           "oil": {
             "primary_ej": -5.0979,
@@ -32775,15 +32775,15 @@
             "useful_ej": 0.1757
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.5501,
+            "useful_ej": -1.576
           }
         },
         {
           "year": 2022,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1004,
+            "useful_ej": 0.0301
           },
           "oil": {
             "primary_ej": -5.6413,
@@ -32794,15 +32794,15 @@
             "useful_ej": 0.1762
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -5.1003,
+            "useful_ej": -1.7681
           }
         },
         {
           "year": 2023,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.1023,
+            "useful_ej": 0.0307
           },
           "oil": {
             "primary_ej": -5.3476,
@@ -32813,15 +32813,15 @@
             "useful_ej": 0.1691
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.8227,
+            "useful_ej": -1.6719
           }
         },
         {
           "year": 2024,
           "coal": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": 0.11,
+            "useful_ej": 0.033
           },
           "oil": {
             "primary_ej": -5.234,
@@ -32832,8 +32832,8 @@
             "useful_ej": 0.1432
           },
           "total": {
-            "primary_ej": NaN,
-            "useful_ej": NaN
+            "primary_ej": -4.766,
+            "useful_ej": -1.6557
           }
         }
       ]
