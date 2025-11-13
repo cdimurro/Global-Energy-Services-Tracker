@@ -21,11 +21,11 @@ Most energy analysis focuses on **Primary Energy**—the total energy contained 
 1. **Fossil fuels waste 60-70% of their energy as heat** during conversion, whereas clean energy sources are 70%+ efficient
 2. **Not all forms of energy have the same value.** Electricity has an exergy factor of 1.0 whereas heat has an exergy factor of 0.2-0.6.
 It doesn't matter how much low-temperature heat you have, you still wouldn't be able to make steel. 
-This is why quality matters, in addition to quantity.  
+This is why quality of energy matters, in addition to the quantity.  
 
 ### The Solution: Three-Tier Exergy Framework
 
-This platform uses a **three-tier framework** to measure what actually matters:
+This platform uses a **three-tier framework** to measure what energy sources are actually delivering our energy:
 
 ```
 Tier 1: Primary Energy (extraction)
@@ -38,12 +38,12 @@ Tier 3: Energy Services (thermodynamic value)
 ## Key Insights (2024)
 
 ### Clean Energy's True Share
-- **Primary Energy (Tier 1):** 6.6% clean
-- **Useful Energy (Tier 2):** 15.8% clean
-- **Energy Services (Tier 3):** 17.4% clean
+- **Primary Energy:** 6.6% clean
+- **Useful Energy:** 15.8% clean
+- **Energy Services:** 17.4% clean
 
 ### The Difference
-As you can see, when we measure primary energy consumption, we get vastly different numbers for the share of our energy that comes from clean sources, than when we measure the amount of energy services that were actually provided. 
+As you can see, when we measure primary energy consumption, we get vastly different numbers for the share of our energy that comes from clean sources, versus when we measure the amount of energy services that come from clean sources. 
 
 ### The Clean Energy Advantage
 Clean energy sources deliver more energy services per unit of primary energy for two key reasons:
@@ -211,6 +211,14 @@ Output files generated in `public/data/`:
 - **Regional benchmarking**: Compare efficiency and energy mix across 27 regions
 - **Import dependency analysis**: Track fossil fuel import requirements and renewable energy potential
 - **Scenario modeling**: Explore Baseline, Accelerated, and Net Zero demand growth paths
+
+---
+
+### Summary
+1. Clean energy is cleaner than fossil fuels
+2. Clean energy is more efficient than fossil fuels
+3. Clean energy is more thermodynamically valueable than fossil fuels
+3. Clean energy is growing faster than fossil fuels
 
 ---
 
