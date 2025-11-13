@@ -398,7 +398,7 @@ function Imports() {
                   {lifetimeServicesData?.plant_types.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
-                      fill={entry.type === 'fossil' ? '#DC2626' : entry.type === 'renewable' ? '#22C55E' : '#3B82F6'}
+                      fill={entry.type === 'fossil' ? '#DC2626' : '#22C55E'}
                     />
                   ))}
                 </Bar>
@@ -410,8 +410,7 @@ function Imports() {
             <p className="font-medium mb-2">Reading this chart:</p>
             <ul className="list-disc list-inside space-y-1">
               <li className="text-red-600">Red bars (fossil plants): Negative values show lifetime fuel imports exceed generation value</li>
-              <li className="text-green-600">Green bars (renewable plants): Positive values show pure energy gain with zero fuel imports</li>
-              <li className="text-blue-600">Blue bar (nuclear): Moderate positive with minimal uranium import requirements</li>
+              <li className="text-green-600">Green bars (renewable plants and nuclear): Positive values show pure energy gain with zero or minimal fuel imports</li>
             </ul>
           </div>
         </div>
