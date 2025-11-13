@@ -506,7 +506,7 @@ function Imports() {
                 {/* Fuel Selection */}
                 <div className="mb-4">
                   <h3 className="text-sm font-semibold text-gray-700 mb-3">Select Fuel Types</h3>
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="flex flex-wrap gap-2">
                     <button
                       onClick={() => {
                         setFuelCategory('all');
@@ -520,8 +520,6 @@ function Imports() {
                     >
                       All Fuels
                     </button>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
                     {['coal', 'oil', 'gas'].map(fuel => {
                       const isSelected = fuelCategory === null && selectedFuels.includes(fuel);
                       return (
@@ -994,9 +992,12 @@ function Imports() {
               {/* Fuel Type Selection (Multiple) */}
               <div>
                 <h3 className="text-sm font-semibold text-gray-700 mb-3">Select Fuel Types</h3>
-                <div className="flex flex-wrap gap-2 mb-3">
+                <div className="flex flex-wrap gap-2">
                   <button
-                    onClick={() => setFuelCategory('all')}
+                    onClick={() => {
+                      setFuelCategory('all');
+                      setSelectedFuels([]);
+                    }}
                     className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                       fuelCategory === 'all'
                         ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
@@ -1005,8 +1006,6 @@ function Imports() {
                   >
                     All Fuels
                   </button>
-                </div>
-                <div className="flex flex-wrap gap-2">
                   {['coal', 'oil', 'gas'].map(fuel => {
                     const isSelected = fuelCategory === null && selectedFuels.includes(fuel);
                     return (
