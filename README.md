@@ -264,7 +264,7 @@ Global Exergy Services Platform v2.3 (2024)
 GitHub Repository: https://github.com/cdimurro/Global-Exergy-Services-Platform
 Methodology: Three-tier exergy-weighted framework measuring exergy services
 Framework: Based on Cullen & Allwood (2010) and Brockway et al. (2021)
-Validation: IEA WEO 2024, IEA EEI 2024, NREL 2024, RMI 2024, Grok Analysis 2024
+Validation: IEA WEO 2024, IEA EEI 2024, NREL 2024, RMI 2024
 Data Sources: Our World in Data Energy Dataset (2024)
 Quality: 98% validation alignment, ±10-12% uncertainty
 ```
