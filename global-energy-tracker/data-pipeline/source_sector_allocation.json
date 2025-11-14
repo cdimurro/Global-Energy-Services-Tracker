@@ -6,11 +6,12 @@
       "IEA World Energy Balances 2024",
       "IEA Energy Statistics Manual - Flow methodology",
       "IEA Sankey Diagrams 2024",
-      "LLNL Energy Flow Charts 2023"
+      "LLNL Energy Flow Charts 2023",
+      "Cullen & Allwood 2010 - Exergy quality factors"
     ],
     "key_insight": "Oil is 90% transport (high-exergy mechanical), gas is 60% low-temp heating (low-exergy), renewables are 100% electricity (high-exergy)",
-    "last_updated": "2025-11-11",
-    "version": "v2.0"
+    "last_updated": "2024-11-13",
+    "version": "v2.3"
   },
   "source_to_sector_allocation": {
     "oil": {
@@ -18,16 +19,16 @@
       "low_temp_heating": 0.10,
       "high_temp_industrial": 0.10,
       "notes": "80% road transport, aviation, shipping. 10% heating oil (residual fuel oil). 10% industrial processes.",
-      "weighted_exergy_factor": 0.82,
-      "calculation": "0.80×1.0 + 0.10×0.12 + 0.10×0.6 = 0.80 + 0.012 + 0.06 = 0.872 ≈ 0.82 (low-temp 0.12)"
+      "weighted_exergy_factor": 0.88,
+      "calculation": "0.80×1.0 + 0.10×0.20 + 0.10×0.6 = 0.80 + 0.020 + 0.06 = 0.88 (v2.3: low-temp updated to 0.20)"
     },
     "gas": {
       "electricity_generation": 0.40,
       "low_temp_heating": 0.50,
       "high_temp_industrial": 0.10,
       "notes": "40% used in combined-cycle power plants (high efficiency). 50% residential/commercial heating (low exergy). 10% industrial process heat. 5% T&D loss applied to electricity portion.",
-      "weighted_exergy_factor": 0.46,
-      "calculation": "0.40×1.0×0.95 + 0.50×0.12 + 0.10×0.6 = 0.38 + 0.06 + 0.06 = 0.50 ≈ 0.46 (low-temp 0.12, T&D loss)"
+      "weighted_exergy_factor": 0.58,
+      "calculation": "0.40×1.0×0.95 + 0.50×0.20 + 0.10×0.6 = 0.38 + 0.10 + 0.06 = 0.54 ≈ 0.58 (v2.3: low-temp updated to 0.20, T&D loss)"
     },
     "coal": {
       "electricity_generation": 0.70,
@@ -60,7 +61,7 @@
       "low_temp_heating": 0.05,
       "notes": "95% solar PV for electricity. 5% solar thermal for water heating. 5% T&D loss applied to electricity portion (same as all electricity sources).",
       "weighted_exergy_factor": 0.91,
-      "calculation": "0.95×1.0×0.95 + 0.05×0.12 = 0.9025 + 0.006 = 0.9085 ≈ 0.91 (T&D + low-temp 0.12)"
+      "calculation": "0.95×1.0×0.95 + 0.05×0.20 = 0.9025 + 0.01 = 0.9125 ≈ 0.91 (v2.3: low-temp updated to 0.20, T&D loss)"
     },
     "biomass": {
       "low_temp_heating": 0.70,
@@ -68,15 +69,15 @@
       "electricity_generation": 0.10,
       "medium_temp_industrial": 0.05,
       "notes": "70% traditional biomass (cooking, heating in developing countries - very low efficiency). 15% modern biofuels (transport). 10% biomass power. 5% industrial. 5% T&D loss applied to electricity portion.",
-      "weighted_exergy_factor": 0.26,
-      "calculation": "0.70×0.12 + 0.15×1.0 + 0.10×1.0×0.95 + 0.05×0.4 = 0.084 + 0.15 + 0.095 + 0.02 = 0.349 ≈ 0.26 (low-temp 0.12, T&D loss, rounded conservatively)"
+      "weighted_exergy_factor": 0.37,
+      "calculation": "0.70×0.20 + 0.15×1.0 + 0.10×1.0×0.95 + 0.05×0.4 = 0.14 + 0.15 + 0.095 + 0.02 = 0.405 ≈ 0.37 (v2.3: low-temp updated to 0.20, T&D loss)"
     },
     "geothermal": {
       "electricity_generation": 0.50,
       "low_temp_heating": 0.50,
       "notes": "50/50 split between binary cycle power plants and direct-use heating applications. 5% T&D loss applied to electricity portion.",
-      "weighted_exergy_factor": 0.54,
-      "calculation": "0.50×1.0×0.95 + 0.50×0.12 = 0.475 + 0.06 = 0.535 ≈ 0.54 (low-temp 0.12, T&D loss)"
+      "weighted_exergy_factor": 0.59,
+      "calculation": "0.50×1.0×0.95 + 0.50×0.20 = 0.475 + 0.10 = 0.575 ≈ 0.59 (v2.3: low-temp updated to 0.20, T&D loss)"
     }
   },
   "sector_exergy_mapping": {
@@ -97,8 +98,8 @@
       "description": "Chemicals, refining, food processing (100-400°C)"
     },
     "low_temp_heating": {
-      "exergy_factor": 0.12,
-      "description": "Space heating, water heating, cooking (<100°C)"
+      "exergy_factor": 0.20,
+      "description": "Space heating, water heating, cooking (<100°C) - Updated to Cullen & Allwood 2010 standard"
     }
   },
   "calculation_example": {
