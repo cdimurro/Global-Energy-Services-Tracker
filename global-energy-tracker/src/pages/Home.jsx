@@ -18,7 +18,7 @@ export default function Home() {
   const cleanBreakdownChartRef = useRef(null);
 
   useEffect(() => {
-    fetch('/data/energy_services_timeseries.json')
+    fetch('/data/exergy_services_timeseries.json')
       .then(res => res.json())
       .then(jsonData => {
         const latestYear = jsonData.data[jsonData.data.length - 1];

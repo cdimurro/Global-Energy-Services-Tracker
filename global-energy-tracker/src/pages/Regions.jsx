@@ -78,7 +78,7 @@ export default function Regions() {
   useEffect(() => {
     Promise.all([
       fetch('/data/regional_energy_timeseries.json').then(res => res.json()),
-      fetch('/data/energy_services_timeseries.json').then(res => res.json())
+      fetch('/data/exergy_services_timeseries.json').then(res => res.json())
     ])
       .then(([regionalData, globalData]) => {
         // Transform global data to match regional data structure

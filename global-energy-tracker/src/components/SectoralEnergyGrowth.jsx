@@ -81,7 +81,7 @@ export default function SectoralEnergyGrowth() {
   useEffect(() => {
     Promise.all([
       fetch('/data/sectoral_energy_breakdown.json').then(res => res.json()),
-      fetch('/data/energy_services_timeseries.json').then(res => res.json()),
+      fetch('/data/exergy_services_timeseries.json').then(res => res.json()),
       fetch('/data/demand_growth_projections.json').then(res => res.json())
     ])
       .then(([sectoral, historical, projections]) => {

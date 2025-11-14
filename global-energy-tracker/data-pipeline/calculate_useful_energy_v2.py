@@ -308,7 +308,7 @@ def save_results(results, base_filename='useful_energy_timeseries'):
 
     # Save energy services timeseries (if calculated)
     if results['energy_services']:
-        services_output_path = os.path.join(output_dir, 'energy_services_timeseries.json')
+        services_output_path = os.path.join(output_dir, 'exergy_services_timeseries.json')
         services_data = {
             'metadata': {
                 'generated_at': datetime.now().isoformat(),

@@ -18,7 +18,7 @@ export async function loadProjectContext() {
       sectoralResponse,
       ffGrowthResponse
     ] = await Promise.all([
-      fetch('/data/energy_services_timeseries.json'),
+      fetch('/data/exergy_services_timeseries.json'),
       fetch('/data/demand_growth_projections.json'),
       fetch('/data/efficiency_factors_corrected.json'),
       fetch('/data/regional_energy_timeseries.json'),

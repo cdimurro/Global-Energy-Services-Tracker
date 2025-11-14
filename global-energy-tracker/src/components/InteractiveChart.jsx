@@ -19,7 +19,7 @@ export default function InteractiveChart() {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
-    fetch('/data/energy_services_timeseries.json')
+    fetch('/data/exergy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         setEnergyData(data);

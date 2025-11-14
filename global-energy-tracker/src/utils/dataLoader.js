@@ -8,7 +8,7 @@ export const loadEnergyData = async () => {
   if (cachedData) return cachedData;
 
   try {
-    const response = await fetch('/data/energy_services_timeseries.json');
+    const response = await fetch('/data/exergy_services_timeseries.json');
     if (!response.ok) {
       throw new Error('Failed to load energy data');
     }

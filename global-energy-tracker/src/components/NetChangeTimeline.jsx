@@ -13,7 +13,7 @@ export default function NetChangeTimeline() {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    fetch('/data/energy_services_timeseries.json')
+    fetch('/data/exergy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         calculateTimeline(data);

@@ -6,7 +6,7 @@ export default function ParameterStatusTable() {
   const [selectedYear, setSelectedYear] = useState(null);
 
   useEffect(() => {
-    fetch('/data/energy_services_timeseries.json')
+    fetch('/data/exergy_services_timeseries.json')
       .then(res => res.json())
       .then(data => {
         calculateTableData(data);
