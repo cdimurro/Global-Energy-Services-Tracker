@@ -194,9 +194,8 @@ export default function InteractiveChart() {
     const currentYear = changeData.find(d => d.year === label);
     if (!currentYear) return null;
 
-    // Get the actual total exergy services for this year from absoluteData
-    const yearAbsoluteData = absoluteData.find(d => d.year === label);
-    const totalEnergyServices = yearAbsoluteData ? yearAbsoluteData.total : 0;
+    // Calculate total absolute change (sum of all changes, using absolute values)
+    const totalAbsoluteChange = payload.reduce((sum, entry) => sum + Math.abs(entry.value), 0);
 
     return (
       <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
@@ -207,10 +206,9 @@ export default function InteractiveChart() {
             const pctKey = `${sourceKey}_pct`;
             const pctValue = currentYear[pctKey];
 
-            // Calculate share of total exergy services (not share of changes)
-            const currentSourceValue = yearAbsoluteData ? (yearAbsoluteData[sourceKey] || 0) : 0;
-            const sharePercent = totalEnergyServices > 0
-              ? (currentSourceValue / totalEnergyServices * 100)
+            // Calculate share of the total growth (not share of total energy services)
+            const shareOfGrowth = totalAbsoluteChange > 0
+              ? (Math.abs(entry.value) / totalAbsoluteChange * 100)
               : 0;
 
             return (
@@ -221,8 +219,8 @@ export default function InteractiveChart() {
                     <span className="text-sm font-medium">{entry.name}</span>
                   </div>
                   <div className="text-sm ml-5">
-                    <span className="text-gray-600">Share: </span>
-                    <span className="font-semibold text-gray-900">{sharePercent.toFixed(2)}%</span>
+                    <span className="text-gray-600">Share of Growth: </span>
+                    <span className="font-semibold text-gray-900">{shareOfGrowth.toFixed(2)}%</span>
                   </div>
                 </div>
                 <div className="text-right">
