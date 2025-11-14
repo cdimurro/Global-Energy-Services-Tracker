@@ -27,7 +27,7 @@ export default function RealityCheck() {
               Fossil Fuels Rule the Real World
             </h2>
             <p className="mb-4">
-              Despite the hype surrounding the energy transition, <strong>81.97% of useful energy services</strong> (mobility, heat, manufacturing) still come from oil, gas and coal. Fossil fuels have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
+              Despite the hype surrounding the energy transition, <strong>81.97% of useful energy services</strong> (mobility, heat, manufacturing) still come from fossil fuels. Hydrocarbons like oil, gas, and coal have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
             </p>
             <ul className="list-disc ml-6 space-y-2 mb-4">
               <li>High energy density</li>
@@ -35,10 +35,10 @@ export default function RealityCheck() {
               <li>Ease of transportation and storage</li>
               <li>Dispatchability at any time</li>
               <li>Established infrastructure</li>
-              <li>Deep embedding in everyday modern products</li>
+              <li>Deep integration in everyday modern products</li>
             </ul>
             <p>
-              In addition to these advantages, fossil fuels are also extremely reliable and generally considered an affordable source of energy. This is why they have historically dominated our energy systems, and why they still do.
+              In addition to these advantages, fossil fuels are also extremely reliable and generally considered to be an affordable source of energy. This is why fossil fuels have historically dominated our energy systems, and why they still do. 
             </p>
           </section>
 
@@ -48,18 +48,15 @@ export default function RealityCheck() {
               Growth Mismatch, Not Magic
             </h2>
             <p className="mb-4">
-              The reason fossil fuel consumption has continued to increase year after year is actually very simple. The amount of demand from new energy services that fossil fuels meet has been consistently larger than the amount of fossil fuel consumption that has been offset by non-fossil fuel sources. However, this phenomenon is actually quite complex to calculate with a high degree of precision. Luckily the general principle used measure the net change in fossil fuel consumption is pretty straightforward, and it can be expressed by this simplified formula:
+              The reason fossil fuel consumption has continued to increase year after year is actually very simple when looking at it through the lens of energy services. The amount of demand for new energy services that fossil fuels have met has been consistently larger than the amount of fossil fuel consumption that has been offset by the amount of energy services that clean energy have been able to meet. However, calculating this phenomenon with a high degree of precision is actually quite complex. Luckily, the general principles used to measure the net change in fossil fuel consumption are well understood, and they can be expressed by this simplified formula:
             </p>
             <div className="bg-gray-100 border border-gray-300 p-4 my-4 text-center">
               <p className="text-lg font-bold text-blue-600">
-                Δ Fossil Fuel Consumption = New Services (Fossil) − New Services (Clean)
+                <strong>Δ Fossil Fuel Consumption = Energy Services Demand - Clean Displacement - Efficiency Savings
               </p>
             </div>
             <p className="mb-4">
-              Measuring the net change in fossil fuel consumption is actually much more valuable than measuring primary energy consumption because it can provide useful insights into how fast fossil fuel demand is actually growing, and when it might peak. For example, if the total amount of energy services grew by 100 EJ in 2023, and fossil fuels met 60 EJ of that new demand, while clean sources met 40 EJ of that new demand, it would seem like fossil fuels grew by 60 EJ that year. But that may not be the case. If all the clean energy sources from previous years and fossil fuel equipment retirements that year added up to 30 EJ of energy services being replaced by clean energy, the net change in fossil fuel consumption for 2023 would actually only have been 30 EJ.
-            </p>
-            <p>
-              This is why measuring the net change in fossil fuel consumption is so important. If the Δ Fossil Fuel consumption value is positive, it means that fossil fuel consumption is increasing, and if the value is negative, it means that fossil fuel consumption is declining.
+              Measuring the net change in fossil fuel consumption is valuable because it can provide insights into how fast fossil fuel consumption is actually growing, and when it might peak. This is why accurately measuring the net change in fossil fuel consumption is so important. If the Δ Fossil Fuel consumption value is positive, it means that fossil fuel consumption is increasing, and if the value is negative, it means that fossil fuel consumption is declining. 
             </p>
           </section>
 
@@ -69,24 +66,28 @@ export default function RealityCheck() {
               Politics, Not Physics, Blocks It
             </h2>
             <p className="mb-4">
-              One of the key takeaways from creating this platform is that it has identified that <strong>politics is actually what's slowing down the energy transition, not physics or technology</strong>. This analysis highlights that without strong policies in place to accelerate the displacement rate, the idea of an energy transition may continue to remain elusive. This is primarily because the amount of new energy services being met by fossil fuels is still so high that it's no longer sufficient to wait until clean energy sources scale to replace those energy services.
+              One of the key takeaways from creating this platform was that it has identified that <strong>politics is actually what's slowing the energy transition down, not physics or technology</strong>. <strong>Without strong policies in place to accelerate the displacement rate and efficiency savings, the idea of an energy transition may continue to remain elusive.</strong> This is primarily because the demand for new energy services is so high that it's unrealistic to expect clean energy sources fast enough to provide all of those energy services and also offset fossil fuel consumption. 
             </p>
             <p className="mb-4">
-              To accelerate the Energy Transition we need a three-pronged approach to reducing fossil fuel consumption. One of the reasons progress has been so slow is because we are measuring energy consumption the wrong way, and we are heavily subsidizing fossil fuels. Unless we fix policy first and correct the subsided, waiting for clean energy technologies to displace fossil fuel will prove to be a losing strategy. Here are the three steps that are needed to reduce fossil fuel consumption:
+              In order to accelerate the Energy Transition we need a multi-faceted approach to reducing fossil fuel consumption. Part of the reason why progress has been so slow is because we have been measuring energy consumption the wrong way, but it's also because fossil fuels are still heavily subsidized globally. Unless we fix the policies first and remove the subsidies, waiting for clean energy technologies to displace fossil fuel consumption on their own will prove to be a losing strategy. Here are the 5 steps that are needed to reduce fossil fuel consumption:
             </p>
             <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
               <ol className="list-decimal ml-6 space-y-2 font-semibold">
-                <li>Electrify at scale</li>
-                <li>Displace fossil energy services</li>
+                <li>Electrify as much as possible</li>
+                <li>Build more renewable energy and nuclear generation</li>
+                <li>Prioritize the displacement of fossil fuel energy services</li>
                 <li>Use energy more efficiently</li>
+                <li>Remove fossil fuel subsidies and correct for unpriced externalities</li>
               </ol>
             </div>
             <div className="bg-green-50 border-l-4 border-green-600 p-4 mb-4">
               <p className="font-semibold text-gray-800 mb-2">Why it works:</p>
               <ul className="space-y-2 ml-4">
                 <li>• Electrification moves the useful work to high-efficiency consumption.</li>
-                <li>• Displacement directly replaces fossil fuel consumption with clean energy.</li>
-                <li>• Energy efficiency reduces the total amount of energy demand to meet.</li>
+                <li>• Building more renewable energy and nuclear capacity gets more clean high quality energy into the system.</li>
+                <li>• Displacement directly reduces fossil fuel consumption by replacing it with clean energy.</li>
+                <li>• Energy efficiency reduces the total amount of energy services that need to be met.</li>
+                <li>• Removing subsidies for fossil fuels allows that money to be invested elsewhere and lets the market work better.</li>
               </ul>
             </div>
           </section>
@@ -94,10 +95,13 @@ export default function RealityCheck() {
           {/* The Unsung Heroes */}
           <section>
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              Electrification is the engine. Energy efficiency is the turbocharger.
+              Electrification is the engine. Energy efficiency is the turbocharger. Renewables and nuclear are the workhorses.
             </h2>
             <p className="mb-4">
-              <strong>Primary energy consumption, which is how most energy consumption is measured globally, is fundamentally inaccurate</strong> because it mostly measures energy that was wasted as heat and provided absolutely no value to society. Primary energy consumption metrics also make up numbers out of thin air by inflating the numbers for both nuclear and renewables when using the substitution method.
+              <strong>Electrifying as much as possible is always the first step to making our energy systems cleaner and more efficient.</strong> There is no other single action that has a larger impact on improving the overall efficiency of the energy system than electrification. In past years the focus has been to electrify, building more clean energy, and then use less energy through efficiency. While this simple blueprint still holds true, it ignores the growth of energy demand, and the entrenched nature of fossil fuels across our energy systems. In order to further refine this approach, and get faster results, we should prioritize displacing the energy services that are currently being met by fossil fuels first, while also removing fossil fuel subsidies and pricing in any unpriced externalities. 
+
+
+              This is because electric technologies are generally much more efficient than their fossil fuel counterparts. For example, electric vehicles are typically around 3 times more efficient than internal combustion engine vehicles, and heat pumps can be up to 4 times more efficient than traditional gas furnaces. By electrifying as much as possible, we can significantly reduce the amount of primary energy consumption needed to meet our energy services demand.
             </p>
             <p className="mb-4">
               The fact that the most common way we measure energy consumption has so many flaws means we've essentially been flying blind, and it's one of the main reasons why the energy transition hasn't made more progress. This platform was created to help solve the many shortcomings of tracking the energy system by using primary energy consumption. To solve this, we aimed to create the most comprehensive and accurate picture of the entire global energy system at a high level.
