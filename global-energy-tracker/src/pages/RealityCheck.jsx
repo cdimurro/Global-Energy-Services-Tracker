@@ -27,7 +27,7 @@ export default function RealityCheck() {
               Fossil Fuels Rule the Real World
             </h2>
             <p className="mb-4">
-              Despite the hype surrounding the energy transition, <strong>81.97% of useful energy services</strong> (mobility, heat, manufacturing) still come from fossil fuels. Hydrocarbons like oil, gas, and coal have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
+              Despite the hype surrounding the energy transition, <strong>81.97% of exergy services</strong> (thermodynamic work potential) still come from fossil fuels. Hydrocarbons like oil, gas, and coal have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
             </p>
             <ul className="list-disc ml-6 space-y-2 mb-4">
               <li>High energy density</li>
@@ -48,11 +48,11 @@ export default function RealityCheck() {
               Growth Mismatch, Not Magic
             </h2>
             <p className="mb-4">
-              The reason fossil fuel consumption has continued to increase year after year is actually very simple when looking at it through the lens of energy services. The amount of demand for new energy services that fossil fuels have met has been consistently larger than the amount of fossil fuel consumption that has been offset by the amount of energy services that clean energy have been able to meet. However, calculating this phenomenon with a high degree of precision is actually quite complex. Luckily, the general principles used to measure the net change in fossil fuel consumption are well understood, and they can be expressed by this simplified formula:
+              The reason fossil fuel consumption has continued to increase year after year is actually very simple when looking at it through the lens of exergy services. The amount of demand for new exergy services that fossil fuels have met has been consistently larger than the amount of fossil fuel consumption that has been offset by the amount of exergy services that clean energy have been able to meet. However, calculating this phenomenon with a high degree of precision is actually quite complex. Luckily, the general principles used to measure the net change in fossil fuel consumption are well understood, and they can be expressed by this simplified formula:
             </p>
             <div className="bg-gray-100 border border-gray-300 p-4 my-4 text-center">
               <p className="text-lg font-bold text-blue-600">
-                <strong>Δ Fossil Fuel Consumption = Energy Services Demand - Clean Displacement - Efficiency Savings</strong>
+                <strong>Δ Fossil Fuel Consumption = Exergy Services Demand - Clean Displacement - Efficiency Savings</strong>
               </p>
             </div>
             <p className="mb-4">
@@ -66,7 +66,7 @@ export default function RealityCheck() {
               Politics, Not Physics, Blocks It
             </h2>
             <p className="mb-4">
-              One of the key takeaways from creating this platform was that it has identified that <strong>politics is actually what's slowing the energy transition down, not physics or technology</strong>. <strong>Without strong policies in place to accelerate the displacement rate and efficiency savings, the idea of an energy transition may continue to remain elusive.</strong> This is primarily because the demand for new energy services is so high that it's unrealistic to expect clean energy sources fast enough to provide all of those energy services and also offset fossil fuel consumption. 
+              One of the key takeaways from creating this platform was that it has identified that <strong>politics is actually what's slowing the energy transition down, not physics or technology</strong>. <strong>Without strong policies in place to accelerate the displacement rate and efficiency savings, the idea of an energy transition may continue to remain elusive.</strong> This is primarily because the demand for new exergy services is so high that it's unrealistic to expect clean energy sources to grow fast enough to provide all of those exergy services and also offset fossil fuel consumption.
             </p>
             <p className="mb-4">
               In order to accelerate the Energy Transition we need a multi-faceted approach to reducing fossil fuel consumption. Part of the reason why progress has been so slow is because we have been measuring energy consumption the wrong way, but it's also because fossil fuels are still heavily subsidized globally. Unless we fix the policies first and remove the subsidies, waiting for clean energy technologies to displace fossil fuel consumption on their own will prove to be a losing strategy. Here are the 5 steps that are needed to reduce fossil fuel consumption:
@@ -75,7 +75,7 @@ export default function RealityCheck() {
               <ol className="list-decimal ml-6 space-y-2 font-semibold">
                 <li>Electrify as much as possible</li>
                 <li>Build more renewable energy and nuclear generation</li>
-                <li>Prioritize the displacement of fossil fuel energy services</li>
+                <li>Prioritize the displacement of fossil fuel exergy services</li>
                 <li>Use energy more efficiently</li>
                 <li>Remove fossil fuel subsidies and correct for unpriced externalities</li>
               </ol>
@@ -86,7 +86,7 @@ export default function RealityCheck() {
                 <li>• Electrification moves the useful work to high-efficiency consumption.</li>
                 <li>• Building more renewable energy and nuclear capacity gets more clean high quality energy into the system.</li>
                 <li>• Displacement directly reduces fossil fuel consumption by replacing it with clean energy.</li>
-                <li>• Energy efficiency reduces the total amount of energy services that need to be met.</li>
+                <li>• Energy efficiency reduces the total amount of exergy services that need to be met.</li>
                 <li>• Removing subsidies for fossil fuels allows that money to be invested elsewhere and lets the market work better.</li>
               </ul>
             </div>
@@ -98,9 +98,9 @@ export default function RealityCheck() {
               Electrification is the engine. Energy efficiency is the turbocharger. Renewables and nuclear are the workhorses.
             </h2>
             <p className="mb-4">
-              <strong>Electrifying as much as possible is always the first step to making our energy systems cleaner and more efficient.</strong> There is no other single action that has a larger impact on improving the overall efficiency of the energy system than electrification. In past years the focus has been to electrify, building more clean energy, and then use less energy through efficiency. While this simple blueprint still holds true, it ignores the growth of energy demand, and the entrenched nature of fossil fuels across our energy systems. In order to further refine this approach, and get faster results, we should prioritize displacing the energy services that are currently being met by fossil fuels first, while also removing fossil fuel subsidies and pricing in any unpriced externalities. 
+              <strong>Electrifying as much as possible is always the first step to making our energy systems cleaner and more efficient.</strong> There is no other single action that has a larger impact on improving the overall efficiency of the energy system than electrification. In past years the focus has been to electrify, building more clean energy, and then use less energy through efficiency. While this simple blueprint still holds true, it ignores the growth of energy demand, and the entrenched nature of fossil fuels across our energy systems. In order to further refine this approach, and get faster results, we should prioritize displacing the exergy services that are currently being met by fossil fuels first, while also removing fossil fuel subsidies and pricing in any unpriced externalities.
 
-              The reason we want as much electrification as possible is because electric technologies are much more efficient at converting energy into work than fossil fuels are. Electric vehicles are typically around 3 times more efficient than internal combustion engine vehicles, and heat pumps can be up to 4 times more efficient than traditional gas furnaces. By electrifying as much as possible, we can provide the same energy services with clean energy, and by using 2-2.5x less primary energy. The amount of energy that we waste would drop significantly if we electrified everything.
+              The reason we want as much electrification as possible is because electric technologies are much more efficient at converting energy into work than fossil fuels are. Electric vehicles are typically around 3 times more efficient than internal combustion engine vehicles, and heat pumps can be up to 4 times more efficient than traditional gas furnaces. By electrifying as much as possible, we can provide the same exergy services with clean energy, and by using 2-2.5x less primary energy. The amount of energy that we waste would drop significantly if we electrified everything.
             </p>
           </section>
 
@@ -110,10 +110,10 @@ export default function RealityCheck() {
               A New Path Forward
             </h2>
             <p className="mb-4">
-              The fact that the most common way we measure energy consumption is so fundamentally flawed means that we've essentially been flying blind, and it's one of the main reasons why the energy transition hasn't made more progress, and often receives criticism. This platform was designed to create the most accurate picture of the entire global energy system, by addressing the shortcomings of traditional primary energy measurements, and focusing on energy services instead.
+              The fact that the most common way we measure energy consumption is so fundamentally flawed means that we've essentially been flying blind, and it's one of the main reasons why the energy transition hasn't made more progress, and often receives criticism. This platform was designed to create the most accurate picture of the entire global energy system, by addressing the shortcomings of traditional primary energy measurements, and focusing on exergy services instead.
             </p>
             <p className="mb-4">
-              Measuring energy services allows us to cut through the noise and get a clearer sense of where energy is being used, what it's being used for, and how much value it's providing to society. It also shows us how much energy is being wasted, where it's being wasted, and how to eliminate that waste. This is crucial information for policymakers, businesses, and individuals who are trying to make informed decisions about energy use and sustainability.
+              Measuring exergy services allows us to cut through the noise and get a clearer sense of where energy is being used, what it's being used for, and how much thermodynamic value it's providing to society. It also shows us how much energy is being wasted, where it's being wasted, and how to eliminate that waste. This is crucial information for policymakers, businesses, and individuals who are trying to make informed decisions about energy use and sustainability.
             </p>
             <p className="mb-4">
               Thanks to a vast arrangement of data and new technologies, it's now possible to create a much more accurate picture of the global energy system. The insights gained by changing how we measure energy could have massive implications across the world, and could play a pivotal role in how we manage the energy transition.
@@ -122,8 +122,8 @@ export default function RealityCheck() {
               <p className="font-semibold mb-2">The Key Differences:</p>
               <p className="text-gray-700">
                 <strong>Primary energy →</strong> Measures the total energy content of fuels as extracted.<br/>
-                <strong>Useful energy →</strong> Measures how much energy is still useful after combustion.<br/>
-                <strong>Energy services →</strong> Describes the final benefit delivered.
+                <strong>Useful energy →</strong> Measures how much energy is still useful after conversion.<br/>
+                <strong>Exergy services →</strong> Measures thermodynamic work potential (quality-weighted useful energy).
               </p>
             </div>
           </section>
