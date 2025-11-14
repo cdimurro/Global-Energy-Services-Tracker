@@ -19,7 +19,10 @@
       "Bash(powershell:*)",
       "Bash(curl:*)",
       "Bash(git rm:*)",
-      "Bash(git revert:*)"
+      "Bash(git revert:*)",
+      "Bash(git mv:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(DATA_AND_ASSUMPTIONS.md)"
     ],
     "deny": [],
     "ask": []
