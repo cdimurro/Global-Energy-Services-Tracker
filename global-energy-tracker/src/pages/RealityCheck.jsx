@@ -27,7 +27,7 @@ export default function RealityCheck() {
               Fossil Fuels Rule the Real World
             </h2>
             <p className="mb-4">
-              Despite the hype surrounding the energy transition, <strong>81.97% of exergy services</strong> (thermodynamic work potential) still come from fossil fuels. Hydrocarbons like oil, gas, and coal have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
+              Despite the hype surrounding the energy transition, <strong>82.9% of exergy services</strong> (thermodynamic work potential) still come from fossil fuels. Hydrocarbons like oil, gas, and coal have several inherent advantages, which is why they are so deeply integrated into our energy systems. These advantages include:
             </p>
             <ul className="list-disc ml-6 space-y-2 mb-4">
               <li>High energy density</li>
@@ -100,7 +100,7 @@ export default function RealityCheck() {
             <p className="mb-4">
               <strong>Electrifying as much as possible is always the first step to making our energy systems cleaner and more efficient.</strong> There is no other single action that has a larger impact on improving the overall efficiency of the energy system than electrification. In past years the focus has been to electrify, building more clean energy, and then use less energy through efficiency. While this simple blueprint still holds true, it ignores the growth of energy demand, and the entrenched nature of fossil fuels across our energy systems. In order to further refine this approach, and get faster results, we should prioritize displacing the exergy services that are currently being met by fossil fuels first, while also removing fossil fuel subsidies and pricing in any unpriced externalities.
 
-              The reason we want as much electrification as possible is because electric technologies are much more efficient at converting energy into work than fossil fuels are. Electric vehicles are typically around 3 times more efficient than internal combustion engine vehicles, and heat pumps can be up to 4 times more efficient than traditional gas furnaces. By electrifying as much as possible, we can provide the same exergy services with clean energy, and by using 2-2.5x less primary energy. The amount of energy that we waste would drop significantly if we electrified everything.
+              The reason we want as much electrification as possible is because electric technologies are much more efficient at converting energy into work than fossil fuels are. Electric vehicles are typically around 3 times more efficient than internal combustion engine vehicles, and heat pumps can be up to 4 times more efficient than traditional gas furnaces. By electrifying as much as possible, we can provide the same exergy services with clean energy, and by using 3.0-3.4× less primary energy. The amount of energy that we waste would drop significantly if we electrified everything.
             </p>
           </section>
 

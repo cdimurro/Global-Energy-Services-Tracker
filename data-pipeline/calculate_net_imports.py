@@ -6,11 +6,11 @@ import os
 INPUT_FILE = 'downloads/owid_energy_data.csv'
 OUTPUT_FILE = '../global-energy-tracker/public/data/regional_net_imports_timeseries.json'
 
-# Efficiency factors for converting primary to useful energy
+# Efficiency factors for converting primary to useful energy (v2.3)
 EFFICIENCY_FACTORS = {
-    'coal': 0.30,
-    'oil': 0.35,
-    'gas': 0.40
+    'coal': 0.32,
+    'oil': 0.30,
+    'gas': 0.52
 }
 
 # Continental regions (for aggregation)

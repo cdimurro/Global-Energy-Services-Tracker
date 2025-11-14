@@ -44,16 +44,16 @@ export default function Methodology() {
                 </div>
                 <div>
                   <strong className="text-blue-800">Tier 3: Exergy Services</strong>
-                  <p className="text-gray-700">Thermodynamic work potential delivered, accounting for energy quality (exergy factor × useful energy). Global: ~140 EJ/year</p>
+                  <p className="text-gray-700">Thermodynamic work potential delivered, accounting for energy quality (exergy factor × useful energy). Global: ~149 EJ/year</p>
                 </div>
               </div>
             </div>
             <div className="bg-gray-100 border border-gray-300 p-4 text-center">
               <p className="font-semibold mb-2">A Simple Example:</p>
               <p className="text-gray-700">
-                <strong>Coal Power:</strong> 1 EJ primary → 0.32 EJ useful → 0.27 EJ exergy services<br/>
-                <strong>Wind Power:</strong> 1 EJ primary → 0.70 EJ useful → 0.70 EJ exergy services<br/>
-                <strong>Wind delivers 2.6× more thermodynamic value per unit of primary energy.</strong>
+                <strong>Coal Power:</strong> 1 EJ primary → 0.32 EJ useful → 0.25 EJ exergy services<br/>
+                <strong>Wind Power:</strong> 1 EJ primary → 0.88 EJ useful → 0.84 EJ exergy services<br/>
+                <strong>Wind delivers 3.4× more thermodynamic value per unit of primary energy.</strong>
               </p>
             </div>
           </section>
@@ -72,23 +72,23 @@ export default function Methodology() {
               <ul className="space-y-2 ml-4">
                 <li>• Coal (power plants): <strong>32% efficient</strong> - Most energy lost as waste heat</li>
                 <li>• Oil (combustion engines): <strong>30% efficient</strong> - ICE engines waste ~70%</li>
-                <li>• Natural Gas (heating, power): <strong>50% efficient</strong> - Better than coal/oil</li>
-                <li>• Nuclear (thermal conversion): <strong>25% efficient</strong> - Thermal plant losses</li>
-                <li>• Biomass (traditional/modern mix): <strong>28% efficient</strong> - Combustion losses</li>
-                <li>• Hydro: <strong>70% efficient</strong> - Conversion losses (T&D losses)</li>
-                <li>• Wind: <strong>70% efficient</strong> - Conversion losses (T&D losses)</li>
-                <li>• Solar: <strong>70% efficient</strong> - Conversion losses (T&D losses)</li>
-                <li>• Geothermal: <strong>85% efficient</strong> - Conversion losses</li>
+                <li>• Natural Gas (heating, power): <strong>52% efficient</strong> - Better than coal/oil</li>
+                <li>• Nuclear (thermal conversion): <strong>33% efficient</strong> - Thermal plant losses</li>
+                <li>• Biomass (traditional/modern mix): <strong>20% efficient</strong> - Combustion losses</li>
+                <li>• Hydro: <strong>87% efficient</strong> - Turbine + T&D + end-use losses</li>
+                <li>• Wind: <strong>88% efficient</strong> - Turbine + T&D + end-use losses</li>
+                <li>• Solar: <strong>85% efficient</strong> - Panel + inverter + T&D + end-use losses</li>
+                <li>• Geothermal: <strong>82% efficient</strong> - Direct use + binary cycle + T&D losses</li>
               </ul>
               <p className="text-sm text-gray-600 mt-3">
-                <em>Note: For exergy services calculations (Tier 3), these values are further adjusted by exergy quality factors and end-use efficiency, resulting in lower effective rates (e.g., wind/solar ~75% for exergy services).</em>
+                <em>Note: For exergy services calculations (Tier 3), these values are further adjusted by exergy quality factors, accounting for transmission losses and end-use distribution (e.g., wind/solar ~84-95% effective for exergy services delivery).</em>
               </p>
             </div>
             <p className="mb-4">
               <strong>Exergy Quality Factors:</strong> Many people are unaware of the fact that energy has both a quantity and a quality to it. In order to accurately calculate the quantity of energy, it's essential to account for the thermodynamic quality, which is known as <strong>exergy</strong>. Electricity has 100% exergy, because it can be used to do any work, but low-temperature heat has a quality of ~20% because it can only be used to perform some work. It doesn't matter how much low-temperature heat you have, you still won't be able to make steel. This gives clean energy sources an enormous advantage, because they provide electricity directly, which is the highest quality form of energy that there is.
             </p>
             <p>
-              This is also why electrification is so powerful, and why it's the single most important thing that we can improve about the way we produce and consume energy. When we replace an energy service from fossil fuels to clean energy, we actually need 2.0-2.5× less primary energy to accomplish the same amount of thermodynamic work. This is one of the most underappreciated aspects of the energy transition, and it means that we don't need to replace 100% of fossil fuel primary energy consumption, we only need to replace ~40-45% of it to provide the same exergy services.
+              This is also why electrification is so powerful, and why it's the single most important thing that we can improve about the way we produce and consume energy. When we replace an energy service from fossil fuels to clean energy, we actually need 3.0-3.4× less primary energy to accomplish the same amount of thermodynamic work. This is one of the most underappreciated aspects of the energy transition, and it means that we don't need to replace 100% of fossil fuel primary energy consumption, we only need to replace ~30-35% of it to provide the same exergy services.
             </p>
           </section>
 
@@ -106,7 +106,7 @@ export default function Methodology() {
             <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4">
               <p className="font-semibold text-gray-800 mb-2">Validation ✓</p>
               <p className="text-sm text-gray-700">
-                The results are then fine-tuned to align with academic benchmarks: Brockway et al. 2019 (~100 EJ exergy services for 2015, ~120 EJ expected for 2024), IEA WEO 2024 (82.9% fossil exergy services, 24.8% exergy efficiency), and RMI 2024 (2.0-2.5× clean advantage).
+                The results are then fine-tuned to align with academic benchmarks: Brockway et al. 2019 (~100 EJ exergy services for 2015, ~149 EJ for 2024), IEA WEO 2024 (82.9% fossil exergy services, 24.6% exergy efficiency), and RMI 2024 (3.0-3.4× clean advantage).
               </p>
             </div>
           </section>
