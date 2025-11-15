@@ -1,5 +1,5 @@
 # Changelog
-## Global Exergy Services Platform
+## Global Energy Services Tracker
 
 All notable changes to this project will be documented in this file.
 

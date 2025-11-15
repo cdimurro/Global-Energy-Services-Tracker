@@ -122,7 +122,7 @@ export default function Home() {
       {/* Page Header */}
       <div className="text-center mb-8">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3">
-          Global Exergy Services Platform
+          Global Energy Services Tracker
         </h1>
         <p className="text-sm text-gray-600">
           Tracking global energy services using exergy-weighted methodology: measuring thermodynamic work potential, not just energy flows.
@@ -360,20 +360,20 @@ export default function Home() {
           </div>
         </div>
 
-      {/* Understanding Exergy Services */}
+      {/* Understanding Energy Services */}
       <div className="metric-card bg-white mb-8 border-2 border-blue-200">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
-          Understanding Exergy Services
+          Understanding Energy Services
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
             <h3 className="font-bold text-lg text-gray-800 mb-2">
-              What Are Exergy Services?
+              What Are Energy Services?
             </h3>
             <p className="text-gray-700">
-              Exergy services measure the thermodynamic work potential of energy, weighted by quality.
-              This captures the actual benefits society receives—heating, mobility, manufacturing—using consistent energy units (EJ).
-              Unlike primary energy, exergy services account for both efficiency AND quality of energy.
+              Energy services are the actual benefits society receives from energy—heating, mobility, manufacturing, lighting, and more.
+              We measure these services using exergy (in EJ), which captures the thermodynamic work potential of energy weighted by quality.
+              Exergy provides an excellent approximation for total energy services because it accounts for both the efficiency AND quality of energy delivery.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-600">

@@ -1,5 +1,5 @@
 # Data Sources and Assumptions Document
-## Global Exergy Services Platform v2.3
+## Global Energy Services Tracker v2.3
 
 *Last Updated: November 13, 2024*
 
@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-This document provides a comprehensive breakdown of all data sources, data transformations, and assumptions used in the Global Exergy Services Platform. It is designed to enable independent validation and identify any potential flaws in the data pipeline.
+This document provides a comprehensive breakdown of all data sources, data transformations, and assumptions used in the Global Energy Services Tracker. It is designed to enable independent validation and identify any potential flaws in the data pipeline.
 
 ---
 

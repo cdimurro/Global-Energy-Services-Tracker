@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
             <h3 className="text-xl sm:text-2xl font-bold mb-3">
-              Global Exergy Services Platform
+              Global Energy Services Tracker
             </h3>
             <p className="text-sm sm:text-base text-white-100 mb-2">
               Measuring the true state of the energy transition through exergy-weighted energy services

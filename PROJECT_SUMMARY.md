@@ -1,4 +1,4 @@
-# Project Summary: Global Exergy Services Platform
+# Project Summary: Global Energy Services Tracker
 ## Executive Summary and Key Findings
 
 *Last Updated: November 2025*
@@ -10,7 +10,7 @@
 
 ### What Is This Platform?
 
-The **Global Exergy Services Platform** is a web-based data visualization and analysis tool that tracks the global energy transition using a thermodynamically rigorous methodology. Unlike traditional energy metrics that measure raw fuel consumption (primary energy), this platform measures **exergy services** - the actual thermodynamic work potential delivered to society.
+The **Global Energy Services Tracker** is a web-based data visualization and analysis tool that tracks the global energy transition using a thermodynamically rigorous methodology. Unlike traditional energy metrics that measure raw fuel consumption (primary energy), this platform measures **energy services** using exergy - the actual thermodynamic work potential delivered to society.
 
 ### Why Does This Matter?
 
@@ -526,7 +526,7 @@ Contact: [Project maintainer contact info]
 
 **Citation**:
 ```
-Global Exergy Services Platform v2.2 (2025)
+Global Energy Services Tracker v2.2 (2025)
 https://energy-services.vercel.app
 ```
 
@@ -534,7 +534,7 @@ https://energy-services.vercel.app
 
 ## 16. Conclusion
 
-The Global Exergy Services Platform represents a fundamental shift in how we measure and understand the energy transition. By focusing on **exergy services** instead of primary energy, we can finally see:
+The Global Energy Services Tracker represents a fundamental shift in how we measure and understand the energy transition. By focusing on **energy services** (measured using exergy) instead of primary energy, we can finally see:
 
 - **What energy is actually doing** (thermodynamic work potential)
 - **How fast clean energy is displacing fossil fuels** (displacement tracking)

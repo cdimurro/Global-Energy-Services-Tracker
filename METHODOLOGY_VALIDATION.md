@@ -1,5 +1,5 @@
 # Methodology Validation Document
-## Global Exergy Services Platform v2.3
+## Global Energy Services Tracker v2.3
 
 *Last Updated: November 13, 2024*
 

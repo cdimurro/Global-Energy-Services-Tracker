@@ -1,4 +1,4 @@
-# Global Exergy Services Platform v2.3
+# Global Energy Services Tracker v2.3
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-19.1-blue.svg)](https://reactjs.org/)
@@ -12,7 +12,7 @@
 
 ## What This Platform Does
 
-The Global Exergy Services Platform v2.3 is a data visualization platform that reveals the **true state of the global energy system** by measuring **Exergy Services** using a thermodynamically rigorous methodology, not just Primary Energy.
+The Global Energy Services Tracker v2.3 is a data visualization platform that reveals the **true state of the global energy system** by measuring **Energy Services** using exergy (thermodynamically rigorous methodology), not just Primary Energy.
 
 ### The Problem with Traditional Energy Metrics
 
@@ -260,8 +260,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you use this data or methodology in your research, please cite:
 
 ```
-Global Exergy Services Platform v2.3 (2024)
-GitHub Repository: https://github.com/cdimurro/Global-Exergy-Services-Platform
+Global Energy Services Tracker v2.3 (2024)
+GitHub Repository: https://github.com/cdimurro/Global-Energy-Services
 Methodology: Three-tier exergy-weighted framework measuring exergy services
 Framework: Based on Cullen & Allwood (2010) and Brockway et al. (2021)
 Validation: IEA WEO 2024, IEA EEI 2024, NREL 2024, RMI 2024
@@ -283,7 +283,7 @@ Quality: 98% validation alignment, ±10-12% uncertainty
 
 ---
 
-**Goal**: Create the most accurate, honest, and useful public resource for understanding the global energy system through the lens of Exergy Services by using rigorous thermodynamic exergy accounting.
+**Goal**: Create the most accurate, honest, and useful public resource for understanding the global energy system through the lens of Energy Services by using rigorous thermodynamic exergy accounting.
 
 **Version**: 2.3
 
