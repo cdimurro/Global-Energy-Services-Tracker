@@ -261,7 +261,7 @@ If you use this data or methodology in your research, please cite:
 
 ```
 Global Energy Services Tracker v2.3 (2024)
-GitHub Repository: https://github.com/cdimurro/Global-Energy-Services
+GitHub Repository: https://github.com/cdimurro/Global-Energy-Services-Tracker
 Methodology: Three-tier exergy-weighted framework measuring exergy services
 Framework: Based on Cullen & Allwood (2010) and Brockway et al. (2021)
 Validation: IEA WEO 2024, IEA EEI 2024, NREL 2024, RMI 2024
