@@ -999,7 +999,7 @@ export default function Regions() {
 
           {/* Show Relative Values Toggle */}
           <div className="flex items-center gap-3">
-            <label className="text-sm font-semibold text-gray-700">Show Relative Values</label>
+            <label className="text-sm font-semibold text-gray-700">Display Relative Values</label>
             <button
               onClick={() => setShowRelativeChart3(!showRelativeChart3)}
               className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
@@ -1706,7 +1706,7 @@ export default function Regions() {
 
           {/* Show Relative Values Toggle */}
           <div className="flex items-center gap-3">
-            <label className="text-sm font-semibold text-gray-700">Show Relative Values</label>
+            <label className="text-sm font-semibold text-gray-700">Display Relative Values</label>
             <button
               onClick={() => setShowRelativeChart3(!showRelativeChart3)}
               className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${

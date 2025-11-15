@@ -428,7 +428,7 @@ export default function SectoralEnergyGrowth() {
         {/* Show Relative Toggle */}
         <div className="flex items-center justify-end mb-6">
           <div className="flex items-center gap-4">
-            <label className="text-lg font-semibold text-gray-700">Show Relative Values</label>
+            <label className="text-lg font-semibold text-gray-700">Display Relative Values</label>
             <button
               onClick={() => setShowRelative(!showRelative)}
               className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${

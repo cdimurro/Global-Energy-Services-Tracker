@@ -415,22 +415,24 @@ export default function InteractiveChart() {
             </div>
           </div>
 
-          {/* Show Relative toggle */}
-          <div className="flex items-center gap-4 mt-8">
-            <label className="text-lg font-semibold text-gray-700">Show Relative Values</label>
-            <button
-              onClick={() => setShowRelative(!showRelative)}
-              className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
-                showRelative ? 'bg-blue-600' : 'bg-gray-300'
-              }`}
-            >
-              <span
-                className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
-                  showRelative ? 'translate-x-7' : 'translate-x-1'
+          {/* Display Relative toggle - only show for Total Exergy Services */}
+          {chartType === 'absolute' && (
+            <div className="flex items-center gap-4 mt-8">
+              <label className="text-lg font-semibold text-gray-700">Display Relative Values</label>
+              <button
+                onClick={() => setShowRelative(!showRelative)}
+                className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
+                  showRelative ? 'bg-blue-600' : 'bg-gray-300'
                 }`}
-              />
-            </button>
-          </div>
+              >
+                <span
+                  className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
+                    showRelative ? 'translate-x-7' : 'translate-x-1'
+                  }`}
+                />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Source Selection */}
