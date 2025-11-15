@@ -1,4 +1,4 @@
-# Global Energy Services Tracker v2.3
+# Global Energy Services Tracker v2.3.2
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-19.1-blue.svg)](https://reactjs.org/)
@@ -12,7 +12,7 @@
 
 ## What This Platform Does
 
-The Global Energy Services Tracker v2.3 is a data visualization platform that reveals the **true state of the global energy system** by measuring **Energy Services** using exergy (thermodynamically rigorous methodology), not just Primary Energy.
+The Global Energy Services Tracker v2.3.2 is a data visualization platform that reveals the **true state of the global energy system** by measuring **Energy Services** using exergy (thermodynamically rigorous methodology), not just Primary Energy.
 
 ### The Problem with Traditional Energy Metrics
 
@@ -261,7 +261,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you use this data or methodology in your research, please cite:
 
 ```
-Global Energy Services Tracker v2.3 (2024)
+Global Energy Services Tracker v2.3.2 (2024)
 GitHub Repository: https://github.com/cdimurro/Global-Energy-Services-Tracker
 Methodology: Three-tier exergy-weighted framework measuring exergy services
 Framework: Based on Cullen & Allwood (2010) and Brockway et al. (2021)
@@ -288,4 +288,4 @@ Quality: 98% validation alignment, ±10-12% uncertainty
 
 **Version**: 2.3
 
-*Last Updated: November 13, 2024*
+*Last Updated: November 15, 2024*

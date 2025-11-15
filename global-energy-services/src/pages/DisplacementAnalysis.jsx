@@ -3,6 +3,7 @@ import PageLayout from '../components/PageLayout';
 import DisplacementTracker from '../components/DisplacementTracker';
 import NetChangeTimeline from '../components/NetChangeTimeline';
 import DisplacementBySource from '../components/DisplacementBySource';
+import DisplacementBySector from '../components/DisplacementBySector';
 import AIChatbot from '../components/AIChatbot';
 
 export default function DisplacementAnalysis() {
@@ -38,6 +39,11 @@ export default function DisplacementAnalysis() {
       {/* Displacement by Source */}
       <div className="mb-8">
         <DisplacementBySource />
+      </div>
+
+      {/* Displacement by Sector */}
+      <div className="mb-8">
+        <DisplacementBySector />
       </div>
 
       {/* Key Insights Section */}

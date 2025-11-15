@@ -37,15 +37,16 @@ export default function Sectors() {
 
   useEffect(() => {
     Promise.all([
-      fetch('/data/sectoral_energy_breakdown.json').then(res => res.json()),
-      fetch('/data/exergy_services_timeseries.json').then(res => res.json())
+      fetch('/data/sectoral_energy_breakdown_v2.json').then(res => res.json()),
+      fetch('/data/exergy_services_timeseries.json').then(res => res.json()),
+      fetch('/data/sectoral_energy_timeseries_2004_2024.json').then(res => res.json())
     ])
-      .then(([sectorJson, exergyJson]) => {
+      .then(([sectorJson, exergyJson, sectorTimeseriesJson]) => {
         setSectorData(sectorJson);
         // Get 2024 data
         const latestYear = exergyJson.data[exergyJson.data.length - 1];
         setExergyData(latestYear);
-        setExergyTimeseries(exergyJson);
+        setExergyTimeseries(sectorTimeseriesJson); // Use new sectoral timeseries
         setLoading(false);
       })
       .catch(err => {
@@ -60,11 +61,12 @@ export default function Sectors() {
 
   const totalServices = exergyData.total_services_ej;
 
-  // Prepare sector breakdown data
-  const sectorBreakdownData = Object.entries(sectorData.sector_shares)
-    .map(([sector, share]) => {
+  // Prepare sector breakdown data from v2.0 structure
+  const sectorBreakdownData = Object.entries(sectorData.sectors)
+    .map(([sector, sectorInfo]) => {
+      const share = sectorInfo.share;
       const servicesEJ = share * totalServices;
-      const fossilIntensity = sectorData.fossil_intensity[sector];
+      const fossilIntensity = sectorInfo.fossil_intensity;
       const fossilEJ = servicesEJ * fossilIntensity;
       const cleanEJ = servicesEJ * (1 - fossilIntensity);
 
@@ -76,7 +78,7 @@ export default function Sectors() {
         fossilEJ,
         cleanEJ,
         fossilIntensity,
-        description: sectorData.sector_descriptions[sector]
+        description: sectorInfo.description
       };
     })
     .sort((a, b) => b.servicesEJ - a.servicesEJ);
@@ -90,14 +92,13 @@ export default function Sectors() {
     fossilIntensity: s.fossilIntensity
   }));
 
-  // Prepare historical sectoral timeseries data (synthetic for now - proportional to current shares)
-  const timeseriesData = exergyTimeseries.data.slice(-20).map(yearData => {
-    const yearTotal = yearData.total_services_ej;
+  // Prepare historical sectoral timeseries data from v2.0 sectoral timeseries
+  const timeseriesData = exergyTimeseries.data.map(yearData => {
     const dataPoint = { year: yearData.year };
 
-    sectorBreakdownData.forEach(sector => {
-      const sectorServices = sector.share / 100 * yearTotal;
-      dataPoint[sector.sector] = sectorServices;
+    // Extract sector totals from the new sectoral timeseries structure
+    Object.entries(yearData.sectors).forEach(([sectorKey, sectorData]) => {
+      dataPoint[sectorKey] = sectorData.total_ej;
     });
 
     return dataPoint;
