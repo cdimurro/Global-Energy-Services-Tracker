@@ -23,7 +23,7 @@ export default function Navigation() {
 
           {/* Logo/Title - Visible on mobile */}
           <div className="font-bold text-lg md:text-xl text-gray-800 md:hidden">
-            Exergy Services
+            Energy Services
           </div>
 
           {/* Desktop Navigation - Hidden on mobile */}

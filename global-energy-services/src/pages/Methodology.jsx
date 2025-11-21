@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import PageLayout from '../components/PageLayout';
 import AIChatbot from '../components/AIChatbot';
+import EnergyFlowDiagram from '../components/EnergyFlowDiagram';
 
 export default function Methodology() {
   // Force scroll to top on mount
@@ -30,7 +31,7 @@ export default function Methodology() {
               Traditional energy metrics measure <strong>primary energy</strong> - the energy content of fossil fuels after they are extracted and before they are converted into useful work. This is fundamentally misleading because it counts massive amounts of wasted heat as if it were useful energy, and it's also not possible to calculate the primary energy vallues for renewables with precision.
             </p>
             <p className="mb-4">
-              To solve this problem, this platform uses a <strong>three-tier framework</strong> that measures <strong>Exergy Services</strong> - the thermodynamic work potential of energy - to approximate the actual <strong>energy services</strong> (heating, mobility, manufacturing) delivered to society:
+              To solve this problem, this platform uses a <strong>three-tier framework</strong> that measures <strong>Energy Services</strong> - the thermodynamic work potential of energy - to approximate the actual <strong>energy services</strong> (heating, mobility, manufacturing) delivered to society:
             </p>
             <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
               <div className="space-y-3">
@@ -43,7 +44,7 @@ export default function Methodology() {
                   <p className="text-gray-700">Energy that reaches end-users after conversion losses (efficiency × primary). Global: ~198 EJ/year</p>
                 </div>
                 <div>
-                  <strong className="text-blue-800">Tier 3: Exergy Services</strong>
+                  <strong className="text-blue-800">Tier 3: Energy Services</strong>
                   <p className="text-gray-700">Thermodynamic work potential delivered, accounting for energy quality (exergy factor × useful energy). Global: ~149 EJ/year</p>
                 </div>
               </div>
@@ -51,8 +52,8 @@ export default function Methodology() {
             <div className="bg-gray-100 border border-gray-300 p-4 text-center">
               <p className="font-semibold mb-2">A Simple Example:</p>
               <p className="text-gray-700">
-                <strong>Coal Power:</strong> 1 EJ primary → 0.32 EJ useful → 0.25 EJ exergy services<br/>
-                <strong>Wind Power:</strong> 1 EJ primary → 0.88 EJ useful → 0.84 EJ exergy services<br/>
+                <strong>Coal Power:</strong> 1 EJ primary → 0.32 EJ useful → 0.25 EJ energy services<br/>
+                <strong>Wind Power:</strong> 1 EJ primary → 0.88 EJ useful → 0.84 EJ energy services<br/>
                 <strong>Wind delivers 3.4× more thermodynamic value per unit of primary energy.</strong>
               </p>
             </div>
@@ -65,7 +66,7 @@ export default function Methodology() {
             </h2>
             <p className="mb-4">
               Fossil fuels are incredibly inefficient. 60-65% of the primary energy that they contain is wasted as heat during combustion and conversion. Clean electricity sources such as renewables and nuclear are far more efficient, although some transmission and end-use losses still apply.
-              This platform measures <strong>exergy services</strong> - thermodynamic work potential in EJ - which approximates the actual energy services (heating, cooling, mobility, manufacturing) that matter to society.
+              This platform measures <strong>energy services</strong> using exergy (thermodynamic work potential in EJ) - which accurately quantifies the actual benefits (heating, cooling, mobility, manufacturing) that energy delivers to society.
             </p>
             <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
               <p className="font-semibold text-gray-800 mb-2">System-Wide Efficiency Measurements by Source (Primary → Useful):</p>
@@ -81,15 +82,20 @@ export default function Methodology() {
                 <li>• Geothermal: <strong>82% efficient</strong> - Direct use + binary cycle + T&D losses</li>
               </ul>
               <p className="text-sm text-gray-600 mt-3">
-                <em>Note: For exergy services calculations (Tier 3), these values are further adjusted by exergy quality factors, accounting for transmission losses and end-use distribution (e.g., wind/solar ~84-95% effective for exergy services delivery).</em>
+                <em>Note: For energy services calculations (Tier 3), these values are further adjusted by exergy quality factors, accounting for transmission losses and end-use distribution (e.g., wind/solar ~84-95% effective for energy services delivery).</em>
               </p>
             </div>
             <p className="mb-4">
               <strong>Exergy Quality Factors:</strong> Many people are unaware of the fact that energy has both a quantity and a quality to it. In order to accurately calculate the quantity of energy, it's essential to account for the thermodynamic quality, which is known as <strong>exergy</strong>. Electricity has 100% exergy, because it can be used to do any work, but low-temperature heat has a quality of ~20% because it can only be used to perform some work. It doesn't matter how much low-temperature heat you have, you still won't be able to make steel. This gives clean energy sources an enormous advantage, because they provide electricity directly, which is the highest quality form of energy that there is.
             </p>
             <p>
-              This is also why electrification is so powerful, and why it's the single most important thing that we can improve about the way we produce and consume energy. When we replace an energy service from fossil fuels to clean energy, we actually need 3.0-3.4× less primary energy to accomplish the same amount of thermodynamic work. This is one of the most underappreciated aspects of the energy transition, and it means that we don't need to replace 100% of fossil fuel primary energy consumption, we only need to replace ~30-35% of it to provide the same exergy services.
+              This is also why electrification is so powerful, and why it's the single most important thing that we can improve about the way we produce and consume energy. When we replace an energy service from fossil fuels to clean energy, we actually need 3.0-3.4× less primary energy to accomplish the same amount of thermodynamic work. This is one of the most underappreciated aspects of the energy transition, and it means that we don't need to replace 100% of fossil fuel primary energy consumption, we only need to replace ~30-35% of it to provide the same energy services.
             </p>
+          </section>
+
+          {/* Energy Flow Diagram */}
+          <section>
+            <EnergyFlowDiagram />
           </section>
 
           {/* How We Calculate Everything */}
@@ -106,7 +112,7 @@ export default function Methodology() {
             <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4">
               <p className="font-semibold text-gray-800 mb-2">Validation ✓</p>
               <p className="text-sm text-gray-700">
-                The results are then fine-tuned to align with academic benchmarks: Brockway et al. 2019 (~100 EJ exergy services for 2015, ~149 EJ for 2024), IEA WEO 2024 (82.9% fossil exergy services, 24.6% exergy efficiency), and RMI 2024 (3.0-3.4× clean advantage).
+                The results are then fine-tuned to align with academic benchmarks: Brockway et al. 2019 (~100 EJ energy services for 2015, ~149 EJ for 2024), IEA WEO 2024 (82.9% fossil energy services, 24.6% exergy efficiency), and RMI 2024 (3.0-3.4× clean advantage).
               </p>
             </div>
           </section>
@@ -121,7 +127,7 @@ export default function Methodology() {
             </p>
             <div className="space-y-3">
               <div className="border-l-4 border-red-600 pl-4">
-                <strong>Exergy Services Demand:</strong> The net change in demand for new exergy services (positive or negative).
+                <strong>Energy Services Demand:</strong> The net change in demand for new energy services (positive or negative).
               </div>
               <div className="border-l-4 border-green-600 pl-4">
                 <strong>Clean Energy Displacement (D):</strong> The amount of fossil fuel consumption replaced by clean energy growth in a given year.
@@ -138,7 +144,7 @@ export default function Methodology() {
             </p>
             <div className="bg-gray-100 border border-gray-300 p-4 my-4 text-center">
               <p className="text-lg font-bold text-blue-600 mb-2">
-                Δ Fossil Fuel Consumption = Exergy Services Demand - Clean Displacement - Efficiency Savings
+                Δ Fossil Fuel Consumption = Energy Services Demand - Clean Displacement - Efficiency Savings
               </p>
               <p className="text-sm text-gray-600">
                 When this number is positive, it means that fossil fuel consumption is increasing.
@@ -188,13 +194,13 @@ export default function Methodology() {
               <div>
                 <strong className="text-gray-800">IEA World Energy Outlook (WEO) 2024</strong>
                 <p className="mt-1">
-                  Exergy efficiency benchmarks (~25% global), fossil/clean exergy service shares (80-82% / 18-20%), and efficiency factor validation. Our 2024 results: 24.8% exergy efficiency, 82.9% fossil exergy services ✓
+                  Exergy efficiency benchmarks (~25% global), fossil/clean exergy service shares (80-82% / 18-20%), and efficiency factor validation. Our 2024 results: 24.8% exergy efficiency, 82.9% fossil energy services ✓
                 </p>
               </div>
               <div>
                 <strong className="text-gray-800">Brockway et al. 2019</strong>
                 <p className="mt-1">
-                  Academic foundation for exergy services framework. Estimated ~100 EJ global exergy services (2015). Our 2024 result: 150 EJ exergy services ✓ (aligned with ~120 EJ expected for 2024)
+                  Academic foundation for energy services framework. Estimated ~100 EJ global energy services (2015). Our 2024 result: 150 EJ energy services ✓ (aligned with ~120 EJ expected for 2024)
                 </p>
               </div>
               <div>
@@ -218,7 +224,7 @@ export default function Methodology() {
               Why This Matters
             </h2>
             <p className="mb-4">
-              By measuring exergy services instead of primary energy, we can finally get an accurate sense of what energy sources are delivering to society. This platform tracks global energy services using an exergy-weighted methodology - measuring thermodynamic work potential in EJ to approximate the actual energy services (heating, mobility, manufacturing) that matter. This will allow us to gain useful insights into how the energy transition is progressing, and it will allow us to track the true impact of whether clean energy sources are displacing fossil fuel consumption, or not. It also helps us understand the power of electrification, and can help identify how close we are to peak fossil fuel consumption.
+              By measuring energy services instead of primary energy, we can finally get an accurate sense of what energy sources are delivering to society. This platform tracks global energy services using an exergy-weighted methodology - measuring thermodynamic work potential in EJ to approximate the actual energy services (heating, mobility, manufacturing) that matter. This will allow us to gain useful insights into how the energy transition is progressing, and it will allow us to track the true impact of whether clean energy sources are displacing fossil fuel consumption, or not. It also helps us understand the power of electrification, and can help identify how close we are to peak fossil fuel consumption.
             </p>
             <p className="mb-4">
               It's not just about better data and metrics - it's about making better decisions. Such as whether to build an LNG terminal and import natural gas for the next 30 years, or to build a series of renewable energy projects and not have to import any fuels for the next 30 years. When policymakers, businesses, and citizens understand that electric vehicles displace 3x their weight in fossil fuels, or that heat pumps cut energy use by 70%, it can change the entire conversation about climate action.

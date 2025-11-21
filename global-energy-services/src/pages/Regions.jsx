@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import PageLayout from '../components/PageLayout';
 import { AreaChart, Area, BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
-import { ENERGY_COLORS, getSourceName, REGION_COLORS, getRegionColor } from '../utils/colors';
+import { ENERGY_COLORS, getSourceName, REGION_COLORS, getRegionColor, SERVICES_COLORS, getServiceName } from '../utils/colors';
 import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons } from '../utils/chartExport';
 import ChartFullscreenModal from '../components/ChartFullscreenModal';
 import FullscreenButton from '../components/FullscreenButton';
@@ -11,6 +11,43 @@ import AIChatbot from '../components/AIChatbot';
 const ENERGY_SOURCES = ['coal', 'oil', 'gas', 'nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
 const FOSSIL_SOURCES = ['coal', 'oil', 'gas'];
 const CLEAN_SOURCES = ['nuclear', 'hydro', 'wind', 'solar', 'biofuels', 'other_renewables'];
+
+// All 15 sectors from sectoral_energy_timeseries_2004_2024.json
+const SECTORS = [
+  'transport_road',
+  'transport_aviation',
+  'transport_shipping',
+  'transport_rail',
+  'industry_iron_steel',
+  'industry_chemicals',
+  'industry_cement',
+  'industry_aluminum',
+  'industry_pulp_paper',
+  'other_industry',
+  'residential_heating',
+  'residential_appliances',
+  'residential_cooling',
+  'commercial_buildings',
+  'agriculture'
+];
+
+const SECTOR_NAMES = {
+  'transport_road': 'Road Transport',
+  'transport_aviation': 'Aviation',
+  'transport_shipping': 'Shipping',
+  'transport_rail': 'Rail',
+  'industry_iron_steel': 'Iron & Steel',
+  'industry_chemicals': 'Chemicals',
+  'industry_cement': 'Cement',
+  'industry_aluminum': 'Aluminum',
+  'industry_pulp_paper': 'Pulp & Paper',
+  'other_industry': 'Other Industry',
+  'residential_heating': 'Residential Heating',
+  'residential_appliances': 'Residential Appliances',
+  'residential_cooling': 'Residential Cooling',
+  'commercial_buildings': 'Commercial Buildings',
+  'agriculture': 'Agriculture'
+};
 
 // Helper function to handle both _services_ej and _useful_ej field names for backward compatibility
 const getEnergyValue = (data, field) => {
@@ -53,11 +90,14 @@ export default function Regions() {
   const [selectedSources, setSelectedSources] = useState([]); // Multiple sources for sources mode - starts empty when category is active
   const [selectedRegion, setSelectedRegion] = useState('Global'); // Single region for sources mode - default to Global
   const [selectedRegionForMix, setSelectedRegionForMix] = useState('Global');
+  const [selectedSector, setSelectedSector] = useState('all'); // End-use service/sector filter - default to "all"
   const [viewMode, setViewMode] = useState('regions'); // 'regions' or 'sources'
   const [quickFilterRegions, setQuickFilterRegions] = useState('all'); // 'all', 'fossil', 'clean' for regions mode
   const [quickFilterSources, setQuickFilterSources] = useState('all'); // 'all', 'fossil', 'clean' for sources mode - when active, selectedSources is ignored
   const [showRelativeChart3, setShowRelativeChart3] = useState(false); // Show relative values for Chart 3
   const [showAnnualChange, setShowAnnualChange] = useState(false); // Show annual change instead of absolute values for Chart 1
+  const [sectoralData, setSectoralData] = useState(null); // Sectoral breakdown data (2024 snapshot)
+  const [sectoralTimeseries, setSectoralTimeseries] = useState(null); // Sectoral timeseries data (2004-2024)
 
   // Force scroll to top on mount
   useEffect(() => {
@@ -78,9 +118,13 @@ export default function Regions() {
   useEffect(() => {
     Promise.all([
       fetch('/data/regional_energy_timeseries.json').then(res => res.json()),
-      fetch('/data/exergy_services_timeseries.json').then(res => res.json())
+      fetch('/data/exergy_services_timeseries.json').then(res => res.json()),
+      fetch('/data/sectoral_energy_breakdown_v2.json').then(res => res.json()),
+      fetch('/data/sectoral_energy_timeseries_2004_2024.json').then(res => res.json())
     ])
-      .then(([regionalData, globalData]) => {
+      .then(([regionalData, globalData, sectorData, sectorTimeseries]) => {
+        setSectoralData(sectorData);
+        setSectoralTimeseries(sectorTimeseries);
         // Transform global data to match regional data structure
         // Convert from EJ to PJ by multiplying by 1000
         const globalRegionData = {
@@ -137,6 +181,65 @@ export default function Regions() {
   const chart1Data = useMemo(() => {
     if (!filteredByTime) return [];
 
+    // If sector is selected and it's not "all", we need sectoral timeseries data
+    // Note: Sectoral data only available for Global region from 2004-2024
+    if (selectedSector !== 'all') {
+      if (!sectoralTimeseries) return [];
+
+      // Only show data when Global is one of the selected regions or when in sources mode with Global selected
+      const canShowSectoralData = (viewMode === 'regions' && selectedRegions.includes('Global')) ||
+                                   (viewMode === 'sources' && selectedRegion === 'Global');
+
+      if (!canShowSectoralData) return [];
+
+      // Filter to years 2004-2024 (sectoral data availability)
+      return sectoralTimeseries.data.map(yearData => {
+        const row = { year: yearData.year };
+        const sectorData = yearData.sectors[selectedSector];
+
+        if (!sectorData) return row;
+
+        if (viewMode === 'regions') {
+          // In regions mode, show Global sector data by selected source
+          if (selectedSource === 'all') {
+            row['Global'] = sectorData.total_ej * 1000; // Convert to PJ
+          } else if (selectedSource === 'fossil') {
+            row['Global'] = sectorData.fossil_ej * 1000;
+          } else if (selectedSource === 'clean') {
+            row['Global'] = sectorData.clean_ej * 1000;
+          } else {
+            // Individual source not available in sector data, return 0
+            row['Global'] = 0;
+          }
+        } else if (viewMode === 'sources') {
+          // In sources mode, show data based on quick filter or selected sources
+          let sourcesToShow = [];
+          if (quickFilterSources === 'all') {
+            // Show both fossil and clean as separate series
+            row['Fossil Fuels'] = sectorData.fossil_ej * 1000;
+            row['Clean Energy'] = sectorData.clean_ej * 1000;
+          } else if (quickFilterSources === 'fossil') {
+            // Show only fossil
+            row['Fossil Fuels'] = sectorData.fossil_ej * 1000;
+          } else if (quickFilterSources === 'clean') {
+            // Show only clean
+            row['Clean Energy'] = sectorData.clean_ej * 1000;
+          } else {
+            // Individual sources selected - but sector data only has fossil/clean breakdown
+            // So we show based on which category the selected sources belong to
+            const hasFossil = selectedSources.some(s => FOSSIL_SOURCES.includes(s));
+            const hasClean = selectedSources.some(s => CLEAN_SOURCES.includes(s));
+
+            if (hasFossil) row['Fossil Fuels'] = sectorData.fossil_ej * 1000;
+            if (hasClean) row['Clean Energy'] = sectorData.clean_ej * 1000;
+          }
+        }
+
+        return row;
+      });
+    }
+
+    // Standard processing when no sector filter is active
     // Get all years
     const firstRegion = Object.values(filteredByTime)[0];
     if (!firstRegion || !firstRegion.data.length) return [];
@@ -221,7 +324,7 @@ export default function Regions() {
     }
 
     return absoluteData;
-  }, [filteredByTime, selectedRegions, selectedSource, viewMode, selectedSources, selectedRegion, quickFilterSources, showAnnualChange]);
+  }, [filteredByTime, selectedRegions, selectedSource, viewMode, selectedSources, selectedRegion, quickFilterSources, showAnnualChange, selectedSector, sectoralTimeseries]);
 
   // Process data for Chart 2 (2024 snapshot comparison)
   const chart2Data = useMemo(() => {
@@ -336,15 +439,15 @@ export default function Regions() {
     if (viewMode === 'regions') {
       // Handle virtual source labels
       if (selectedSource === 'all') {
-        return changePrefix + 'All Sources Exergy Services' + changeSuffix;
+        return changePrefix + 'All Sources Energy Services' + changeSuffix;
       } else if (selectedSource === 'fossil') {
-        return changePrefix + 'Fossil Fuels Exergy Services' + changeSuffix;
+        return changePrefix + 'Fossil Fuels Energy Services' + changeSuffix;
       } else if (selectedSource === 'clean') {
-        return changePrefix + 'Clean Exergy Services' + changeSuffix;
+        return changePrefix + 'Clean Energy Services' + changeSuffix;
       }
-      return changePrefix + `${getSourceName(selectedSource)} Exergy Services` + changeSuffix;
+      return changePrefix + `${getSourceName(selectedSource)} Energy Services` + changeSuffix;
     } else {
-      return changePrefix + 'Exergy Services' + changeSuffix;
+      return changePrefix + 'Energy Services' + changeSuffix;
     }
   };
 
@@ -365,7 +468,7 @@ export default function Regions() {
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-1">
-              Regional Exergy Services Over Time
+              Regional Energy Services Over Time
             </h2>
             <p className="text-sm text-gray-600">
               Compare energy service demand evolution across selected regions
@@ -528,6 +631,43 @@ export default function Regions() {
                   ))}
                 </div>
               </div>
+
+              {/* Sector Selection */}
+              <div className="mt-6">
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Sector
+                  {selectedSector !== 'all' && !selectedRegions.includes('Global') && (
+                    <span className="ml-2 text-sm text-orange-600 font-normal">
+                      (⚠ Sectoral data only available for Global region)
+                    </span>
+                  )}
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedSector('all')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSector === 'all'
+                        ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    All Sectors
+                  </button>
+                  {SECTORS.map(sector => (
+                    <button
+                      key={sector}
+                      onClick={() => setSelectedSector(sector)}
+                      className={`px-3 py-2 rounded-lg font-medium transition-all text-xs ${
+                        selectedSector === sector
+                          ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      {SECTOR_NAMES[sector]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </>
           ) : (
             <>
@@ -631,6 +771,43 @@ export default function Regions() {
                       }}
                     >
                       {getSourceName(source)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sector Selection for Sources Mode */}
+              <div className="mt-6">
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Sector
+                  {selectedSector !== 'all' && selectedRegion !== 'Global' && (
+                    <span className="ml-2 text-sm text-orange-600 font-normal">
+                      (⚠ Sectoral data only available for Global region)
+                    </span>
+                  )}
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedSector('all')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSector === 'all'
+                        ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    All Sectors
+                  </button>
+                  {SECTORS.map(sector => (
+                    <button
+                      key={sector}
+                      onClick={() => setSelectedSector(sector)}
+                      className={`px-3 py-2 rounded-lg font-medium transition-all text-xs ${
+                        selectedSector === sector
+                          ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      {SECTOR_NAMES[sector]}
                     </button>
                   ))}
                 </div>
@@ -1024,7 +1201,7 @@ export default function Regions() {
             <XAxis dataKey="year" />
             <YAxis
               label={{
-                value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Exergy Services (PJ)',
+                value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Energy Services (PJ)',
                 angle: -90,
                 position: 'insideLeft',
                 style: { textAnchor: 'middle' }
@@ -1104,7 +1281,7 @@ export default function Regions() {
       <ChartFullscreenModal
         isOpen={isFullscreenChart1}
         onClose={() => setIsFullscreenChart1(false)}
-        title="Regional Exergy Services Over Time"
+        title="Regional Energy Services Over Time"
         description="Compare exergy service demand evolution across selected regions"
       >
         {/* Filter Controls */}
@@ -1253,6 +1430,43 @@ export default function Regions() {
                   ))}
                 </div>
               </div>
+
+              {/* Sector Selection */}
+              <div className="mt-6">
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Sector
+                  {selectedSector !== 'all' && !selectedRegions.includes('Global') && (
+                    <span className="ml-2 text-sm text-orange-600 font-normal">
+                      (⚠ Sectoral data only available for Global region)
+                    </span>
+                  )}
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedSector('all')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSector === 'all'
+                        ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    All Sectors
+                  </button>
+                  {SECTORS.map(sector => (
+                    <button
+                      key={sector}
+                      onClick={() => setSelectedSector(sector)}
+                      className={`px-3 py-2 rounded-lg font-medium transition-all text-xs ${
+                        selectedSector === sector
+                          ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      {SECTOR_NAMES[sector]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </>
           ) : (
             <>
@@ -1356,6 +1570,43 @@ export default function Regions() {
                       }}
                     >
                       {getSourceName(source)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sector Selection for Sources Mode */}
+              <div className="mt-6">
+                <label className="block text-lg font-semibold mb-3 text-gray-700">
+                  Select Sector
+                  {selectedSector !== 'all' && selectedRegion !== 'Global' && (
+                    <span className="ml-2 text-sm text-orange-600 font-normal">
+                      (⚠ Sectoral data only available for Global region)
+                    </span>
+                  )}
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedSector('all')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedSector === 'all'
+                        ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-2'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    All Sectors
+                  </button>
+                  {SECTORS.map(sector => (
+                    <button
+                      key={sector}
+                      onClick={() => setSelectedSector(sector)}
+                      className={`px-3 py-2 rounded-lg font-medium transition-all text-xs ${
+                        selectedSector === sector
+                          ? 'bg-purple-600 text-white ring-2 ring-purple-600 ring-offset-2'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      {SECTOR_NAMES[sector]}
                     </button>
                   ))}
                 </div>
@@ -1731,7 +1982,7 @@ export default function Regions() {
             <XAxis dataKey="year" />
             <YAxis
               label={{
-                value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Exergy Services (PJ)',
+                value: showRelativeChart3 ? 'Share of Total Energy (%)' : 'Energy Services (PJ)',
                 angle: -90,
                 position: 'insideLeft',
                 style: { textAnchor: 'middle' }
@@ -1841,7 +2092,7 @@ export default function Regions() {
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
             <h3 className="font-bold text-lg text-gray-800 mb-2">Regional Disparities</h3>
             <p className="text-gray-700">
-              Energy access remains deeply unequal across regions. Some regions consume significantly more exergy services per capita than others. Closing this gap equitably while decarbonizing is the central challenge of the 21st century.
+              Energy access remains deeply unequal across regions. Some regions consume significantly more energy services per capita than others. Closing this gap equitably while decarbonizing is the central challenge of the 21st century.
             </p>
           </div>
 

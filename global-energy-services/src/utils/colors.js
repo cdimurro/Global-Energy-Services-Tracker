@@ -82,3 +82,29 @@ export const getRegionColor = (region) => REGION_COLORS[region] || '#999';
 
 // Get display name for a region (can add mapping if needed)
 export const getRegionName = (regionKey) => regionKey;
+
+// Energy Services color palette
+export const SERVICES_COLORS = {
+  mobility: '#FF6B35',           // Orange-red (movement, energy)
+  heating: '#E74C3C',            // Red (warmth, heat)
+  cooling: '#3498DB',            // Blue (cool, ice)
+  manufacturing: '#2C3E50',      // Dark blue-grey (industry, steel)
+  illumination: '#F39C12',       // Yellow-orange (light, sun)
+  appliances_equipment: '#9B59B6' // Purple (electronics, modern tech)
+};
+
+// Energy Services display names
+export const SERVICES_NAMES = {
+  mobility: 'Mobility',
+  heating: 'Heating',
+  cooling: 'Cooling',
+  manufacturing: 'Manufacturing',
+  illumination: 'Illumination',
+  appliances_equipment: 'Appliances & Equipment'
+};
+
+// Get color for a service
+export const getServiceColor = (service) => SERVICES_COLORS[service] || '#999';
+
+// Get display name for a service
+export const getServiceName = (service) => SERVICES_NAMES[service] || service;

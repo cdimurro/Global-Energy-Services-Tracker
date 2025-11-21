@@ -135,11 +135,31 @@ export default function DisplacementBySector() {
       // Calculate totals
       const totalCleanGrowth = sectors.reduce((sum, s) => sum + Math.max(0, s.cleanGrowth), 0);
       const totalAnnualClean = sectors.reduce((sum, s) => sum + Math.max(0, s.annualCleanGrowth), 0);
+      const totalTotalGrowth = sectors.reduce((sum, s) => sum + s.totalGrowth, 0);
+      const totalFossilChange = sectors.reduce((sum, s) => sum + s.fossilChange, 0);
+      const totalAnnualTotal = sectors.reduce((sum, s) => sum + s.annualTotalGrowth, 0);
+
+      // Calculate weighted average growth rate and total start/end values
+      const totalStartValue = sectors.reduce((sum, s) => sum + s.startTotal, 0);
+      const totalEndValue = sectors.reduce((sum, s) => sum + s.endTotal, 0);
+      const avgGrowthRate = totalStartValue > 0 ? ((totalEndValue / totalStartValue) - 1) * 100 / period.years : 0;
+
+      // Calculate total fossil share change (weighted by sector size)
+      const totalStartFossil = sectors.reduce((sum, s) => sum + (s.startTotal * s.startFossilShare), 0);
+      const totalEndFossil = sectors.reduce((sum, s) => sum + (s.endTotal * s.endFossilShare), 0);
+      const totalFossilShareChange = (totalEndFossil / totalEndValue) - (totalStartFossil / totalStartValue);
 
       sectorDisplacement[periodKey] = {
         sectors,
         totalCleanGrowth,
         totalAnnualClean,
+        totalTotalGrowth,
+        totalFossilChange,
+        totalAnnualTotal,
+        avgGrowthRate,
+        totalStartValue,
+        totalEndValue,
+        totalFossilShareChange,
         period: period.label
       };
     });
@@ -210,27 +230,70 @@ export default function DisplacementBySector() {
     if (!active || !payload || payload.length === 0) return null;
 
     const data = payload[0].payload;
+    const isAnnualPeriod = selectedPeriod === 'current'; // 2023-2024 is already annual
 
     return (
-      <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
-        <div className="font-bold text-lg mb-3">{label}</div>
+      <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200 max-w-md">
+        <div className="font-bold text-lg mb-3 text-gray-900">{label}</div>
         <div className="space-y-2 text-sm">
-          <div>
-            <strong>Annual Clean Growth:</strong> {data.annualCleanGrowth > 0 ? '+' : ''}{data.annualCleanGrowth.toFixed(3)} EJ/year
+          {/* Clean Growth - Always show with green background */}
+          <div className="bg-green-50 p-2 rounded">
+            <div className="flex justify-between items-center">
+              <strong className="text-green-800">Clean Growth:</strong>
+              <span className="font-semibold text-green-700">
+                {data.cleanGrowth > 0 ? '+' : ''}{data.cleanGrowth.toFixed(2)} EJ
+              </span>
+            </div>
+            {!isAnnualPeriod && (
+              <div className="flex justify-between items-center text-xs mt-1">
+                <span className="text-green-700">Annual Rate:</span>
+                <span className="font-medium text-green-600">
+                  {data.annualCleanGrowth > 0 ? '+' : ''}{data.annualCleanGrowth.toFixed(3)} EJ/year
+                </span>
+              </div>
+            )}
           </div>
-          <div>
-            <strong>Total Clean Growth:</strong> {data.cleanGrowth > 0 ? '+' : ''}{data.cleanGrowth.toFixed(2)} EJ
+
+          {/* Total Growth Rate */}
+          <div className="bg-blue-50 p-2 rounded">
+            <div className="flex justify-between items-center">
+              <strong className="text-blue-800">Growth Rate:</strong>
+              <span className="font-semibold text-blue-700">
+                {data.growthRate > 0 ? '+' : ''}{data.growthRate.toFixed(1)}% /year
+              </span>
+            </div>
           </div>
-          <div>
-            <strong>Total Growth Rate:</strong> {data.growthRate > 0 ? '+' : ''}{data.growthRate.toFixed(1)}% per year
+
+          {/* Fossil Change - Color based on value */}
+          <div className={`p-2 rounded ${data.fossilChange > 0 ? 'bg-red-50' : 'bg-green-50'}`}>
+            <div className="flex justify-between items-center">
+              <strong className={data.fossilChange > 0 ? 'text-red-800' : 'text-green-800'}>
+                Fossil Change:
+              </strong>
+              <span className={`font-semibold ${data.fossilChange > 0 ? 'text-red-700' : 'text-green-700'}`}>
+                {data.fossilChange > 0 ? '+' : ''}{data.fossilChange.toFixed(2)} EJ
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs mt-1">
+              <span className={data.fossilIntensityChange < 0 ? 'text-green-700' : 'text-red-700'}>
+                Share Change:
+              </span>
+              <span className={`font-medium ${data.fossilIntensityChange < 0 ? 'text-green-600' : 'text-red-600'}`}>
+                {data.fossilIntensityChange > 0 ? '+' : ''}{(data.fossilIntensityChange * 100).toFixed(1)}%
+              </span>
+            </div>
           </div>
-          <div className="border-t pt-2 mt-2">
-            <div><strong>Fossil Change:</strong> {data.fossilChange > 0 ? '+' : ''}{data.fossilChange.toFixed(2)} EJ</div>
-            <div><strong>Fossil Share Change:</strong> {data.fossilIntensityChange > 0 ? '+' : ''}{(data.fossilIntensityChange * 100).toFixed(1)}%</div>
-          </div>
-          <div className="border-t pt-2 mt-2">
-            <div><strong>Start Total:</strong> {data.startTotal.toFixed(2)} EJ</div>
-            <div><strong>End Total:</strong> {data.endTotal.toFixed(2)} EJ</div>
+
+          {/* Start/End Totals */}
+          <div className="border-t pt-2 mt-2 text-gray-600">
+            <div className="flex justify-between">
+              <span>Start:</span>
+              <span className="font-medium">{data.startTotal.toFixed(2)} EJ</span>
+            </div>
+            <div className="flex justify-between">
+              <span>End:</span>
+              <span className="font-medium">{data.endTotal.toFixed(2)} EJ</span>
+            </div>
           </div>
         </div>
       </div>
@@ -281,7 +344,7 @@ export default function DisplacementBySector() {
             <span className="text-2xl ml-2 text-gray-500">EJ</span>
           </div>
           <div className="text-sm text-gray-600 mt-2">
-            Total clean exergy services added across all sectors
+            Total clean energy services added across all sectors
           </div>
         </div>
 
@@ -406,18 +469,34 @@ export default function DisplacementBySector() {
               ))}
               <tr className="bg-gray-100 border-t-2 border-gray-300 font-bold">
                 <td className="px-4 py-3">TOTAL</td>
-                <td className="px-4 py-3 text-right">-</td>
-                <td className="px-4 py-3 text-right">-</td>
-                <td className="px-4 py-3 text-right">-</td>
+                <td className="px-4 py-3 text-right text-gray-700">
+                  {currentData.totalStartValue.toFixed(2)}
+                </td>
+                <td className="px-4 py-3 text-right text-gray-700">
+                  {currentData.totalEndValue.toFixed(2)}
+                </td>
+                <td className="px-4 py-3 text-right text-blue-600">
+                  {currentData.totalTotalGrowth > 0 ? '+' : ''}{currentData.totalTotalGrowth.toFixed(2)} EJ
+                </td>
                 <td className="px-4 py-3 text-right text-green-600">
                   +{currentData.totalCleanGrowth.toFixed(2)} EJ
                 </td>
-                <td className="px-4 py-3 text-right">-</td>
+                <td className="px-4 py-3 text-right">
+                  <span className={currentData.totalFossilChange > 0 ? 'text-red-600' : 'text-green-600'}>
+                    {currentData.totalFossilChange > 0 ? '+' : ''}{currentData.totalFossilChange.toFixed(2)} EJ
+                  </span>
+                </td>
                 <td className="px-4 py-3 text-right text-green-600">
                   +{currentData.totalAnnualClean.toFixed(3)} EJ/year
                 </td>
-                <td className="px-4 py-3 text-right">-</td>
-                <td className="px-4 py-3 text-right">-</td>
+                <td className="px-4 py-3 text-right text-gray-700">
+                  {currentData.avgGrowthRate > 0 ? '+' : ''}{currentData.avgGrowthRate.toFixed(1)}%
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <span className={currentData.totalFossilShareChange < 0 ? 'text-green-600' : 'text-red-600'}>
+                    {currentData.totalFossilShareChange > 0 ? '+' : ''}{(currentData.totalFossilShareChange * 100).toFixed(1)}%
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>

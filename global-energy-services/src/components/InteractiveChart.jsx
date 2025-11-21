@@ -171,7 +171,7 @@ export default function InteractiveChart() {
                   </div>
                 );
               } else {
-                // Calculate percentage based on actual total exergy services for this year
+                // Calculate percentage based on actual total energy services for this year
                 const percentage = actualTotal > 0 ? ((entry.value / actualTotal) * 100).toFixed(2) : '0.00';
                 return (
                   <div key={index} className="flex items-center justify-between gap-4">
@@ -273,7 +273,7 @@ export default function InteractiveChart() {
             domain={showRelative ? [0, 100] : [0, 'auto']}
             ticks={showRelative ? [0, 25, 50, 75, 100] : undefined}
             label={{
-              value: showRelative ? 'Share of Total Energy (%)' : 'Global Exergy Services (EJ)',
+              value: showRelative ? 'Share of Total Energy (%)' : 'Global Energy Services (EJ)',
               angle: -90,
               position: 'insideLeft',
               style: { fontSize: 17, fontWeight: 600 }
@@ -304,7 +304,7 @@ export default function InteractiveChart() {
         <LineChart data={chartData} margin={{ top: 20, right: 40, left: 80, bottom: 20 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="year" tick={{ fontSize: 15 }} interval="preserveStartEnd" height={60} />
-          <YAxis tick={{ fontSize: 15 }} width={80} domain={[yAxisMin, yAxisMax]} label={{ value: 'Change in Global Exergy Services (EJ)', angle: -90, position: 'insideLeft', style: { fontSize: 17, fontWeight: 600 } }} />
+          <YAxis tick={{ fontSize: 15 }} width={80} domain={[yAxisMin, yAxisMax]} label={{ value: 'Change in Global Energy Services (EJ)', angle: -90, position: 'insideLeft', style: { fontSize: 17, fontWeight: 600 } }} />
           <Tooltip content={<ChangeTooltip />} />
           <ReferenceLine y={0} stroke="#000" strokeWidth={2} />
           {viewMode === 'grouped' ? (
@@ -400,7 +400,7 @@ export default function InteractiveChart() {
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}
               >
-                Total Exergy Services
+                Total Energy Services
               </button>
               <button
                 onClick={() => setChartType('change')}
@@ -415,7 +415,7 @@ export default function InteractiveChart() {
             </div>
           </div>
 
-          {/* Display Relative toggle - only show for Total Exergy Services */}
+          {/* Display Relative toggle - only show for Total Energy Services */}
           {chartType === 'absolute' && (
             <div className="flex items-center gap-4 mt-8">
               <label className="text-lg font-semibold text-gray-700">Display Relative Values</label>
@@ -556,7 +556,7 @@ export default function InteractiveChart() {
         {/* Header with Download Buttons */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">
-            Interactive Exergy Services Explorer
+            Interactive Energy Services Explorer
           </h2>
           <div className="flex gap-2">
             <ChartExportButtons
@@ -574,7 +574,7 @@ export default function InteractiveChart() {
       <ChartFullscreenModal
         isOpen={isFullscreen}
         onClose={() => setIsFullscreen(false)}
-        title="Interactive Exergy Services Explorer"
+        title="Interactive Energy Services Explorer"
         description="Explore historical energy trends by source and view type"
         exportButtons={
           <ChartExportButtons

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useWindowSize } from '@react-hook/window-size';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { ENERGY_COLORS, getSourceName } from '../utils/colors';
+import { ENERGY_COLORS, getSourceName, SERVICES_COLORS, getServiceName } from '../utils/colors';
 import InteractiveChart from '../components/InteractiveChart';
 import PageLayout from '../components/PageLayout';
 import AIChatbot from '../components/AIChatbot';
@@ -10,19 +10,24 @@ import { downloadChartAsPNG, downloadDataAsCSV, ChartExportButtons } from '../ut
 export default function Home() {
   const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [data, setData] = useState(null);
+  const [sectoralData, setSectoralData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Refs for charts - must be before conditional return
   const globalEnergyChartRef = useRef(null);
   const fossilBreakdownChartRef = useRef(null);
   const cleanBreakdownChartRef = useRef(null);
+  const servicesBreakdownChartRef = useRef(null);
 
   useEffect(() => {
-    fetch('/data/exergy_services_timeseries.json')
-      .then(res => res.json())
-      .then(jsonData => {
-        const latestYear = jsonData.data[jsonData.data.length - 1];
+    Promise.all([
+      fetch('/data/exergy_services_timeseries.json').then(res => res.json()),
+      fetch('/data/sectoral_energy_breakdown_v2.json').then(res => res.json())
+    ])
+      .then(([energyData, sectorData]) => {
+        const latestYear = energyData.data[energyData.data.length - 1];
         setData(latestYear);
+        setSectoralData(sectorData);
         setLoading(false);
       })
       .catch(err => {
@@ -75,7 +80,7 @@ export default function Home() {
     return `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(2)}%)`;
   };
 
-  // Download functions for Global Exergy Services chart
+  // Download functions for Global Energy Services chart
   const downloadGlobalEnergyPNG = () => {
     downloadChartAsPNG(globalEnergyChartRef, `global_exergy_services_${year}`);
   };
@@ -97,7 +102,7 @@ export default function Home() {
   const downloadFossilBreakdownCSV = () => {
     const csvData = fossilSources.map(([source, ej]) => ({
       'Source': getSourceName(source),
-      'Exergy Services (EJ)': ej.toFixed(2),
+      'Energy Services (EJ)': ej.toFixed(2),
       'Share of Fossil (%)': ((ej / fossil_services_ej) * 100).toFixed(2)
     }));
     downloadDataAsCSV(csvData, `fossil_fuel_breakdown_${year}`);
@@ -111,10 +116,26 @@ export default function Home() {
   const downloadCleanBreakdownCSV = () => {
     const csvData = cleanSources.map(([source, ej]) => ({
       'Source': getSourceName(source),
-      'Exergy Services (EJ)': ej.toFixed(2),
+      'Energy Services (EJ)': ej.toFixed(2),
       'Share of Clean (%)': ((ej / clean_services_ej) * 100).toFixed(2)
     }));
     downloadDataAsCSV(csvData, `clean_energy_breakdown_${year}`);
+  };
+
+  // Download functions for Energy Services Breakdown chart
+  const downloadServicesBreakdownPNG = () => {
+    downloadChartAsPNG(servicesBreakdownChartRef, `energy_services_breakdown_${year}`);
+  };
+
+  const downloadServicesBreakdownCSV = () => {
+    if (!sectoralData) return;
+    const services = sectoralData.end_use_services;
+    const csvData = Object.entries(services).map(([key, info]) => ({
+      'Service': info.description,
+      'Energy Services (EJ)': (total_services_ej * info.total_share).toFixed(2),
+      'Share (%)': (info.total_share * 100).toFixed(2)
+    }));
+    downloadDataAsCSV(csvData, `energy_services_breakdown_${year}`);
   };
 
   return (
@@ -138,7 +159,7 @@ export default function Home() {
       <div className="metric-card mb-8 bg-white">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800">
-            Global Exergy Services for {year}
+            Global Energy Services for {year}
           </h2>
           <ChartExportButtons
             onDownloadPNG={downloadGlobalEnergyPNG}
@@ -153,7 +174,7 @@ export default function Home() {
             <span className="text-base sm:text-2xl md:text-3xl ml-1 sm:ml-2 text-gray-500">EJ</span>
           </div>
           <div className="text-[10px] sm:text-sm md:text-base text-gray-500 px-2">
-            Exajoules of exergy services (thermodynamic work potential) delivered globally
+            Exajoules of energy services (thermodynamic work potential) delivered globally
           </div>
         </div>
 
@@ -197,7 +218,7 @@ export default function Home() {
               <div className="text-base sm:text-2xl md:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
                 {fossil_services_share_percent.toFixed(2)}%
               </div>
-              <div className="text-[10px] sm:text-sm text-gray-500">of total exergy services</div>
+              <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
 
             {/* Clean Card */}
@@ -212,7 +233,7 @@ export default function Home() {
               <div className="text-base sm:text-2xl md:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
                 {clean_services_share_percent.toFixed(2)}%
               </div>
-              <div className="text-[10px] sm:text-sm text-gray-500">of total exergy services</div>
+              <div className="text-[10px] sm:text-sm text-gray-500">of total energy services</div>
             </div>
           </div>
         </div>
@@ -360,6 +381,71 @@ export default function Home() {
           </div>
         </div>
 
+      {/* Energy Services Breakdown */}
+      {sectoralData && (
+        <div className="metric-card mb-8 bg-white">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-800">
+              Energy Services Breakdown for {year}
+            </h2>
+            <ChartExportButtons
+              onDownloadPNG={downloadServicesBreakdownPNG}
+              onDownloadCSV={downloadServicesBreakdownCSV}
+            />
+          </div>
+
+          <div className="mb-6" ref={servicesBreakdownChartRef}>
+            <ResponsiveContainer width="100%" height={width < 640 ? 280 : 350}>
+              <PieChart>
+                <Pie
+                  data={Object.entries(sectoralData.end_use_services).map(([key, service]) => ({
+                    name: getServiceName(key),
+                    value: total_services_ej * service.total_share,
+                    percentage: service.total_share * 100,
+                    key: key
+                  }))}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={width >= 640}
+                  label={width >= 640 ? (entry) => `${entry.name}: ${entry.value.toFixed(1)} EJ (${entry.percentage.toFixed(1)}%)` : (entry) => `${entry.value.toFixed(0)} EJ`}
+                  outerRadius={width >= 640 ? 120 : width >= 414 ? 70 : 60}
+                  fill="#8884d8"
+                  dataKey="value"
+                  isAnimationActive={false}
+                >
+                  {Object.keys(sectoralData.end_use_services).map((serviceKey, index) => (
+                    <Cell key={`cell-${index}`} fill={SERVICES_COLORS[serviceKey]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            {Object.entries(sectoralData.end_use_services).map(([key, service]) => {
+              const ej = total_services_ej * service.total_share;
+              const share = service.total_share * 100;
+              const color = SERVICES_COLORS[key];
+              return (
+                <div key={key} className="p-3 bg-gray-50 rounded-lg border-t-4 text-center"
+                     style={{ borderTopColor: color }}>
+                  <div className="text-xs font-bold mb-1 uppercase tracking-wide" style={{ color }}>
+                    {getServiceName(key)}
+                  </div>
+                  <div className="text-2xl font-bold mb-1" style={{ color }}>
+                    {ej.toFixed(1)}
+                  </div>
+                  <div className="text-xs text-gray-500 mb-1">EJ</div>
+                  <div className="text-lg font-semibold text-gray-600">
+                    {share.toFixed(1)}%
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Understanding Energy Services */}
       <div className="metric-card bg-white mb-8 border-2 border-blue-200">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
@@ -399,7 +485,7 @@ export default function Home() {
               Efficiency Gains
             </h3>
             <p className="text-gray-700">
-              Since 1990, global GDP tripled while exergy services grew only by 80% due to efficiency improvements.
+              Since 1990, global GDP tripled while energy services grew only by 80% due to efficiency improvements.
               Better insulation, LED lighting, and efficient motors cut primary energy consumption by 30-50% without sacrificing quality of life.
             </p>
           </div>
