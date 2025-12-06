@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "description": "Wright's Law learning curves for clean energy technologies",
+    "version": "2.5.0",
+    "methodology": "Cost declines by learning_rate fraction for each doubling of cumulative capacity",
+    "formula": "C(x) = C_0 * (x / x_0) ^ log2(1 - learning_rate)",
+    "sources": [
+      "Oxford Martin School - Way et al. 2022 'Empirically grounded technology forecasts'",
+      "BNEF New Energy Outlook 2024",
+      "IRENA Renewable Power Generation Costs 2024",
+      "Lazard LCOE Analysis v17.0 2024",
+      "NREL Annual Technology Baseline 2024"
+    ],
+    "last_updated": "2024-12-05",
+    "notes": "Learning rates represent historical cost decline per doubling of cumulative deployment. Floor costs represent theoretical minimums based on materials and manufacturing."
+  },
+  "learning_rates": {
+    "solar_pv": {
+      "learning_rate": 0.27,
+      "description": "27% cost reduction per doubling - held consistently for 50 years",
+      "base_year": 2024,
+      "base_cost_usd_per_watt": 0.22,
+      "base_cost_usd_per_mwh": 32,
+      "base_cumulative_gw": 1500,
+      "floor_cost_usd_per_mwh": 8,
+      "confidence": "very_high",
+      "source": "Oxford Martin School - 50 year historical data (1976-2024)",
+      "notes": "Most reliable learning curve in energy. Includes module + BOS + installation."
+    },
+    "solar_pv_module_only": {
+      "learning_rate": 0.28,
+      "description": "Module-only learning rate (slightly higher than system)",
+      "base_year": 2024,
+      "base_cost_usd_per_watt": 0.10,
+      "base_cumulative_gw": 1500,
+      "floor_cost_usd_per_watt": 0.03,
+      "confidence": "very_high",
+      "source": "BNEF 2024"
+    },
+    "wind_onshore": {
+      "learning_rate": 0.15,
+      "description": "15% cost reduction per doubling",
+      "base_year": 2024,
+      "base_cost_usd_per_mwh": 38,
+      "base_cumulative_gw": 900,
+      "floor_cost_usd_per_mwh": 15,
+      "confidence": "high",
+      "source": "IRENA Learning Curves 2024",
+      "notes": "Slower learning than solar due to mechanical complexity and materials intensity"
+    },
+    "wind_offshore": {
+      "learning_rate": 0.10,
+      "description": "10% cost reduction per doubling - earlier on learning curve",
+      "base_year": 2024,
+      "base_cost_usd_per_mwh": 80,
+      "base_cumulative_gw": 70,
+      "floor_cost_usd_per_mwh": 30,
+      "confidence": "medium",
+      "source": "IRENA 2024, BNEF",
+      "notes": "Still early stage, learning rate may accelerate with floating offshore"
+    },
+    "lithium_ion_batteries": {
+      "learning_rate": 0.18,
+      "description": "18% cost reduction per doubling of cumulative GWh",
+      "base_year": 2024,
+      "base_cost_usd_per_kwh": 139,
+      "base_cumulative_gwh": 2500,
+      "floor_cost_usd_per_kwh": 40,
+      "confidence": "high",
+      "source": "BNEF Battery Price Survey 2024",
+      "notes": "Pack-level costs. Cell-level floor ~$30/kWh. Includes LFP and NMC chemistries."
+    },
+    "sodium_ion_batteries": {
+      "learning_rate": 0.20,
+      "description": "20% learning rate - early stage but proven chemistry",
+      "base_year": 2024,
+      "base_cost_usd_per_kwh": 80,
+      "base_cumulative_gwh": 10,
+      "floor_cost_usd_per_kwh": 25,
+      "confidence": "medium",
+      "source": "BNEF 2024, CATL announcements",
+      "notes": "Lower energy density but no lithium/cobalt. Good for stationary storage."
+    },
+    "heat_pumps": {
+      "learning_rate": 0.15,
+      "description": "15% cost reduction per doubling",
+      "base_year": 2024,
+      "base_cost_usd_per_unit": 8000,
+      "base_cumulative_units_millions": 200,
+      "floor_cost_usd_per_unit": 2500,
+      "confidence": "medium",
+      "source": "IEA Heat Pumps Report 2024",
+      "notes": "Includes air-source and ground-source. COP improvements tracked separately."
+    },
+    "electrolyzers_pem": {
+      "learning_rate": 0.18,
+      "description": "18% cost reduction per doubling - similar to batteries",
+      "base_year": 2024,
+      "base_cost_usd_per_kw": 700,
+      "base_cumulative_gw": 1.5,
+      "floor_cost_usd_per_kw": 150,
+      "confidence": "medium",
+      "source": "IEA Hydrogen Report 2024, IRENA",
+      "notes": "PEM technology. Very early on learning curve - high uncertainty but strong potential."
+    },
+    "electrolyzers_alkaline": {
+      "learning_rate": 0.12,
+      "description": "12% learning rate - more mature technology",
+      "base_year": 2024,
+      "base_cost_usd_per_kw": 500,
+      "base_cumulative_gw": 3,
+      "floor_cost_usd_per_kw": 120,
+      "confidence": "medium-high",
+      "source": "IEA Hydrogen Report 2024"
+    },
+    "fuel_cells_pem": {
+      "learning_rate": 0.18,
+      "description": "18% cost reduction per doubling",
+      "base_year": 2024,
+      "base_cost_usd_per_kw": 1200,
+      "base_cumulative_gw": 5,
+      "floor_cost_usd_per_kw": 200,
+      "confidence": "medium",
+      "source": "DOE Hydrogen Program, Toyota/Hyundai data",
+      "notes": "Transportation fuel cells. Stationary has different economics."
+    },
+    "evs_battery_pack": {
+      "learning_rate": 0.18,
+      "description": "Same as lithium-ion - battery is dominant cost component",
+      "base_year": 2024,
+      "base_cost_usd_per_kwh": 139,
+      "base_cumulative_gwh": 2500,
+      "floor_cost_usd_per_kwh": 40,
+      "confidence": "high",
+      "source": "BNEF EV Outlook 2024"
+    },
+    "nuclear_smr": {
+      "learning_rate": 0.05,
+      "description": "5% learning rate - limited by regulatory and construction complexity",
+      "base_year": 2024,
+      "base_cost_usd_per_mwh": 165,
+      "base_cumulative_gw": 0.3,
+      "floor_cost_usd_per_mwh": 80,
+      "confidence": "low",
+      "source": "NuScale, Lazard",
+      "notes": "Very early stage. Learning rate highly uncertain. Could accelerate with factory production."
+    }
+  },
+  "scenario_adjustments": {
+    "conservative": {
+      "description": "Apply learning curves but with floor costs and no breakthroughs",
+      "learning_rate_multiplier": 1.0,
+      "floor_cost_buffer": 1.2,
+      "notes": "Floor costs are 20% higher to account for unforeseen challenges"
+    },
+    "baseline": {
+      "description": "Expected progress with moderate breakthroughs",
+      "learning_rate_multiplier": 1.0,
+      "floor_cost_buffer": 1.0,
+      "breakthrough_adjustments": {
+        "solar_pv": { "efficiency_boost_2035": 0.05 },
+        "lithium_ion_batteries": { "density_boost_2035": 0.25 },
+        "heat_pumps": { "cop_boost_2030": 0.20 }
+      }
+    },
+    "optimistic": {
+      "description": "Accelerated learning with breakthrough technologies",
+      "learning_rate_multiplier": 1.1,
+      "floor_cost_buffer": 0.9,
+      "breakthrough_adjustments": {
+        "solar_pv": { "efficiency_boost_2030": 0.10, "perovskite_tandem": true },
+        "lithium_ion_batteries": { "density_boost_2030": 0.50, "solid_state": true },
+        "heat_pumps": { "cop_boost_2030": 0.30 },
+        "electrolyzers_pem": { "efficiency_boost_2030": 0.20 }
+      }
+    }
+  },
+  "validation_benchmarks": {
+    "solar_2010_to_2024": {
+      "actual_cost_decline": 0.89,
+      "predicted_by_learning_curve": 0.87,
+      "error": 0.02,
+      "notes": "Learning curve predicted 87% decline, actual was 89% - slightly conservative"
+    },
+    "batteries_2010_to_2024": {
+      "actual_cost_decline": 0.87,
+      "predicted_by_learning_curve": 0.85,
+      "error": 0.02
+    }
+  }
+}

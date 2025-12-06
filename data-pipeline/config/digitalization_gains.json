@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "description": "AI, digitalization, and smart grid efficiency gains for energy system modeling",
+    "version": "2.5.0",
+    "methodology": "Efficiency improvements from digital technologies reduce energy demand while maintaining services",
+    "sources": [
+      "IEA Digitalization and Energy 2023",
+      "McKinsey AI in Energy Systems 2024",
+      "IRENA Innovation Landscape for Smart Electrification",
+      "ACEEE Smart Buildings Report 2024",
+      "Rocky Mountain Institute Grid Optimization Studies"
+    ],
+    "last_updated": "2024-12-05",
+    "notes": "Digitalization enables higher VRE penetration, reduces system costs, and improves end-use efficiency"
+  },
+  "smart_grid_optimization": {
+    "description": "AI/ML optimization of grid operations, load balancing, and forecasting",
+    "components": {
+      "load_forecasting": {
+        "current_accuracy": 0.92,
+        "ai_enhanced_accuracy": 0.98,
+        "reserve_requirement_reduction": 0.15,
+        "notes": "Better forecasting reduces spinning reserves and curtailment"
+      },
+      "demand_response": {
+        "current_participation_rate": 0.05,
+        "potential_2030": 0.25,
+        "potential_2050": 0.50,
+        "peak_shaving_potential": 0.15,
+        "notes": "Smart thermostats, EV charging, industrial load shifting"
+      },
+      "vre_integration": {
+        "current_curtailment_rate": 0.05,
+        "optimized_curtailment_rate": 0.01,
+        "capacity_factor_improvement": 0.03,
+        "notes": "ML-optimized dispatch reduces renewable curtailment"
+      },
+      "predictive_maintenance": {
+        "downtime_reduction": 0.30,
+        "maintenance_cost_reduction": 0.25,
+        "asset_life_extension": 0.15,
+        "notes": "AI predicts failures before they occur"
+      }
+    },
+    "system_efficiency_gains": {
+      "Conservative": {
+        "2024": 0.02,
+        "2030": 0.04,
+        "2040": 0.06,
+        "2050": 0.08,
+        "notes": "2% current, 8% by 2050"
+      },
+      "Baseline": {
+        "2024": 0.02,
+        "2030": 0.08,
+        "2040": 0.12,
+        "2050": 0.15,
+        "notes": "Aggressive smart grid deployment"
+      },
+      "Optimistic": {
+        "2024": 0.02,
+        "2030": 0.12,
+        "2040": 0.18,
+        "2050": 0.22,
+        "notes": "Full AI-optimized autonomous grid"
+      }
+    },
+    "integration_cost_reduction": {
+      "Conservative": {
+        "2030_cost_reduction": 0.10,
+        "2050_cost_reduction": 0.15
+      },
+      "Baseline": {
+        "2030_cost_reduction": 0.18,
+        "2050_cost_reduction": 0.28
+      },
+      "Optimistic": {
+        "2030_cost_reduction": 0.25,
+        "2050_cost_reduction": 0.40
+      }
+    }
+  },
+  "smart_buildings": {
+    "description": "Building energy management systems, smart HVAC, lighting automation",
+    "commercial_buildings": {
+      "current_penetration": 0.20,
+      "energy_savings_potential": 0.25,
+      "hvac_optimization": {
+        "savings_potential": 0.30,
+        "ai_enabled_hvac": "Predictive control based on occupancy, weather, grid signals"
+      },
+      "lighting_automation": {
+        "savings_potential": 0.50,
+        "led_plus_sensors": "Daylight harvesting, occupancy sensing, dimming"
+      },
+      "plug_load_management": {
+        "savings_potential": 0.15,
+        "notes": "Smart power strips, device-level monitoring"
+      }
+    },
+    "residential_buildings": {
+      "current_smart_home_penetration": 0.15,
+      "smart_thermostat_penetration": 0.25,
+      "smart_thermostat_savings": 0.12,
+      "full_home_automation_savings": 0.20
+    },
+    "trajectories": {
+      "Conservative": {
+        "commercial_penetration_2030": 0.35,
+        "commercial_penetration_2050": 0.60,
+        "residential_penetration_2030": 0.30,
+        "residential_penetration_2050": 0.50,
+        "total_building_savings_2050": 0.08
+      },
+      "Baseline": {
+        "commercial_penetration_2030": 0.55,
+        "commercial_penetration_2050": 0.85,
+        "residential_penetration_2030": 0.45,
+        "residential_penetration_2050": 0.75,
+        "total_building_savings_2050": 0.15
+      },
+      "Optimistic": {
+        "commercial_penetration_2030": 0.75,
+        "commercial_penetration_2050": 0.98,
+        "residential_penetration_2030": 0.60,
+        "residential_penetration_2050": 0.90,
+        "total_building_savings_2050": 0.22
+      }
+    }
+  },
+  "industrial_process_optimization": {
+    "description": "AI optimization of manufacturing processes, supply chains, and energy use",
+    "process_optimization": {
+      "current_ai_adoption": 0.10,
+      "energy_savings_per_adopter": 0.15,
+      "quality_improvement": 0.08,
+      "throughput_increase": 0.05,
+      "examples": [
+        "Google DeepMind data center cooling: 40% cooling energy reduction",
+        "Steel mill optimization: 5-10% energy reduction",
+        "Chemical process control: 3-8% energy reduction"
+      ]
+    },
+    "predictive_maintenance_industrial": {
+      "downtime_reduction": 0.35,
+      "energy_waste_from_degradation": 0.05,
+      "savings_from_optimal_performance": 0.03
+    },
+    "supply_chain_optimization": {
+      "logistics_energy_reduction": 0.10,
+      "inventory_optimization": 0.05,
+      "notes": "Reduces transport energy through better routing and load optimization"
+    },
+    "trajectories": {
+      "Conservative": {
+        "ai_adoption_2030": 0.25,
+        "ai_adoption_2050": 0.50,
+        "industry_energy_savings_2050": 0.06
+      },
+      "Baseline": {
+        "ai_adoption_2030": 0.45,
+        "ai_adoption_2050": 0.80,
+        "industry_energy_savings_2050": 0.12
+      },
+      "Optimistic": {
+        "ai_adoption_2030": 0.65,
+        "ai_adoption_2050": 0.95,
+        "industry_energy_savings_2050": 0.18
+      }
+    }
+  },
+  "transport_optimization": {
+    "description": "Autonomous vehicles, smart logistics, traffic management",
+    "autonomous_vehicles": {
+      "efficiency_improvement": 0.15,
+      "platooning_additional_savings": 0.10,
+      "notes": "Eco-driving, reduced congestion, platooning for trucks"
+    },
+    "smart_traffic_management": {
+      "congestion_reduction": 0.20,
+      "fuel_savings_from_reduced_idling": 0.08,
+      "notes": "AI-optimized traffic signals, real-time routing"
+    },
+    "logistics_optimization": {
+      "last_mile_efficiency": 0.25,
+      "route_optimization": 0.12,
+      "load_factor_improvement": 0.10,
+      "notes": "Amazon, UPS style optimization for all logistics"
+    },
+    "mobility_as_a_service": {
+      "vehicle_utilization_improvement": 3.0,
+      "notes": "Shared autonomous vehicles reduce total vehicle fleet by 60-70%"
+    },
+    "trajectories": {
+      "Conservative": {
+        "smart_traffic_penetration_2030": 0.20,
+        "av_share_2050": 0.10,
+        "transport_savings_2050": 0.05
+      },
+      "Baseline": {
+        "smart_traffic_penetration_2030": 0.45,
+        "av_share_2050": 0.40,
+        "transport_savings_2050": 0.12
+      },
+      "Optimistic": {
+        "smart_traffic_penetration_2030": 0.70,
+        "av_share_2050": 0.70,
+        "transport_savings_2050": 0.20
+      }
+    }
+  },
+  "energy_storage_optimization": {
+    "description": "AI optimization of battery storage dispatch and degradation",
+    "battery_dispatch_optimization": {
+      "revenue_improvement": 0.20,
+      "cycle_optimization": 0.15,
+      "degradation_reduction": 0.10,
+      "notes": "ML predicts optimal charge/discharge based on prices, weather, demand"
+    },
+    "virtual_power_plants": {
+      "current_capacity_gw": 5,
+      "potential_capacity_gw_2030": 200,
+      "aggregation_efficiency": 0.90,
+      "notes": "Aggregate distributed batteries, EVs, flexible loads"
+    },
+    "trajectories": {
+      "Conservative": {
+        "vpp_capacity_2030_gw": 50,
+        "vpp_capacity_2050_gw": 500
+      },
+      "Baseline": {
+        "vpp_capacity_2030_gw": 150,
+        "vpp_capacity_2050_gw": 2000
+      },
+      "Optimistic": {
+        "vpp_capacity_2030_gw": 300,
+        "vpp_capacity_2050_gw": 5000
+      }
+    }
+  },
+  "digital_twin_energy_systems": {
+    "description": "Digital twins for real-time optimization of energy infrastructure",
+    "applications": {
+      "power_plants": {
+        "efficiency_improvement": 0.03,
+        "maintenance_optimization": true,
+        "notes": "GE, Siemens deploying widely"
+      },
+      "transmission_networks": {
+        "capacity_utilization_improvement": 0.15,
+        "outage_reduction": 0.20
+      },
+      "district_heating": {
+        "loss_reduction": 0.10,
+        "demand_matching_improvement": 0.15
+      },
+      "industrial_parks": {
+        "symbiosis_optimization": 0.12,
+        "notes": "Optimize energy flows between co-located industries"
+      }
+    }
+  },
+  "total_digitalization_impact": {
+    "description": "Combined efficiency gains from all digitalization measures",
+    "by_scenario_percent_reduction_2050": {
+      "Conservative": {
+        "smart_grid": 0.08,
+        "smart_buildings": 0.08,
+        "industrial_optimization": 0.06,
+        "transport_optimization": 0.05,
+        "storage_optimization": 0.02,
+        "total_demand_reduction": 0.12,
+        "system_cost_reduction": 0.15,
+        "notes": "Modest adoption, proven technologies"
+      },
+      "Baseline": {
+        "smart_grid": 0.15,
+        "smart_buildings": 0.15,
+        "industrial_optimization": 0.12,
+        "transport_optimization": 0.12,
+        "storage_optimization": 0.05,
+        "total_demand_reduction": 0.22,
+        "system_cost_reduction": 0.28,
+        "notes": "Aggressive deployment of current technologies"
+      },
+      "Optimistic": {
+        "smart_grid": 0.22,
+        "smart_buildings": 0.22,
+        "industrial_optimization": 0.18,
+        "transport_optimization": 0.20,
+        "storage_optimization": 0.08,
+        "total_demand_reduction": 0.32,
+        "system_cost_reduction": 0.40,
+        "notes": "Full AI-enabled autonomous energy system"
+      }
+    },
+    "ej_saved_2050": {
+      "Conservative": 29,
+      "Baseline": 60,
+      "Optimistic": 94
+    }
+  },
+  "ai_energy_consumption": {
+    "description": "Net impact accounting for AI's own energy consumption",
+    "data_center_growth": {
+      "current_consumption_twh": 450,
+      "2030_consumption_twh": 1100,
+      "2050_consumption_twh": 4500,
+      "notes": "AI training and inference driving rapid growth"
+    },
+    "efficiency_improvements": {
+      "hardware_efficiency_doubling": 2.5,
+      "notes": "Moore's Law analog: 2.5 year doubling of compute per watt"
+    },
+    "net_impact": {
+      "Conservative": {
+        "ai_consumption_increase_ej": 12,
+        "efficiency_savings_ej": 29,
+        "net_benefit_ej": 17
+      },
+      "Baseline": {
+        "ai_consumption_increase_ej": 14,
+        "efficiency_savings_ej": 60,
+        "net_benefit_ej": 46
+      },
+      "Optimistic": {
+        "ai_consumption_increase_ej": 16,
+        "efficiency_savings_ej": 94,
+        "net_benefit_ej": 78
+      }
+    }
+  }
+}

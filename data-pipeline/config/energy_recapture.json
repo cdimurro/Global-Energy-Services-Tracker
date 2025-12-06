@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "description": "Energy recapture and waste heat recovery factors for demand reduction modeling",
+    "version": "2.5.0",
+    "methodology": "Recapture reduces primary energy demand by recovering waste heat and improving system integration",
+    "sources": [
+      "IEA Energy Efficiency 2024 - Industrial waste heat potential",
+      "Eurostat Combined Heat and Power Statistics",
+      "ACEEE Industrial Efficiency Report 2024",
+      "Lawrence Berkeley National Lab - Data Center Efficiency",
+      "EU Heat Roadmap Europe - District heating potential"
+    ],
+    "last_updated": "2024-12-05",
+    "notes": "Recapture reduces total primary energy demand while maintaining same useful energy services"
+  },
+  "industrial_waste_heat": {
+    "global_potential": {
+      "total_waste_heat_ej": 50,
+      "recoverable_fraction": 0.50,
+      "recoverable_potential_ej": 25,
+      "notes": "50 EJ of industrial waste heat annually, ~25 EJ technically recoverable"
+    },
+    "by_industry": {
+      "iron_steel": {
+        "waste_heat_ej": 8.5,
+        "recovery_potential": 0.45,
+        "current_recovery_rate_2024": 0.15,
+        "notes": "Blast furnace gases, coke oven gas, hot slag heat"
+      },
+      "cement": {
+        "waste_heat_ej": 3.2,
+        "recovery_potential": 0.35,
+        "current_recovery_rate_2024": 0.12,
+        "notes": "Kiln exhaust, clinker cooler air"
+      },
+      "chemicals": {
+        "waste_heat_ej": 6.8,
+        "recovery_potential": 0.40,
+        "current_recovery_rate_2024": 0.20,
+        "notes": "Process heat, steam systems, exothermic reactions"
+      },
+      "refining": {
+        "waste_heat_ej": 5.5,
+        "recovery_potential": 0.50,
+        "current_recovery_rate_2024": 0.25,
+        "notes": "Distillation columns, flare gas recovery"
+      },
+      "glass_ceramics": {
+        "waste_heat_ej": 1.8,
+        "recovery_potential": 0.40,
+        "current_recovery_rate_2024": 0.10,
+        "notes": "Furnace exhaust heat"
+      },
+      "pulp_paper": {
+        "waste_heat_ej": 2.0,
+        "recovery_potential": 0.45,
+        "current_recovery_rate_2024": 0.30,
+        "notes": "Black liquor, drying processes"
+      },
+      "other_manufacturing": {
+        "waste_heat_ej": 22.2,
+        "recovery_potential": 0.35,
+        "current_recovery_rate_2024": 0.10
+      }
+    },
+    "recovery_trajectories": {
+      "Conservative": {
+        "2024": 0.15,
+        "2030": 0.20,
+        "2040": 0.28,
+        "2050": 0.35,
+        "ej_recovered_2050": 8.75
+      },
+      "Baseline": {
+        "2024": 0.15,
+        "2030": 0.28,
+        "2040": 0.40,
+        "2050": 0.50,
+        "ej_recovered_2050": 12.5
+      },
+      "Optimistic": {
+        "2024": 0.15,
+        "2030": 0.35,
+        "2040": 0.55,
+        "2050": 0.70,
+        "ej_recovered_2050": 17.5
+      }
+    }
+  },
+  "chp_cogeneration": {
+    "description": "Combined Heat and Power increases useful energy output from same fuel input",
+    "efficiency_comparison": {
+      "separate_heat_power": {
+        "power_plant_efficiency": 0.40,
+        "boiler_efficiency": 0.85,
+        "combined_useful_output": 0.55,
+        "notes": "Weighted average assuming 60% heat, 40% power demand"
+      },
+      "chp_system": {
+        "total_efficiency": 0.85,
+        "useful_output_improvement": 0.30,
+        "notes": "30% more useful energy from same primary input"
+      }
+    },
+    "current_status_2024": {
+      "global_chp_capacity_gw": 850,
+      "global_chp_generation_twh": 3500,
+      "share_of_power_generation": 0.12,
+      "leading_regions": ["Europe", "China", "Russia", "United States"]
+    },
+    "expansion_potential": {
+      "technical_potential_gw": 3000,
+      "addressable_industrial_sites": 50000,
+      "district_heating_expansion_potential": "High"
+    },
+    "trajectories": {
+      "Conservative": {
+        "2024_share": 0.12,
+        "2030_share": 0.14,
+        "2040_share": 0.16,
+        "2050_share": 0.18,
+        "demand_reduction_ej_2050": 3.0
+      },
+      "Baseline": {
+        "2024_share": 0.12,
+        "2030_share": 0.18,
+        "2040_share": 0.25,
+        "2050_share": 0.30,
+        "demand_reduction_ej_2050": 6.5
+      },
+      "Optimistic": {
+        "2024_share": 0.12,
+        "2030_share": 0.22,
+        "2040_share": 0.35,
+        "2050_share": 0.45,
+        "demand_reduction_ej_2050": 10.0
+      }
+    }
+  },
+  "data_center_heat_reuse": {
+    "description": "Data centers produce significant waste heat that can supply district heating",
+    "current_status_2024": {
+      "global_data_center_electricity_twh": 450,
+      "waste_heat_potential_twh": 350,
+      "waste_heat_potential_ej": 1.26,
+      "current_reuse_rate": 0.02,
+      "notes": "Only 2% currently captured; most rejected to atmosphere"
+    },
+    "growth_trajectory": {
+      "data_center_demand_growth_rate": 0.15,
+      "2030_electricity_twh": 1100,
+      "2040_electricity_twh": 2500,
+      "2050_electricity_twh": 4500,
+      "notes": "AI and cloud computing driving rapid growth"
+    },
+    "heat_reuse_trajectories": {
+      "Conservative": {
+        "2024_reuse_rate": 0.02,
+        "2030_reuse_rate": 0.05,
+        "2040_reuse_rate": 0.10,
+        "2050_reuse_rate": 0.15,
+        "ej_recovered_2050": 2.4
+      },
+      "Baseline": {
+        "2024_reuse_rate": 0.02,
+        "2030_reuse_rate": 0.12,
+        "2040_reuse_rate": 0.25,
+        "2050_reuse_rate": 0.40,
+        "ej_recovered_2050": 6.5
+      },
+      "Optimistic": {
+        "2024_reuse_rate": 0.02,
+        "2030_reuse_rate": 0.20,
+        "2040_reuse_rate": 0.45,
+        "2050_reuse_rate": 0.65,
+        "ej_recovered_2050": 10.5
+      }
+    },
+    "enabling_factors": [
+      "Co-location with district heating networks",
+      "Higher operating temperatures (liquid cooling)",
+      "Heat pump integration for temperature boosting",
+      "Municipal mandates (Stockholm, Helsinki leading)"
+    ]
+  },
+  "building_energy_recovery": {
+    "heat_recovery_ventilation": {
+      "description": "HRV/ERV systems recover 70-90% of exhaust air heat",
+      "current_penetration_2024": 0.15,
+      "addressable_buildings": "All heated/cooled buildings with mechanical ventilation",
+      "trajectories": {
+        "Conservative": {
+          "2030_penetration": 0.25,
+          "2050_penetration": 0.45
+        },
+        "Baseline": {
+          "2030_penetration": 0.40,
+          "2050_penetration": 0.70
+        },
+        "Optimistic": {
+          "2030_penetration": 0.55,
+          "2050_penetration": 0.90
+        }
+      },
+      "energy_savings_per_building_percent": 0.25
+    },
+    "greywater_heat_recovery": {
+      "description": "Recover heat from drain water before it leaves building",
+      "potential_recovery": 0.50,
+      "current_penetration_2024": 0.02,
+      "applicable_to": "Residential, hotels, hospitals, industrial washdown"
+    }
+  },
+  "transport_energy_recovery": {
+    "regenerative_braking_evs": {
+      "description": "EVs already recover 15-30% of kinetic energy through regen",
+      "current_recovery_efficiency": 0.22,
+      "potential_with_improvements": 0.35,
+      "notes": "Already captured in EV efficiency; further gains modest"
+    },
+    "truck_waste_heat": {
+      "description": "Heavy truck exhaust heat recovery for auxiliary systems",
+      "current_penetration": 0.01,
+      "potential_fuel_savings": 0.05,
+      "notes": "Organic Rankine Cycle, thermoelectric generators"
+    }
+  },
+  "power_sector_efficiency": {
+    "combined_cycle_improvements": {
+      "current_best_efficiency": 0.64,
+      "theoretical_maximum": 0.70,
+      "fleet_average_2024": 0.45,
+      "trajectory_notes": "Fleet turnover improves average; new builds all high-efficiency"
+    },
+    "transmission_loss_reduction": {
+      "current_global_losses": 0.08,
+      "2050_potential_losses": 0.04,
+      "enabling_technologies": ["HVDC", "Superconducting cables", "Distributed generation"],
+      "ej_saved_2050": 3.0
+    }
+  },
+  "circular_economy_materials": {
+    "description": "Recycling reduces primary energy for material production",
+    "steel_recycling": {
+      "current_recycled_share": 0.30,
+      "energy_savings_vs_primary": 0.75,
+      "2050_recycled_share_baseline": 0.55,
+      "notes": "Electric arc furnace uses 75% less energy than blast furnace"
+    },
+    "aluminum_recycling": {
+      "current_recycled_share": 0.35,
+      "energy_savings_vs_primary": 0.95,
+      "2050_recycled_share_baseline": 0.60,
+      "notes": "Recycled aluminum uses 5% of primary production energy"
+    },
+    "battery_recycling": {
+      "current_recovery_rate": 0.05,
+      "2030_recovery_rate": 0.50,
+      "2050_recovery_rate": 0.95,
+      "critical_minerals_recovered": ["Lithium", "Cobalt", "Nickel", "Copper"],
+      "energy_savings_vs_mining": 0.70,
+      "notes": "Redwood Materials, Li-Cycle, Northvolt leading"
+    },
+    "solar_panel_recycling": {
+      "current_recovery_rate": 0.10,
+      "2030_recovery_rate": 0.50,
+      "2050_recovery_rate": 0.95,
+      "materials_recovered": ["Silicon", "Silver", "Aluminum", "Glass"],
+      "notes": "EU WEEE directive requires 85% recovery by 2025"
+    }
+  },
+  "total_demand_reduction_potential": {
+    "description": "Combined demand reduction from all recapture mechanisms",
+    "by_scenario_ej_2050": {
+      "Conservative": {
+        "industrial_waste_heat": 8.75,
+        "chp_expansion": 3.0,
+        "data_center_heat": 2.4,
+        "building_recovery": 2.0,
+        "grid_efficiency": 2.0,
+        "circular_economy": 3.0,
+        "total_reduction": 21.15,
+        "percent_of_baseline_demand": 8.7
+      },
+      "Baseline": {
+        "industrial_waste_heat": 12.5,
+        "chp_expansion": 6.5,
+        "data_center_heat": 6.5,
+        "building_recovery": 5.0,
+        "grid_efficiency": 4.0,
+        "circular_economy": 6.0,
+        "total_reduction": 40.5,
+        "percent_of_baseline_demand": 15.0
+      },
+      "Optimistic": {
+        "industrial_waste_heat": 17.5,
+        "chp_expansion": 10.0,
+        "data_center_heat": 10.5,
+        "building_recovery": 8.0,
+        "grid_efficiency": 6.0,
+        "circular_economy": 10.0,
+        "total_reduction": 62.0,
+        "percent_of_baseline_demand": 21.2
+      }
+    },
+    "notes": "These reductions compound with efficiency improvements and electrification benefits"
+  }
+}

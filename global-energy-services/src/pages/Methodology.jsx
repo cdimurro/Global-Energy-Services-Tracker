@@ -179,10 +179,59 @@ export default function Methodology() {
             </div>
           </section>
 
+          {/* Projection Methodology (v2.5) */}
+          <section>
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              Future Projections: Wright's Law & Learning Curves (v2.5)
+            </h2>
+            <p className="mb-4">
+              Unlike traditional forecasts that consistently underestimate clean energy growth, our projections are built on <strong>Wright's Law learning curves</strong> - empirically validated cost reduction patterns that have accurately predicted solar and battery cost declines for 50+ years.
+            </p>
+            <div className="bg-green-50 border-l-4 border-green-600 p-4 mb-4">
+              <p className="font-semibold text-gray-800 mb-2">Wright's Law Formula:</p>
+              <p className="text-gray-700 font-mono text-sm mb-2">
+                Cost(x) = Cost₀ × (x / x₀)^log₂(1 - learning_rate)
+              </p>
+              <p className="text-sm text-gray-600">
+                Where x = cumulative deployment, x₀ = base deployment, and learning_rate = cost reduction per doubling.
+              </p>
+            </div>
+            <p className="mb-4">
+              <strong>Validated Learning Rates:</strong>
+            </p>
+            <ul className="space-y-2 ml-4 mb-4">
+              <li>• <strong>Solar PV: 27%</strong> per doubling (50 years of data, Oxford Martin School)</li>
+              <li>• <strong>Wind: 15%</strong> per doubling (IRENA 2024)</li>
+              <li>• <strong>Lithium-ion batteries: 18%</strong> per doubling (BNEF 2024)</li>
+              <li>• <strong>Heat pumps: ~15%</strong> per doubling (IEA)</li>
+              <li>• <strong>Electrolyzers: ~18%</strong> per doubling (IEA Hydrogen Report)</li>
+            </ul>
+            <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
+              <p className="font-semibold text-gray-800 mb-2">Three Scenarios (Replacing IEA STEPS/APS/NZE):</p>
+              <div className="space-y-2">
+                <div>
+                  <strong className="text-amber-600">Conservative:</strong>
+                  <span className="text-gray-700"> Proven technologies only, no breakthroughs, Murphy's Law applies. Solar saturation: 100 EJ, Wind: 80 EJ.</span>
+                </div>
+                <div>
+                  <strong className="text-blue-600">Baseline:</strong>
+                  <span className="text-gray-700"> Expected progress with high-probability breakthroughs (&gt;50% by 2035). Solar saturation: 200 EJ, Wind: 150 EJ.</span>
+                </div>
+                <div>
+                  <strong className="text-green-600">Optimistic:</strong>
+                  <span className="text-gray-700"> Key breakthroughs realized (&gt;30% probability), enhanced policy support. Solar saturation: 400 EJ, Wind: 250 EJ.</span>
+                </div>
+              </div>
+            </div>
+            <p className="mb-4">
+              Why did we replace IEA scenarios? Historical analysis shows IEA forecasts have systematically underestimated clean energy growth by 2-3×. Our approach uses empirically validated learning curves that have accurately predicted cost declines, combined with manufacturing capacity constraints to ensure realistic deployment rates.
+            </p>
+          </section>
+
           {/* Data Sources */}
           <section>
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              Data Sources & Validation (v2.0)
+              Data Sources & Validation (v2.5)
             </h2>
             <div className="space-y-4">
               <div>
@@ -213,6 +262,24 @@ export default function Methodology() {
                 <strong className="text-gray-800">RMI 2024 & Cullen & Allwood 2010</strong>
                 <p className="mt-1">
                   Final energy proxy methodology, traditional biomass efficiency (8-15%), and theoretical minimum energy demand for end-use services. Validates our 2.0-2.5× clean efficiency advantage.
+                </p>
+              </div>
+              <div>
+                <strong className="text-gray-800">Oxford Martin School (Way et al. 2022)</strong>
+                <p className="mt-1">
+                  "Empirically grounded technology forecasts and the energy transition" - Foundation for Wright's Law learning curves. 50-year solar PV data validating 27% learning rate.
+                </p>
+              </div>
+              <div>
+                <strong className="text-gray-800">BloombergNEF (BNEF) 2024</strong>
+                <p className="mt-1">
+                  Battery price surveys, manufacturing capacity data, EV outlook, and technology cost trajectories. Key source for lithium-ion 18% learning rate.
+                </p>
+              </div>
+              <div>
+                <strong className="text-gray-800">Lazard LCOE Analysis v17.0 (2024)</strong>
+                <p className="mt-1">
+                  Base LCOE values for all generation sources. System integration cost methodology and regional variations.
                 </p>
               </div>
             </div>

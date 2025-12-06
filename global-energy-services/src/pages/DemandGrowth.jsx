@@ -12,7 +12,7 @@ export default function DemandGrowth() {
   const [width] = useWindowSize();  // Dynamic window size for responsive charts
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedScenario, setSelectedScenario] = useState('Baseline (STEPS)');
+  const [selectedScenario, setSelectedScenario] = useState('Baseline');
 
   // Fullscreen states
   const [isFullscreenChart1, setIsFullscreenChart1] = useState(false);
@@ -67,9 +67,9 @@ export default function DemandGrowth() {
   const chartData = prepareChartData();
 
   const COLORS = {
-    'Baseline (STEPS)': '#3B82F6',
-    'Accelerated (APS)': '#10B981',
-    'Net-Zero (NZE)': '#8B5CF6'
+    'Conservative': '#F59E0B',  // Amber/orange for conservative
+    'Baseline': '#3B82F6',      // Blue for baseline
+    'Optimistic': '#10B981'     // Green for optimistic
   };
 
   const sources = data.metadata.sources;
@@ -84,9 +84,9 @@ export default function DemandGrowth() {
     const filename = `total-energy-demand-projections-${new Date().toISOString().split('T')[0]}`;
     const csvData = chartData.map(row => ({
       Year: row.year,
-      'Baseline STEPS (EJ)': row['Baseline (STEPS)_total']?.toFixed(2) || '',
-      'Accelerated APS (EJ)': row['Accelerated (APS)_total']?.toFixed(2) || '',
-      'Net-Zero NZE (EJ)': row['Net-Zero (NZE)_total']?.toFixed(2) || ''
+      'Conservative (EJ)': row['Conservative_total']?.toFixed(2) || '',
+      'Baseline (EJ)': row['Baseline_total']?.toFixed(2) || '',
+      'Optimistic (EJ)': row['Optimistic_total']?.toFixed(2) || ''
     }));
     downloadDataAsCSV(csvData, filename);
   };
@@ -133,7 +133,7 @@ export default function DemandGrowth() {
           Energy Services Demand Growth Forecast
         </h1>
         <p className="text-sm text-gray-600">
-          Comprehensive projections of global energy services demand (2025-2050) based on IEA, BP, and RMI analysis
+          Comprehensive projections of global energy services demand (2025-2050) using Wright's Law learning curves and validated deployment data
         </p>
       </div>
 
@@ -164,24 +164,24 @@ export default function DemandGrowth() {
               <Legend />
               <Line
                 type="monotone"
-                dataKey="Baseline (STEPS)_total"
-                stroke={COLORS['Baseline (STEPS)']}
+                dataKey="Conservative_total"
+                stroke={COLORS['Conservative']}
                 strokeWidth={2}
-                name="Baseline (STEPS)"
+                name="Conservative"
               />
               <Line
                 type="monotone"
-                dataKey="Accelerated (APS)_total"
-                stroke={COLORS['Accelerated (APS)']}
+                dataKey="Baseline_total"
+                stroke={COLORS['Baseline']}
                 strokeWidth={2}
-                name="Accelerated (APS)"
+                name="Baseline"
               />
               <Line
                 type="monotone"
-                dataKey="Net-Zero (NZE)_total"
-                stroke={COLORS['Net-Zero (NZE)']}
+                dataKey="Optimistic_total"
+                stroke={COLORS['Optimistic']}
                 strokeWidth={2}
-                name="Net-Zero (NZE)"
+                name="Optimistic"
               />
             </LineChart>
           </ResponsiveContainer>
@@ -211,24 +211,24 @@ export default function DemandGrowth() {
             <Legend />
             <Line
               type="monotone"
-              dataKey="Baseline (STEPS)_total"
-              stroke={COLORS['Baseline (STEPS)']}
+              dataKey="Conservative_total"
+              stroke={COLORS['Conservative']}
               strokeWidth={2}
-              name="Baseline (STEPS)"
+              name="Conservative"
             />
             <Line
               type="monotone"
-              dataKey="Accelerated (APS)_total"
-              stroke={COLORS['Accelerated (APS)']}
+              dataKey="Baseline_total"
+              stroke={COLORS['Baseline']}
               strokeWidth={2}
-              name="Accelerated (APS)"
+              name="Baseline"
             />
             <Line
               type="monotone"
-              dataKey="Net-Zero (NZE)_total"
-              stroke={COLORS['Net-Zero (NZE)']}
+              dataKey="Optimistic_total"
+              stroke={COLORS['Optimistic']}
               strokeWidth={2}
-              name="Net-Zero (NZE)"
+              name="Optimistic"
             />
           </LineChart>
         </ResponsiveContainer>
@@ -256,9 +256,9 @@ export default function DemandGrowth() {
             onChange={(e) => setSelectedScenario(e.target.value)}
             className="border border-gray-300 rounded px-3 py-1 text-sm"
           >
-            <option value="Baseline (STEPS)">Baseline (STEPS)</option>
-            <option value="Accelerated (APS)">Accelerated (APS)</option>
-            <option value="Net-Zero (NZE)">Net-Zero (NZE)</option>
+            <option value="Conservative">Conservative</option>
+            <option value="Baseline">Baseline</option>
+            <option value="Optimistic">Optimistic</option>
           </select>
         </div>
         <div id="energy-mix-chart">
@@ -311,9 +311,9 @@ export default function DemandGrowth() {
             onChange={(e) => setSelectedScenario(e.target.value)}
             className="border border-gray-300 rounded px-3 py-1 text-sm"
           >
-            <option value="Baseline (STEPS)">Baseline (STEPS)</option>
-            <option value="Accelerated (APS)">Accelerated (APS)</option>
-            <option value="Net-Zero (NZE)">Net-Zero (NZE)</option>
+            <option value="Conservative">Conservative</option>
+            <option value="Baseline">Baseline</option>
+            <option value="Optimistic">Optimistic</option>
           </select>
         </div>
 
@@ -374,17 +374,19 @@ export default function DemandGrowth() {
               Forecast Scenarios
             </h3>
             <p className="text-gray-700">
-              IEA projects three pathways: STEPS (fossil peak ~2035), APS (fossil peak 2030), and NZE (fossil peak 2028).
-              Clean energy growth rates range from 3-8 EJ/year depending on policy implementation and efficiency gains.
+              Our projections use three scenarios: <strong>Conservative</strong> (proven tech only, fossil ~46% by 2050),
+              <strong>Baseline</strong> (expected progress with likely breakthroughs, fossil ~25% by 2050), and
+              <strong>Optimistic</strong> (breakthroughs realized, fossil ~10% by 2050).
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
             <h3 className="font-bold text-lg text-gray-800 mb-2">
-              Forecast Uncertainty
+              Learning Curves Drive Projections
             </h3>
             <p className="text-gray-700">
-              Projections depend on economic growth, technology deployment speed, and policy implementation.
-              Historical forecasts consistently underestimated clean energy growth while overestimating fossil demand.
+              Unlike traditional forecasts, we use Wright's Law learning curves (27% for solar, 18% for batteries)
+              which have accurately predicted cost declines for 50+ years. Historical forecasts consistently
+              underestimated clean energy growth.
             </p>
           </div>
         </div>

@@ -1,0 +1,298 @@
+{
+  "metadata": {
+    "description": "Annual manufacturing capacity trajectories by technology",
+    "version": "2.5.0",
+    "purpose": "Constrains deployment projections to realistic manufacturing limits",
+    "sources": [
+      "IEA Tracking Clean Energy Progress 2024",
+      "BNEF New Energy Outlook 2024",
+      "Solar Power Europe Global Market Outlook 2024",
+      "GWEC Global Wind Report 2024",
+      "IEA Global EV Outlook 2024"
+    ],
+    "last_updated": "2024-12-05",
+    "notes": "Capacity figures represent maximum annual production. Actual deployment may be lower due to demand, grid constraints, or supply chain issues."
+  },
+  "trajectories": {
+    "solar_pv_gw_year": {
+      "description": "Annual solar PV manufacturing capacity (GW/year)",
+      "unit": "GW/year",
+      "historical": {
+        "2020": 180,
+        "2021": 220,
+        "2022": 350,
+        "2023": 500,
+        "2024": 600
+      },
+      "projections": {
+        "2025": 800,
+        "2026": 950,
+        "2027": 1100,
+        "2028": 1300,
+        "2029": 1500,
+        "2030": 1800,
+        "2035": 2500,
+        "2040": 3000,
+        "2045": 3500,
+        "2050": 4000
+      },
+      "scenario_multipliers": {
+        "conservative": 0.70,
+        "baseline": 1.00,
+        "optimistic": 1.30
+      },
+      "source": "IEA, BNEF, Solar Power Europe",
+      "notes": "China dominates with ~80% of global capacity. Diversification ongoing (US IRA, EU solar manufacturing)."
+    },
+    "wind_onshore_gw_year": {
+      "description": "Annual onshore wind manufacturing capacity (GW/year)",
+      "unit": "GW/year",
+      "historical": {
+        "2020": 75,
+        "2021": 90,
+        "2022": 80,
+        "2023": 100,
+        "2024": 110
+      },
+      "projections": {
+        "2025": 130,
+        "2026": 150,
+        "2027": 170,
+        "2028": 200,
+        "2029": 230,
+        "2030": 270,
+        "2035": 400,
+        "2040": 500,
+        "2045": 550,
+        "2050": 600
+      },
+      "scenario_multipliers": {
+        "conservative": 0.75,
+        "baseline": 1.00,
+        "optimistic": 1.25
+      },
+      "source": "GWEC, IEA"
+    },
+    "wind_offshore_gw_year": {
+      "description": "Annual offshore wind manufacturing capacity (GW/year)",
+      "unit": "GW/year",
+      "historical": {
+        "2020": 6,
+        "2021": 8,
+        "2022": 9,
+        "2023": 11,
+        "2024": 15
+      },
+      "projections": {
+        "2025": 20,
+        "2026": 28,
+        "2027": 38,
+        "2028": 50,
+        "2029": 65,
+        "2030": 80,
+        "2035": 150,
+        "2040": 220,
+        "2045": 280,
+        "2050": 350
+      },
+      "scenario_multipliers": {
+        "conservative": 0.65,
+        "baseline": 1.00,
+        "optimistic": 1.40
+      },
+      "source": "GWEC Offshore Wind Report 2024",
+      "notes": "Supply chain constraints easing. Floating offshore unlocks new markets."
+    },
+    "batteries_gwh_year": {
+      "description": "Annual battery manufacturing capacity (GWh/year)",
+      "unit": "GWh/year",
+      "historical": {
+        "2020": 400,
+        "2021": 600,
+        "2022": 900,
+        "2023": 1200,
+        "2024": 1800
+      },
+      "projections": {
+        "2025": 2500,
+        "2026": 3200,
+        "2027": 4000,
+        "2028": 4800,
+        "2029": 5600,
+        "2030": 6500,
+        "2035": 10000,
+        "2040": 14000,
+        "2045": 18000,
+        "2050": 22000
+      },
+      "scenario_multipliers": {
+        "conservative": 0.75,
+        "baseline": 1.00,
+        "optimistic": 1.35
+      },
+      "source": "BNEF, IEA",
+      "notes": "Includes EV batteries and stationary storage. ~70% goes to EVs currently."
+    },
+    "evs_million_year": {
+      "description": "Annual EV production capacity (million vehicles/year)",
+      "unit": "million vehicles/year",
+      "historical": {
+        "2020": 3.2,
+        "2021": 6.8,
+        "2022": 10.5,
+        "2023": 14.2,
+        "2024": 17.5
+      },
+      "projections": {
+        "2025": 22,
+        "2026": 28,
+        "2027": 35,
+        "2028": 42,
+        "2029": 50,
+        "2030": 60,
+        "2035": 90,
+        "2040": 110,
+        "2045": 125,
+        "2050": 140
+      },
+      "scenario_multipliers": {
+        "conservative": 0.70,
+        "baseline": 1.00,
+        "optimistic": 1.25
+      },
+      "source": "IEA Global EV Outlook 2024",
+      "notes": "BEV + PHEV. China leads (~60%), Europe (~20%), US (~15%)."
+    },
+    "heat_pumps_million_year": {
+      "description": "Annual heat pump production capacity (million units/year)",
+      "unit": "million units/year",
+      "historical": {
+        "2020": 2.5,
+        "2021": 3.0,
+        "2022": 3.8,
+        "2023": 4.2,
+        "2024": 4.5
+      },
+      "projections": {
+        "2025": 6,
+        "2026": 8,
+        "2027": 10,
+        "2028": 13,
+        "2029": 16,
+        "2030": 20,
+        "2035": 35,
+        "2040": 50,
+        "2045": 60,
+        "2050": 70
+      },
+      "scenario_multipliers": {
+        "conservative": 0.70,
+        "baseline": 1.00,
+        "optimistic": 1.40
+      },
+      "source": "IEA Heat Pumps Report 2024",
+      "notes": "European market grew 40% YoY before 2023 slowdown. Recovery expected."
+    },
+    "electrolyzers_gw_year": {
+      "description": "Annual electrolyzer manufacturing capacity (GW/year)",
+      "unit": "GW/year",
+      "historical": {
+        "2020": 0.2,
+        "2021": 0.4,
+        "2022": 0.8,
+        "2023": 1.5,
+        "2024": 3.0
+      },
+      "projections": {
+        "2025": 6,
+        "2026": 12,
+        "2027": 20,
+        "2028": 35,
+        "2029": 55,
+        "2030": 80,
+        "2035": 200,
+        "2040": 350,
+        "2045": 500,
+        "2050": 650
+      },
+      "scenario_multipliers": {
+        "conservative": 0.50,
+        "baseline": 1.00,
+        "optimistic": 1.50
+      },
+      "source": "IEA Hydrogen Report 2024",
+      "notes": "Massive scale-up required. Currently <5% of announced projects have reached FID."
+    },
+    "nuclear_gw_year": {
+      "description": "Annual nuclear capacity additions (GW/year)",
+      "unit": "GW/year",
+      "historical": {
+        "2020": 5,
+        "2021": 7,
+        "2022": 6,
+        "2023": 5,
+        "2024": 6
+      },
+      "projections": {
+        "2025": 7,
+        "2026": 8,
+        "2027": 9,
+        "2028": 10,
+        "2029": 12,
+        "2030": 15,
+        "2035": 25,
+        "2040": 35,
+        "2045": 45,
+        "2050": 50
+      },
+      "scenario_multipliers": {
+        "conservative": 0.60,
+        "baseline": 1.00,
+        "optimistic": 1.50
+      },
+      "source": "IAEA, World Nuclear Association",
+      "notes": "SMRs could accelerate post-2030. China dominates near-term additions."
+    }
+  },
+  "regional_capacity_shares": {
+    "description": "Share of global manufacturing capacity by region",
+    "solar_pv": {
+      "China": 0.80,
+      "Southeast_Asia": 0.10,
+      "Europe": 0.03,
+      "USA": 0.04,
+      "India": 0.03
+    },
+    "batteries": {
+      "China": 0.70,
+      "South_Korea": 0.12,
+      "Japan": 0.05,
+      "Europe": 0.08,
+      "USA": 0.05
+    },
+    "evs": {
+      "China": 0.60,
+      "Europe": 0.20,
+      "USA": 0.12,
+      "Japan_Korea": 0.08
+    },
+    "notes": "IRA and EU policies aim to diversify manufacturing. Shares expected to shift by 2030."
+  },
+  "conversion_factors": {
+    "solar_gw_to_ej_year": {
+      "description": "Convert GW capacity to EJ/year generation",
+      "capacity_factor": 0.20,
+      "formula": "GW * 8760 * capacity_factor / 1000000 = EJ/year",
+      "example": "100 GW * 8760 * 0.20 / 1000000 = 0.175 EJ/year"
+    },
+    "wind_gw_to_ej_year": {
+      "capacity_factor_onshore": 0.35,
+      "capacity_factor_offshore": 0.45
+    },
+    "batteries_gwh_to_storage_ej": {
+      "description": "Battery capacity to storage potential",
+      "cycles_per_year": 365,
+      "formula": "GWh * cycles * 0.0000036 = EJ storage throughput/year"
+    }
+  }
+}

@@ -1,16 +1,19 @@
 {
   "metadata": {
-    "description": "Time-varying efficiency factors to account for technological improvements over 1965-2024",
-    "methodology": "Base efficiency (1965) with annual improvement rates based on historical technology evolution",
+    "description": "Time-varying efficiency factors to account for technological improvements over 1965-2050",
+    "methodology": "Base efficiency (1965) with annual improvement rates based on historical technology evolution and future projections",
     "sources": [
       "IEA Energy Efficiency Indicators - Historical efficiency trends",
       "IEA Technology Perspectives - Power plant efficiency evolution",
       "ICCT Vehicle Efficiency Reports - Transport efficiency improvements",
-      "Historical data on coal plant heat rates, CCGT efficiency, vehicle fuel economy"
+      "Historical data on coal plant heat rates, CCGT efficiency, vehicle fuel economy",
+      "NREL Annual Technology Baseline 2024 - Solar PV efficiency projections",
+      "IEA Heat Pump Technology Roadmap 2024 - COP projections",
+      "BloombergNEF EV Outlook 2024 - Vehicle efficiency trajectories"
     ],
-    "key_insight": "Fossil fuel power plants improved ~0.5%/year. Transport efficiency improved slowly (~0.2%/year). Renewables have minimal time variation (already counted in primary data).",
-    "last_updated": "2025-11-11",
-    "version": "v2.0"
+    "key_insight": "Fossil fuel power plants improved ~0.5%/year historically. Clean technologies show accelerating efficiency gains through 2050. Transport electrification drives major efficiency improvements.",
+    "last_updated": "2024-12-05",
+    "version": "v2.5.0"
   },
   "base_year": 1965,
   "current_year_values": {
@@ -132,7 +135,312 @@
   },
   "implementation_notes": {
     "backward_compatibility": "When time-varying is disabled, use values from efficiency_factors_corrected.json (2024 baseline)",
-    "future_projections": "For years >2024, can extrapolate using same improvement rates, but should cap at theoretical maxima (e.g., coal supercritical limit ~45%, gas CCGT limit ~65%)",
+    "future_projections": "For years >2024, use future_projections section with scenario-specific rates",
     "regional_variation": "These are global averages. Regional files (efficiency_factors_regional.json) override with location-specific values if needed."
+  },
+  "future_projections": {
+    "description": "Efficiency projections 2025-2050 by scenario",
+    "target_year": 2050,
+    "scenarios": {
+      "Conservative": {
+        "description": "Continued historical improvement rates, no breakthrough technologies",
+        "fossil_sources": {
+          "coal": {
+            "2024": 0.32,
+            "2030": 0.33,
+            "2040": 0.35,
+            "2050": 0.38,
+            "max_theoretical": 0.45,
+            "notes": "Gradual fleet turnover to supercritical plants"
+          },
+          "gas": {
+            "2024": 0.45,
+            "2030": 0.47,
+            "2040": 0.50,
+            "2050": 0.52,
+            "max_theoretical": 0.65,
+            "notes": "CCGT improvements continue"
+          },
+          "oil": {
+            "2024": 0.30,
+            "2030": 0.31,
+            "2040": 0.32,
+            "2050": 0.33,
+            "max_theoretical": 0.40,
+            "notes": "Slow ICE efficiency improvements, limited by thermodynamics"
+          }
+        },
+        "clean_sources": {
+          "solar": {
+            "2024": 0.70,
+            "2030": 0.72,
+            "2040": 0.75,
+            "2050": 0.80,
+            "notes": "Panel efficiency + BOS improvements. Conservative assumes standard silicon only."
+          },
+          "wind": {
+            "2024": 0.70,
+            "2030": 0.72,
+            "2040": 0.74,
+            "2050": 0.76,
+            "notes": "Larger rotors, better siting. Limited upside from mature technology."
+          },
+          "nuclear": {
+            "2024": 0.33,
+            "2030": 0.33,
+            "2040": 0.34,
+            "2050": 0.35,
+            "max_theoretical": 0.40,
+            "notes": "Limited by Carnot efficiency, slight improvements from advanced steam cycles"
+          },
+          "hydro": {
+            "2024": 0.70,
+            "2030": 0.70,
+            "2040": 0.70,
+            "2050": 0.70,
+            "notes": "Mature technology, no significant improvements expected"
+          }
+        },
+        "end_use_technologies": {
+          "heat_pumps": {
+            "cop_2024": 3.5,
+            "cop_2030": 3.8,
+            "cop_2040": 4.0,
+            "cop_2050": 4.2,
+            "notes": "Incremental COP improvements for air-source heat pumps"
+          },
+          "evs": {
+            "efficiency_kwh_per_km_2024": 0.18,
+            "efficiency_kwh_per_km_2030": 0.16,
+            "efficiency_kwh_per_km_2040": 0.14,
+            "efficiency_kwh_per_km_2050": 0.12,
+            "notes": "Gradual improvements in motor and battery efficiency"
+          },
+          "led_lighting": {
+            "lumens_per_watt_2024": 150,
+            "lumens_per_watt_2030": 180,
+            "lumens_per_watt_2050": 220,
+            "notes": "Continued LED improvements"
+          }
+        }
+      },
+      "Baseline": {
+        "description": "Expected progress with high-probability breakthroughs",
+        "fossil_sources": {
+          "coal": {
+            "2024": 0.32,
+            "2030": 0.34,
+            "2040": 0.37,
+            "2050": 0.40,
+            "notes": "Ultra-supercritical fleet expansion in Asia"
+          },
+          "gas": {
+            "2024": 0.45,
+            "2030": 0.50,
+            "2040": 0.55,
+            "2050": 0.58,
+            "notes": "Advanced CCGT and hydrogen blending capability"
+          },
+          "oil": {
+            "2024": 0.30,
+            "2030": 0.32,
+            "2040": 0.35,
+            "2050": 0.38,
+            "notes": "Hybridization and efficiency regulations"
+          }
+        },
+        "clean_sources": {
+          "solar": {
+            "2024": 0.70,
+            "2030": 0.78,
+            "2040": 0.85,
+            "2050": 0.90,
+            "notes": "Panel efficiency gains (22% → 26%), better inverters, reduced system losses. HJT and TOPCon adoption."
+          },
+          "wind": {
+            "2024": 0.70,
+            "2030": 0.75,
+            "2040": 0.80,
+            "2050": 0.82,
+            "notes": "15MW+ turbines, offshore expansion, AI-optimized siting and operation"
+          },
+          "nuclear": {
+            "2024": 0.33,
+            "2030": 0.34,
+            "2040": 0.36,
+            "2050": 0.38,
+            "notes": "SMR deployment with higher efficiency designs, Gen IV prototypes"
+          },
+          "hydro": {
+            "2024": 0.70,
+            "2030": 0.71,
+            "2040": 0.72,
+            "2050": 0.73,
+            "notes": "Variable speed pumped hydro, AI optimization"
+          }
+        },
+        "end_use_technologies": {
+          "heat_pumps": {
+            "cop_2024": 3.5,
+            "cop_2030": 4.2,
+            "cop_2040": 4.8,
+            "cop_2050": 5.2,
+            "notes": "Cold-climate heat pumps, CO2 refrigerants, cascade systems"
+          },
+          "evs": {
+            "efficiency_kwh_per_km_2024": 0.18,
+            "efficiency_kwh_per_km_2030": 0.14,
+            "efficiency_kwh_per_km_2040": 0.11,
+            "efficiency_kwh_per_km_2050": 0.10,
+            "notes": "Silicon carbide inverters, wheel motors, 800V architecture standard"
+          },
+          "electrolyzers": {
+            "efficiency_2024": 0.65,
+            "efficiency_2030": 0.70,
+            "efficiency_2040": 0.75,
+            "efficiency_2050": 0.80,
+            "notes": "PEM efficiency improvements, SOEC gaining share"
+          },
+          "led_lighting": {
+            "lumens_per_watt_2024": 150,
+            "lumens_per_watt_2030": 200,
+            "lumens_per_watt_2050": 280,
+            "notes": "Approaching theoretical limits"
+          }
+        }
+      },
+      "Optimistic": {
+        "description": "Key breakthroughs realized, accelerated deployment",
+        "fossil_sources": {
+          "coal": {
+            "2024": 0.32,
+            "2030": 0.35,
+            "2040": 0.40,
+            "2050": 0.43,
+            "notes": "Max fleet efficiency assumes rapid retirement of old plants"
+          },
+          "gas": {
+            "2024": 0.45,
+            "2030": 0.53,
+            "2040": 0.60,
+            "2050": 0.62,
+            "notes": "High-efficiency CCGT + fuel cells for peaking"
+          },
+          "oil": {
+            "2024": 0.30,
+            "2030": 0.34,
+            "2040": 0.40,
+            "2050": 0.42,
+            "notes": "Aggressive electrification reduces fleet to most efficient vehicles"
+          }
+        },
+        "clean_sources": {
+          "solar": {
+            "2024": 0.70,
+            "2030": 0.82,
+            "2040": 0.90,
+            "2050": 0.95,
+            "notes": "Perovskite tandem cells 30%+, minimal system losses, agrivoltaics and building-integrated"
+          },
+          "wind": {
+            "2024": 0.70,
+            "2030": 0.78,
+            "2040": 0.84,
+            "2050": 0.88,
+            "notes": "20MW+ offshore, floating wind scaling, high-altitude designs"
+          },
+          "nuclear": {
+            "2024": 0.33,
+            "2030": 0.35,
+            "2040": 0.40,
+            "2050": 0.45,
+            "notes": "Gen IV high-temperature reactors, molten salt designs"
+          },
+          "hydro": {
+            "2024": 0.70,
+            "2030": 0.72,
+            "2040": 0.75,
+            "2050": 0.78,
+            "notes": "Seawater pumped storage, advanced turbines"
+          }
+        },
+        "end_use_technologies": {
+          "heat_pumps": {
+            "cop_2024": 3.5,
+            "cop_2030": 4.8,
+            "cop_2040": 5.5,
+            "cop_2050": 6.0,
+            "notes": "Cascade systems, ground-source expansion, magnetocaloric cooling"
+          },
+          "evs": {
+            "efficiency_kwh_per_km_2024": 0.18,
+            "efficiency_kwh_per_km_2030": 0.12,
+            "efficiency_kwh_per_km_2040": 0.09,
+            "efficiency_kwh_per_km_2050": 0.08,
+            "notes": "Solid-state batteries, lightweight materials, in-wheel motors standard"
+          },
+          "electrolyzers": {
+            "efficiency_2024": 0.65,
+            "efficiency_2030": 0.75,
+            "efficiency_2040": 0.82,
+            "efficiency_2050": 0.85,
+            "notes": "SOEC widespread, high-temperature nuclear co-location"
+          },
+          "fuel_cells": {
+            "efficiency_2024": 0.55,
+            "efficiency_2030": 0.62,
+            "efficiency_2040": 0.68,
+            "efficiency_2050": 0.72,
+            "notes": "Solid oxide fuel cells for heavy transport"
+          },
+          "led_lighting": {
+            "lumens_per_watt_2024": 150,
+            "lumens_per_watt_2030": 220,
+            "lumens_per_watt_2050": 320,
+            "notes": "Laser lighting for specialized applications"
+          }
+        }
+      }
+    },
+    "grid_efficiency": {
+      "description": "Transmission and distribution losses reduction through smart grid and AI",
+      "Conservative": {
+        "2024": 0.94,
+        "2030": 0.945,
+        "2040": 0.95,
+        "2050": 0.955
+      },
+      "Baseline": {
+        "2024": 0.94,
+        "2030": 0.955,
+        "2040": 0.97,
+        "2050": 0.98
+      },
+      "Optimistic": {
+        "2024": 0.94,
+        "2030": 0.965,
+        "2040": 0.98,
+        "2050": 0.99
+      },
+      "notes": "Superconducting transmission, HVDC expansion, AI-optimized load balancing, distributed generation reduces transmission needs"
+    }
+  },
+  "clean_tech_efficiency_multipliers": {
+    "description": "How much more useful energy is delivered per unit of primary energy for clean vs fossil",
+    "solar_pv_vs_coal": {
+      "explanation": "Solar panel produces electricity directly (70-90% of radiation captured becomes useful). Coal: primary energy → heat → steam → electricity (32% efficient) → end use.",
+      "factor": 2.5,
+      "notes": "Solar delivers ~2.5x more useful energy per EJ of primary energy than coal power"
+    },
+    "ev_vs_ice": {
+      "explanation": "EV motor efficiency: 85-90%. ICE: 25-30%. EV delivers 3-4x more km per unit of primary energy.",
+      "factor": 3.5,
+      "notes": "Electric drivetrain fundamentally more efficient"
+    },
+    "heat_pump_vs_gas_boiler": {
+      "explanation": "Heat pump COP 3.5-5.0 (3.5-5.0 kWh heat per 1 kWh electricity). Gas boiler: 85-95% efficient.",
+      "factor": 3.5,
+      "notes": "Heat pumps move heat rather than generate it"
+    }
   }
 }

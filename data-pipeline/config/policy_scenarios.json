@@ -1,0 +1,449 @@
+{
+  "metadata": {
+    "description": "Policy acceleration factors by region and technology for energy transition modeling",
+    "version": "2.5.0",
+    "methodology": "Deployment multipliers based on announced policies, legislation, and historical implementation rates",
+    "sources": [
+      "US Inflation Reduction Act (IRA) 2022 - Clean energy tax credits and incentives",
+      "EU Green Deal and Fit for 55 Package - 2030 climate targets",
+      "EU REPowerEU Plan 2022 - Accelerated renewable deployment",
+      "China 14th Five-Year Plan - Energy sector targets",
+      "India Renewable Energy 2030 Target - 500 GW non-fossil",
+      "Japan Green Growth Strategy - 2050 carbon neutrality",
+      "IEA World Energy Outlook 2024 - Policy analysis",
+      "BloombergNEF Policy Impact Analysis 2024"
+    ],
+    "last_updated": "2024-12-05",
+    "notes": "Multipliers represent acceleration above business-as-usual deployment rates"
+  },
+  "scenario_effectiveness": {
+    "description": "How effective policies are at achieving stated targets",
+    "Conservative": {
+      "multiplier": 0.6,
+      "notes": "Assumes partial implementation, political headwinds, supply chain constraints"
+    },
+    "Baseline": {
+      "multiplier": 1.0,
+      "notes": "Assumes policies are implemented as announced"
+    },
+    "Optimistic": {
+      "multiplier": 1.3,
+      "notes": "Assumes policies exceeded with additional support, technology cost declines accelerate adoption"
+    }
+  },
+  "regional_policies": {
+    "United States": {
+      "ira_2022": {
+        "full_name": "Inflation Reduction Act",
+        "enacted": "2022-08-16",
+        "investment": "$369 billion over 10 years",
+        "expiration": 2032,
+        "deployment_multipliers": {
+          "solar_pv": {
+            "2024-2032": 1.8,
+            "2033-2040": 1.4,
+            "2041-2050": 1.2,
+            "notes": "30% ITC extended, manufacturing credits (45X), domestic content bonuses"
+          },
+          "wind_onshore": {
+            "2024-2032": 1.6,
+            "2033-2040": 1.3,
+            "2041-2050": 1.1,
+            "notes": "PTC extended at $26/MWh, energy community bonuses"
+          },
+          "wind_offshore": {
+            "2024-2032": 2.5,
+            "2033-2040": 1.8,
+            "2041-2050": 1.3,
+            "notes": "30% ITC, Jones Act waivers potential, state mandates"
+          },
+          "batteries": {
+            "2024-2032": 2.2,
+            "2033-2040": 1.6,
+            "2041-2050": 1.2,
+            "notes": "Standalone storage ITC (30%), 45X manufacturing credits"
+          },
+          "evs": {
+            "2024-2032": 1.9,
+            "2033-2040": 1.5,
+            "2041-2050": 1.2,
+            "notes": "$7,500 consumer credit (domestic assembly + battery requirements)"
+          },
+          "heat_pumps": {
+            "2024-2032": 1.7,
+            "2033-2040": 1.4,
+            "2041-2050": 1.2,
+            "notes": "25C tax credit ($2,000), HEEHR rebates up to $8,000"
+          },
+          "hydrogen": {
+            "2024-2032": 3.0,
+            "2033-2040": 2.0,
+            "2041-2050": 1.5,
+            "notes": "45V PTC up to $3/kg for clean hydrogen, regional hubs"
+          },
+          "nuclear": {
+            "2024-2032": 1.5,
+            "2033-2040": 1.4,
+            "2041-2050": 1.3,
+            "notes": "45U PTC for existing plants, 45Y for new builds"
+          }
+        }
+      },
+      "state_policies": {
+        "description": "Additional state-level mandates and targets",
+        "rps_states": 30,
+        "average_rps_target_2030": 0.50,
+        "leading_states": ["California", "New York", "Massachusetts", "Washington", "Colorado"],
+        "additional_multiplier": 1.15
+      }
+    },
+    "European Union": {
+      "green_deal_fit_for_55": {
+        "full_name": "European Green Deal and Fit for 55 Package",
+        "enacted": "2019-2023",
+        "targets": {
+          "ghg_reduction_2030": "-55% vs 1990",
+          "renewable_share_2030": "42.5% (binding) to 45% (aspiration)",
+          "energy_efficiency_improvement": "11.7% reduction in final energy"
+        },
+        "deployment_multipliers": {
+          "solar_pv": {
+            "2024-2030": 2.2,
+            "2031-2040": 1.6,
+            "2041-2050": 1.3,
+            "notes": "EU Solar Strategy: 600 GW by 2030 target, rooftop mandates"
+          },
+          "wind_onshore": {
+            "2024-2030": 1.8,
+            "2031-2040": 1.4,
+            "2041-2050": 1.2,
+            "notes": "Permitting acceleration, go-to areas designation"
+          },
+          "wind_offshore": {
+            "2024-2030": 2.8,
+            "2031-2040": 2.0,
+            "2041-2050": 1.5,
+            "notes": "North Sea Energy Cooperation, 300 GW by 2050 target"
+          },
+          "batteries": {
+            "2024-2030": 2.0,
+            "2031-2040": 1.5,
+            "2041-2050": 1.2,
+            "notes": "Battery Regulation, supply chain requirements"
+          },
+          "evs": {
+            "2024-2035": 2.5,
+            "2036-2040": 1.8,
+            "2041-2050": 1.3,
+            "notes": "2035 ICE ban, Euro 7 standards, infrastructure deployment"
+          },
+          "heat_pumps": {
+            "2024-2030": 2.8,
+            "2031-2040": 2.0,
+            "2041-2050": 1.4,
+            "notes": "REPowerEU: 30 million additional heat pumps by 2030"
+          },
+          "hydrogen": {
+            "2024-2030": 2.5,
+            "2031-2040": 2.0,
+            "2041-2050": 1.6,
+            "notes": "Hydrogen Strategy: 10 million tonnes by 2030"
+          },
+          "nuclear": {
+            "2024-2030": 1.0,
+            "2031-2040": 1.1,
+            "2041-2050": 1.2,
+            "notes": "Mixed - France expansion, Germany phase-out"
+          }
+        }
+      },
+      "repowereu": {
+        "full_name": "REPowerEU",
+        "enacted": "2022-05-18",
+        "goal": "End dependence on Russian fossil fuels by 2027",
+        "additional_multipliers": {
+          "solar_pv": 1.2,
+          "wind": 1.15,
+          "heat_pumps": 1.3,
+          "notes": "Multiplies on top of Fit for 55 through 2027"
+        }
+      }
+    },
+    "China": {
+      "14th_fyp": {
+        "full_name": "14th Five-Year Plan (2021-2025)",
+        "targets": {
+          "non_fossil_share_primary_energy_2025": 0.20,
+          "non_fossil_share_primary_energy_2030": 0.25,
+          "co2_peak": "Before 2030",
+          "carbon_neutrality": "2060"
+        },
+        "deployment_multipliers": {
+          "solar_pv": {
+            "2024-2030": 2.0,
+            "2031-2040": 1.6,
+            "2041-2050": 1.3,
+            "notes": "World's largest manufacturing base, desert solar mega-projects"
+          },
+          "wind_onshore": {
+            "2024-2030": 1.8,
+            "2031-2040": 1.4,
+            "2041-2050": 1.2,
+            "notes": "Grid integration improvements, UHV transmission"
+          },
+          "wind_offshore": {
+            "2024-2030": 2.5,
+            "2031-2040": 1.8,
+            "2041-2050": 1.3,
+            "notes": "Rapid offshore expansion, domestic supply chain"
+          },
+          "batteries": {
+            "2024-2030": 2.5,
+            "2031-2040": 1.8,
+            "2041-2050": 1.3,
+            "notes": "Dominant global position (CATL, BYD), LFP leadership"
+          },
+          "evs": {
+            "2024-2030": 2.2,
+            "2031-2040": 1.6,
+            "2041-2050": 1.2,
+            "notes": "50% NEV sales target by 2035, subsidy phase-down but mandate maintained"
+          },
+          "heat_pumps": {
+            "2024-2030": 1.5,
+            "2031-2040": 1.4,
+            "2041-2050": 1.3,
+            "notes": "Building efficiency standards, electrification push"
+          },
+          "hydrogen": {
+            "2024-2030": 2.0,
+            "2031-2040": 1.8,
+            "2041-2050": 1.5,
+            "notes": "Hydrogen city clusters, heavy transport focus"
+          },
+          "nuclear": {
+            "2024-2030": 1.8,
+            "2031-2040": 1.6,
+            "2041-2050": 1.5,
+            "notes": "150 GW target by 2035, rapid construction program"
+          }
+        }
+      }
+    },
+    "India": {
+      "re_2030_target": {
+        "full_name": "500 GW Non-Fossil Capacity by 2030",
+        "targets": {
+          "non_fossil_capacity_gw_2030": 500,
+          "renewable_capacity_gw_2030": 450,
+          "solar_gw_2030": 280,
+          "wind_gw_2030": 140
+        },
+        "deployment_multipliers": {
+          "solar_pv": {
+            "2024-2030": 2.8,
+            "2031-2040": 2.0,
+            "2041-2050": 1.5,
+            "notes": "National Solar Mission extended, PM-KUSUM rooftop program"
+          },
+          "wind_onshore": {
+            "2024-2030": 1.8,
+            "2031-2040": 1.5,
+            "2041-2050": 1.3,
+            "notes": "Hybrid solar-wind projects, repowering old turbines"
+          },
+          "batteries": {
+            "2024-2030": 2.0,
+            "2031-2040": 1.8,
+            "2041-2050": 1.5,
+            "notes": "PLI scheme for advanced chemistry cells, grid storage tenders"
+          },
+          "evs": {
+            "2024-2030": 2.5,
+            "2031-2040": 2.0,
+            "2041-2050": 1.5,
+            "notes": "FAME scheme, state EV policies, 2-3 wheeler electrification"
+          },
+          "hydrogen": {
+            "2024-2030": 2.5,
+            "2031-2040": 2.0,
+            "2041-2050": 1.6,
+            "notes": "National Green Hydrogen Mission: 5 million tonnes by 2030"
+          },
+          "nuclear": {
+            "2024-2030": 1.3,
+            "2031-2040": 1.4,
+            "2041-2050": 1.5,
+            "notes": "New reactor program, SMR interest"
+          }
+        }
+      }
+    },
+    "Japan": {
+      "green_growth_strategy": {
+        "full_name": "Green Growth Strategy for 2050 Carbon Neutrality",
+        "targets": {
+          "renewable_share_2030": 0.36,
+          "nuclear_share_2030": 0.20,
+          "hydrogen_million_tonnes_2030": 3
+        },
+        "deployment_multipliers": {
+          "solar_pv": {
+            "2024-2030": 1.6,
+            "2031-2040": 1.4,
+            "2041-2050": 1.2,
+            "notes": "Limited land availability, focus on building-integrated and floating"
+          },
+          "wind_offshore": {
+            "2024-2030": 2.5,
+            "2031-2040": 2.0,
+            "2041-2050": 1.5,
+            "notes": "30-45 GW offshore target by 2040, floating wind priority"
+          },
+          "batteries": {
+            "2024-2030": 1.8,
+            "2031-2040": 1.5,
+            "2041-2050": 1.2,
+            "notes": "Solid-state battery R&D leadership (Toyota, Panasonic)"
+          },
+          "evs": {
+            "2024-2030": 1.8,
+            "2031-2040": 1.5,
+            "2041-2050": 1.2,
+            "notes": "2035 all-EV target delayed, hydrogen fuel cell focus"
+          },
+          "hydrogen": {
+            "2024-2030": 2.5,
+            "2031-2040": 2.2,
+            "2041-2050": 1.8,
+            "notes": "Hydrogen Society roadmap, ammonia co-firing"
+          },
+          "nuclear": {
+            "2024-2030": 1.4,
+            "2031-2040": 1.5,
+            "2041-2050": 1.5,
+            "notes": "Restart existing fleet, next-gen reactor R&D"
+          }
+        }
+      }
+    },
+    "Rest of World": {
+      "description": "Aggregated policy factors for regions without major standalone policies",
+      "default_multipliers": {
+        "solar_pv": {
+          "2024-2030": 1.3,
+          "2031-2040": 1.2,
+          "2041-2050": 1.1
+        },
+        "wind": {
+          "2024-2030": 1.2,
+          "2031-2040": 1.15,
+          "2041-2050": 1.1
+        },
+        "batteries": {
+          "2024-2030": 1.3,
+          "2031-2040": 1.2,
+          "2041-2050": 1.1
+        },
+        "evs": {
+          "2024-2030": 1.2,
+          "2031-2040": 1.2,
+          "2041-2050": 1.1
+        }
+      },
+      "emerging_markets_boost": {
+        "regions": ["Latin America", "Southeast Asia", "Middle East", "Africa"],
+        "additional_multiplier_2030_onward": 1.2,
+        "notes": "Growing policy ambition, falling technology costs drive adoption"
+      }
+    }
+  },
+  "global_aggregated_multipliers": {
+    "description": "Weighted global average policy multipliers by technology",
+    "weighting_method": "GDP-weighted by region for 2024, energy demand-weighted thereafter",
+    "by_technology": {
+      "solar_pv": {
+        "Conservative": {"2024-2030": 1.4, "2031-2040": 1.2, "2041-2050": 1.1},
+        "Baseline": {"2024-2030": 1.9, "2031-2040": 1.5, "2041-2050": 1.25},
+        "Optimistic": {"2024-2030": 2.4, "2031-2040": 1.9, "2041-2050": 1.5}
+      },
+      "wind_total": {
+        "Conservative": {"2024-2030": 1.3, "2031-2040": 1.15, "2041-2050": 1.05},
+        "Baseline": {"2024-2030": 1.7, "2031-2040": 1.4, "2041-2050": 1.2},
+        "Optimistic": {"2024-2030": 2.2, "2031-2040": 1.7, "2041-2050": 1.4}
+      },
+      "batteries": {
+        "Conservative": {"2024-2030": 1.4, "2031-2040": 1.2, "2041-2050": 1.1},
+        "Baseline": {"2024-2030": 2.0, "2031-2040": 1.6, "2041-2050": 1.3},
+        "Optimistic": {"2024-2030": 2.6, "2031-2040": 2.0, "2041-2050": 1.5}
+      },
+      "evs": {
+        "Conservative": {"2024-2030": 1.4, "2031-2040": 1.2, "2041-2050": 1.1},
+        "Baseline": {"2024-2030": 2.0, "2031-2040": 1.6, "2041-2050": 1.25},
+        "Optimistic": {"2024-2030": 2.5, "2031-2040": 2.0, "2041-2050": 1.5}
+      },
+      "heat_pumps": {
+        "Conservative": {"2024-2030": 1.3, "2031-2040": 1.2, "2041-2050": 1.1},
+        "Baseline": {"2024-2030": 1.8, "2031-2040": 1.5, "2041-2050": 1.3},
+        "Optimistic": {"2024-2030": 2.3, "2031-2040": 1.9, "2041-2050": 1.5}
+      },
+      "hydrogen": {
+        "Conservative": {"2024-2030": 1.3, "2031-2040": 1.2, "2041-2050": 1.1},
+        "Baseline": {"2024-2030": 2.2, "2031-2040": 1.8, "2041-2050": 1.5},
+        "Optimistic": {"2024-2030": 3.0, "2031-2040": 2.4, "2041-2050": 1.8}
+      },
+      "nuclear": {
+        "Conservative": {"2024-2030": 1.1, "2031-2040": 1.1, "2041-2050": 1.1},
+        "Baseline": {"2024-2030": 1.3, "2031-2040": 1.3, "2041-2050": 1.3},
+        "Optimistic": {"2024-2030": 1.6, "2031-2040": 1.5, "2041-2050": 1.5}
+      }
+    }
+  },
+  "policy_risk_factors": {
+    "description": "Factors that could reduce policy effectiveness",
+    "political_uncertainty": {
+      "us_election_cycles": "IRA may face changes with administration changes",
+      "eu_member_state_variance": "Implementation varies significantly by country",
+      "emerging_market_instability": "Policy reversals possible"
+    },
+    "implementation_risks": {
+      "permitting_delays": "Grid connection and land-use permitting remain bottlenecks",
+      "supply_chain_constraints": "Critical minerals, manufacturing capacity",
+      "workforce_availability": "Skilled labor shortages in many regions"
+    },
+    "mitigation_in_scenarios": {
+      "Conservative": "Applies 60% effectiveness to account for all risk factors",
+      "Baseline": "Assumes policies implemented but with some delays",
+      "Optimistic": "Assumes risks largely resolved, policies exceeded"
+    }
+  },
+  "carbon_pricing_trajectory": {
+    "description": "Carbon pricing assumptions by region (USD/tonne CO2)",
+    "EU_ETS": {
+      "2024": 60,
+      "2030": 120,
+      "2040": 180,
+      "2050": 250,
+      "notes": "EU ETS reform, CBAM implementation"
+    },
+    "US_implied": {
+      "2024": 20,
+      "2030": 50,
+      "2040": 100,
+      "2050": 150,
+      "notes": "Social cost of carbon in regulation, potential explicit price"
+    },
+    "China_ETS": {
+      "2024": 10,
+      "2030": 30,
+      "2040": 80,
+      "2050": 150,
+      "notes": "Gradual expansion from power sector"
+    },
+    "global_average": {
+      "Conservative": {"2030": 25, "2040": 50, "2050": 80},
+      "Baseline": {"2030": 50, "2040": 100, "2050": 175},
+      "Optimistic": {"2030": 80, "2040": 150, "2050": 250}
+    }
+  }
+}
